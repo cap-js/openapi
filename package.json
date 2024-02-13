@@ -2,7 +2,10 @@
   "name": "@cap-js/openapi",
   "version": "0.1.0",
   "description": "CAP Plugin for OpenAPI",
-  "repository": "github:cap-js/openapi",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cap-js/openapi.git"
+  },
   "homepage": "https://cap.cloud.sap/",
   "keywords": [
     "CAP",
