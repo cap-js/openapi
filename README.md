@@ -26,7 +26,7 @@ In this guide, we use the [Incidents Management reference sample app](https://gi
 
 ### 1. Usage of programatic API
 
-To invoke `cds compile --to openapi` programatically.
+To invoke `cds compile --to openapi` programatically:
 
 ```sh
 await cds.compile(<filename>).to.openapi() 
