@@ -26,14 +26,21 @@ In this guide, we use the [Incidents Management reference sample app](https://gi
 
 ### 1. Usage of programatic API
 
-await `cds.compile(<file path>).to.openapi()` to invoke `cds compile to openapi` programatically.
+To invoke `cds compile --to openapi` programatically.
 
+```sh
+await cds.compile(<filename>).to.openapi() 
+```
 
 ### 2. Usage from CLI 
 
-Run `cds compile <file path> -2 openapi` in the CLI to generate the OpenAPI document.
+Run the following command in the CLI to generate the OpenAPI document.
 
-For more information, visit [CAPire](https://cap.cloud.sap/docs/advanced/openapi#cli)
+```sh
+cds compile <filename> --to openapi
+```
+
+For more information, visit [capire](https://cap.cloud.sap/docs/advanced/openapi#cli)
 
 ## Contributing
 
@@ -45,4 +52,4 @@ We as members, contributors, and leaders pledge to make participation in our com
 
 ## Licensing
 
-Copyright 2023 SAP SE or an SAP affiliate company and contributors. Please see our [LICENSE](LICENSE) for copyright and license information. Detailed information including third-party components and their licensing/copyright information is available [via the REUSE tool]().
+Copyright 2023 SAP SE or an SAP affiliate company and contributors. Please see our [LICENSE](LICENSE) for copyright and license information. Detailed information including third-party components and their licensing/copyright information is available [via the REUSE tool](https://api.reuse.software/info/github.com/cap-js/openapi).
