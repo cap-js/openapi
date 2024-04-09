@@ -5,10 +5,11 @@ const someOpenApi = { openapi: '3.0.2', info: {}, servers: [{}], tags: [{}], pat
 const SCENARIO = Object.freeze({
   positive: 'positive',
   notAllowedAnnotations: 'notAllowed',
-  notMatchingValues: 'notMatching'
+  notMatchingValues: 'notMatching',
+  checkProperty: 'checkProperty'
 })
 
-function checkAnnotations(csn, annotations, scenario = SCENARIO.positive) {
+function checkAnnotations(csn, annotations, scenario = SCENARIO.positive, property = '') {
   const openApi = toOpenApi(csn)
   const schemas = Object.entries(openApi.components.schemas).filter(([key]) => key.startsWith('sap.odm.test.A.E1'))
 
@@ -35,6 +36,16 @@ function checkAnnotations(csn, annotations, scenario = SCENARIO.positive) {
       }
     }
     return;
+  }
+
+  if(scenario === SCENARIO.checkProperty) {
+    for (const [, schema] of schemas) {
+      const propertyObj = schema.properties[property]
+      for (const [annKey, annValue] of annotations) {
+        expect(propertyObj[annKey]).toBe(annValue)
+      }
+    }
+    return
   }
 
   for (const [, schema] of schemas) {
@@ -263,6 +274,28 @@ describe('OpenAPI export', () => {
       csn,
       new Map([["x-sap-odm-entity-name", "sap.odm.test.bar"]]),
       SCENARIO.notMatchingValues
+    )
+  })
+
+  test('odm annotations: @ODM.oidReference.entityName annotation is added to the schema', () => {
+    const csn = cds.compile.to.csn(`
+      namespace sap.odm.test;
+      service A {
+        entity E1 { 
+          key id: String(4); 
+          oid: String(128); 
+          @ODM.oidReference.entityName: 'ReferencedEntityName'
+          ref: Association to one E2;
+        }
+        entity E2 { key id: String(4); }
+      }
+    `)
+
+    checkAnnotations(
+      csn,
+      new Map([["x-sap-odm-oid-reference-entity-name", "ReferencedEntityName"]]),
+      SCENARIO.checkProperty,
+      'ref_id'
     )
   })
 });
