@@ -16,7 +16,3 @@
 // require('./lib/compile/api').registerCompileTargets()
 const cds = require('@sap/cds')
 require('./lib/compile/api').registerCompileTargets()
-const defaults = { path: '/openapi', impl: '@cap-js/openapi' }
-const protocols = cds.env.protocols ??= {}
-protocols.openapi ??= {}
-protocols.openapi = { ...defaults, ...protocols.openapi}
