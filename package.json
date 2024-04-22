@@ -1,7 +1,7 @@
 {
   "name": "@cap-js/openapi",
   "version": "1.0.0",
-  "description": "CAP Plugin for OpenAPI",
+  "description": "CAP tool for OpenAPI",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/cap-js/openapi.git"
@@ -15,9 +15,7 @@
   ],
   "author": "SAP SE (https://www.sap.com)",
   "license": "SEE LICENSE IN LICENSE",
-  "main": "cds-plugin.js",
   "files": [
-    "cds-plugin.js",
     "lib/"
   ],
   "scripts": {
