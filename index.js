@@ -1,7 +1,7 @@
 const cds = require('@sap/cds')
 
 function _lazyRegisterCompileTargets() {
-  const value = require('./index')
+  const value = require('./lib/compile/index')
   Object.defineProperty(this, "openapi", { value })
   return value
 }
