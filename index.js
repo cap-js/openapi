@@ -1,17 +1,17 @@
 const cds = require('@sap/cds')
 
-function _lazyRegisterCompileTargets() {
+function _lazyRegisterCompileTarget() {
   const value = require('./lib/compile/index')
   Object.defineProperty(this, "openapi", { value })
   return value
 }
 
-const registerCompileTargets = () => {
+const registerOpenapiCompileTarget = () => {
     Object.defineProperty(cds.compile.to, "openapi", {
-      get: _lazyRegisterCompileTargets,
+      get: _lazyRegisterCompileTarget,
       configurable: true
     })
   }
 
 
-module.exports = { registerCompileTargets }
+module.exports = { registerOpenapiCompileTarget }
