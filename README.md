@@ -15,7 +15,7 @@ The `@cap-js/openapi` is a package that provides support for OpenAPI document co
 
 ## Requirements and Setup
 
-## Generate OpenAPI document
+### Generate OpenAPI document
 
 ### 1. Usage of programatic API
 
