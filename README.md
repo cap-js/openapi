@@ -2,14 +2,18 @@
 
 # OpenAPI 
 
+## About this project
+
 The `@cap-js/openapi` is a package that provides support for OpenAPI document compilation.
 
 ### Table of Contents
 
-- [Generate OpenAPI document](#generate-openapi-document)
+- [Requirements and Setup](#requirements-and-setup)
 - [Contributing](#contributing)
 - [Code of Conduct](#code-of-conduct)
 - [Licensing](#licensing)
+
+## Requirements and Setup
 
 ## Generate OpenAPI document
 
@@ -37,7 +41,7 @@ This project is open to feature requests/suggestions, bug reports etc. via [GitH
 
 ## Code of Conduct
 
-We as members, contributors, and leaders pledge to make participation in our community a harassment-free experience for everyone. By participating in this project, you agree to abide by its [Code of Conduct](CODE_OF_CONDUCT.md) at all times.
+We as members, contributors, and leaders pledge to make participation in our community a harassment-free experience for everyone. By participating in this project, you agree to abide by its [Code of Conduct](https://github.com/cap-js/.github/blob/main/CODE_OF_CONDUCT.md) at all times.
 
 ## Licensing
 
