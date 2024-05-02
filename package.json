@@ -17,7 +17,9 @@
   "license": "SEE LICENSE IN LICENSE",
   "main": "index.js",
   "files": [
-    "lib/"
+    "lib/",
+    "npm-shrinkwrap.json",
+    "LICENSE"
   ],
   "scripts": {
     "test": "npx jest --silent",
