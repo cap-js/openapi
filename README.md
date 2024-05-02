@@ -28,7 +28,7 @@ $ npm install @cap-js/openapi
 require("@cap-js/openapi").registerOpenapiCompileTarget()
 ```
 
-### Generate OpenAPI document
+## Generate OpenAPI document
 
 ### 1. Usage of programatic API
 
