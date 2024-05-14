@@ -1,6 +1,5 @@
-require('../../..').register();
+const toOpenApi = require('../../../lib/compile');
 const cds = require('@sap/cds')
-const { compile: { to: { openapi: toOpenApi } } } = cds
 
 const someOpenApi = { openapi: '3.0.2', info: {}, servers: [{}], tags: [{}], paths: {}, components: {} }
 const SCENARIO = Object.freeze({
