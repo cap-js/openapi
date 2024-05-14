@@ -23,9 +23,14 @@ $ npm install @cap-js/openapi
 
 ### Usage
 
-```sh
-const processor = require('@cap-js/asyncapi/lib/compile')
-processor(csn)
+```js
+const cds = require('@sap/cds')
+const { compile } = require('@cap-js/openapi')
+```
+
+```js
+const csn = await cds.load(cds.env.folders.srv)
+const openapiDocument = compile(csn)
 ```
 
 ## Contributing
