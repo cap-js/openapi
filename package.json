@@ -15,7 +15,7 @@
   ],
   "author": "SAP SE (https://www.sap.com)",
   "license": "SEE LICENSE IN LICENSE",
-  "main": "index.js",
+  "main": "lib/compile/index.js",
   "files": [
     "lib/",
     "LICENSE"
