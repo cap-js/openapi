@@ -12,7 +12,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Fixed
 
-- Bug fixes.
+- `required` array is not added for `@mandatory` properties now.
 
 ## Version 1.0.4 - 14.05.2024
 
