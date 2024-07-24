@@ -10,6 +10,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 - UUID type elements are not going to have the property of required.
 
+### Fixed
+
+- Bug fixes.
+
 ## Version 1.0.4 - 14.05.2024
 
 ### Changed
