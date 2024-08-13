@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## Version 1.0.5 - 30.07.2024
+
+### Changed
+
+- UUID type elements are not going to have the property of required.
+
+### Fixed
+
+- properties with `@mandatory` annotation is not added to `required` array.
+
 ## Version 1.0.4 - 14.05.2024
 
 ### Changed

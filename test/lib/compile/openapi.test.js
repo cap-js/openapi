@@ -38,7 +38,7 @@ function checkAnnotations(csn, annotations, scenario = SCENARIO.positive, proper
     return;
   }
 
-  if(scenario === SCENARIO.checkProperty) {
+  if (scenario === SCENARIO.checkProperty) {
     for (const [, schema] of schemas) {
       const propertyObj = schema.properties[property]
       for (const [annKey, annValue] of annotations) {
@@ -88,6 +88,8 @@ describe('OpenAPI export', () => {
     );
     const openapi = toOpenApi(csn);
     expect(openapi).toMatchObject(someOpenApi);
+    // UUID elements are not required
+    expect(openapi.components.schemas['A.E-create']).not.toHaveProperty('required');
   });
 
   test('one service, namespace', () => {
