@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## Version 1.0.6 
+
+### Fixed
+
+- Entities annotated with `@cds.autoexpose[d]` but explicitly exposed in the service are now made read-write.
+
 ## Version 1.0.5 - 30.07.2024
 
 ### Changed
