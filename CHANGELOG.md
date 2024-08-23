@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ### Fixed
 
 - Entities annotated with `@cds.autoexpose[d]` but explicitly exposed in the service are now made read-write.
+- Added a wrapper `properties` object for primitive return types.
 
 ## Version 1.0.5 - 30.07.2024
 
