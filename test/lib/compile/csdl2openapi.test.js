@@ -490,28 +490,42 @@ describe('Edge cases', function () {
         };
         const openapi = lib.csdl2openapi(csdl, {});
         assert.deepStrictEqual(
-            openapi.components.schemas["jsonExamples.typeDefinitionOld"],
-            {
-                title: "typeDefinitionOld",
+          openapi.components.schemas["jsonExamples.typeDefinitionOld"],
+          {
+            title: "typeDefinitionOld",
+            type: "object",
+            properties: {
+              value: {
                 type: "object",
                 additionalProperties: false,
                 patternProperties: {
-                    "^[\\w\\.\\-\\/]+$": { type: "string" },
+                  "^[\\w\\.\\-\\/]+$": {
+                    type: "string",
+                  },
                 },
+              },
             },
-            "JSON property old-style"
+          },
+          "JSON property old-style"
         );
         assert.deepStrictEqual(
-            openapi.components.schemas["jsonExamples.typeDefinitionNew"],
-            {
-                title: "typeDefinitionNew",
+          openapi.components.schemas["jsonExamples.typeDefinitionNew"],
+          {
+            title: "typeDefinitionNew",
+            type: "object",
+            properties: {
+              value: {
                 type: "object",
                 additionalProperties: false,
                 patternProperties: {
-                    "^[\\w\\.\\-\\/]+$": { type: "string" },
-                }
+                  "^[\\w\\.\\-\\/]+$": {
+                    type: "string",
+                  },
+                },
+              },
             },
-            "JSON property new-style"
+          },
+          "JSON property new-style"
         );
         assert.deepStrictEqual(
             openapi.components.schemas["jsonExamples.single"].properties.stream2,
@@ -567,10 +581,17 @@ describe('Edge cases', function () {
             {
                 title: "typeDefinitionOld",
                 type: "object",
-                additionalProperties: false,
-                patternProperties: {
-                    "^[\\w\\.\\-\\/]+$": { type: "string" },
-                },
+                properties: {
+                    value: {
+                      type: "object",
+                      additionalProperties: false,
+                      patternProperties: {
+                        "^[\\w\\.\\-\\/]+$": {
+                          type: "string"
+                        }
+                      }
+                    }
+                  }
             },
             "JSON property old-style"
         );
@@ -579,10 +600,17 @@ describe('Edge cases', function () {
             {
                 title: "typeDefinitionNew",
                 type: "object",
-                additionalProperties: false,
-                patternProperties: {
-                    "^[\\w\\.\\-\\/]+$": { type: "string" },
-                }
+                properties: {
+                    value: {
+                      type: "object",
+                      additionalProperties: false,
+                      patternProperties: {
+                        "^[\\w\\.\\-\\/]+$": {
+                          type: "string"
+                        }
+                      }
+                    }
+                  }
             },
             "JSON property new-style"
         );
@@ -2169,24 +2197,78 @@ see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-prot
         assert.deepStrictEqual(
             openapi.components.schemas["typeExamples.single"].properties,
             {
-                withMaxLength: {
-                    maxLength: 10,
-                    allOf: [
-                        { $ref: "#/components/schemas/typeExamples.typeDefinitionNew" },
-                    ],
-                },
-                binary: { format: "base64url", type: "string" },
-                primitive: {
-                    anyOf: [{ type: "boolean" }, { type: "number" }, { type: "string" }],
-                },
-                propertyPath: { type: "string" },
-                sbyte: { type: "integer", format: "int8" },
-                time: { type: "string", format: "time", example: "15:51:04" },
-                kaputt: {},
-                unknown: {
-                    $ref: "#/components/schemas/typeExamples.un-known",
-                },
-            },
+          "withMaxLength": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/typeExamples.typeDefinitionNew"
+              }
+            ],
+            "maxLength": 10
+          },
+          "binary": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "type": "string",
+                "format": "base64url"
+              }
+            }
+          },
+          "primitive": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "anyOf": [
+                  {
+                    "type": "boolean"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ]
+              }
+            }
+          },
+          "propertyPath": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "type": "string"
+              }
+            }
+          },
+          "sbyte": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "type": "integer",
+                "format": "int8"
+              }
+            }
+          },
+          "time": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "type": "string",
+                "format": "time",
+                "example": "15:51:04"
+              }
+            }
+          },
+          "kaputt": {
+            "type": "object",
+            "properties": {
+              "value": {}
+            }
+          },
+          "unknown": {
+            "$ref": "#/components/schemas/typeExamples.un-known"
+          }
+        },
             "MaxLength"
         );
     });
