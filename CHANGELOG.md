@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ### Fixed
 
 - Entities annotated with `@cds.autoexpose[d]` but explicitly exposed in the service are now made read-write.
+- Enum array are now included in the schema of the entity having an enum property.
 
 ## Version 1.0.5 - 30.07.2024
 
