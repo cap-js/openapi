@@ -1885,13 +1885,8 @@
           "name": "One",
           "required": true,
           "schema": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
+            "type": "integer",
+            "format": "int32"
           }
         },
         {
@@ -1900,13 +1895,8 @@
           "name": "Two",
           "required": true,
           "schema": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
+            "type": "integer",
+            "format": "int32"
           }
         }
       ],
@@ -1998,13 +1988,8 @@
           "name": "One",
           "required": true,
           "schema": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
+            "type": "integer",
+            "format": "int32"
           }
         },
         {
@@ -2013,13 +1998,8 @@
           "name": "Two",
           "required": true,
           "schema": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
+            "type": "integer",
+            "format": "int32"
           }
         }
       ],
@@ -2106,13 +2086,8 @@
           "name": "One",
           "required": true,
           "schema": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
+            "type": "integer",
+            "format": "int32"
           }
         },
         {
@@ -2121,13 +2096,8 @@
           "name": "Two",
           "required": true,
           "schema": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
+            "type": "integer",
+            "format": "int32"
           }
         }
       ],
@@ -2196,13 +2166,8 @@
           "name": "One",
           "required": true,
           "schema": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
+            "type": "integer",
+            "format": "int32"
           }
         },
         {
@@ -2211,13 +2176,8 @@
           "name": "Two",
           "required": true,
           "schema": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
+            "type": "integer",
+            "format": "int32"
           }
         }
       ],
@@ -2327,89 +2287,69 @@
             "nullable": true
           },
           "Maximum": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "anyOf": [
-                  {
-                    "type": "number",
-                    "format": "decimal",
-                    "maximum": 0,
-                    "minimum": -99999
-                  },
-                  {
-                    "type": "string"
-                  }
-                ],
-                "example": 0,
-                "x-sap-precision": 5,
-                "nullable": true,
-                "exclusiveMaximum": true
+            "anyOf": [
+              {
+                "type": "number",
+                "format": "decimal",
+                "maximum": 0,
+                "minimum": -99999
+              },
+              {
+                "type": "string"
               }
-            }
+            ],
+            "example": 0,
+            "x-sap-precision": 5,
+            "nullable": true,
+            "exclusiveMaximum": true
           },
           "MaximumExt": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "anyOf": [
-                  {
-                    "type": "number",
-                    "format": "decimal",
-                    "maximum": -1
-                  },
-                  {
-                    "type": "string"
-                  }
-                ],
-                "example": -1,
-                "nullable": true
+            "anyOf": [
+              {
+                "type": "number",
+                "format": "decimal",
+                "maximum": -1
+              },
+              {
+                "type": "string"
               }
-            }
+            ],
+            "example": -1,
+            "nullable": true
           },
           "Minimum": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "anyOf": [
-                  {
-                    "type": "number",
-                    "format": "decimal",
-                    "multipleOf": 0.01,
-                    "maximum": 999.99,
-                    "minimum": 1
-                  },
-                  {
-                    "type": "string"
-                  }
-                ],
-                "example": 0,
-                "x-sap-precision": 5,
-                "x-sap-scale": 2,
-                "nullable": true
+            "anyOf": [
+              {
+                "type": "number",
+                "format": "decimal",
+                "multipleOf": 0.01,
+                "maximum": 999.99,
+                "minimum": 1
+              },
+              {
+                "type": "string"
               }
-            }
+            ],
+            "example": 0,
+            "x-sap-precision": 5,
+            "x-sap-scale": 2,
+            "nullable": true
           },
           "MinimumExt": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "anyOf": [
-                  {
-                    "type": "number",
-                    "format": "decimal",
-                    "multipleOf": 0.00001,
-                    "minimum": 0
-                  },
-                  {
-                    "type": "string"
-                  }
-                ],
-                "example": 1,
-                "x-sap-scale": 5,
-                "exclusiveMinimum": true
+            "anyOf": [
+              {
+                "type": "number",
+                "format": "decimal",
+                "multipleOf": 0.00001,
+                "minimum": 0
+              },
+              {
+                "type": "string"
               }
-            }
+            ],
+            "example": 1,
+            "x-sap-scale": 5,
+            "exclusiveMinimum": true
           },
           "Example": {
             "type": "string",
@@ -2499,22 +2439,12 @@
         "type": "object",
         "properties": {
           "One": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
+            "type": "integer",
+            "format": "int32"
           },
           "Two": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
+            "type": "integer",
+            "format": "int32"
           }
         }
       },
@@ -2523,22 +2453,12 @@
         "type": "object",
         "properties": {
           "One": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
+            "type": "integer",
+            "format": "int32"
           },
           "Two": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
+            "type": "integer",
+            "format": "int32"
           }
         },
         "required": [

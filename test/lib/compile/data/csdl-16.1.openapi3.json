@@ -220,13 +220,8 @@
           "name": "ID",
           "required": true,
           "schema": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
+            "type": "integer",
+            "format": "int32"
           }
         }
       ],
@@ -335,13 +330,8 @@
           "name": "ID",
           "required": true,
           "schema": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
+            "type": "integer",
+            "format": "int32"
           }
         }
       ],
@@ -1440,15 +1430,10 @@
             "in": "query",
             "name": "Rating",
             "schema": {
-              "type": "object",
-              "properties": {
-                "value": {
-                  "type": "string",
-                  "format": "int32,null",
-                  "nullable": true,
-                  "default": "null"
-                }
-              }
+              "type": "string",
+              "format": "int32,null",
+              "nullable": true,
+              "default": "null"
             }
           }
         ],
@@ -2069,13 +2054,8 @@
         "type": "object",
         "properties": {
           "ID": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
+            "type": "integer",
+            "format": "int32"
           },
           "Name": {
             "type": "string"
@@ -2096,13 +2076,8 @@
         "type": "object",
         "properties": {
           "ID": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
+            "type": "integer",
+            "format": "int32"
           },
           "Name": {
             "type": "string"
@@ -2186,56 +2161,36 @@
             "nullable": true
           },
           "ReleaseDate": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "string",
-                "format": "date",
-                "example": "2017-04-13",
-                "nullable": true
-              }
-            }
+            "type": "string",
+            "format": "date",
+            "example": "2017-04-13",
+            "nullable": true
           },
           "DiscontinuedDate": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "string",
-                "format": "date",
-                "example": "2017-04-13",
-                "nullable": true
-              }
-            }
+            "type": "string",
+            "format": "date",
+            "example": "2017-04-13",
+            "nullable": true
           },
           "Rating": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "integer",
-                "format": "int32",
-                "nullable": true
-              }
-            }
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
           },
           "Price": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "anyOf": [
-                  {
-                    "type": "number",
-                    "format": "decimal",
-                    "multipleOf": 1
-                  },
-                  {
-                    "type": "string"
-                  }
-                ],
-                "example": 0,
-                "x-sap-scale": 0,
-                "nullable": true
+            "anyOf": [
+              {
+                "type": "number",
+                "format": "decimal",
+                "multipleOf": 1
+              },
+              {
+                "type": "string"
               }
-            }
+            ],
+            "example": 0,
+            "x-sap-scale": 0,
+            "nullable": true
           },
           "Currency": {
             "type": "string",
@@ -2267,56 +2222,36 @@
             "nullable": true
           },
           "ReleaseDate": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "string",
-                "format": "date",
-                "example": "2017-04-13",
-                "nullable": true
-              }
-            }
+            "type": "string",
+            "format": "date",
+            "example": "2017-04-13",
+            "nullable": true
           },
           "DiscontinuedDate": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "string",
-                "format": "date",
-                "example": "2017-04-13",
-                "nullable": true
-              }
-            }
+            "type": "string",
+            "format": "date",
+            "example": "2017-04-13",
+            "nullable": true
           },
           "Rating": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "integer",
-                "format": "int32",
-                "nullable": true
-              }
-            }
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
           },
           "Price": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "anyOf": [
-                  {
-                    "type": "number",
-                    "format": "decimal",
-                    "multipleOf": 1
-                  },
-                  {
-                    "type": "string"
-                  }
-                ],
-                "example": 0,
-                "x-sap-scale": 0,
-                "nullable": true
+            "anyOf": [
+              {
+                "type": "number",
+                "format": "decimal",
+                "multipleOf": 1
+              },
+              {
+                "type": "string"
               }
-            }
+            ],
+            "example": 0,
+            "x-sap-scale": 0,
+            "nullable": true
           },
           "Currency": {
             "type": "string",
@@ -2337,56 +2272,36 @@
             "nullable": true
           },
           "ReleaseDate": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "string",
-                "format": "date",
-                "example": "2017-04-13",
-                "nullable": true
-              }
-            }
+            "type": "string",
+            "format": "date",
+            "example": "2017-04-13",
+            "nullable": true
           },
           "DiscontinuedDate": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "string",
-                "format": "date",
-                "example": "2017-04-13",
-                "nullable": true
-              }
-            }
+            "type": "string",
+            "format": "date",
+            "example": "2017-04-13",
+            "nullable": true
           },
           "Rating": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "integer",
-                "format": "int32",
-                "nullable": true
-              }
-            }
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
           },
           "Price": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "anyOf": [
-                  {
-                    "type": "number",
-                    "format": "decimal",
-                    "multipleOf": 1
-                  },
-                  {
-                    "type": "string"
-                  }
-                ],
-                "example": 0,
-                "x-sap-scale": 0,
-                "nullable": true
+            "anyOf": [
+              {
+                "type": "number",
+                "format": "decimal",
+                "multipleOf": 1
+              },
+              {
+                "type": "string"
               }
-            }
+            ],
+            "example": 0,
+            "x-sap-scale": 0,
+            "nullable": true
           },
           "Currency": {
             "type": "string",
@@ -2410,13 +2325,8 @@
             "$ref": "#/components/schemas/ODataDemo.Address"
           },
           "Concurrency": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
+            "type": "integer",
+            "format": "int32"
           },
           "Products": {
             "type": "array",
@@ -2444,13 +2354,8 @@
             "$ref": "#/components/schemas/ODataDemo.Address-create"
           },
           "Concurrency": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
+            "type": "integer",
+            "format": "int32"
           }
         },
         "required": [
@@ -2469,13 +2374,8 @@
             "$ref": "#/components/schemas/ODataDemo.Address-update"
           },
           "Concurrency": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
+            "type": "integer",
+            "format": "int32"
           }
         }
       },

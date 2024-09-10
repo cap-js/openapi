@@ -1895,13 +1895,8 @@
           "name": "index_1",
           "required": true,
           "schema": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
+            "type": "integer",
+            "format": "int32"
           }
         }
       ],
@@ -2012,13 +2007,8 @@
           "name": "index_1",
           "required": true,
           "schema": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
+            "type": "integer",
+            "format": "int32"
           }
         }
       ],
@@ -2154,13 +2144,8 @@
           "name": "index_1",
           "required": true,
           "schema": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
+            "type": "integer",
+            "format": "int32"
           }
         },
         {
@@ -2169,13 +2154,8 @@
           "name": "One_2",
           "required": true,
           "schema": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
+            "type": "integer",
+            "format": "int32"
           }
         },
         {
@@ -2184,13 +2164,8 @@
           "name": "Two_2",
           "required": true,
           "schema": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
+            "type": "integer",
+            "format": "int32"
           }
         }
       ],
@@ -2282,13 +2257,8 @@
           "name": "index_1",
           "required": true,
           "schema": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
+            "type": "integer",
+            "format": "int32"
           }
         },
         {
@@ -2297,13 +2267,8 @@
           "name": "One_2",
           "required": true,
           "schema": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
+            "type": "integer",
+            "format": "int32"
           }
         },
         {
@@ -2312,13 +2277,8 @@
           "name": "Two_2",
           "required": true,
           "schema": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
+            "type": "integer",
+            "format": "int32"
           }
         }
       ],
@@ -2354,13 +2314,8 @@
           "name": "index_1",
           "required": true,
           "schema": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
+            "type": "integer",
+            "format": "int32"
           }
         }
       ],
@@ -2412,13 +2367,8 @@
           "name": "index_1",
           "required": true,
           "schema": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
+            "type": "integer",
+            "format": "int32"
           }
         }
       ],
@@ -2523,13 +2473,8 @@
             "name": "index_1",
             "required": true,
             "schema": {
-              "type": "object",
-              "properties": {
-                "value": {
-                  "type": "integer",
-                  "format": "int32"
-                }
-              }
+              "type": "integer",
+              "format": "int32"
             }
           }
         ]
@@ -2548,13 +2493,8 @@
             "name": "index_1",
             "required": true,
             "schema": {
-              "type": "object",
-              "properties": {
-                "value": {
-                  "type": "integer",
-                  "format": "int32"
-                }
-              }
+              "type": "integer",
+              "format": "int32"
             }
           }
         ],
@@ -2567,14 +2507,9 @@
                   "type": "object",
                   "properties": {
                     "value": {
-                      "type": "object",
-                      "properties": {
-                        "value": {
-                          "type": "integer",
-                          "format": "int32",
-                          "nullable": true
-                        }
-                      }
+                      "type": "integer",
+                      "format": "int32",
+                      "nullable": true
                     }
                   }
                 }
@@ -2619,14 +2554,9 @@
                   "type": "object",
                   "properties": {
                     "value": {
-                      "type": "object",
-                      "properties": {
-                        "value": {
-                          "type": "integer",
-                          "format": "int32",
-                          "nullable": true
-                        }
-                      }
+                      "type": "integer",
+                      "format": "int32",
+                      "nullable": true
                     }
                   }
                 }
@@ -2872,13 +2802,8 @@
           "name": "One_2",
           "required": true,
           "schema": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
+            "type": "integer",
+            "format": "int32"
           }
         },
         {
@@ -2887,13 +2812,8 @@
           "name": "Two_2",
           "required": true,
           "schema": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
+            "type": "integer",
+            "format": "int32"
           }
         }
       ],
@@ -3090,14 +3010,9 @@
                   "type": "object",
                   "properties": {
                     "value": {
-                      "type": "object",
-                      "properties": {
-                        "value": {
-                          "type": "integer",
-                          "format": "int32",
-                          "nullable": true
-                        }
-                      }
+                      "type": "integer",
+                      "format": "int32",
+                      "nullable": true
                     }
                   }
                 }
@@ -3142,14 +3057,9 @@
                   "type": "object",
                   "properties": {
                     "value": {
-                      "type": "object",
-                      "properties": {
-                        "value": {
-                          "type": "integer",
-                          "format": "int32",
-                          "nullable": true
-                        }
-                      }
+                      "type": "integer",
+                      "format": "int32",
+                      "nullable": true
                     }
                   }
                 }
@@ -3585,13 +3495,8 @@
           "name": "index_1",
           "required": true,
           "schema": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
+            "type": "integer",
+            "format": "int32"
           }
         }
       ],
@@ -3711,13 +3616,8 @@
           "name": "index_1",
           "required": true,
           "schema": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
+            "type": "integer",
+            "format": "int32"
           }
         }
       ],
@@ -3862,13 +3762,8 @@
           "name": "index_1",
           "required": true,
           "schema": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
+            "type": "integer",
+            "format": "int32"
           }
         },
         {
@@ -3877,13 +3772,8 @@
           "name": "One_2",
           "required": true,
           "schema": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
+            "type": "integer",
+            "format": "int32"
           }
         },
         {
@@ -3892,13 +3782,8 @@
           "name": "Two_2",
           "required": true,
           "schema": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
+            "type": "integer",
+            "format": "int32"
           }
         }
       ],
@@ -3999,13 +3884,8 @@
           "name": "index_1",
           "required": true,
           "schema": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
+            "type": "integer",
+            "format": "int32"
           }
         },
         {
@@ -4014,13 +3894,8 @@
           "name": "One_2",
           "required": true,
           "schema": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
+            "type": "integer",
+            "format": "int32"
           }
         },
         {
@@ -4029,13 +3904,8 @@
           "name": "Two_2",
           "required": true,
           "schema": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
+            "type": "integer",
+            "format": "int32"
           }
         }
       ],
@@ -4079,13 +3949,8 @@
           "name": "index_1",
           "required": true,
           "schema": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
+            "type": "integer",
+            "format": "int32"
           }
         }
       ],
@@ -4198,13 +4063,8 @@
           "name": "index_1",
           "required": true,
           "schema": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
+            "type": "integer",
+            "format": "int32"
           }
         }
       ],
@@ -4318,13 +4178,8 @@
             "name": "index_1",
             "required": true,
             "schema": {
-              "type": "object",
-              "properties": {
-                "value": {
-                  "type": "integer",
-                  "format": "int32"
-                }
-              }
+              "type": "integer",
+              "format": "int32"
             }
           }
         ]
@@ -4352,13 +4207,8 @@
             "name": "index_1",
             "required": true,
             "schema": {
-              "type": "object",
-              "properties": {
-                "value": {
-                  "type": "integer",
-                  "format": "int32"
-                }
-              }
+              "type": "integer",
+              "format": "int32"
             }
           }
         ],
@@ -4371,14 +4221,9 @@
                   "type": "object",
                   "properties": {
                     "value": {
-                      "type": "object",
-                      "properties": {
-                        "value": {
-                          "type": "integer",
-                          "format": "int32",
-                          "nullable": true
-                        }
-                      }
+                      "type": "integer",
+                      "format": "int32",
+                      "nullable": true
                     }
                   }
                 }
@@ -4444,14 +4289,9 @@
                   "type": "object",
                   "properties": {
                     "value": {
-                      "type": "object",
-                      "properties": {
-                        "value": {
-                          "type": "integer",
-                          "format": "int32",
-                          "nullable": true
-                        }
-                      }
+                      "type": "integer",
+                      "format": "int32",
+                      "nullable": true
                     }
                   }
                 }
@@ -4728,13 +4568,8 @@
           "name": "One_2",
           "required": true,
           "schema": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
+            "type": "integer",
+            "format": "int32"
           }
         },
         {
@@ -4743,13 +4578,8 @@
           "name": "Two_2",
           "required": true,
           "schema": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
+            "type": "integer",
+            "format": "int32"
           }
         }
       ],
@@ -4978,14 +4808,9 @@
                   "type": "object",
                   "properties": {
                     "value": {
-                      "type": "object",
-                      "properties": {
-                        "value": {
-                          "type": "integer",
-                          "format": "int32",
-                          "nullable": true
-                        }
-                      }
+                      "type": "integer",
+                      "format": "int32",
+                      "nullable": true
                     }
                   }
                 }
@@ -5051,14 +4876,9 @@
                   "type": "object",
                   "properties": {
                     "value": {
-                      "type": "object",
-                      "properties": {
-                        "value": {
-                          "type": "integer",
-                          "format": "int32",
-                          "nullable": true
-                        }
-                      }
+                      "type": "integer",
+                      "format": "int32",
+                      "nullable": true
                     }
                   }
                 }
@@ -5103,14 +4923,9 @@
                   "type": "object",
                   "properties": {
                     "value": {
-                      "type": "object",
-                      "properties": {
-                        "value": {
-                          "type": "integer",
-                          "format": "int32",
-                          "nullable": true
-                        }
-                      }
+                      "type": "integer",
+                      "format": "int32",
+                      "nullable": true
                     }
                   }
                 }
@@ -5191,13 +5006,8 @@
         "type": "object",
         "properties": {
           "index": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
+            "type": "integer",
+            "format": "int32"
           },
           "One": {
             "allOf": [
@@ -5241,13 +5051,8 @@
         "type": "object",
         "properties": {
           "index": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
+            "type": "integer",
+            "format": "int32"
           },
           "One": {
             "allOf": [
@@ -5317,22 +5122,12 @@
         "type": "object",
         "properties": {
           "One": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
+            "type": "integer",
+            "format": "int32"
           },
           "Two": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
+            "type": "integer",
+            "format": "int32"
           }
         }
       },
@@ -5341,22 +5136,12 @@
         "type": "object",
         "properties": {
           "One": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
+            "type": "integer",
+            "format": "int32"
           },
           "Two": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
+            "type": "integer",
+            "format": "int32"
           }
         },
         "required": [

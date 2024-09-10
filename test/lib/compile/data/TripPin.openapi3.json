@@ -484,21 +484,16 @@
             "in": "query",
             "name": "lat",
             "schema": {
-              "type": "object",
-              "properties": {
-                "value": {
-                  "anyOf": [
-                    {
-                      "type": "number",
-                      "format": "double"
-                    },
-                    {
-                      "type": "string"
-                    }
-                  ],
-                  "example": 3.14
+              "anyOf": [
+                {
+                  "type": "number",
+                  "format": "double"
+                },
+                {
+                  "type": "string"
                 }
-              }
+              ],
+              "example": 3.14
             }
           },
           {
@@ -506,21 +501,16 @@
             "in": "query",
             "name": "lon",
             "schema": {
-              "type": "object",
-              "properties": {
-                "value": {
-                  "anyOf": [
-                    {
-                      "type": "number",
-                      "format": "double"
-                    },
-                    {
-                      "type": "string"
-                    }
-                  ],
-                  "example": 3.14
+              "anyOf": [
+                {
+                  "type": "number",
+                  "format": "double"
+                },
+                {
+                  "type": "string"
                 }
-              }
+              ],
+              "example": 3.14
             }
           }
         ],
@@ -895,13 +885,8 @@
                     "type": "string"
                   },
                   "tripId": {
-                    "type": "object",
-                    "properties": {
-                      "value": {
-                        "type": "integer",
-                        "format": "int32"
-                      }
-                    }
+                    "type": "integer",
+                    "format": "int32"
                   }
                 }
               }
@@ -1122,13 +1107,8 @@
           "name": "TripId_1",
           "required": true,
           "schema": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
+            "type": "integer",
+            "format": "int32"
           }
         }
       ],
@@ -1249,13 +1229,8 @@
             "name": "TripId_1",
             "required": true,
             "schema": {
-              "type": "object",
-              "properties": {
-                "value": {
-                  "type": "integer",
-                  "format": "int32"
-                }
-              }
+              "type": "integer",
+              "format": "int32"
             }
           }
         ],
@@ -1296,13 +1271,8 @@
           "name": "TripId_1",
           "required": true,
           "schema": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
+            "type": "integer",
+            "format": "int32"
           }
         }
       ],
@@ -1406,13 +1376,8 @@
           "name": "TripId_1",
           "required": true,
           "schema": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
+            "type": "integer",
+            "format": "int32"
           }
         }
       ],
@@ -1557,13 +1522,8 @@
           "name": "TripId_1",
           "required": true,
           "schema": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
+            "type": "integer",
+            "format": "int32"
           }
         },
         {
@@ -1572,13 +1532,8 @@
           "name": "PlanItemId_2",
           "required": true,
           "schema": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
+            "type": "integer",
+            "format": "int32"
           }
         }
       ],
@@ -2248,13 +2203,8 @@
                     "type": "string"
                   },
                   "tripId": {
-                    "type": "object",
-                    "properties": {
-                      "value": {
-                        "type": "integer",
-                        "format": "int32"
-                      }
-                    }
+                    "type": "integer",
+                    "format": "int32"
                   }
                 }
               }
@@ -2506,13 +2456,8 @@
           "name": "TripId_1",
           "required": true,
           "schema": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
+            "type": "integer",
+            "format": "int32"
           }
         }
       ],
@@ -2642,13 +2587,8 @@
             "name": "TripId_1",
             "required": true,
             "schema": {
-              "type": "object",
-              "properties": {
-                "value": {
-                  "type": "integer",
-                  "format": "int32"
-                }
-              }
+              "type": "integer",
+              "format": "int32"
             }
           }
         ],
@@ -2698,13 +2638,8 @@
           "name": "TripId_1",
           "required": true,
           "schema": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
+            "type": "integer",
+            "format": "int32"
           }
         }
       ],
@@ -2817,13 +2752,8 @@
           "name": "TripId_1",
           "required": true,
           "schema": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
+            "type": "integer",
+            "format": "int32"
           }
         }
       ],
@@ -2977,13 +2907,8 @@
           "name": "TripId_1",
           "required": true,
           "schema": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
+            "type": "integer",
+            "format": "int32"
           }
         },
         {
@@ -2992,13 +2917,8 @@
           "name": "PlanItemId_2",
           "required": true,
           "schema": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
+            "type": "integer",
+            "format": "int32"
           }
         }
       ],
@@ -3218,21 +3138,16 @@
           "name": "Id",
           "required": true,
           "schema": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "anyOf": [
-                  {
-                    "type": "integer",
-                    "format": "int64"
-                  },
-                  {
-                    "type": "string"
-                  }
-                ],
-                "example": "42"
+            "anyOf": [
+              {
+                "type": "integer",
+                "format": "int64"
+              },
+              {
+                "type": "string"
               }
-            }
+            ],
+            "example": "42"
           }
         }
       ],
@@ -3406,12 +3321,7 @@
             "$ref": "#/components/schemas/Microsoft.OData.SampleService.Models.TripPin.City"
           },
           "Loc": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "$ref": "#/components/schemas/geoPoint"
-              }
-            }
+            "$ref": "#/components/schemas/geoPoint"
           }
         }
       },
@@ -3426,12 +3336,7 @@
             "$ref": "#/components/schemas/Microsoft.OData.SampleService.Models.TripPin.City-create"
           },
           "Loc": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "$ref": "#/components/schemas/geoPoint"
-              }
-            }
+            "$ref": "#/components/schemas/geoPoint"
           }
         }
       },
@@ -3446,12 +3351,7 @@
             "$ref": "#/components/schemas/Microsoft.OData.SampleService.Models.TripPin.City-update"
           },
           "Loc": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "$ref": "#/components/schemas/geoPoint"
-              }
-            }
+            "$ref": "#/components/schemas/geoPoint"
           }
         }
       },
@@ -3505,50 +3405,30 @@
         "type": "object",
         "properties": {
           "PlanItemId": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
+            "type": "integer",
+            "format": "int32"
           },
           "ConfirmationCode": {
             "type": "string",
             "nullable": true
           },
           "StartsAt": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "string",
-                "format": "date-time",
-                "example": "2017-04-13T15:51:04Z",
-                "nullable": true
-              }
-            }
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04Z",
+            "nullable": true
           },
           "EndsAt": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "string",
-                "format": "date-time",
-                "example": "2017-04-13T15:51:04Z",
-                "nullable": true
-              }
-            }
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04Z",
+            "nullable": true
           },
           "Duration": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "string",
-                "format": "duration",
-                "example": "P4DT15H51M04S",
-                "nullable": true
-              }
-            }
+            "type": "string",
+            "format": "duration",
+            "example": "P4DT15H51M04S",
+            "nullable": true
           },
           "Description": {
             "type": "string",
@@ -3568,37 +3448,22 @@
             "nullable": true
           },
           "StartsAt": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "string",
-                "format": "date-time",
-                "example": "2017-04-13T15:51:04Z",
-                "nullable": true
-              }
-            }
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04Z",
+            "nullable": true
           },
           "EndsAt": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "string",
-                "format": "date-time",
-                "example": "2017-04-13T15:51:04Z",
-                "nullable": true
-              }
-            }
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04Z",
+            "nullable": true
           },
           "Duration": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "string",
-                "format": "duration",
-                "example": "P4DT15H51M04S",
-                "nullable": true
-              }
-            }
+            "type": "string",
+            "format": "duration",
+            "example": "P4DT15H51M04S",
+            "nullable": true
           },
           "Description": {
             "type": "string",
@@ -3618,37 +3483,22 @@
             "nullable": true
           },
           "StartsAt": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "string",
-                "format": "date-time",
-                "example": "2017-04-13T15:51:04Z",
-                "nullable": true
-              }
-            }
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04Z",
+            "nullable": true
           },
           "EndsAt": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "string",
-                "format": "date-time",
-                "example": "2017-04-13T15:51:04Z",
-                "nullable": true
-              }
-            }
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04Z",
+            "nullable": true
           },
           "Duration": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "string",
-                "format": "duration",
-                "example": "P4DT15H51M04S",
-                "nullable": true
-              }
-            }
+            "type": "string",
+            "format": "duration",
+            "example": "P4DT15H51M04S",
+            "nullable": true
           },
           "Description": {
             "type": "string",
@@ -3712,50 +3562,30 @@
         "type": "object",
         "properties": {
           "PlanItemId": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
+            "type": "integer",
+            "format": "int32"
           },
           "ConfirmationCode": {
             "type": "string",
             "nullable": true
           },
           "StartsAt": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "string",
-                "format": "date-time",
-                "example": "2017-04-13T15:51:04Z",
-                "nullable": true
-              }
-            }
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04Z",
+            "nullable": true
           },
           "EndsAt": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "string",
-                "format": "date-time",
-                "example": "2017-04-13T15:51:04Z",
-                "nullable": true
-              }
-            }
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04Z",
+            "nullable": true
           },
           "Duration": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "string",
-                "format": "duration",
-                "example": "P4DT15H51M04S",
-                "nullable": true
-              }
-            }
+            "type": "string",
+            "format": "duration",
+            "example": "P4DT15H51M04S",
+            "nullable": true
           },
           "SeatNumber": {
             "type": "string",
@@ -3784,37 +3614,22 @@
             "nullable": true
           },
           "StartsAt": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "string",
-                "format": "date-time",
-                "example": "2017-04-13T15:51:04Z",
-                "nullable": true
-              }
-            }
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04Z",
+            "nullable": true
           },
           "EndsAt": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "string",
-                "format": "date-time",
-                "example": "2017-04-13T15:51:04Z",
-                "nullable": true
-              }
-            }
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04Z",
+            "nullable": true
           },
           "Duration": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "string",
-                "format": "duration",
-                "example": "P4DT15H51M04S",
-                "nullable": true
-              }
-            }
+            "type": "string",
+            "format": "duration",
+            "example": "P4DT15H51M04S",
+            "nullable": true
           },
           "SeatNumber": {
             "type": "string",
@@ -3834,37 +3649,22 @@
             "nullable": true
           },
           "StartsAt": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "string",
-                "format": "date-time",
-                "example": "2017-04-13T15:51:04Z",
-                "nullable": true
-              }
-            }
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04Z",
+            "nullable": true
           },
           "EndsAt": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "string",
-                "format": "date-time",
-                "example": "2017-04-13T15:51:04Z",
-                "nullable": true
-              }
-            }
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04Z",
+            "nullable": true
           },
           "Duration": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "string",
-                "format": "duration",
-                "example": "P4DT15H51M04S",
-                "nullable": true
-              }
-            }
+            "type": "string",
+            "format": "duration",
+            "example": "P4DT15H51M04S",
+            "nullable": true
           },
           "SeatNumber": {
             "type": "string",
@@ -3972,21 +3772,16 @@
             "nullable": true
           },
           "Concurrency": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "anyOf": [
-                  {
-                    "type": "integer",
-                    "format": "int64"
-                  },
-                  {
-                    "type": "string"
-                  }
-                ],
-                "example": "42"
+            "anyOf": [
+              {
+                "type": "integer",
+                "format": "int64"
+              },
+              {
+                "type": "string"
               }
-            }
+            ],
+            "example": "42"
           },
           "Friends": {
             "type": "array",
@@ -4106,21 +3901,16 @@
         "type": "object",
         "properties": {
           "Id": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "anyOf": [
-                  {
-                    "type": "integer",
-                    "format": "int64"
-                  },
-                  {
-                    "type": "string"
-                  }
-                ],
-                "example": "42"
+            "anyOf": [
+              {
+                "type": "integer",
+                "format": "int64"
+              },
+              {
+                "type": "string"
               }
-            }
+            ],
+            "example": "42"
           },
           "Name": {
             "type": "string",
@@ -4153,50 +3943,30 @@
         "type": "object",
         "properties": {
           "PlanItemId": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
+            "type": "integer",
+            "format": "int32"
           },
           "ConfirmationCode": {
             "type": "string",
             "nullable": true
           },
           "StartsAt": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "string",
-                "format": "date-time",
-                "example": "2017-04-13T15:51:04Z",
-                "nullable": true
-              }
-            }
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04Z",
+            "nullable": true
           },
           "EndsAt": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "string",
-                "format": "date-time",
-                "example": "2017-04-13T15:51:04Z",
-                "nullable": true
-              }
-            }
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04Z",
+            "nullable": true
           },
           "Duration": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "string",
-                "format": "duration",
-                "example": "P4DT15H51M04S",
-                "nullable": true
-              }
-            }
+            "type": "string",
+            "format": "duration",
+            "example": "P4DT15H51M04S",
+            "nullable": true
           }
         },
         "anyOf": [
@@ -4218,37 +3988,22 @@
             "nullable": true
           },
           "StartsAt": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "string",
-                "format": "date-time",
-                "example": "2017-04-13T15:51:04Z",
-                "nullable": true
-              }
-            }
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04Z",
+            "nullable": true
           },
           "EndsAt": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "string",
-                "format": "date-time",
-                "example": "2017-04-13T15:51:04Z",
-                "nullable": true
-              }
-            }
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04Z",
+            "nullable": true
           },
           "Duration": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "string",
-                "format": "duration",
-                "example": "P4DT15H51M04S",
-                "nullable": true
-              }
-            }
+            "type": "string",
+            "format": "duration",
+            "example": "P4DT15H51M04S",
+            "nullable": true
           }
         },
         "anyOf": [
@@ -4270,37 +4025,22 @@
             "nullable": true
           },
           "StartsAt": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "string",
-                "format": "date-time",
-                "example": "2017-04-13T15:51:04Z",
-                "nullable": true
-              }
-            }
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04Z",
+            "nullable": true
           },
           "EndsAt": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "string",
-                "format": "date-time",
-                "example": "2017-04-13T15:51:04Z",
-                "nullable": true
-              }
-            }
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04Z",
+            "nullable": true
           },
           "Duration": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "string",
-                "format": "duration",
-                "example": "P4DT15H51M04S",
-                "nullable": true
-              }
-            }
+            "type": "string",
+            "format": "duration",
+            "example": "P4DT15H51M04S",
+            "nullable": true
           }
         },
         "anyOf": [
@@ -4318,50 +4058,30 @@
         "type": "object",
         "properties": {
           "PlanItemId": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
+            "type": "integer",
+            "format": "int32"
           },
           "ConfirmationCode": {
             "type": "string",
             "nullable": true
           },
           "StartsAt": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "string",
-                "format": "date-time",
-                "example": "2017-04-13T15:51:04Z",
-                "nullable": true
-              }
-            }
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04Z",
+            "nullable": true
           },
           "EndsAt": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "string",
-                "format": "date-time",
-                "example": "2017-04-13T15:51:04Z",
-                "nullable": true
-              }
-            }
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04Z",
+            "nullable": true
           },
           "Duration": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "string",
-                "format": "duration",
-                "example": "P4DT15H51M04S",
-                "nullable": true
-              }
-            }
+            "type": "string",
+            "format": "duration",
+            "example": "P4DT15H51M04S",
+            "nullable": true
           },
           "SeatNumber": {
             "type": "string",
@@ -4384,37 +4104,22 @@
             "nullable": true
           },
           "StartsAt": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "string",
-                "format": "date-time",
-                "example": "2017-04-13T15:51:04Z",
-                "nullable": true
-              }
-            }
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04Z",
+            "nullable": true
           },
           "EndsAt": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "string",
-                "format": "date-time",
-                "example": "2017-04-13T15:51:04Z",
-                "nullable": true
-              }
-            }
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04Z",
+            "nullable": true
           },
           "Duration": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "string",
-                "format": "duration",
-                "example": "P4DT15H51M04S",
-                "nullable": true
-              }
-            }
+            "type": "string",
+            "format": "duration",
+            "example": "P4DT15H51M04S",
+            "nullable": true
           },
           "SeatNumber": {
             "type": "string",
@@ -4437,37 +4142,22 @@
             "nullable": true
           },
           "StartsAt": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "string",
-                "format": "date-time",
-                "example": "2017-04-13T15:51:04Z",
-                "nullable": true
-              }
-            }
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04Z",
+            "nullable": true
           },
           "EndsAt": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "string",
-                "format": "date-time",
-                "example": "2017-04-13T15:51:04Z",
-                "nullable": true
-              }
-            }
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04Z",
+            "nullable": true
           },
           "Duration": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "string",
-                "format": "duration",
-                "example": "P4DT15H51M04S",
-                "nullable": true
-              }
-            }
+            "type": "string",
+            "format": "duration",
+            "example": "P4DT15H51M04S",
+            "nullable": true
           },
           "SeatNumber": {
             "type": "string",
@@ -4486,24 +4176,14 @@
         "type": "object",
         "properties": {
           "TripId": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
+            "type": "integer",
+            "format": "int32"
           },
           "ShareId": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "string",
-                "format": "uuid",
-                "example": "01234567-89ab-cdef-0123-456789abcdef",
-                "nullable": true
-              }
-            }
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef",
+            "nullable": true
           },
           "Description": {
             "type": "string",
@@ -4513,41 +4193,26 @@
             "type": "string"
           },
           "Budget": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "anyOf": [
-                  {
-                    "type": "number",
-                    "format": "float"
-                  },
-                  {
-                    "type": "string"
-                  }
-                ],
-                "example": 3.14
+            "anyOf": [
+              {
+                "type": "number",
+                "format": "float"
+              },
+              {
+                "type": "string"
               }
-            }
+            ],
+            "example": 3.14
           },
           "StartsAt": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "string",
-                "format": "date-time",
-                "example": "2017-04-13T15:51:04Z"
-              }
-            }
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04Z"
           },
           "EndsAt": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "string",
-                "format": "date-time",
-                "example": "2017-04-13T15:51:04Z"
-              }
-            }
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04Z"
           },
           "Tags": {
             "type": "array",
@@ -4580,15 +4245,10 @@
         "type": "object",
         "properties": {
           "ShareId": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "string",
-                "format": "uuid",
-                "example": "01234567-89ab-cdef-0123-456789abcdef",
-                "nullable": true
-              }
-            }
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef",
+            "nullable": true
           },
           "Description": {
             "type": "string",
@@ -4598,41 +4258,26 @@
             "type": "string"
           },
           "Budget": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "anyOf": [
-                  {
-                    "type": "number",
-                    "format": "float"
-                  },
-                  {
-                    "type": "string"
-                  }
-                ],
-                "example": 3.14
+            "anyOf": [
+              {
+                "type": "number",
+                "format": "float"
+              },
+              {
+                "type": "string"
               }
-            }
+            ],
+            "example": 3.14
           },
           "StartsAt": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "string",
-                "format": "date-time",
-                "example": "2017-04-13T15:51:04Z"
-              }
-            }
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04Z"
           },
           "EndsAt": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "string",
-                "format": "date-time",
-                "example": "2017-04-13T15:51:04Z"
-              }
-            }
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04Z"
           },
           "Tags": {
             "type": "array",
@@ -4653,15 +4298,10 @@
         "type": "object",
         "properties": {
           "ShareId": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "string",
-                "format": "uuid",
-                "example": "01234567-89ab-cdef-0123-456789abcdef",
-                "nullable": true
-              }
-            }
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef",
+            "nullable": true
           },
           "Description": {
             "type": "string",
@@ -4671,41 +4311,26 @@
             "type": "string"
           },
           "Budget": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "anyOf": [
-                  {
-                    "type": "number",
-                    "format": "float"
-                  },
-                  {
-                    "type": "string"
-                  }
-                ],
-                "example": 3.14
+            "anyOf": [
+              {
+                "type": "number",
+                "format": "float"
+              },
+              {
+                "type": "string"
               }
-            }
+            ],
+            "example": 3.14
           },
           "StartsAt": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "string",
-                "format": "date-time",
-                "example": "2017-04-13T15:51:04Z"
-              }
-            }
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04Z"
           },
           "EndsAt": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "string",
-                "format": "date-time",
-                "example": "2017-04-13T15:51:04Z"
-              }
-            }
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04Z"
           },
           "Tags": {
             "type": "array",
