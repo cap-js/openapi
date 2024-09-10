@@ -856,53 +856,123 @@ describe('Edge cases', function () {
         const expected = {
             paths: {
                 '/fun()': {
-                    get: {
-                        responses: {
-                            200: {
-                                description: 'Success',
-                                content: {
-                                    'application/json': {
-                                        schema: {
-                                            type: 'string',
-                                            maxLength: 20
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                },
-                "/fun(in={in})": {
-                    get: {
-                        responses: {
-                            200: {
-                                description: 'Success',
-                                content: {
-                                    'application/json': {
-                                        schema: {
-                                            type: 'object',
-                                            title: 'Collection of String',
-                                            properties: {
-                                                '@odata.count': {
-                                                    $ref: '#/components/schemas/count'
-                                                },
-                                                value: {
-                                                    type: 'array',
-                                                    items: {
-                                                        type: 'string',
-                                                        maxLength: 20
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                },
-                '/$batch': { post: {} }
+            "paths": {
+    "/$batch": {
+      "post": {
+        "summary": "Sends a group of requests",
+        "description": "Group multiple requests into a single request payload, see [Batch Requests](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_BatchRequests).\n\n*Please note that \"Try it out\" is not supported for this request.*",
+        "tags": [
+          "Batch Requests"
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "Batch request",
+          "content": {
+            "multipart/mixed;boundary=request-separator": {
+              "schema": {
+                "type": "string"
+              },
+              "example": "--request-separator\nContent-Type: application/http\nContent-Transfer-Encoding: binary\n\nGET undefined HTTP/1.1\nAccept: application/json\n\n\n--request-separator--"
             }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Batch response",
+            "content": {
+              "multipart/mixed": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "--response-separator\nContent-Type: application/http\n\nHTTP/1.1 200 OK\nContent-Type: application/json\n\n{...}\n--response-separator--"
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/fun()": {
+      "get": {
+        "summary": "Invokes function fun",
+        "tags": [
+          "Service Operations"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "string",
+                      "maxLength": 20
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/fun(in={in})": {
+      "get": {
+        "summary": "Invokes function fun",
+        "tags": [
+          "Service Operations"
+        ],
+        "parameters": [
+          {
+            "required": true,
+            "in": "path",
+            "name": "in",
+            "description": "String value needs to be enclosed in single quotes",
+            "schema": {
+              "type": "string",
+              "pattern": "^'([^']|'')*'$"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Collection of String",
+                  "properties": {
+                    "@odata.count": {
+                      "$ref": "#/components/schemas/count"
+                    },
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "maxLength": 20
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    }
+  }
         };
         const actual = lib.csdl2openapi(csdl, {odataVersion: '4.0'});
         assert.deepStrictEqual(paths(actual), paths(expected), 'Paths');

@@ -2567,9 +2567,14 @@
                   "type": "object",
                   "properties": {
                     "value": {
-                      "type": "integer",
-                      "format": "int32",
-                      "nullable": true
+                      "type": "object",
+                      "properties": {
+                        "value": {
+                          "type": "integer",
+                          "format": "int32",
+                          "nullable": true
+                        }
+                      }
                     }
                   }
                 }
@@ -2614,9 +2619,14 @@
                   "type": "object",
                   "properties": {
                     "value": {
-                      "type": "integer",
-                      "format": "int32",
-                      "nullable": true
+                      "type": "object",
+                      "properties": {
+                        "value": {
+                          "type": "integer",
+                          "format": "int32",
+                          "nullable": true
+                        }
+                      }
                     }
                   }
                 }
@@ -3080,9 +3090,14 @@
                   "type": "object",
                   "properties": {
                     "value": {
-                      "type": "integer",
-                      "format": "int32",
-                      "nullable": true
+                      "type": "object",
+                      "properties": {
+                        "value": {
+                          "type": "integer",
+                          "format": "int32",
+                          "nullable": true
+                        }
+                      }
                     }
                   }
                 }
@@ -3127,9 +3142,14 @@
                   "type": "object",
                   "properties": {
                     "value": {
-                      "type": "integer",
-                      "format": "int32",
-                      "nullable": true
+                      "type": "object",
+                      "properties": {
+                        "value": {
+                          "type": "integer",
+                          "format": "int32",
+                          "nullable": true
+                        }
+                      }
                     }
                   }
                 }
@@ -4351,9 +4371,14 @@
                   "type": "object",
                   "properties": {
                     "value": {
-                      "type": "integer",
-                      "format": "int32",
-                      "nullable": true
+                      "type": "object",
+                      "properties": {
+                        "value": {
+                          "type": "integer",
+                          "format": "int32",
+                          "nullable": true
+                        }
+                      }
                     }
                   }
                 }
@@ -4419,9 +4444,14 @@
                   "type": "object",
                   "properties": {
                     "value": {
-                      "type": "integer",
-                      "format": "int32",
-                      "nullable": true
+                      "type": "object",
+                      "properties": {
+                        "value": {
+                          "type": "integer",
+                          "format": "int32",
+                          "nullable": true
+                        }
+                      }
                     }
                   }
                 }
@@ -4948,9 +4978,14 @@
                   "type": "object",
                   "properties": {
                     "value": {
-                      "type": "integer",
-                      "format": "int32",
-                      "nullable": true
+                      "type": "object",
+                      "properties": {
+                        "value": {
+                          "type": "integer",
+                          "format": "int32",
+                          "nullable": true
+                        }
+                      }
                     }
                   }
                 }
@@ -5016,9 +5051,14 @@
                   "type": "object",
                   "properties": {
                     "value": {
-                      "type": "integer",
-                      "format": "int32",
-                      "nullable": true
+                      "type": "object",
+                      "properties": {
+                        "value": {
+                          "type": "integer",
+                          "format": "int32",
+                          "nullable": true
+                        }
+                      }
                     }
                   }
                 }
@@ -5063,9 +5103,14 @@
                   "type": "object",
                   "properties": {
                     "value": {
-                      "type": "integer",
-                      "format": "int32",
-                      "nullable": true
+                      "type": "object",
+                      "properties": {
+                        "value": {
+                          "type": "integer",
+                          "format": "int32",
+                          "nullable": true
+                        }
+                      }
                     }
                   }
                 }
