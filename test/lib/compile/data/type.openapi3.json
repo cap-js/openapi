@@ -1,13 +1,13 @@
 {
   "openapi": "3.0.2",
   "info": {
-    "title": "Service for namespace auth.example",
-    "description": "This service is located at [https://localhost/service-root/](https://localhost/service-root/)\n\n## Entity Data Model\n![ER Diagram](https://yuml.me/diagram/class/[Person{bg:lightslategray}],[People%20{bg:lawngreen}]++-*>[Person])\n\n### Legend\n![Legend](https://yuml.me/diagram/plain;dir:TB;scale:60/class/[External.Type{bg:whitesmoke}],[ComplexType],[EntityType{bg:lightslategray}],[EntitySet/Singleton/Operation{bg:lawngreen}])",
+    "title": "Service for namespace typeExamples",
+    "description": "This service is located at [https://localhost/service-root/](https://localhost/service-root/)",
     "version": ""
   },
   "x-sap-api-type": "ODATAV4",
   "x-odata-version": "4.01",
-  "x-sap-shortText": "Service for namespace auth.example",
+  "x-sap-shortText": "Service for namespace typeExamples",
   "servers": [
     {
       "url": "https://localhost/service-root"
@@ -15,7 +15,7 @@
   ],
   "tags": [
     {
-      "name": "People"
+      "name": "set"
     }
   ],
   "paths": {
@@ -34,7 +34,7 @@
               "schema": {
                 "type": "string"
               },
-              "example": "--request-separator\nContent-Type: application/http\nContent-Transfer-Encoding: binary\n\nGET People HTTP/1.1\nAccept: application/json\n\n\n--request-separator--"
+              "example": "--request-separator\nContent-Type: application/http\nContent-Transfer-Encoding: binary\n\nGET set HTTP/1.1\nAccept: application/json\n\n\n--request-separator--"
             }
           }
         },
@@ -56,11 +56,11 @@
         }
       }
     },
-    "/People": {
+    "/set": {
       "get": {
-        "summary": "Retrieves a list of people.",
+        "summary": "Retrieves a list of set.",
         "tags": [
-          "People"
+          "set"
         ],
         "parameters": [
           {
@@ -94,10 +94,22 @@
               "items": {
                 "type": "string",
                 "enum": [
-                  "ID",
-                  "ID desc",
-                  "Name",
-                  "Name desc"
+                  "withMaxLength",
+                  "withMaxLength desc",
+                  "binary",
+                  "binary desc",
+                  "primitive",
+                  "primitive desc",
+                  "propertyPath",
+                  "propertyPath desc",
+                  "sbyte",
+                  "sbyte desc",
+                  "time",
+                  "time desc",
+                  "kaputt",
+                  "kaputt desc",
+                  "unknown",
+                  "unknown desc"
                 ]
               }
             }
@@ -113,8 +125,14 @@
               "items": {
                 "type": "string",
                 "enum": [
-                  "ID",
-                  "Name"
+                  "withMaxLength",
+                  "binary",
+                  "primitive",
+                  "propertyPath",
+                  "sbyte",
+                  "time",
+                  "kaputt",
+                  "unknown"
                 ]
               }
             }
@@ -122,12 +140,12 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved people",
+            "description": "Retrieved set",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "title": "Collection of Person",
+                  "title": "Collection of single",
                   "properties": {
                     "@count": {
                       "$ref": "#/components/schemas/count"
@@ -135,7 +153,7 @@
                     "value": {
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/auth.example.Person"
+                        "$ref": "#/components/schemas/typeExamples.single"
                       }
                     }
                   }
@@ -149,123 +167,31 @@
         }
       },
       "post": {
-        "summary": "Creates a single person.",
+        "summary": "Creates a single set.",
         "tags": [
-          "People"
+          "set"
         ],
         "requestBody": {
-          "description": "New person",
+          "description": "New set",
           "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/auth.example.Person-create"
+                "$ref": "#/components/schemas/typeExamples.single-create"
               }
             }
           }
         },
         "responses": {
           "201": {
-            "description": "Created person",
+            "description": "Created set",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/auth.example.Person"
+                  "$ref": "#/components/schemas/typeExamples.single"
                 }
               }
             }
-          },
-          "4XX": {
-            "$ref": "#/components/responses/error"
-          }
-        }
-      }
-    },
-    "/People('{ID}')": {
-      "parameters": [
-        {
-          "description": "key: ID",
-          "in": "path",
-          "name": "ID",
-          "required": true,
-          "schema": {
-            "type": "string"
-          }
-        }
-      ],
-      "get": {
-        "summary": "Retrieves a single person.",
-        "tags": [
-          "People"
-        ],
-        "parameters": [
-          {
-            "name": "$select",
-            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
-            "in": "query",
-            "explode": false,
-            "schema": {
-              "type": "array",
-              "uniqueItems": true,
-              "items": {
-                "type": "string",
-                "enum": [
-                  "ID",
-                  "Name"
-                ]
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Retrieved person",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/auth.example.Person"
-                }
-              }
-            }
-          },
-          "4XX": {
-            "$ref": "#/components/responses/error"
-          }
-        }
-      },
-      "patch": {
-        "summary": "Changes a single person.",
-        "tags": [
-          "People"
-        ],
-        "requestBody": {
-          "description": "New property values",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/auth.example.Person-update"
-              }
-            }
-          }
-        },
-        "responses": {
-          "204": {
-            "description": "Success"
-          },
-          "4XX": {
-            "$ref": "#/components/responses/error"
-          }
-        }
-      },
-      "delete": {
-        "summary": "Deletes a single person.",
-        "tags": [
-          "People"
-        ],
-        "responses": {
-          "204": {
-            "description": "Success"
           },
           "4XX": {
             "$ref": "#/components/responses/error"
@@ -276,44 +202,168 @@
   },
   "components": {
     "schemas": {
-      "auth.example.Person": {
-        "title": "Person",
+      "typeExamples.single": {
+        "title": "single",
         "type": "object",
         "properties": {
-          "ID": {
-            "type": "string"
+          "withMaxLength": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/typeExamples.typeDefinitionNew"
+              }
+            ],
+            "maxLength": 10
           },
-          "Name": {
-            "type": "string",
-            "nullable": true
+          "binary": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "type": "string",
+                "format": "base64url"
+              }
+            }
+          },
+          "primitive": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "anyOf": [
+                  {
+                    "type": "boolean"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ]
+              }
+            }
+          },
+          "propertyPath": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "type": "string"
+              }
+            }
+          },
+          "sbyte": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "type": "integer",
+                "format": "int8"
+              }
+            }
+          },
+          "time": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "type": "string",
+                "format": "time",
+                "example": "15:51:04"
+              }
+            }
+          },
+          "kaputt": {
+            "type": "object",
+            "properties": {
+              "value": {}
+            }
+          },
+          "unknown": {
+            "$ref": "#/components/schemas/typeExamples.un-known"
           }
         }
       },
-      "auth.example.Person-create": {
-        "title": "Person (for create)",
+      "typeExamples.single-create": {
+        "title": "single (for create)",
         "type": "object",
         "properties": {
-          "ID": {
-            "type": "string"
+          "withMaxLength": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/typeExamples.typeDefinitionNew"
+              }
+            ],
+            "maxLength": 10
           },
-          "Name": {
-            "type": "string",
-            "nullable": true
+          "binary": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "type": "string",
+                "format": "base64url"
+              }
+            }
+          },
+          "primitive": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "anyOf": [
+                  {
+                    "type": "boolean"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ]
+              }
+            }
+          },
+          "propertyPath": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "type": "string"
+              }
+            }
+          },
+          "sbyte": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "type": "integer",
+                "format": "int8"
+              }
+            }
+          },
+          "time": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "type": "string",
+                "format": "time",
+                "example": "15:51:04"
+              }
+            }
+          },
+          "kaputt": {
+            "type": "object",
+            "properties": {
+              "value": {}
+            }
+          },
+          "unknown": {
+            "$ref": "#/components/schemas/typeExamples.un-known"
+          }
+        }
+      },
+      "typeExamples.typeDefinitionNew": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string"
           }
         },
-        "required": [
-          "ID"
-        ]
-      },
-      "auth.example.Person-update": {
-        "title": "Person (for update)",
-        "type": "object",
-        "properties": {
-          "Name": {
-            "type": "string",
-            "nullable": true
-          }
-        }
+        "title": "typeDefinitionNew"
       },
       "count": {
         "anyOf": [
@@ -426,90 +476,6 @@
           }
         }
       }
-    },
-    "securitySchemes": {
-      "api_key": {
-        "description": "Authentication via API key",
-        "type": "apiKey",
-        "name": "x-api-key",
-        "in": "header"
-      },
-      "http_bearer": {
-        "description": "HTTP authentication with bearer token",
-        "type": "http",
-        "scheme": "bearer",
-        "bearerFormat": "JWT"
-      },
-      "oauth_authcode": {
-        "description": "Authentication via OAuth2 with authorization code flow",
-        "type": "oauth2",
-        "flows": {
-          "authorizationCode": {
-            "authorizationUrl": "https://example.com/api/oauth/dialog",
-            "tokenUrl": "https://example.com/api/oauth/token",
-            "refreshUrl": "https://example.com/api/oauth/refresh",
-            "scopes": {
-              "do:something": "do something"
-            }
-          }
-        }
-      },
-      "oauth_clientcredentials": {
-        "description": "Authentication via OAuth2 with client credentials flow",
-        "type": "oauth2",
-        "flows": {
-          "clientCredentials": {
-            "tokenUrl": "https://example.com/api/oauth/token",
-            "refreshUrl": "https://example.com/api/oauth/refresh",
-            "scopes": {
-              "do:something": "do something"
-            }
-          }
-        }
-      },
-      "oauth_implicit": {
-        "description": "Authentication via OAuth2 with implicit flow",
-        "type": "oauth2",
-        "flows": {
-          "implicit": {
-            "authorizationUrl": "https://example.com/api/oauth/dialog",
-            "refreshUrl": "https://example.com/api/oauth/refresh",
-            "scopes": {
-              "write:foo": "modify foo",
-              "read:foo": "read foo"
-            }
-          }
-        }
-      },
-      "oauth_password": {
-        "description": "Authentication via OAuth2 with resource owner password flow",
-        "type": "oauth2",
-        "flows": {
-          "password": {
-            "tokenUrl": "https://example.com/api/oauth/token",
-            "refreshUrl": "https://example.com/api/oauth/refresh",
-            "scopes": {
-              "do:something": "do something"
-            }
-          }
-        }
-      },
-      "open_id": {
-        "description": "Authentication via OpenID Connect",
-        "type": "openIdConnect",
-        "openIdConnectUrl": "https://example.com/openid/issuer/location"
-      }
     }
-  },
-  "security": [
-    {
-      "api_key": []
-    },
-    {
-      "petstore_auth": [
-        "write:pets",
-        "read:pets"
-      ]
-    }
-  ]
+  }
 }

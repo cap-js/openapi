@@ -8,39 +8,82 @@
   "x-sap-api-type": "ODATAV4",
   "x-odata-version": "4.01",
   "x-sap-shortText": "Service for namespace Supported.Annotations",
-  "servers": [{ "url": "https://localhost/service-root" }],
+  "servers": [
+    {
+      "url": "https://localhost/service-root"
+    }
+  ],
   "tags": [
-    { "name": "AllSet" },
-    { "name": "AllSingleton", "description": "First Singleton" },
-    { "name": "NoNavigationSet" },
-    { "name": "OneNavigationSet" },
-    { "name": "ReadListOnlySet" },
-    { "name": "ReadOnlySingleton" },
-    { "name": "TwoAllSet" },
-    { "name": "TwoNothingSet" },
-    { "name": "TwoNothingSingleton" },
-    { "name": "TwoReadOnlyByKeySet" },
-    { "name": "TwoReadOnlySet" },
-    { "name": "TwoWriteOnlySet" },
-    { "name": "TwoWriteOnlySingleton" }
+    {
+      "name": "AllSet"
+    },
+    {
+      "name": "AllSingleton",
+      "description": "First Singleton"
+    },
+    {
+      "name": "NoNavigationSet"
+    },
+    {
+      "name": "OneNavigationSet"
+    },
+    {
+      "name": "ReadListOnlySet"
+    },
+    {
+      "name": "ReadOnlySingleton"
+    },
+    {
+      "name": "TwoAllSet"
+    },
+    {
+      "name": "TwoNothingSet"
+    },
+    {
+      "name": "TwoNothingSingleton"
+    },
+    {
+      "name": "TwoReadOnlyByKeySet"
+    },
+    {
+      "name": "TwoReadOnlySet"
+    },
+    {
+      "name": "TwoWriteOnlySet"
+    },
+    {
+      "name": "TwoWriteOnlySingleton"
+    }
   ],
   "paths": {
     "/AllSet": {
       "get": {
         "summary": "Retrieves a list of all set.",
-        "tags": ["AllSet"],
+        "tags": [
+          "AllSet"
+        ],
         "parameters": [
-          { "$ref": "#/components/parameters/top" },
-          { "$ref": "#/components/parameters/skip" },
-          { "$ref": "#/components/parameters/search" },
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
           {
             "name": "$filter",
             "description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)\n\nRequired filter properties:\n- RequiredInFilter",
             "in": "query",
-            "schema": { "type": "string" },
+            "schema": {
+              "type": "string"
+            },
             "required": true
           },
-          { "$ref": "#/components/parameters/count" },
+          {
+            "$ref": "#/components/parameters/count"
+          },
           {
             "name": "$orderby",
             "description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
@@ -149,7 +192,9 @@
                   "type": "object",
                   "title": "Collection of SinglePartKey",
                   "properties": {
-                    "@count": { "$ref": "#/components/schemas/count" },
+                    "@count": {
+                      "$ref": "#/components/schemas/count"
+                    },
                     "value": {
                       "type": "array",
                       "items": {
@@ -161,7 +206,9 @@
               }
             }
           },
-          "4XX": { "$ref": "#/components/responses/error" }
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
         }
       }
     },
@@ -172,12 +219,16 @@
           "in": "path",
           "name": "ID",
           "required": true,
-          "schema": { "type": "string" }
+          "schema": {
+            "type": "string"
+          }
         }
       ],
       "get": {
         "summary": "Retrieves a single all set.",
-        "tags": ["AllSet"],
+        "tags": [
+          "AllSet"
+        ],
         "parameters": [
           {
             "name": "$select",
@@ -244,7 +295,9 @@
               }
             }
           },
-          "4XX": { "$ref": "#/components/responses/error" }
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
         }
       }
     },
@@ -255,23 +308,38 @@
           "in": "path",
           "name": "ID",
           "required": true,
-          "schema": { "type": "string" }
+          "schema": {
+            "type": "string"
+          }
         }
       ],
       "get": {
         "summary": "Retrieves a list of all many of a all set.",
-        "tags": ["AllSet", "TwoAllSet"],
+        "tags": [
+          "AllSet",
+          "TwoAllSet"
+        ],
         "parameters": [
-          { "$ref": "#/components/parameters/top" },
-          { "$ref": "#/components/parameters/skip" },
-          { "$ref": "#/components/parameters/search" },
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
           {
             "name": "$filter",
             "description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
             "in": "query",
-            "schema": { "type": "string" }
+            "schema": {
+              "type": "string"
+            }
           },
-          { "$ref": "#/components/parameters/count" },
+          {
+            "$ref": "#/components/parameters/count"
+          },
           {
             "name": "$orderby",
             "description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
@@ -280,7 +348,13 @@
             "schema": {
               "type": "array",
               "uniqueItems": true,
-              "items": { "type": "string", "enum": ["One", "One desc"] }
+              "items": {
+                "type": "string",
+                "enum": [
+                  "One",
+                  "One desc"
+                ]
+              }
             }
           },
           {
@@ -291,7 +365,13 @@
             "schema": {
               "type": "array",
               "uniqueItems": true,
-              "items": { "type": "string", "enum": ["One", "Two"] }
+              "items": {
+                "type": "string",
+                "enum": [
+                  "One",
+                  "Two"
+                ]
+              }
             }
           }
         ],
@@ -304,7 +384,9 @@
                   "type": "object",
                   "title": "Collection of TwoPartKey",
                   "properties": {
-                    "@count": { "$ref": "#/components/schemas/count" },
+                    "@count": {
+                      "$ref": "#/components/schemas/count"
+                    },
                     "value": {
                       "type": "array",
                       "items": {
@@ -316,7 +398,9 @@
               }
             }
           },
-          "4XX": { "$ref": "#/components/responses/error" }
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
         }
       }
     },
@@ -327,12 +411,17 @@
           "in": "path",
           "name": "ID",
           "required": true,
-          "schema": { "type": "string" }
+          "schema": {
+            "type": "string"
+          }
         }
       ],
       "get": {
         "summary": "Retrieves all one of a all set.",
-        "tags": ["AllSet", "TwoAllSet"],
+        "tags": [
+          "AllSet",
+          "TwoAllSet"
+        ],
         "parameters": [
           {
             "name": "$select",
@@ -342,7 +431,13 @@
             "schema": {
               "type": "array",
               "uniqueItems": true,
-              "items": { "type": "string", "enum": ["One", "Two"] }
+              "items": {
+                "type": "string",
+                "enum": [
+                  "One",
+                  "Two"
+                ]
+              }
             }
           }
         ],
@@ -357,7 +452,9 @@
               }
             }
           },
-          "4XX": { "$ref": "#/components/responses/error" }
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
         }
       }
     },
@@ -368,12 +465,17 @@
           "in": "path",
           "name": "ID",
           "required": true,
-          "schema": { "type": "string" }
+          "schema": {
+            "type": "string"
+          }
         }
       ],
       "get": {
         "summary": "Retrieves a list of read only many of a all set.",
-        "tags": ["AllSet", "TwoReadOnlySet"],
+        "tags": [
+          "AllSet",
+          "TwoReadOnlySet"
+        ],
         "parameters": [],
         "responses": {
           "200": {
@@ -395,7 +497,9 @@
               }
             }
           },
-          "4XX": { "$ref": "#/components/responses/error" }
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
         }
       }
     },
@@ -406,12 +510,17 @@
           "in": "path",
           "name": "ID",
           "required": true,
-          "schema": { "type": "string" }
+          "schema": {
+            "type": "string"
+          }
         }
       ],
       "get": {
         "summary": "Retrieves read only one of a all set.",
-        "tags": ["AllSet", "TwoReadOnlySet"],
+        "tags": [
+          "AllSet",
+          "TwoReadOnlySet"
+        ],
         "parameters": [],
         "responses": {
           "200": {
@@ -424,14 +533,18 @@
               }
             }
           },
-          "4XX": { "$ref": "#/components/responses/error" }
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
         }
       }
     },
     "/AllSingleton": {
       "get": {
         "summary": "Retrieves all singleton.",
-        "tags": ["AllSingleton"],
+        "tags": [
+          "AllSingleton"
+        ],
         "parameters": [
           {
             "name": "$select",
@@ -498,25 +611,40 @@
               }
             }
           },
-          "4XX": { "$ref": "#/components/responses/error" }
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
         }
       }
     },
     "/AllSingleton/AllMany": {
       "get": {
         "summary": "Retrieves a list of all many of a all singleton.",
-        "tags": ["AllSingleton", "TwoAllSet"],
+        "tags": [
+          "AllSingleton",
+          "TwoAllSet"
+        ],
         "parameters": [
-          { "$ref": "#/components/parameters/top" },
-          { "$ref": "#/components/parameters/skip" },
-          { "$ref": "#/components/parameters/search" },
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
           {
             "name": "$filter",
             "description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
             "in": "query",
-            "schema": { "type": "string" }
+            "schema": {
+              "type": "string"
+            }
           },
-          { "$ref": "#/components/parameters/count" },
+          {
+            "$ref": "#/components/parameters/count"
+          },
           {
             "name": "$orderby",
             "description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
@@ -525,7 +653,13 @@
             "schema": {
               "type": "array",
               "uniqueItems": true,
-              "items": { "type": "string", "enum": ["One", "One desc"] }
+              "items": {
+                "type": "string",
+                "enum": [
+                  "One",
+                  "One desc"
+                ]
+              }
             }
           },
           {
@@ -536,7 +670,13 @@
             "schema": {
               "type": "array",
               "uniqueItems": true,
-              "items": { "type": "string", "enum": ["One", "Two"] }
+              "items": {
+                "type": "string",
+                "enum": [
+                  "One",
+                  "Two"
+                ]
+              }
             }
           }
         ],
@@ -549,7 +689,9 @@
                   "type": "object",
                   "title": "Collection of TwoPartKey",
                   "properties": {
-                    "@count": { "$ref": "#/components/schemas/count" },
+                    "@count": {
+                      "$ref": "#/components/schemas/count"
+                    },
                     "value": {
                       "type": "array",
                       "items": {
@@ -561,14 +703,19 @@
               }
             }
           },
-          "4XX": { "$ref": "#/components/responses/error" }
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
         }
       }
     },
     "/AllSingleton/AllOne": {
       "get": {
         "summary": "Retrieves all one of a all singleton.",
-        "tags": ["AllSingleton", "TwoAllSet"],
+        "tags": [
+          "AllSingleton",
+          "TwoAllSet"
+        ],
         "parameters": [
           {
             "name": "$select",
@@ -578,7 +725,13 @@
             "schema": {
               "type": "array",
               "uniqueItems": true,
-              "items": { "type": "string", "enum": ["One", "Two"] }
+              "items": {
+                "type": "string",
+                "enum": [
+                  "One",
+                  "Two"
+                ]
+              }
             }
           }
         ],
@@ -593,14 +746,19 @@
               }
             }
           },
-          "4XX": { "$ref": "#/components/responses/error" }
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
         }
       }
     },
     "/AllSingleton/ReadOnlyMany": {
       "get": {
         "summary": "Retrieves a list of read only many of a all singleton.",
-        "tags": ["AllSingleton", "TwoReadOnlySet"],
+        "tags": [
+          "AllSingleton",
+          "TwoReadOnlySet"
+        ],
         "parameters": [],
         "responses": {
           "200": {
@@ -622,14 +780,19 @@
               }
             }
           },
-          "4XX": { "$ref": "#/components/responses/error" }
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
         }
       }
     },
     "/AllSingleton/ReadOnlyOne": {
       "get": {
         "summary": "Retrieves read only one of a all singleton.",
-        "tags": ["AllSingleton", "TwoReadOnlySet"],
+        "tags": [
+          "AllSingleton",
+          "TwoReadOnlySet"
+        ],
         "parameters": [],
         "responses": {
           "200": {
@@ -642,25 +805,39 @@
               }
             }
           },
-          "4XX": { "$ref": "#/components/responses/error" }
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
         }
       }
     },
     "/NoNavigationSet": {
       "get": {
         "summary": "Retrieves a list of no navigation set.",
-        "tags": ["NoNavigationSet"],
+        "tags": [
+          "NoNavigationSet"
+        ],
         "parameters": [
-          { "$ref": "#/components/parameters/top" },
-          { "$ref": "#/components/parameters/skip" },
-          { "$ref": "#/components/parameters/search" },
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
           {
             "name": "$filter",
             "description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
             "in": "query",
-            "schema": { "type": "string" }
+            "schema": {
+              "type": "string"
+            }
           },
-          { "$ref": "#/components/parameters/count" },
+          {
+            "$ref": "#/components/parameters/count"
+          },
           {
             "name": "$orderby",
             "description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
@@ -771,7 +948,9 @@
                   "type": "object",
                   "title": "Collection of SinglePartKey",
                   "properties": {
-                    "@count": { "$ref": "#/components/schemas/count" },
+                    "@count": {
+                      "$ref": "#/components/schemas/count"
+                    },
                     "value": {
                       "type": "array",
                       "items": {
@@ -783,7 +962,9 @@
               }
             }
           },
-          "4XX": { "$ref": "#/components/responses/error" }
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
         }
       }
     },
@@ -794,12 +975,16 @@
           "in": "path",
           "name": "ID",
           "required": true,
-          "schema": { "type": "string" }
+          "schema": {
+            "type": "string"
+          }
         }
       ],
       "get": {
         "summary": "Retrieves a single no navigation set.",
-        "tags": ["NoNavigationSet"],
+        "tags": [
+          "NoNavigationSet"
+        ],
         "parameters": [
           {
             "name": "$select",
@@ -866,25 +1051,39 @@
               }
             }
           },
-          "4XX": { "$ref": "#/components/responses/error" }
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
         }
       }
     },
     "/OneNavigationSet": {
       "get": {
         "summary": "Retrieves a list of one navigation set.",
-        "tags": ["OneNavigationSet"],
+        "tags": [
+          "OneNavigationSet"
+        ],
         "parameters": [
-          { "$ref": "#/components/parameters/top" },
-          { "$ref": "#/components/parameters/skip" },
-          { "$ref": "#/components/parameters/search" },
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
           {
             "name": "$filter",
             "description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
             "in": "query",
-            "schema": { "type": "string" }
+            "schema": {
+              "type": "string"
+            }
           },
-          { "$ref": "#/components/parameters/count" },
+          {
+            "$ref": "#/components/parameters/count"
+          },
           {
             "name": "$orderby",
             "description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
@@ -995,7 +1194,9 @@
                   "type": "object",
                   "title": "Collection of SinglePartKey",
                   "properties": {
-                    "@count": { "$ref": "#/components/schemas/count" },
+                    "@count": {
+                      "$ref": "#/components/schemas/count"
+                    },
                     "value": {
                       "type": "array",
                       "items": {
@@ -1007,7 +1208,9 @@
               }
             }
           },
-          "4XX": { "$ref": "#/components/responses/error" }
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
         }
       }
     },
@@ -1018,12 +1221,16 @@
           "in": "path",
           "name": "ID",
           "required": true,
-          "schema": { "type": "string" }
+          "schema": {
+            "type": "string"
+          }
         }
       ],
       "get": {
         "summary": "Retrieves a single one navigation set.",
-        "tags": ["OneNavigationSet"],
+        "tags": [
+          "OneNavigationSet"
+        ],
         "parameters": [
           {
             "name": "$select",
@@ -1090,7 +1297,9 @@
               }
             }
           },
-          "4XX": { "$ref": "#/components/responses/error" }
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
         }
       }
     },
@@ -1101,23 +1310,37 @@
           "in": "path",
           "name": "ID",
           "required": true,
-          "schema": { "type": "string" }
+          "schema": {
+            "type": "string"
+          }
         }
       ],
       "get": {
         "summary": "Retrieves a list of all many of a one navigation set.",
-        "tags": ["OneNavigationSet"],
+        "tags": [
+          "OneNavigationSet"
+        ],
         "parameters": [
-          { "$ref": "#/components/parameters/top" },
-          { "$ref": "#/components/parameters/skip" },
-          { "$ref": "#/components/parameters/search" },
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
           {
             "name": "$filter",
             "description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
             "in": "query",
-            "schema": { "type": "string" }
+            "schema": {
+              "type": "string"
+            }
           },
-          { "$ref": "#/components/parameters/count" },
+          {
+            "$ref": "#/components/parameters/count"
+          },
           {
             "name": "$orderby",
             "description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
@@ -1128,7 +1351,12 @@
               "uniqueItems": true,
               "items": {
                 "type": "string",
-                "enum": ["One", "One desc", "Two", "Two desc"]
+                "enum": [
+                  "One",
+                  "One desc",
+                  "Two",
+                  "Two desc"
+                ]
               }
             }
           },
@@ -1140,7 +1368,13 @@
             "schema": {
               "type": "array",
               "uniqueItems": true,
-              "items": { "type": "string", "enum": ["One", "Two"] }
+              "items": {
+                "type": "string",
+                "enum": [
+                  "One",
+                  "Two"
+                ]
+              }
             }
           }
         ],
@@ -1153,7 +1387,9 @@
                   "type": "object",
                   "title": "Collection of TwoPartKey",
                   "properties": {
-                    "@count": { "$ref": "#/components/schemas/count" },
+                    "@count": {
+                      "$ref": "#/components/schemas/count"
+                    },
                     "value": {
                       "type": "array",
                       "items": {
@@ -1165,14 +1401,18 @@
               }
             }
           },
-          "4XX": { "$ref": "#/components/responses/error" }
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
         }
       }
     },
     "/ReadListOnlySet": {
       "get": {
         "summary": "Supports only read-list",
-        "tags": ["ReadListOnlySet"],
+        "tags": [
+          "ReadListOnlySet"
+        ],
         "parameters": [],
         "responses": {
           "200": {
@@ -1194,7 +1434,9 @@
               }
             }
           },
-          "4XX": { "$ref": "#/components/responses/error" }
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
         },
         "description": "Does not support any query options"
       }
@@ -1202,7 +1444,9 @@
     "/ReadOnlySingleton": {
       "get": {
         "summary": "Supports only read",
-        "tags": ["ReadOnlySingleton"],
+        "tags": [
+          "ReadOnlySingleton"
+        ],
         "parameters": [],
         "responses": {
           "200": {
@@ -1215,7 +1459,9 @@
               }
             }
           },
-          "4XX": { "$ref": "#/components/responses/error" }
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
         },
         "description": "Does not support `$select` and `$expand`"
       }
@@ -1223,18 +1469,31 @@
     "/ReadOnlySingleton/AllMany": {
       "get": {
         "summary": "Retrieves a list of all many of a read only singleton.",
-        "tags": ["ReadOnlySingleton", "TwoAllSet"],
+        "tags": [
+          "ReadOnlySingleton",
+          "TwoAllSet"
+        ],
         "parameters": [
-          { "$ref": "#/components/parameters/top" },
-          { "$ref": "#/components/parameters/skip" },
-          { "$ref": "#/components/parameters/search" },
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
           {
             "name": "$filter",
             "description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
             "in": "query",
-            "schema": { "type": "string" }
+            "schema": {
+              "type": "string"
+            }
           },
-          { "$ref": "#/components/parameters/count" },
+          {
+            "$ref": "#/components/parameters/count"
+          },
           {
             "name": "$orderby",
             "description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
@@ -1243,7 +1502,13 @@
             "schema": {
               "type": "array",
               "uniqueItems": true,
-              "items": { "type": "string", "enum": ["Two", "Two desc"] }
+              "items": {
+                "type": "string",
+                "enum": [
+                  "Two",
+                  "Two desc"
+                ]
+              }
             }
           },
           {
@@ -1254,7 +1519,13 @@
             "schema": {
               "type": "array",
               "uniqueItems": true,
-              "items": { "type": "string", "enum": ["One", "Two"] }
+              "items": {
+                "type": "string",
+                "enum": [
+                  "One",
+                  "Two"
+                ]
+              }
             }
           }
         ],
@@ -1267,7 +1538,9 @@
                   "type": "object",
                   "title": "Collection of TwoPartKey",
                   "properties": {
-                    "@count": { "$ref": "#/components/schemas/count" },
+                    "@count": {
+                      "$ref": "#/components/schemas/count"
+                    },
                     "value": {
                       "type": "array",
                       "items": {
@@ -1279,14 +1552,19 @@
               }
             }
           },
-          "4XX": { "$ref": "#/components/responses/error" }
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
         }
       }
     },
     "/ReadOnlySingleton/AllOne": {
       "get": {
         "summary": "Retrieves all one of a read only singleton.",
-        "tags": ["ReadOnlySingleton", "TwoAllSet"],
+        "tags": [
+          "ReadOnlySingleton",
+          "TwoAllSet"
+        ],
         "parameters": [
           {
             "name": "$select",
@@ -1296,7 +1574,13 @@
             "schema": {
               "type": "array",
               "uniqueItems": true,
-              "items": { "type": "string", "enum": ["One", "Two"] }
+              "items": {
+                "type": "string",
+                "enum": [
+                  "One",
+                  "Two"
+                ]
+              }
             }
           }
         ],
@@ -1311,25 +1595,40 @@
               }
             }
           },
-          "4XX": { "$ref": "#/components/responses/error" }
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
         }
       }
     },
     "/ReadOnlySingleton/NothingMany": {
       "get": {
         "summary": "Retrieves a list of nothing many of a read only singleton.",
-        "tags": ["ReadOnlySingleton", "TwoNothingSet"],
+        "tags": [
+          "ReadOnlySingleton",
+          "TwoNothingSet"
+        ],
         "parameters": [
-          { "$ref": "#/components/parameters/top" },
-          { "$ref": "#/components/parameters/skip" },
-          { "$ref": "#/components/parameters/search" },
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
           {
             "name": "$filter",
             "description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
             "in": "query",
-            "schema": { "type": "string" }
+            "schema": {
+              "type": "string"
+            }
           },
-          { "$ref": "#/components/parameters/count" },
+          {
+            "$ref": "#/components/parameters/count"
+          },
           {
             "name": "$orderby",
             "description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
@@ -1340,7 +1639,12 @@
               "uniqueItems": true,
               "items": {
                 "type": "string",
-                "enum": ["One", "One desc", "Two", "Two desc"]
+                "enum": [
+                  "One",
+                  "One desc",
+                  "Two",
+                  "Two desc"
+                ]
               }
             }
           },
@@ -1352,7 +1656,13 @@
             "schema": {
               "type": "array",
               "uniqueItems": true,
-              "items": { "type": "string", "enum": ["One", "Two"] }
+              "items": {
+                "type": "string",
+                "enum": [
+                  "One",
+                  "Two"
+                ]
+              }
             }
           }
         ],
@@ -1365,7 +1675,9 @@
                   "type": "object",
                   "title": "Collection of TwoPartKey",
                   "properties": {
-                    "@count": { "$ref": "#/components/schemas/count" },
+                    "@count": {
+                      "$ref": "#/components/schemas/count"
+                    },
                     "value": {
                       "type": "array",
                       "items": {
@@ -1377,14 +1689,19 @@
               }
             }
           },
-          "4XX": { "$ref": "#/components/responses/error" }
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
         }
       }
     },
     "/ReadOnlySingleton/ReadOnlyMany": {
       "get": {
         "summary": "Retrieves a list of read only many of a read only singleton.",
-        "tags": ["ReadOnlySingleton", "TwoReadOnlySet"],
+        "tags": [
+          "ReadOnlySingleton",
+          "TwoReadOnlySet"
+        ],
         "parameters": [],
         "responses": {
           "200": {
@@ -1406,14 +1723,19 @@
               }
             }
           },
-          "4XX": { "$ref": "#/components/responses/error" }
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
         }
       }
     },
     "/ReadOnlySingleton/ReadOnlyOne": {
       "get": {
         "summary": "Retrieves read only one of a read only singleton.",
-        "tags": ["ReadOnlySingleton", "TwoReadOnlySet"],
+        "tags": [
+          "ReadOnlySingleton",
+          "TwoReadOnlySet"
+        ],
         "parameters": [],
         "responses": {
           "200": {
@@ -1426,25 +1748,39 @@
               }
             }
           },
-          "4XX": { "$ref": "#/components/responses/error" }
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
         }
       }
     },
     "/TwoAllSet": {
       "get": {
         "summary": "Retrieves a list of two all set.",
-        "tags": ["TwoAllSet"],
+        "tags": [
+          "TwoAllSet"
+        ],
         "parameters": [
-          { "$ref": "#/components/parameters/top" },
-          { "$ref": "#/components/parameters/skip" },
-          { "$ref": "#/components/parameters/search" },
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
           {
             "name": "$filter",
             "description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
             "in": "query",
-            "schema": { "type": "string" }
+            "schema": {
+              "type": "string"
+            }
           },
-          { "$ref": "#/components/parameters/count" },
+          {
+            "$ref": "#/components/parameters/count"
+          },
           {
             "name": "$orderby",
             "description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
@@ -1453,7 +1789,13 @@
             "schema": {
               "type": "array",
               "uniqueItems": true,
-              "items": { "type": "string", "enum": ["One", "One desc"] }
+              "items": {
+                "type": "string",
+                "enum": [
+                  "One",
+                  "One desc"
+                ]
+              }
             }
           },
           {
@@ -1464,7 +1806,13 @@
             "schema": {
               "type": "array",
               "uniqueItems": true,
-              "items": { "type": "string", "enum": ["One", "Two"] }
+              "items": {
+                "type": "string",
+                "enum": [
+                  "One",
+                  "Two"
+                ]
+              }
             }
           }
         ],
@@ -1477,7 +1825,9 @@
                   "type": "object",
                   "title": "Collection of TwoPartKey",
                   "properties": {
-                    "@count": { "$ref": "#/components/schemas/count" },
+                    "@count": {
+                      "$ref": "#/components/schemas/count"
+                    },
                     "value": {
                       "type": "array",
                       "items": {
@@ -1489,12 +1839,16 @@
               }
             }
           },
-          "4XX": { "$ref": "#/components/responses/error" }
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
         }
       },
       "post": {
         "summary": "Creates a single two all set.",
-        "tags": ["TwoAllSet"],
+        "tags": [
+          "TwoAllSet"
+        ],
         "requestBody": {
           "description": "New two all set",
           "required": true,
@@ -1517,7 +1871,9 @@
               }
             }
           },
-          "4XX": { "$ref": "#/components/responses/error" }
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
         }
       }
     },
@@ -1528,19 +1884,27 @@
           "in": "path",
           "name": "One",
           "required": true,
-          "schema": { "type": "integer", "format": "int32" }
+          "schema": {
+            "type": "integer",
+            "format": "int32"
+          }
         },
         {
           "description": "key: Two",
           "in": "path",
           "name": "Two",
           "required": true,
-          "schema": { "type": "integer", "format": "int32" }
+          "schema": {
+            "type": "integer",
+            "format": "int32"
+          }
         }
       ],
       "get": {
         "summary": "Retrieves a single two all set.",
-        "tags": ["TwoAllSet"],
+        "tags": [
+          "TwoAllSet"
+        ],
         "parameters": [
           {
             "name": "$select",
@@ -1550,7 +1914,13 @@
             "schema": {
               "type": "array",
               "uniqueItems": true,
-              "items": { "type": "string", "enum": ["One", "Two"] }
+              "items": {
+                "type": "string",
+                "enum": [
+                  "One",
+                  "Two"
+                ]
+              }
             }
           }
         ],
@@ -1565,12 +1935,16 @@
               }
             }
           },
-          "4XX": { "$ref": "#/components/responses/error" }
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
         }
       },
       "patch": {
         "summary": "Changes a single two all set.",
-        "tags": ["TwoAllSet"],
+        "tags": [
+          "TwoAllSet"
+        ],
         "requestBody": {
           "description": "New property values",
           "required": true,
@@ -1583,16 +1957,26 @@
           }
         },
         "responses": {
-          "204": { "description": "Success" },
-          "4XX": { "$ref": "#/components/responses/error" }
+          "204": {
+            "description": "Success"
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
         }
       },
       "delete": {
         "summary": "Deletes a single two all set.",
-        "tags": ["TwoAllSet"],
+        "tags": [
+          "TwoAllSet"
+        ],
         "responses": {
-          "204": { "description": "Success" },
-          "4XX": { "$ref": "#/components/responses/error" }
+          "204": {
+            "description": "Success"
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
         }
       }
     },
@@ -1603,19 +1987,27 @@
           "in": "path",
           "name": "One",
           "required": true,
-          "schema": { "type": "integer", "format": "int32" }
+          "schema": {
+            "type": "integer",
+            "format": "int32"
+          }
         },
         {
           "description": "key: Two",
           "in": "path",
           "name": "Two",
           "required": true,
-          "schema": { "type": "integer", "format": "int32" }
+          "schema": {
+            "type": "integer",
+            "format": "int32"
+          }
         }
       ],
       "get": {
         "summary": "Retrieves a single two read only by key set.",
-        "tags": ["TwoReadOnlyByKeySet"],
+        "tags": [
+          "TwoReadOnlyByKeySet"
+        ],
         "parameters": [
           {
             "name": "$select",
@@ -1625,7 +2017,13 @@
             "schema": {
               "type": "array",
               "uniqueItems": true,
-              "items": { "type": "string", "enum": ["One", "Two"] }
+              "items": {
+                "type": "string",
+                "enum": [
+                  "One",
+                  "Two"
+                ]
+              }
             }
           }
         ],
@@ -1640,14 +2038,18 @@
               }
             }
           },
-          "4XX": { "$ref": "#/components/responses/error" }
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
         }
       }
     },
     "/TwoReadOnlySet": {
       "get": {
         "summary": "Supports read-list",
-        "tags": ["TwoReadOnlySet"],
+        "tags": [
+          "TwoReadOnlySet"
+        ],
         "parameters": [],
         "responses": {
           "200": {
@@ -1669,7 +2071,9 @@
               }
             }
           },
-          "4XX": { "$ref": "#/components/responses/error" }
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
         },
         "description": "Does not support any query options"
       }
@@ -1681,19 +2085,27 @@
           "in": "path",
           "name": "One",
           "required": true,
-          "schema": { "type": "integer", "format": "int32" }
+          "schema": {
+            "type": "integer",
+            "format": "int32"
+          }
         },
         {
           "description": "key: Two",
           "in": "path",
           "name": "Two",
           "required": true,
-          "schema": { "type": "integer", "format": "int32" }
+          "schema": {
+            "type": "integer",
+            "format": "int32"
+          }
         }
       ],
       "get": {
         "summary": "Retrieves a single two read only set.",
-        "tags": ["TwoReadOnlySet"],
+        "tags": [
+          "TwoReadOnlySet"
+        ],
         "parameters": [],
         "responses": {
           "200": {
@@ -1706,14 +2118,18 @@
               }
             }
           },
-          "4XX": { "$ref": "#/components/responses/error" }
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
         }
       }
     },
     "/TwoWriteOnlySet": {
       "post": {
         "summary": "Supports insert",
-        "tags": ["TwoWriteOnlySet"],
+        "tags": [
+          "TwoWriteOnlySet"
+        ],
         "requestBody": {
           "description": "New two write only set",
           "required": true,
@@ -1736,7 +2152,9 @@
               }
             }
           },
-          "4XX": { "$ref": "#/components/responses/error" }
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
         }
       }
     },
@@ -1747,19 +2165,27 @@
           "in": "path",
           "name": "One",
           "required": true,
-          "schema": { "type": "integer", "format": "int32" }
+          "schema": {
+            "type": "integer",
+            "format": "int32"
+          }
         },
         {
           "description": "key: Two",
           "in": "path",
           "name": "Two",
           "required": true,
-          "schema": { "type": "integer", "format": "int32" }
+          "schema": {
+            "type": "integer",
+            "format": "int32"
+          }
         }
       ],
       "patch": {
         "summary": "Supports update",
-        "tags": ["TwoWriteOnlySet"],
+        "tags": [
+          "TwoWriteOnlySet"
+        ],
         "requestBody": {
           "description": "New property values",
           "required": true,
@@ -1772,23 +2198,35 @@
           }
         },
         "responses": {
-          "204": { "description": "Success" },
-          "4XX": { "$ref": "#/components/responses/error" }
+          "204": {
+            "description": "Success"
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
         }
       },
       "delete": {
         "summary": "Supports delete",
-        "tags": ["TwoWriteOnlySet"],
+        "tags": [
+          "TwoWriteOnlySet"
+        ],
         "responses": {
-          "204": { "description": "Success" },
-          "4XX": { "$ref": "#/components/responses/error" }
+          "204": {
+            "description": "Success"
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
         }
       }
     },
     "/TwoWriteOnlySingleton": {
       "patch": {
         "summary": "Supports update",
-        "tags": ["TwoWriteOnlySingleton"],
+        "tags": [
+          "TwoWriteOnlySingleton"
+        ],
         "requestBody": {
           "description": "New property values",
           "required": true,
@@ -1801,8 +2239,12 @@
           }
         },
         "responses": {
-          "204": { "description": "Success" },
-          "4XX": { "$ref": "#/components/responses/error" }
+          "204": {
+            "description": "Success"
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
         }
       }
     }
@@ -1813,8 +2255,14 @@
         "title": "SinglePartKey",
         "type": "object",
         "properties": {
-          "ID": { "type": "string" },
-          "Pattern": { "type": "string", "pattern": "^.+$", "nullable": true },
+          "ID": {
+            "type": "string"
+          },
+          "Pattern": {
+            "type": "string",
+            "pattern": "^.+$",
+            "nullable": true
+          },
           "PatternExt": {
             "type": "string",
             "pattern": "^.+$",
@@ -1822,12 +2270,20 @@
           },
           "AllowedValues": {
             "type": "string",
-            "enum": ["red", "green", "blue"],
+            "enum": [
+              "red",
+              "green",
+              "blue"
+            ],
             "nullable": true
           },
           "AllowedValuesExt": {
             "type": "string",
-            "enum": ["red", "green", "blue"],
+            "enum": [
+              "red",
+              "green",
+              "blue"
+            ],
             "nullable": true
           },
           "Maximum": {
@@ -1838,7 +2294,9 @@
                 "maximum": 0,
                 "minimum": -99999
               },
-              { "type": "string" }
+              {
+                "type": "string"
+              }
             ],
             "example": 0,
             "x-sap-precision": 5,
@@ -1847,8 +2305,14 @@
           },
           "MaximumExt": {
             "anyOf": [
-              { "type": "number", "format": "decimal", "maximum": -1 },
-              { "type": "string" }
+              {
+                "type": "number",
+                "format": "decimal",
+                "maximum": -1
+              },
+              {
+                "type": "string"
+              }
             ],
             "example": -1,
             "nullable": true
@@ -1862,7 +2326,9 @@
                 "maximum": 999.99,
                 "minimum": 1
               },
-              { "type": "string" }
+              {
+                "type": "string"
+              }
             ],
             "example": 0,
             "x-sap-precision": 5,
@@ -1877,7 +2343,9 @@
                 "multipleOf": 0.00001,
                 "minimum": 0
               },
-              { "type": "string" }
+              {
+                "type": "string"
+              }
             ],
             "example": 1,
             "x-sap-scale": 5,
@@ -1893,11 +2361,26 @@
             "nullable": true,
             "example": "Hello external World"
           },
-          "Computed": { "type": "string", "nullable": true },
-          "ComputedExt": { "type": "string", "nullable": true },
-          "Immutable": { "type": "string", "nullable": true },
-          "RequiredInFilter": { "type": "string", "nullable": true },
-          "ImmutableExt": { "type": "string", "nullable": true },
+          "Computed": {
+            "type": "string",
+            "nullable": true
+          },
+          "ComputedExt": {
+            "type": "string",
+            "nullable": true
+          },
+          "Immutable": {
+            "type": "string",
+            "nullable": true
+          },
+          "RequiredInFilter": {
+            "type": "string",
+            "nullable": true
+          },
+          "ImmutableExt": {
+            "type": "string",
+            "nullable": true
+          },
           "AllOne": {
             "allOf": [
               {
@@ -1912,7 +2395,9 @@
               "$ref": "#/components/schemas/Supported.Annotations.TwoPartKey"
             }
           },
-          "AllMany@count": { "$ref": "#/components/schemas/count" },
+          "AllMany@count": {
+            "$ref": "#/components/schemas/count"
+          },
           "ReadOnlyOne": {
             "allOf": [
               {
@@ -1927,7 +2412,9 @@
               "$ref": "#/components/schemas/Supported.Annotations.TwoPartKey"
             }
           },
-          "ReadOnlyMany@count": { "$ref": "#/components/schemas/count" },
+          "ReadOnlyMany@count": {
+            "$ref": "#/components/schemas/count"
+          },
           "NothingOne": {
             "allOf": [
               {
@@ -1942,54 +2429,98 @@
               "$ref": "#/components/schemas/Supported.Annotations.TwoPartKey"
             }
           },
-          "NothingMany@count": { "$ref": "#/components/schemas/count" }
+          "NothingMany@count": {
+            "$ref": "#/components/schemas/count"
+          }
         }
       },
       "Supported.Annotations.TwoPartKey": {
         "title": "TwoPartKey",
         "type": "object",
         "properties": {
-          "One": { "type": "integer", "format": "int32" },
-          "Two": { "type": "integer", "format": "int32" }
+          "One": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "Two": {
+            "type": "integer",
+            "format": "int32"
+          }
         }
       },
       "Supported.Annotations.TwoPartKey-create": {
         "title": "TwoPartKey (for create)",
         "type": "object",
         "properties": {
-          "One": { "type": "integer", "format": "int32" },
-          "Two": { "type": "integer", "format": "int32" }
+          "One": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "Two": {
+            "type": "integer",
+            "format": "int32"
+          }
         },
-        "required": ["One", "Two"]
+        "required": [
+          "One",
+          "Two"
+        ]
       },
       "Supported.Annotations.TwoPartKey-update": {
         "title": "TwoPartKey (for update)",
         "type": "object"
       },
       "count": {
-        "anyOf": [{ "type": "number" }, { "type": "string" }],
+        "anyOf": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "string"
+          }
+        ],
         "description": "The number of entities in the collection. Available when using the [$count](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptioncount) query option."
       },
       "error": {
         "type": "object",
-        "required": ["error"],
+        "required": [
+          "error"
+        ],
         "properties": {
           "error": {
             "type": "object",
-            "required": ["code", "message"],
+            "required": [
+              "code",
+              "message"
+            ],
             "properties": {
-              "code": { "type": "string" },
-              "message": { "type": "string" },
-              "target": { "type": "string" },
+              "code": {
+                "type": "string"
+              },
+              "message": {
+                "type": "string"
+              },
+              "target": {
+                "type": "string"
+              },
               "details": {
                 "type": "array",
                 "items": {
                   "type": "object",
-                  "required": ["code", "message"],
+                  "required": [
+                    "code",
+                    "message"
+                  ],
                   "properties": {
-                    "code": { "type": "string" },
-                    "message": { "type": "string" },
-                    "target": { "type": "string" }
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "target": {
+                      "type": "string"
+                    }
                   }
                 }
               },
@@ -2007,26 +2538,36 @@
         "name": "$top",
         "in": "query",
         "description": "Show only the first n items, see [Paging - Top](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptiontop)",
-        "schema": { "type": "integer", "minimum": 0 },
+        "schema": {
+          "type": "integer",
+          "minimum": 0
+        },
         "example": 50
       },
       "skip": {
         "name": "$skip",
         "in": "query",
         "description": "Skip the first n items, see [Paging - Skip](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionskip)",
-        "schema": { "type": "integer", "minimum": 0 }
+        "schema": {
+          "type": "integer",
+          "minimum": 0
+        }
       },
       "count": {
         "name": "$count",
         "in": "query",
         "description": "Include count of items, see [Count](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptioncount)",
-        "schema": { "type": "boolean" }
+        "schema": {
+          "type": "boolean"
+        }
       },
       "search": {
         "name": "$search",
         "in": "query",
         "description": "Search items by search phrases, see [Searching](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionsearch)",
-        "schema": { "type": "string" }
+        "schema": {
+          "type": "string"
+        }
       }
     },
     "responses": {
@@ -2034,7 +2575,9 @@
         "description": "Error",
         "content": {
           "application/json": {
-            "schema": { "$ref": "#/components/schemas/error" }
+            "schema": {
+              "$ref": "#/components/schemas/error"
+            }
           }
         }
       }

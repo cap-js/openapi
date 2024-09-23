@@ -490,38 +490,38 @@ describe('Edge cases', function () {
         };
         const openapi = lib.csdl2openapi(csdl, {});
         assert.deepStrictEqual(
-            openapi.components.schemas["jsonExamples.typeDefinitionOld"],
-            {
-                title: "typeDefinitionOld",
-                type: "object",
-                additionalProperties: false,
-                patternProperties: {
-                    "^[\\w\\.\\-\\/]+$": { type: "string" },
-                },
+          openapi.components.schemas["jsonExamples.typeDefinitionOld"],
+          {
+            title: "typeDefinitionOld",
+            type: "object",
+            additionalProperties: false,
+            patternProperties: {
+              "^[\\w\\.\\-\\/]+$": { type: "string" },
             },
-            "JSON property old-style"
+          },
+          "JSON property old-style"
         );
         assert.deepStrictEqual(
-            openapi.components.schemas["jsonExamples.typeDefinitionNew"],
-            {
-                title: "typeDefinitionNew",
-                type: "object",
-                additionalProperties: false,
-                patternProperties: {
-                    "^[\\w\\.\\-\\/]+$": { type: "string" },
-                }
+          openapi.components.schemas["jsonExamples.typeDefinitionNew"],
+          {
+            title: "typeDefinitionNew",
+            type: "object",
+            additionalProperties: false,
+            patternProperties: {
+              "^[\\w\\.\\-\\/]+$": { type: "string" },
             },
-            "JSON property new-style"
+          },
+          "JSON property new-style"
         );
         assert.deepStrictEqual(
-            openapi.components.schemas["jsonExamples.single"].properties.stream2,
-            {
-                maxLength: 10,
-                allOf: [
-                    { $ref: "#/components/schemas/jsonExamples.typeDefinitionNew" },
-                ],
-            },
-            "MaxLength"
+          openapi.components.schemas["jsonExamples.single"].properties.stream2,
+          {
+            maxLength: 10,
+            allOf: [
+              { $ref: "#/components/schemas/jsonExamples.typeDefinitionNew" },
+            ],
+          },
+          "MaxLength"
         );
     })
 
@@ -565,27 +565,27 @@ describe('Edge cases', function () {
         assert.deepStrictEqual(
             openapi.components.schemas["jsonExamples.typeDefinitionOld"],
             {
-                title: "typeDefinitionOld",
-                type: "object",
-                additionalProperties: false,
-                patternProperties: {
-                    "^[\\w\\.\\-\\/]+$": { type: "string" },
-                },
+              title: "typeDefinitionOld",
+              type: "object",
+              additionalProperties: false,
+              patternProperties: {
+                "^[\\w\\.\\-\\/]+$": { type: "string" },
+              },
             },
-            "JSON property old-style"
-        );
-        assert.deepStrictEqual(
+            "JSON property old-style",
+          );
+          assert.deepStrictEqual(
             openapi.components.schemas["jsonExamples.typeDefinitionNew"],
             {
-                title: "typeDefinitionNew",
-                type: "object",
-                additionalProperties: false,
-                patternProperties: {
-                    "^[\\w\\.\\-\\/]+$": { type: "string" },
-                }
+              title: "typeDefinitionNew",
+              type: "object",
+              additionalProperties: false,
+              patternProperties: {
+                "^[\\w\\.\\-\\/]+$": { type: "string" },
+              },
             },
-            "JSON property new-style"
-        );
+            "JSON property new-style",
+          );
     })
 
     it('no key', function () {
@@ -826,55 +826,84 @@ describe('Edge cases', function () {
             }
         };
         const expected = {
-            paths: {
-                '/fun()': {
-                    get: {
-                        responses: {
-                            200: {
-                                description: 'Success',
-                                content: {
-                                    'application/json': {
-                                        schema: {
-                                            type: 'string',
-                                            maxLength: 20
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
+          paths: {
+            "/fun()": {
+              get: {
+                summary: "Invokes function fun",
+                tags: ["Service Operations"],
+                parameters: [],
+                responses: {
+                  200: {
+                    description: "Success",
+                    content: {
+                      "application/json": {
+                        schema: {
+                          type: "object",
+                          properties: {
+                            value: {
+                              type: "string",
+                              maxLength: 20,
+                            },
+                          },
+                        },
+                      },
+                    },
+                  },
+                  "4XX": {
+                    $ref: "#/components/responses/error",
+                  },
                 },
-                "/fun(in={in})": {
-                    get: {
-                        responses: {
-                            200: {
-                                description: 'Success',
-                                content: {
-                                    'application/json': {
-                                        schema: {
-                                            type: 'object',
-                                            title: 'Collection of String',
-                                            properties: {
-                                                '@odata.count': {
-                                                    $ref: '#/components/schemas/count'
-                                                },
-                                                value: {
-                                                    type: 'array',
-                                                    items: {
-                                                        type: 'string',
-                                                        maxLength: 20
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
+              },
+            },
+            "/fun(in={in})": {
+              get: {
+                summary: "Invokes function fun",
+                tags: ["Service Operations"],
+                parameters: [
+                  {
+                    required: true,
+                    in: "path",
+                    name: "in",
+                    description:
+                      "String value needs to be enclosed in single quotes",
+                    schema: {
+                      type: "string",
+                      pattern: "^'([^']|'')*'$",
+                    },
+                  },
+                ],
+                responses: {
+                  200: {
+                    description: "Success",
+                    content: {
+                      "application/json": {
+                        schema: {
+                          type: "object",
+                          title: "Collection of String",
+                          properties: {
+                            "@odata.count": {
+                              $ref: "#/components/schemas/count",
+                            },
+                            value: {
+                              type: "array",
+                              items: {
+                                type: "string",
+                                maxLength: 20,
+                              },
+                            },
+                          },
+                        },
+                      },
+                    },
+                  },
+                  "4XX": {
+                    $ref: "#/components/responses/error",
+                  },
                 },
-                '/$batch': { post: {} }
-            }
+              },
+            },
+            "/$batch": { post: {} },
+          },
         };
         const actual = lib.csdl2openapi(csdl, {odataVersion: '4.0'});
         assert.deepStrictEqual(paths(actual), paths(expected), 'Paths');
@@ -2186,7 +2215,8 @@ see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-prot
                 unknown: {
                     $ref: "#/components/schemas/typeExamples.un-known",
                 },
-            },
+  
+        },
             "MaxLength"
         );
     });
