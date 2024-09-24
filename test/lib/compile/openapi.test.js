@@ -182,6 +182,17 @@ describe('OpenAPI export', () => {
     expect(openapi.servers).toBeTruthy();
   });
 
+  test('options: Multiple servers', () => {
+    const csn = cds.compile.to.csn(`
+      service A {entity E { key ID : UUID; };};`
+    );
+    const serverObj = "[{\n \"url\": \"https://{customer1Id}.saas-app.com:{port}/v2\",\n \"variables\": {\n \"customer1Id\": \"demo\",\n \"description\": \"Customer1 ID assigned by the service provider\"\n }\n}, {\n \"url\": \"https://{customer2Id}.saas-app.com:{port}/v2\",\n \"variables\": {\n \"customer2Id\": \"demo\",\n \"description\": \"Customer2 ID assigned by the service provider\"\n }\n}]"
+    const openapi = toOpenApi(csn, { 'openapi:servers': serverObj });
+    expect(openapi.servers).toBeTruthy();
+    expect(openapi.servers[0].url).toMatch('https://{customer1Id}.saas-app.com:{port}/v2/odata/v4/A')
+  });
+
+
   test('options: servers - wrong JSON', () => {
     const csn = cds.compile.to.csn(`
       service A {entity E { key ID : UUID; };};`
