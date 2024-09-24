@@ -101,6 +101,21 @@ describe('OpenAPI export', () => {
     expect(openapi).toMatchObject(someOpenApi);
   });
 
+  test('one service, multiple protocols', () => {
+    const csn = cds.compile.to.csn(`
+      namespace com.sap;
+      @protocol: ['odata', 'rest']
+      service A {entity E { key ID : UUID; };};`
+    );
+    const openapi = toOpenApi(csn);
+    const filesFound = new Set();
+    for (const [content, metadata] of openapi) {
+      expect(content).toMatchObject(someOpenApi);
+      filesFound.add(metadata.file);
+    }
+    expect(filesFound).toMatchObject(new Set(['.odata', '.rest']));
+  });
+
   test('multiple services', () => {
     const csn = cds.compile.to.csn(`
       service A {entity E { key ID : UUID; };};
@@ -144,6 +159,23 @@ describe('OpenAPI export', () => {
       filesFound.add(metadata.file);
     }
     expect(filesFound).toMatchObject(new Set(['com.sap.A', 'com.sap.B']));
+  });
+
+  test('multiple services, multiple protocols', () => {
+    const csn = cds.compile.to.csn(`
+      namespace com.sap;
+      @protocol: ['odata', 'rest']
+      service A {entity E { key ID : UUID; };};
+      @protocol: ['odata', 'rest']
+      service B {entity F { key ID : UUID; };};`
+    );
+    const openapi = toOpenApi(csn, { service: 'all' });
+    const filesFound = new Set();
+    for (const [content, metadata] of openapi) {
+      expect(content).toMatchObject(someOpenApi);
+      filesFound.add(metadata.file);
+    }
+    expect(filesFound).toMatchObject(new Set(['com.sap.A.odata', 'com.sap.A.rest', 'com.sap.B.odata', 'com.sap.B.rest']));
   });
 
   test('options: url', () => {
