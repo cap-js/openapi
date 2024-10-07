@@ -4,11 +4,15 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
-## Version 1.0.7
+## Version 1.0.7 tbd
 
 ### Fixed
 
 - Multiple protocols for a service now renders multiple openapi documents.
+
+### Added
+
+- OpenAPI documents can now have `externalDocs` object provided through `@OpenAPI.externalDocs` annotation in the service level of CDS.
 
 ## Version 1.0.6 - 23.09.2024
 
