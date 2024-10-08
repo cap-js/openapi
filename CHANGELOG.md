@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ### Fixed
 
 - Multiple protocols for a service now renders multiple openapi documents.
+- Format and type are now preserved for function parameters.
 
 ### Added
 
