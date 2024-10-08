@@ -343,4 +343,24 @@ describe('OpenAPI export', () => {
       'ref_id'
     )
   })
+
+  test('OpenAPI annotations: @OpenAPI.externalDocs annotation is added to the schema', () => {
+    const csn = cds.compile.to.csn(`
+      namespace sap.OpenAPI.test;
+      @OpenAPI.externalDocs: {
+        description: 'API Guide',
+        url: 'https://help.sap.com/docs/product/123.html'
+      }
+      service A {
+        entity E1 { 
+          key id: String(4); 
+          oid: String(128); 
+        }
+          }`);
+        const openAPI = toOpenApi(csn);
+        expect(openAPI.externalDocs).toBeDefined();
+        expect(openAPI.externalDocs.description).toBe('API Guide');
+        expect(openAPI.externalDocs.url).toBe('https://help.sap.com/docs/product/123.html');
+  }
+  );
 });
