@@ -1,6 +1,14 @@
 {
     "$Version": "4.01",
     "$Reference": {
+        "https://sap.github.io/odata-vocabularies/vocabularies/Common.xml": {
+            "$Include": [
+                {
+                    "$Alias": "Common", 
+                    "$Namespace": "com.sap.vocabularies.Common.v1"
+                }
+            ]
+        },
         "https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Capabilities.V1.json": {
             "$Include": [
                 {
@@ -98,6 +106,9 @@
         ],
         "box": {
             "$Kind": "EntityContainer",
+            "@Common.Label": "Service for namespace custom.parameters",
+            "@Core.Description": "Service for namespace custom.parameters",
+            "@Core.LongDescription": "This service is located at [https://localhost/service-root/](https://localhost/service-root/)",
             "@Capabilities.KeyAsSegmentSupported": true,
             "ents": {
                 "$Collection": true,

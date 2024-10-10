@@ -1,6 +1,23 @@
 {
     "$Version": "4.0",
     "$Reference": {
+        "https://sap.github.io/odata-vocabularies/vocabularies/Common.xml": {
+            "$Include": [
+                {
+                    "$Alias": "Common", 
+                    "$Namespace": "com.sap.vocabularies.Common.v1"
+                }
+            ]
+        },
+        "https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.json": {
+            "$Include": [
+                {
+                    "$Namespace": "Org.OData.Core.V1",
+                    "$Alias": "Core",
+                    "@Core.DefaultNamespace": true
+                }
+            ]
+        },
         "https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Authorization.V1.json": {
             "$Include": [
                 {
@@ -24,6 +41,9 @@
         },
         "Container": {
             "$Kind": "EntityContainer",
+            "@Common.Label": "Service for namespace auth.example",
+            "@Core.Description": "Service for namespace auth.example",
+            "@Core.LongDescription": "This service is located at [https://localhost/service-root/](https://localhost/service-root/)",
             "People": {
                 "$Collection": true,
                 "$Type": "self.Person"

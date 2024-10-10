@@ -185,11 +185,10 @@ describe('OpenAPI export', () => {
     );
     let openapi = toOpenApi(csn, { service: 'A' });
     expect(openapi).toMatchObject({ servers: [{ url: '/a' }] });
-    expect(openapi.info.description).toMatch(/\/a/i)
+    expect(openapi.info.description).toBe("Use @Core.LongDescription: '...' on your CDS service to provide a meaningful description.")
 
     openapi = toOpenApi(csn, { service: 'A', 'openapi:url': 'http://foo.bar:8080' });
     expect(openapi).toMatchObject({ servers: [{ url: 'http://foo.bar:8080' }] });
-    expect(openapi.info.description).toMatch(/http:\/\/foo.bar:8080/i)
 
     openapi = toOpenApi(csn, { service: 'A', 'openapi:url': 'http://foo.bar:8080//${service-path}/foo' });
     expect(openapi).toMatchObject({ servers: [{ url: 'http://foo.bar:8080/a/foo' }] });
