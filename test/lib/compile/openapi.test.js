@@ -357,9 +357,9 @@ describe('OpenAPI export', () => {
         }
           }`);
         const openAPI = toOpenApi(csn);
-        expect(openAPI.externalDocs).not.toBeDefined(); // @OpenAPI.* is currently not passed into EDM-JSON and thus not available in the OpenAPI document
-        // expect(openAPI.externalDocs.description).toBe('API Guide');
-        // expect(openAPI.externalDocs.url).toBe('https://help.sap.com/docs/product/123.html');
+        expect(openAPI.externalDocs).toBeDefined();
+        expect(openAPI.externalDocs.description).toBe('API Guide');
+        expect(openAPI.externalDocs.url).toBe('https://help.sap.com/docs/product/123.html');
   }
   );
 });
