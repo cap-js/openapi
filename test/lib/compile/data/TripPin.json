@@ -1,6 +1,13 @@
 {
     "$Version": "4.0",
     "$Reference": {
+        "https://sap.github.io/odata-vocabularies/vocabularies/Common.xml": {
+            "$Include": [
+                {
+                    "$Namespace": "com.sap.vocabularies.Common.v1"
+                }
+            ]
+        },
         "https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.json": {
             "$Include": [
                 {
@@ -445,7 +452,9 @@
             "ResetDataSource": {
                 "$Action": "Microsoft.OData.SampleService.Models.TripPin.ResetDataSource"
             },
-            "@Org.OData.Core.V1.Description": "TripPin service is a sample service for OData V4."
+            "@com.sap.vocabularies.Common.v1.Label": "TripPin service is a sample service for OData V4.",
+            "@Org.OData.Core.V1.Description": "TripPin service is a sample service for OData V4.",
+            "@Org.OData.Core.V1.LongDescription": "This service is located at [https://services.odata.org/V4/(S(cnbm44wtbc1v5bgrlek5lpcc))/TripPinServiceRW/](https://services.odata.org/V4/%28S%28cnbm44wtbc1v5bgrlek5lpcc%29%29/TripPinServiceRW/)"
         },
         "$Annotations": {
             "Microsoft.OData.SampleService.Models.TripPin.DefaultContainer": {
