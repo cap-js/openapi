@@ -1,0 +1,13 @@
+{
+    "url": "http://foo.bar:3000",
+    "servers": [
+        {
+            "url": "http://foo.bar:8080"
+        },
+        {
+            "url": "http://foo.bar:8080/a/foo"
+        }
+    ],
+    "odata-version": "4.1",
+    "diagram":"true"
+}

@@ -63,3 +63,4 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ### Added
 
 - Initial release
+- Introduced --openapi:config-file option to incorporate all the options for cds compile command in a JSON configuration file, inline options take precedence over those defined in the configuration file.
