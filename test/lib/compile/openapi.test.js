@@ -245,13 +245,13 @@ describe('OpenAPI export', () => {
     const openapi = toOpenApi(csn, { 'openapi:config-file': path.resolve("./test/lib/compile/data/configFile.json") });
     expect(openapi.servers).toBeTruthy();
     expect(openapi).toMatchObject({ servers: [{ url: 'http://foo.bar:8080/rest/A' }, { url: "http://foo.bar:8080/a/foo/rest/A" }] });
-    expect(openapi.info.description).toMatch(/yuml.*diagram/i);
+    expect(openapi.info.description).toMatch(/yuml.*diagram/i); 
     expect(openapi['x-odata-version']).toMatch('4.1');
   });
 
   test('options: config-file - with inline options, inline options given precedence', () => {
     const csn = cds.compile.to.csn(`
-      service A {entity E { key ID : UUID; };};`
+       @title:'It is located at http://example.com:8080' service A {entity E { key ID : UUID;};};`
     );
     const options = {
       'openapi:config-file': path.resolve("./test/lib/compile/data/configFile.json"),
@@ -260,7 +260,7 @@ describe('OpenAPI export', () => {
       'openapi:diagram': "false"
     }
     const openapi = toOpenApi(csn, options);
-    expect(openapi.info.description).toMatch(/http:\/\/example.com:8080/i);
+    expect(openapi.info.title).toMatch(/http:\/\/example.com:8080/i)
     expect(openapi.info.description).not.toMatch(/yuml.*diagram/i);
     expect(openapi['x-odata-version']).toMatch('4.0');
     expect(openapi).toMatchObject({ servers: [{ url: 'http://foo.bar:8080/odata/v4/A' }, { url: "http://foo.bar:8080/a/foo/odata/v4/A" }] });
