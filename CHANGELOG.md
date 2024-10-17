@@ -14,7 +14,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ### Added
 
 - OpenAPI documents can now have `externalDocs` object provided through `@OpenAPI.externalDocs` annotation in the service level of CDS.
-- OpenAPI documents now throws warning if `securitySchemes` are not found.
+- OpenAPI documents now throws warning if `securitySchemas` are not found.
 
 ## Version 1.0.6 - 23.09.2024
 
