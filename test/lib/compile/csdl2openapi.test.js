@@ -89,14 +89,14 @@ describe('Edge cases', function () {
         const expected = {
             openapi: '3.0.2',
             info: {
-                title: 'OData CSDL document',
+                title: "Use @title: '...' on your CDS service to provide a meaningful title.",
                 description: '',
                 version: ''
             },
             paths: {},
             'x-odata-version': '4.01', 
             'x-sap-api-type': 'ODATAV4', 
-            'x-sap-shortText': 'OData CSDL document',
+            'x-sap-shortText': "Use @Core.Description: '...' on your CDS service to provide a meaningful short text.",
             components: { schemas: {} }
         };
         const openapi = lib.csdl2openapi(csdl, {});
@@ -120,14 +120,14 @@ describe('Edge cases', function () {
         const expected = {
             openapi: '3.0.2',
             info: {
-                title: 'OData CSDL document',
+                title: "Use @title: '...' on your CDS service to provide a meaningful title.",
                 description: '',
                 version: ''
             },
             paths: {},
             'x-odata-version': '4.01', 
             'x-sap-api-type': 'ODATAV4', 
-            'x-sap-shortText': 'OData CSDL document',
+            'x-sap-shortText': "Use @Core.Description: '...' on your CDS service to provide a meaningful short text.",
             components: {
                 schemas: {},
             }
@@ -163,13 +163,13 @@ describe('Edge cases', function () {
         const expected = {
             openapi: "3.0.2",
             info: {
-                title: 'OData CSDL document',
+                title: "Use @title: '...' on your CDS service to provide a meaningful title.",
                 description: "",
                 version: "",
             },
             "x-odata-version": "4.01",
             "x-sap-api-type": "ODATAV4",
-            "x-sap-shortText": "OData CSDL document",
+            "x-sap-shortText": "Use @Core.Description: '...' on your CDS service to provide a meaningful short text.",
             paths: {},
             components: {
                 schemas: {},
@@ -1991,7 +1991,7 @@ see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-prot
         assert.deepStrictEqual(actual.paths['/roots/act'].post, expected.paths['/roots/act'].post, 'POST /roots/act');
         assert.deepStrictEqual(actual.info.description.split("\n"),
             [
-                "This service is located at [https://localhost/service-root/](https://localhost/service-root/)",
+                "Use @Core.LongDescription: '...' on your CDS service to provide a meaningful description.",
                 "",
                 "## Entity Data Model",
                 "![ER Diagram](https://yuml.me/diagram/class/[root{bg:lightslategray}],[root]->[other],[other{bg:lightslategray}],[act{bg:lawngreen}]->[root],[act{bg:lawngreen}]in->[root],[others%20{bg:lawngreen}]++-*>[other],[roots%20{bg:lawngreen}]++-*>[root])",
