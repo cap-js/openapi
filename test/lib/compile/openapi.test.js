@@ -391,4 +391,32 @@ describe('OpenAPI export', () => {
         expect(openAPI.externalDocs.url).toBe('https://help.sap.com/docs/product/123.html');
   }
   );
+
+  test('OpenAPI annotations: @OpenAPI.Extensions annotation is added to the openapi document', () => {
+    const csn = cds.compile.to.csn(`
+      namespace sap.OpenAPI.test;
+      @OpenAPI.Extensions: {
+        ![compliance-level]: 'sap:base:v1'
+      }
+      service A {
+      @OpenAPI.Extensions: {
+        ![dpp-is-potentially-sensitive]: 'true'
+      }
+        entity E1 { 
+          key id: String(4); 
+          oid: String(128); 
+        }
+        
+        @OpenAPI.Extensions: {
+        ![operation-intent]: 'read-collection'
+      }
+        function F1(param: String) returns String;
+          
+          }`);
+    const openAPI = toOpenApi(csn);
+    expect(openAPI).toBeDefined();
+    expect(openAPI['x-sap-compliance-level']).toBe('sap:base:v1');
+    expect(openAPI.components.schemas["sap.OpenAPI.test.A.E1"]["x-sap-dpp-is-potentially-sensitive"]).toBe('true');
+    expect(openAPI.paths["/F1"].get["x-sap-operation-intent"]).toBe('read-collection');
+  });
 });
