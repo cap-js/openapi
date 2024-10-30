@@ -2223,6 +2223,94 @@ see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-prot
 
 })
 
+it("AllowedValues on various Edm types", function () {
+    const csdl = {
+      $Reference: {
+        dummy: {
+          $Include: [
+            { $Namespace: "Org.OData.Validation.V1", $Alias: "Validation" },
+          ],
+        },
+      },
+      $EntityContainer: "typeExamples.Container",
+      typeExamples: {
+        Container: {
+          sing: { $Type: "typeExamples.single" },
+        },
+        single: {
+          $Kind: "EntityType",
+          string: {},
+          int32: { $Type: "Edm.Int32" },
+          decfloat34: {
+            $Type: "Edm.Decimal",
+            $Precision: 34,
+            $Scale: "floating",
+          },
+          primitive: { $Type: "Edm.PrimitiveType" },
+          time: { $Type: "Edm.TimeOfDay" },
+        },
+        typeDefinition: {
+          $Kind: "TypeDefinition",
+          $UnderlyingType: "Edm.String",
+        },
+        $Annotations: {
+          "typeExamples.single/string": {
+            "@Validation.AllowedValues": [{ Value: "one" }, { Value: "two" }],
+          },
+          "typeExamples.single/int32": {
+            "@Validation.AllowedValues": [{ Value: 1 }, { Value: 2 }],
+          },
+          "typeExamples.single/decfloat34": {
+            "@Validation.AllowedValues": [{ Value: 10 }, { Value: 20 }],
+          },
+          "typeExamples.single/primitive": {
+            "@Validation.AllowedValues": [
+              { Value: true },
+              { Value: 1 },
+              { Value: "yes" },
+            ],
+          },
+          "typeExamples.single/time": {
+            "@Validation.AllowedValues": [
+              { Value: "10:00:00" },
+              { Value: "20:00:00" },
+            ],
+          },
+        },
+      },
+    };
+
+    const messages = [];
+    const openapi = lib.csdl2openapi(csdl, { messages });
+
+    assert.deepStrictEqual(
+      openapi.components.schemas["typeExamples.single"].properties,
+      {
+        string: { type: "string", enum: ["one", "two"] },
+        int32: { format: "int32", type: "integer", enum: [1, 2] },
+        decfloat34: {
+          anyOf: [{ format: "decimal", type: "number" }, { type: "string" }],
+          example: 0,
+          "x-sap-precision": 34,
+          enum: [10, 20],
+        },
+        primitive: {
+          anyOf: [{ type: "boolean" }, { type: "number" }, { type: "string" }],
+          enum: [true, 1, "yes"],
+        },
+        time: {
+          type: "string",
+          format: "time",
+          example: "15:51:04",
+          enum: ["10:00:00", "20:00:00"],
+        },
+      },
+      "Properties",
+    );
+
+    assert.deepStrictEqual(messages, [], "messages");
+})
+
 describe('CAP / CS01', function () {
 
     it('FilterRestrictions, NavigationRestrictions, and SortRestrictions', function () {
