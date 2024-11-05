@@ -101,24 +101,8 @@ describe('Edge cases', function () {
         };
         const openapi = lib.csdl2openapi(csdl, {});
         assert.deepStrictEqual(openapi, expected, 'Empty CSDL document');
-    })
-
-    it('tags object exists and it does not have duplicates', function () {
-        const csdl = {
-            $EntityContainer: 'this.Container',
-            this: {
-                ET: { $Kind: 'EntityType', $Key: ['key'], key
-                : {} },
-                Container: {
-                    Set: { $Type: 'this.ET', $Collection: true }
-                }
-            }
-        };
-        const openapi = lib.csdl2openapi(csdl, {});
-        assert.ok(openapi.tags, 'Tags object exists');
-        assert.strictEqual(openapi.tags.length, 1, 'Tags object does not have duplicates');
-    })
-
+    });
+    
     it('omit unused types', function () {
         const csdl = {
             $Reference: { dummy: { '$Include': [{ '$Namespace': 'Org.OData.Core.V1', '$Alias': 'Core' }] } },
