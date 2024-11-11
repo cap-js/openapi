@@ -147,7 +147,6 @@ service CatalogService {
 
     const openAPI = toOpenApi(csn);
     expect(openAPI).toBeDefined();
-    console.log(openAPI.tags);
     expect(openAPI.tags.length).toBe(1);
   });
 
