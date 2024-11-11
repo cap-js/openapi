@@ -117,6 +117,39 @@ describe('OpenAPI export', () => {
     expect(filesFound).toMatchObject(new Set(['.odata', '.rest']));
   });
 
+  test('Check for tags object having any duplicate entries ', () => {
+    const csn = cds.compile.to.csn(`
+      namespace my.sample;
+service CatalogService {
+
+    @title: 'Auditable Fields'
+    aspect Auditable {
+        createdAt  : Timestamp;
+        createdBy  : String;
+        modifiedAt : Timestamp;
+        modifiedBy : String;
+    }
+    entity Products : Auditable {
+        key ID          : UUID;
+            name        : String;
+            description : String;
+            price       : Decimal(10, 2);
+    }
+    entity Orders : Auditable {
+        key ID          : UUID;
+            orderDate   : Date;
+            totalAmount : Decimal(10, 2);
+            product     : Association to Products;
+    }
+
+}
+    `);
+
+    const openAPI = toOpenApi(csn);
+    expect(openAPI).toBeDefined();
+    expect(openAPI.tags.length).toBe(1);
+  });
+
   test('multiple services', () => {
     const csn = cds.compile.to.csn(`
       service A {entity E { key ID : UUID; };};

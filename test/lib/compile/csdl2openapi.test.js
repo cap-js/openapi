@@ -101,8 +101,8 @@ describe('Edge cases', function () {
         };
         const openapi = lib.csdl2openapi(csdl, {});
         assert.deepStrictEqual(openapi, expected, 'Empty CSDL document');
-    })
-
+    });
+    
     it('omit unused types', function () {
         const csdl = {
             $Reference: { dummy: { '$Include': [{ '$Namespace': 'Org.OData.Core.V1', '$Alias': 'Core' }] } },
