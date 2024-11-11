@@ -423,5 +423,6 @@ describe('OpenAPI export', () => {
     expect(openAPI.components.schemas["sap.OpenAPI.test.A.E1"]["x-sap-dpp-is-potentially-sensitive"]).toBe('true');
     expect(openAPI.paths["/F1"].get["x-sap-operation-intent"]).toBe('read-collection');
     expect(openAPI.paths["/F1"].get["x-sap-deprecated-operation"].deprecationDate).toBe('2022-12-31');
+    expect(openAPI.paths["/F1"].get["x-sap-deprecated-operation"].successorOperationId).toBe('successorOperation');
   });
 });
