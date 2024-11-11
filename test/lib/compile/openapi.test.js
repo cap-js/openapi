@@ -408,7 +408,11 @@ describe('OpenAPI export', () => {
         }
         
         @OpenAPI.Extensions: {
-        ![operation-intent]: 'read-collection'
+        ![x-sap-operation-intent]: 'read-collection',
+        ![sap-deprecated-operation] : {
+          deprecationDate: '2022-12-31',
+          successorOperationId: 'successorOperation'
+        }
       }
         function F1(param: String) returns String;
           
@@ -418,5 +422,6 @@ describe('OpenAPI export', () => {
     expect(openAPI['x-sap-compliance-level']).toBe('sap:base:v1');
     expect(openAPI.components.schemas["sap.OpenAPI.test.A.E1"]["x-sap-dpp-is-potentially-sensitive"]).toBe('true');
     expect(openAPI.paths["/F1"].get["x-sap-operation-intent"]).toBe('read-collection');
+    expect(openAPI.paths["/F1"].get["x-sap-deprecated-operation"].deprecationDate).toBe('2022-12-31');
   });
 });
