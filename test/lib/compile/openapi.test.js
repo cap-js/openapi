@@ -444,7 +444,8 @@ service CatalogService {
         ![x-sap-operation-intent]: 'read-collection',
         ![sap-deprecated-operation] : {
           deprecationDate: '2022-12-31',
-          successorOperationId: 'successorOperation'
+          successorOperationId: 'successorOperation',
+          notValidKey: 'notValidValue'  
         }
       }
         function F1(param: String) returns String;
@@ -457,5 +458,6 @@ service CatalogService {
     expect(openAPI.paths["/F1"].get["x-sap-operation-intent"]).toBe('read-collection');
     expect(openAPI.paths["/F1"].get["x-sap-deprecated-operation"].deprecationDate).toBe('2022-12-31');
     expect(openAPI.paths["/F1"].get["x-sap-deprecated-operation"].successorOperationId).toBe('successorOperation');
+    expect(openAPI.paths["/F1"].get["x-sap-deprecated-operation"].notValidKey).toBeUndefined();
   });
 });
