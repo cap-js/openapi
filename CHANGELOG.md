@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
-## Version 1.0.7 - 17.10.2024
+## Version 1.1.0 - 17.10.2024
 
 ### Fixed
 
@@ -15,6 +15,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 - Multiple protocols for a service now renders multiple openapi documents.
 - Format and type are now preserved for function parameters.
+- Fixed allowedValues on all primitive types.
 
 ### Added
 
@@ -27,8 +28,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 - Entities annotated with `@cds.autoexpose[d]` but explicitly exposed in the service are now made read-write.
 - Added a wrapper `properties` object for primitive return types.
-
 - Adding protocol and service name information to the server URL incase of `openapi:servers` option.
+
+### Changed
+
+- Using `@title`, `@Core.Description` and `@Core.LongDescription` for titles and descriptions for improving the default texts in `info` object and `x-sap-shortText`.
 
 ## Version 1.0.5 - 30.07.2024
 
