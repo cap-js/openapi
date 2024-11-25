@@ -429,8 +429,15 @@ service CatalogService {
     const csn = cds.compile.to.csn(`
       namespace sap.OpenAPI.test;
       @OpenAPI.Extensions: {
-        ![compliance-level]: 'sap:base:v1'
-      }
+        ![compliance-level]: 'sap:base:v1',
+        ![x-sap-ext-overview]: {
+          name    : 'Communication Scenario',
+          values: {
+            text   : 'Planning Calendar API Integration',
+            format: 'plain'
+    }
+  }
+    }
       service A {
       @OpenAPI.Extensions: {
         ![dpp-is-potentially-sensitive]: 'true'
