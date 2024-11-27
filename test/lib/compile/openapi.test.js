@@ -278,7 +278,7 @@ service CatalogService {
     const openapi = toOpenApi(csn, { 'openapi:config-file': path.resolve("./test/lib/compile/data/configFile.json") });
     expect(openapi.servers).toBeTruthy();
     expect(openapi).toMatchObject({ servers: [{ url: 'http://foo.bar:8080/rest/A' }, { url: "http://foo.bar:8080/a/foo/rest/A" }] });
-    expect(openapi.info.description).toMatch(/yuml.*diagram/i); 
+    expect(openapi.info.description).toMatch(/yuml.*diagram/i);
     expect(openapi['x-odata-version']).toMatch('4.1');
   });
 
@@ -405,6 +405,46 @@ service CatalogService {
     )
   })
 
+  describe('ER annotations', () => {
+    test('er annotations is correct', () => {
+      const csn = cds.compile.to.csn(`
+        service A {
+          @EntityRelationship.entityType : 'sap.vdm.sont:Material'
+          @EntityRelationship.entityIds : [{
+            propertyTypes: ['sap.vdm.gfn:MaterialId']
+          }]
+          @ODM.entityName: 'Product'
+          @ODM.oid       : 'oid'
+          entity Material {
+                  @EntityRelationship.propertyType                  : 'sap.vdm.gfn:MaterialId'
+              key ObjectID                  : String(18);
+
+                  @EntityRelationship.reference               : {
+                      referencedEntityType: 'sap.vdm.sont:BusinessPartner',
+                      referencedPropertyType    : 'sap.vdm.gfn::BusinessPartnerNumber'
+                  }
+                  manufacturer              : String(40);
+
+                  @EntityRelationship.reference               : {
+                      referencedEntityType: 'sap.sm:PurchaseOrder',
+                      referencedPropertyType    : 'sap.sm:PurchaseOrderUUID'
+                  }
+                  @ODM.oidReference.entityName: 'PurchaseOrder'
+                  PurchaseOrder             : UUID;
+
+                  @EntityRelationship.reference               : {
+                      referencedEntityType: 'sap.vdm.sont:BillOfMaterial',
+                      referencedPropertyType    : 'sap.vdm.gfn:BillOfMaterialId'
+                  }
+                  BOM                       : String(30);
+          }
+        }
+      `)
+      const openAPI = toOpenApi(csn);
+      expect(openAPI).toMatchSnapshot();
+    })
+  });
+
   test('OpenAPI annotations: @OpenAPI.externalDocs annotation is added to the schema', () => {
     const csn = cds.compile.to.csn(`
       namespace sap.OpenAPI.test;
@@ -418,10 +458,10 @@ service CatalogService {
           oid: String(128); 
         }
           }`);
-        const openAPI = toOpenApi(csn);
-        expect(openAPI.externalDocs).toBeDefined();
-        expect(openAPI.externalDocs.description).toBe('API Guide');
-        expect(openAPI.externalDocs.url).toBe('https://help.sap.com/docs/product/123.html');
+    const openAPI = toOpenApi(csn);
+    expect(openAPI.externalDocs).toBeDefined();
+    expect(openAPI.externalDocs.description).toBe('API Guide');
+    expect(openAPI.externalDocs.url).toBe('https://help.sap.com/docs/product/123.html');
   }
   );
 });

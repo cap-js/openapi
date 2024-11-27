@@ -1,0 +1,571 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OpenAPI export ER annotations er annotations is correct 1`] = `
+{
+  "components": {
+    "parameters": {
+      "count": {
+        "description": "Include count of items, see [Count](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptioncount)",
+        "in": "query",
+        "name": "$count",
+        "schema": {
+          "type": "boolean",
+        },
+      },
+      "search": {
+        "description": "Search items by search phrases, see [Searching](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionsearch)",
+        "in": "query",
+        "name": "$search",
+        "schema": {
+          "type": "string",
+        },
+      },
+      "skip": {
+        "description": "Skip the first n items, see [Paging - Skip](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionskip)",
+        "in": "query",
+        "name": "$skip",
+        "schema": {
+          "minimum": 0,
+          "type": "integer",
+        },
+      },
+      "top": {
+        "description": "Show only the first n items, see [Paging - Top](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptiontop)",
+        "example": 50,
+        "in": "query",
+        "name": "$top",
+        "schema": {
+          "minimum": 0,
+          "type": "integer",
+        },
+      },
+    },
+    "responses": {
+      "error": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/error",
+            },
+          },
+        },
+        "description": "Error",
+      },
+    },
+    "schemas": {
+      "A.Material": {
+        "properties": {
+          "BOM": {
+            "maxLength": 30,
+            "nullable": true,
+            "type": "string",
+            "x-entity-relationship-reference": {
+              "referencedEntityType": "sap.vdm.sont:BillOfMaterial",
+              "referencedPropertyType": "sap.vdm.gfn:BillOfMaterialId",
+            },
+          },
+          "ObjectID": {
+            "maxLength": 18,
+            "type": "string",
+            "x-entity-relationship-property-type": "sap.vdm.gfn:MaterialId",
+          },
+          "PurchaseOrder": {
+            "example": "01234567-89ab-cdef-0123-456789abcdef",
+            "format": "uuid",
+            "nullable": true,
+            "type": "string",
+            "x-entity-relationship-reference": {
+              "referencedEntityType": "sap.sm:PurchaseOrder",
+              "referencedPropertyType": "sap.sm:PurchaseOrderUUID",
+            },
+            "x-sap-odm-oid-reference-entity-name": "PurchaseOrder",
+          },
+          "manufacturer": {
+            "maxLength": 40,
+            "nullable": true,
+            "type": "string",
+            "x-entity-relationship-reference": {
+              "referencedEntityType": "sap.vdm.sont:BusinessPartner",
+              "referencedPropertyType": "sap.vdm.gfn::BusinessPartnerNumber",
+            },
+          },
+        },
+        "title": "Material",
+        "type": "object",
+        "x-entity-relationship-entity-ids": [
+          {
+            "propertyTypes": [
+              "sap.vdm.gfn:MaterialId",
+            ],
+          },
+        ],
+        "x-entity-relationship-entity-type": "sap.vdm.sont:Material",
+        "x-sap-odm-entity-name": "Product",
+        "x-sap-odm-oid": "oid",
+      },
+      "A.Material-create": {
+        "properties": {
+          "BOM": {
+            "maxLength": 30,
+            "nullable": true,
+            "type": "string",
+            "x-entity-relationship-reference": {
+              "referencedEntityType": "sap.vdm.sont:BillOfMaterial",
+              "referencedPropertyType": "sap.vdm.gfn:BillOfMaterialId",
+            },
+          },
+          "ObjectID": {
+            "maxLength": 18,
+            "type": "string",
+            "x-entity-relationship-property-type": "sap.vdm.gfn:MaterialId",
+          },
+          "PurchaseOrder": {
+            "example": "01234567-89ab-cdef-0123-456789abcdef",
+            "format": "uuid",
+            "nullable": true,
+            "type": "string",
+            "x-entity-relationship-reference": {
+              "referencedEntityType": "sap.sm:PurchaseOrder",
+              "referencedPropertyType": "sap.sm:PurchaseOrderUUID",
+            },
+            "x-sap-odm-oid-reference-entity-name": "PurchaseOrder",
+          },
+          "manufacturer": {
+            "maxLength": 40,
+            "nullable": true,
+            "type": "string",
+            "x-entity-relationship-reference": {
+              "referencedEntityType": "sap.vdm.sont:BusinessPartner",
+              "referencedPropertyType": "sap.vdm.gfn::BusinessPartnerNumber",
+            },
+          },
+        },
+        "required": [
+          "ObjectID",
+        ],
+        "title": "Material (for create)",
+        "type": "object",
+        "x-entity-relationship-entity-ids": [
+          {
+            "propertyTypes": [
+              "sap.vdm.gfn:MaterialId",
+            ],
+          },
+        ],
+        "x-entity-relationship-entity-type": "sap.vdm.sont:Material",
+        "x-sap-odm-entity-name": "Product",
+        "x-sap-odm-oid": "oid",
+      },
+      "A.Material-update": {
+        "properties": {
+          "BOM": {
+            "maxLength": 30,
+            "nullable": true,
+            "type": "string",
+            "x-entity-relationship-reference": {
+              "referencedEntityType": "sap.vdm.sont:BillOfMaterial",
+              "referencedPropertyType": "sap.vdm.gfn:BillOfMaterialId",
+            },
+          },
+          "PurchaseOrder": {
+            "example": "01234567-89ab-cdef-0123-456789abcdef",
+            "format": "uuid",
+            "nullable": true,
+            "type": "string",
+            "x-entity-relationship-reference": {
+              "referencedEntityType": "sap.sm:PurchaseOrder",
+              "referencedPropertyType": "sap.sm:PurchaseOrderUUID",
+            },
+            "x-sap-odm-oid-reference-entity-name": "PurchaseOrder",
+          },
+          "manufacturer": {
+            "maxLength": 40,
+            "nullable": true,
+            "type": "string",
+            "x-entity-relationship-reference": {
+              "referencedEntityType": "sap.vdm.sont:BusinessPartner",
+              "referencedPropertyType": "sap.vdm.gfn::BusinessPartnerNumber",
+            },
+          },
+        },
+        "title": "Material (for update)",
+        "type": "object",
+        "x-entity-relationship-entity-ids": [
+          {
+            "propertyTypes": [
+              "sap.vdm.gfn:MaterialId",
+            ],
+          },
+        ],
+        "x-entity-relationship-entity-type": "sap.vdm.sont:Material",
+        "x-sap-odm-entity-name": "Product",
+        "x-sap-odm-oid": "oid",
+      },
+      "count": {
+        "anyOf": [
+          {
+            "type": "number",
+          },
+          {
+            "type": "string",
+          },
+        ],
+        "description": "The number of entities in the collection. Available when using the [$count](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptioncount) query option.",
+      },
+      "error": {
+        "properties": {
+          "error": {
+            "properties": {
+              "code": {
+                "type": "string",
+              },
+              "details": {
+                "items": {
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                    },
+                    "message": {
+                      "type": "string",
+                    },
+                    "target": {
+                      "type": "string",
+                    },
+                  },
+                  "required": [
+                    "code",
+                    "message",
+                  ],
+                  "type": "object",
+                },
+                "type": "array",
+              },
+              "innererror": {
+                "description": "The structure of this object is service-specific",
+                "type": "object",
+              },
+              "message": {
+                "type": "string",
+              },
+              "target": {
+                "type": "string",
+              },
+            },
+            "required": [
+              "code",
+              "message",
+            ],
+            "type": "object",
+          },
+        },
+        "required": [
+          "error",
+        ],
+        "type": "object",
+      },
+    },
+  },
+  "info": {
+    "description": "Use @Core.LongDescription: '...' on your CDS service to provide a meaningful description.",
+    "title": "Use @title: '...' on your CDS service to provide a meaningful title.",
+    "version": "",
+  },
+  "openapi": "3.0.2",
+  "paths": {
+    "/$batch": {
+      "post": {
+        "description": "Group multiple requests into a single request payload, see [Batch Requests](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_BatchRequests).
+
+*Please note that "Try it out" is not supported for this request.*",
+        "requestBody": {
+          "content": {
+            "multipart/mixed;boundary=request-separator": {
+              "example": "--request-separator
+Content-Type: application/http
+Content-Transfer-Encoding: binary
+
+GET Material HTTP/1.1
+Accept: application/json
+
+
+--request-separator--",
+              "schema": {
+                "type": "string",
+              },
+            },
+          },
+          "description": "Batch request",
+          "required": true,
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "multipart/mixed": {
+                "example": "--response-separator
+Content-Type: application/http
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{...}
+--response-separator--",
+                "schema": {
+                  "type": "string",
+                },
+              },
+            },
+            "description": "Batch response",
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error",
+          },
+        },
+        "summary": "Sends a group of requests",
+        "tags": [
+          "Batch Requests",
+        ],
+      },
+    },
+    "/Material": {
+      "get": {
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/top",
+          },
+          {
+            "$ref": "#/components/parameters/skip",
+          },
+          {
+            "$ref": "#/components/parameters/search",
+          },
+          {
+            "description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
+            "in": "query",
+            "name": "$filter",
+            "schema": {
+              "type": "string",
+            },
+          },
+          {
+            "$ref": "#/components/parameters/count",
+          },
+          {
+            "description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
+            "explode": false,
+            "in": "query",
+            "name": "$orderby",
+            "schema": {
+              "items": {
+                "enum": [
+                  "ObjectID",
+                  "ObjectID desc",
+                  "manufacturer",
+                  "manufacturer desc",
+                  "PurchaseOrder",
+                  "PurchaseOrder desc",
+                  "BOM",
+                  "BOM desc",
+                ],
+                "type": "string",
+              },
+              "type": "array",
+              "uniqueItems": true,
+            },
+          },
+          {
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "explode": false,
+            "in": "query",
+            "name": "$select",
+            "schema": {
+              "items": {
+                "enum": [
+                  "ObjectID",
+                  "manufacturer",
+                  "PurchaseOrder",
+                  "BOM",
+                ],
+                "type": "string",
+              },
+              "type": "array",
+              "uniqueItems": true,
+            },
+          },
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "@count": {
+                      "$ref": "#/components/schemas/count",
+                    },
+                    "value": {
+                      "items": {
+                        "$ref": "#/components/schemas/A.Material",
+                      },
+                      "type": "array",
+                    },
+                  },
+                  "title": "Collection of Material",
+                  "type": "object",
+                },
+              },
+            },
+            "description": "Retrieved material",
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error",
+          },
+        },
+        "summary": "Retrieves a list of material.",
+        "tags": [
+          "Material",
+        ],
+      },
+      "post": {
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/A.Material-create",
+              },
+            },
+          },
+          "description": "New material",
+          "required": true,
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/A.Material",
+                },
+              },
+            },
+            "description": "Created material",
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error",
+          },
+        },
+        "summary": "Creates a single material.",
+        "tags": [
+          "Material",
+        ],
+      },
+    },
+    "/Material('{ObjectID}')": {
+      "delete": {
+        "responses": {
+          "204": {
+            "description": "Success",
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error",
+          },
+        },
+        "summary": "Deletes a single material.",
+        "tags": [
+          "Material",
+        ],
+      },
+      "get": {
+        "parameters": [
+          {
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "explode": false,
+            "in": "query",
+            "name": "$select",
+            "schema": {
+              "items": {
+                "enum": [
+                  "ObjectID",
+                  "manufacturer",
+                  "PurchaseOrder",
+                  "BOM",
+                ],
+                "type": "string",
+              },
+              "type": "array",
+              "uniqueItems": true,
+            },
+          },
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/A.Material",
+                },
+              },
+            },
+            "description": "Retrieved material",
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error",
+          },
+        },
+        "summary": "Retrieves a single material.",
+        "tags": [
+          "Material",
+        ],
+      },
+      "parameters": [
+        {
+          "description": "key: ObjectID",
+          "in": "path",
+          "name": "ObjectID",
+          "required": true,
+          "schema": {
+            "maxLength": 18,
+            "type": "string",
+            "x-entity-relationship-property-type": "sap.vdm.gfn:MaterialId",
+          },
+        },
+      ],
+      "patch": {
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/A.Material-update",
+              },
+            },
+          },
+          "description": "New property values",
+          "required": true,
+        },
+        "responses": {
+          "204": {
+            "description": "Success",
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error",
+          },
+        },
+        "summary": "Changes a single material.",
+        "tags": [
+          "Material",
+        ],
+      },
+    },
+  },
+  "servers": [
+    {
+      "url": "/rest/a",
+    },
+  ],
+  "tags": [
+    {
+      "name": "Material",
+    },
+  ],
+  "x-odata-version": "4.01",
+  "x-sap-api-type": "ODATAV4",
+  "x-sap-shortText": "Use @Core.Description: '...' on your CDS service to provide a meaningful short text.",
+}
+`;
