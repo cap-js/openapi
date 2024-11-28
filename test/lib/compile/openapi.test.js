@@ -461,6 +461,9 @@ service CatalogService {
     const openAPI = toOpenApi(csn);
     expect(openAPI).toBeDefined();
     expect(openAPI['x-sap-compliance-level']).toBe('sap:base:v1');
+    expect(openAPI['x-sap-ext-overview'].name).toBe('Communication Scenario');
+    expect(openAPI['x-sap-ext-overview'].values.text).toBe('Planning Calendar API Integration');
+    expect(openAPI['x-sap-ext-overview'].values.format).toBe('plain');
     expect(openAPI.components.schemas["sap.OpenAPI.test.A.E1"]["x-sap-dpp-is-potentially-sensitive"]).toBe('true');
     expect(openAPI.paths["/F1"].get["x-sap-operation-intent"]).toBe('read-collection');
     expect(openAPI.paths["/F1"].get["x-sap-deprecated-operation"].deprecationDate).toBe('2022-12-31');
