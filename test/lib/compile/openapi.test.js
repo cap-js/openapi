@@ -448,7 +448,7 @@ service CatalogService {
         }
         
         @OpenAPI.Extensions: {
-        ![x-sap-operation-intent]: 'read-collection',
+        ![x-sap-operation-intent]: 'read-collection for function',
         ![sap-deprecated-operation] : {
           deprecationDate: '2022-12-31',
           successorOperationId: 'successorOperation',
@@ -456,6 +456,11 @@ service CatalogService {
         }
       }
         function F1(param: String) returns String;
+
+        @OpenAPI.Extensions: {
+        ![x-sap-operation-intent]: 'read-collection for action'
+    }
+        action A1(param: String) returns String;
           
           }`);
     const openAPI = toOpenApi(csn);
@@ -465,7 +470,8 @@ service CatalogService {
     expect(openAPI['x-sap-ext-overview'].values.text).toBe('Planning Calendar API Integration');
     expect(openAPI['x-sap-ext-overview'].values.format).toBe('plain');
     expect(openAPI.components.schemas["sap.OpenAPI.test.A.E1"]["x-sap-dpp-is-potentially-sensitive"]).toBe('true');
-    expect(openAPI.paths["/F1"].get["x-sap-operation-intent"]).toBe('read-collection');
+    expect(openAPI.paths["/F1"].get["x-sap-operation-intent"]).toBe('read-collection for function');
+    expect(openAPI.paths["/A1"].post["x-sap-operation-intent"]).toBe('read-collection for action');
     expect(openAPI.paths["/F1"].get["x-sap-deprecated-operation"].deprecationDate).toBe('2022-12-31');
     expect(openAPI.paths["/F1"].get["x-sap-deprecated-operation"].successorOperationId).toBe('successorOperation');
     expect(openAPI.paths["/F1"].get["x-sap-deprecated-operation"].notValidKey).toBeUndefined();
