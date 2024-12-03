@@ -14,6 +14,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 - Fixed allowedValues on all primitive types.
 - Removed duplicates in `tags`.
+- No longer append protocol and service name information to the server URL incase of `openapi:servers` option.
 
 ## Version 1.0.7 - 17.10.2024
 
