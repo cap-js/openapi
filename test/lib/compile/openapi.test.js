@@ -254,7 +254,7 @@ service CatalogService {
     const serverObj = "[{\n \"url\": \"https://{customer1Id}.saas-app.com:{port}/v2\",\n \"variables\": {\n \"customer1Id\": \"demo\",\n \"description\": \"Customer1 ID assigned by the service provider\"\n }\n}, {\n \"url\": \"https://{customer2Id}.saas-app.com:{port}/v2\",\n \"variables\": {\n \"customer2Id\": \"demo\",\n \"description\": \"Customer2 ID assigned by the service provider\"\n }\n}]"
     const openapi = toOpenApi(csn, { 'openapi:servers': serverObj });
     expect(openapi.servers).toBeTruthy();
-    expect(openapi.servers[0].url).toMatch('https://{customer1Id}.saas-app.com:{port}/v2/odata/v4/A')
+    expect(openapi.servers[0].url).toMatch('https://{customer1Id}.saas-app.com:{port}/v2')
   });
 
 
@@ -277,7 +277,7 @@ service CatalogService {
     );
     const openapi = toOpenApi(csn, { 'openapi:config-file': path.resolve("./test/lib/compile/data/configFile.json") });
     expect(openapi.servers).toBeTruthy();
-    expect(openapi).toMatchObject({ servers: [{ url: 'http://foo.bar:8080/rest/A' }, { url: "http://foo.bar:8080/a/foo/rest/A" }] });
+    expect(openapi).toMatchObject({ servers: [{ url: 'http://foo.bar:8080' }, { url: "http://foo.bar:8080/a/foo" }] });
     expect(openapi.info.description).toMatch(/yuml.*diagram/i); 
     expect(openapi['x-odata-version']).toMatch('4.1');
   });
@@ -296,7 +296,7 @@ service CatalogService {
     expect(openapi.info.title).toMatch(/http:\/\/example.com:8080/i)
     expect(openapi.info.description).not.toMatch(/yuml.*diagram/i);
     expect(openapi['x-odata-version']).toMatch('4.0');
-    expect(openapi).toMatchObject({ servers: [{ url: 'http://foo.bar:8080/odata/v4/A' }, { url: "http://foo.bar:8080/a/foo/odata/v4/A" }] });
+    expect(openapi).toMatchObject({ servers: [{ url: 'http://foo.bar:8080' }, { url: "http://foo.bar:8080/a/foo" }] });
   });
 
   test('annotations: root entity property', () => {
