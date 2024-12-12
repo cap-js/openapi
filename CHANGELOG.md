@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## Version 1.1.1 - tbd
+
+### Fixed
+
+- Fixes server URL based on the version provided by `--odata-version` value.
+
 ## Version 1.1.0 - 04.12.2024
 
 ### Added
