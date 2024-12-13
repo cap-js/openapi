@@ -247,6 +247,14 @@ service CatalogService {
     expect(openapi.servers).toBeTruthy();
   });
 
+  test('options: odata-version check server URL', () => {
+    const csn = cds.compile.to.csn(`
+      service A {entity E { key ID : UUID; };};`
+    );
+    const openapi = toOpenApi(csn, { 'odata-version': '4.0' });
+    expect(openapi.servers[0].url).toMatch('odata');
+  });
+
   test('options: Multiple servers', () => {
     const csn = cds.compile.to.csn(`
       service A {entity E { key ID : UUID; };};`
