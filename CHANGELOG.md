@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+
+### Fixed
+
+- Fixed the filename issue: when there is only one service in the CDL source, the OpenAPI document is now generated with the filename corresponding to the service name rather than the CDL source filename.
+
 ## Version 1.1.1 - 13.12.2024
 
 ### Fixed
@@ -38,6 +43,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 - OpenAPI documents can now have `externalDocs` object provided through `@OpenAPI.externalDocs` annotation in the service level of CDS.
 - OpenAPI documents now throws warning if `securitySchemas` are not found.
+- Introduced --openapi:config-file option to incorporate all the options for cds compile command in a JSON configuration file, inline options take precedence over those defined in the configuration file.
 
 ## Version 1.0.6 - 23.09.2024
 
@@ -90,4 +96,3 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ### Added
 
 - Initial release
-- Introduced --openapi:config-file option to incorporate all the options for cds compile command in a JSON configuration file, inline options take precedence over those defined in the configuration file.
