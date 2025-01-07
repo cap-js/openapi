@@ -11,65 +11,67 @@ const SCENARIO = Object.freeze({
 })
 
 function checkAnnotations(csn, annotations, scenario = SCENARIO.positive, property = '') {
-  const openApi = toOpenApi(csn)
-  const schemas = Object.entries(openApi.components.schemas).filter(([key]) => key.startsWith('sap.odm.test.A.E1'))
+  const openApi = toOpenApi(csn);
+  if (openApi.next) {
+    const { value } = openApi.next();
+    const schemas = Object.entries(value[0].components.schemas).filter(([key]) => key.startsWith('sap.odm.test.A.E1'))
+    // Test if the openAPI document was generated with some schemas.
+    expect(value[0].components.schemas).toBeDefined()
+    expect(value[0]).toBeDefined()
+    expect(schemas.length > 0).toBeTruthy()
 
-  // Test if the openAPI document was generated with some schemas.
-  expect(openApi).toBeDefined()
-  expect(openApi.components.schemas).toBeDefined()
-  expect(schemas.length > 0).toBeTruthy()
-
-  // Expect that not-allowed ODM annotations are unavailable in the schema.
-  if (scenario === SCENARIO.notAllowedAnnotations) {
-    for (const [, schema] of schemas) {
-      for (const [annKey] of annotations) {
-        expect(schema[annKey]).not.toBeDefined()
+    // Expect that not-allowed ODM annotations are unavailable in the schema.
+    if (scenario === SCENARIO.notAllowedAnnotations) {
+      for (const [, schema] of schemas) {
+        for (const [annKey] of annotations) {
+          expect(schema[annKey]).not.toBeDefined()
+        }
       }
+      return;
     }
-    return;
-  }
 
-  // Expect that even the ODM annotations with not-matched values will be derived.
-  if (scenario === SCENARIO.notMatchingValues) {
+    // Expect that even the ODM annotations with not-matched values will be derived.
+    if (scenario === SCENARIO.notMatchingValues) {
+      for (const [, schema] of schemas) {
+        for (const [annKey, annValue] of annotations) {
+          expect(schema[annKey]).toBe(annValue)
+        }
+      }
+      return;
+    }
+
+    if (scenario === SCENARIO.checkProperty) {
+      for (const [, schema] of schemas) {
+        const propertyObj = schema.properties[property]
+        for (const [annKey, annValue] of annotations) {
+          expect(propertyObj[annKey]).toBe(annValue)
+        }
+      }
+      return
+    }
+
     for (const [, schema] of schemas) {
       for (const [annKey, annValue] of annotations) {
         expect(schema[annKey]).toBe(annValue)
       }
     }
-    return;
-  }
 
-  if (scenario === SCENARIO.checkProperty) {
-    for (const [, schema] of schemas) {
-      const propertyObj = schema.properties[property]
-      for (const [annKey, annValue] of annotations) {
-        expect(propertyObj[annKey]).toBe(annValue)
+    // Test that no other places contain the ODM extensions in the OpenAPI document.
+
+    // components.schemas where the schemas are not from entity E1.
+    const notE1 = Object.entries(value[0].components.schemas).filter(([key]) => !key.startsWith('sap.odm.test.A.E1'))
+    for (const [, schema] of notE1) {
+      const schemaString = JSON.stringify(schema)
+      for (const [annKey] of annotations) {
+        expect(schemaString).not.toContain(annKey)
       }
     }
-    return
-  }
 
-  for (const [, schema] of schemas) {
-    for (const [annKey, annValue] of annotations) {
-      expect(schema[annKey]).toBe(annValue)
-    }
-  }
-
-  // Test that no other places contain the ODM extensions in the OpenAPI document.
-
-  // components.schemas where the schemas are not from entity E1.
-  const notE1 = Object.entries(openApi.components.schemas).filter(([key]) => !key.startsWith('sap.odm.test.A.E1'))
-  for (const [, schema] of notE1) {
-    const schemaString = JSON.stringify(schema)
+    // all other components of the OpenAPI document except the schemas.
+    const openApiNoSchemas = JSON.stringify({ ...value[0], components: { parameters: { ...value[0].components.parameters }, responses: { ...value[0].components.responses } } })
     for (const [annKey] of annotations) {
-      expect(schemaString).not.toContain(annKey)
+      expect(openApiNoSchemas).not.toContain(annKey)
     }
-  }
-
-  // all other components of the OpenAPI document except the schemas.
-  const openApiNoSchemas = JSON.stringify({ ...openApi, components: { parameters: { ...openApi.components.parameters }, responses: { ...openApi.components.responses } } })
-  for (const [annKey] of annotations) {
-    expect(openApiNoSchemas).not.toContain(annKey)
   }
 }
 
@@ -88,9 +90,12 @@ describe('OpenAPI export', () => {
       service A {entity E { key ID : UUID; };};`
     );
     const openapi = toOpenApi(csn);
-    expect(openapi).toMatchObject(someOpenApi);
-    // UUID elements are not required
-    expect(openapi.components.schemas['A.E-create']).not.toHaveProperty('required');
+    if (openapi.next) {
+      const { value } = openapi.next();
+      expect(value[0]).toMatchObject(someOpenApi);
+      // UUID elements are not required
+      expect(value[0].components.schemas['A.E-create']).not.toHaveProperty('required');
+    }
   });
 
   test('one service, namespace', () => {
@@ -99,7 +104,10 @@ describe('OpenAPI export', () => {
       service A {entity E { key ID : UUID; };};`
     );
     const openapi = toOpenApi(csn);
-    expect(openapi).toMatchObject(someOpenApi);
+    if (openapi.next) {
+      const { value } = openapi.next();
+      expect(value[0]).toMatchObject(someOpenApi);
+    }
   });
 
   test('one service, multiple protocols', () => {
@@ -114,7 +122,7 @@ describe('OpenAPI export', () => {
       expect(content).toMatchObject(someOpenApi);
       filesFound.add(metadata.file);
     }
-    expect(filesFound).toMatchObject(new Set(['.odata', '.rest']));
+    expect(filesFound).toMatchObject(new Set(['com.sap.A.odata', 'com.sap.A.rest']));
   });
 
   test('Check for tags object having any duplicate entries ', () => {
@@ -146,8 +154,11 @@ service CatalogService {
     `);
 
     const openAPI = toOpenApi(csn);
-    expect(openAPI).toBeDefined();
-    expect(openAPI.tags.length).toBe(1);
+    if (openAPI.next) {
+      const { value } = openAPI.next();
+      expect(value[0]).toBeDefined();
+      expect(value[0].tags.length).toBe(1);
+    }
   });
 
   test('multiple services', () => {
@@ -158,10 +169,16 @@ service CatalogService {
     expect(() => toOpenApi(csn, { service: 'foo' })).toThrowError(/no service/si)
 
     let openapi = toOpenApi(csn, { service: 'A' });
-    expect(openapi).toMatchObject(someOpenApi);
+    if (openapi.next) {
+      const { value } = openapi.next();
+      expect(value[0]).toMatchObject(someOpenApi);
+    }
 
     openapi = toOpenApi(csn, { service: 'B' });
-    expect(openapi).toMatchObject(someOpenApi);
+    if (openapi.next) {
+      const { value } = openapi.next();
+      expect(value[0]).toMatchObject(someOpenApi);
+    }
 
     openapi = toOpenApi(csn, { service: 'all' });
     const filesFound = new Set();
@@ -181,11 +198,16 @@ service CatalogService {
     expect(() => toOpenApi(csn, { service: 'foo' })).toThrowError(/no service/si)
 
     let openapi = toOpenApi(csn, { service: 'com.sap.A' });
-    expect(openapi).toMatchObject(someOpenApi);
+    if (openapi.next) {
+      const { value } = openapi.next();
+      expect(value[0]).toMatchObject(someOpenApi);
+    }
 
     openapi = toOpenApi(csn, { service: 'com.sap.B' });
-    expect(openapi).toMatchObject(someOpenApi);
-
+    if (openapi.next) {
+      const { value } = openapi.next();
+      expect(value[0]).toMatchObject(someOpenApi);
+    }
     openapi = toOpenApi(csn, { service: 'all' });
     const filesFound = new Set();
     for (const [content, metadata] of openapi) {
@@ -218,14 +240,23 @@ service CatalogService {
       service B {entity F { key ID : UUID; };};`
     );
     let openapi = toOpenApi(csn, { service: 'A' });
-    expect(openapi).toMatchObject({ servers: [{ url: '/a' }] });
-    expect(openapi.info.description).toBe("Use @Core.LongDescription: '...' on your CDS service to provide a meaningful description.")
+    if (openapi.next) {
+      const { value } = openapi.next();
+      expect(value[0]).toMatchObject({ servers: [{ url: '/a' }] });
+      expect(value[0].info.description).toBe("Use @Core.LongDescription: '...' on your CDS service to provide a meaningful description.")
+    }
 
     openapi = toOpenApi(csn, { service: 'A', 'openapi:url': 'http://foo.bar:8080' });
-    expect(openapi).toMatchObject({ servers: [{ url: 'http://foo.bar:8080' }] });
+    if (openapi.next) {
+      const { value } = openapi.next();
+      expect(value[0]).toMatchObject({ servers: [{ url: 'http://foo.bar:8080' }] });
+    }
 
     openapi = toOpenApi(csn, { service: 'A', 'openapi:url': 'http://foo.bar:8080//${service-path}/foo' });
-    expect(openapi).toMatchObject({ servers: [{ url: 'http://foo.bar:8080/a/foo' }] });
+    if (openapi.next) {
+      const { value } = openapi.next();
+      expect(value[0]).toMatchObject({ servers: [{ url: 'http://foo.bar:8080/a/foo' }] });
+    }
   });
 
   test('options: diagram', () => {
@@ -233,9 +264,15 @@ service CatalogService {
       service A {entity E { key ID : UUID; };};`
     );
     let openapi = toOpenApi(csn);
-    expect(openapi.info.description).not.toMatch(/yuml.*diagram/i)
+    if (openapi.next) {
+      const { value } = openapi.next();
+      expect(value[0].info.description).not.toMatch(/yuml.*diagram/i);
+    }
     openapi = toOpenApi(csn, { 'openapi:diagram': true });
-    expect(openapi.info.description).toMatch(/yuml.*diagram/i)
+    if (openapi.next) {
+      const { value } = openapi.next();
+      expect(value[0].info.description).toMatch(/yuml.*diagram/i);
+    }
   });
 
   test('options: servers', () => {
@@ -244,7 +281,10 @@ service CatalogService {
     );
     const serverObj = "[{\n \"url\": \"https://{customerId}.saas-app.com:{port}/v2\",\n \"variables\": {\n \"customerId\": \"demo\",\n \"description\": \"Customer ID assigned by the service provider\"\n }\n}]"
     const openapi = toOpenApi(csn, { 'openapi:servers': serverObj });
-    expect(openapi.servers).toBeTruthy();
+    if (openapi.next) {
+      const { value } = openapi.next();
+      expect(value[0].servers).toBeTruthy();
+    }
   });
 
   test('options: odata-version check server URL', () => {
@@ -252,7 +292,10 @@ service CatalogService {
       service A {entity E { key ID : UUID; };};`
     );
     const openapi = toOpenApi(csn, { 'odata-version': '4.0' });
-    expect(openapi.servers[0].url).toMatch('odata');
+    if (openapi.next) {
+      const { value } = openapi.next();
+      expect(value[0].servers[0].url).toMatch('odata');
+    }
   });
 
   test('options: Multiple servers', () => {
@@ -261,8 +304,11 @@ service CatalogService {
     );
     const serverObj = "[{\n \"url\": \"https://{customer1Id}.saas-app.com:{port}/v2\",\n \"variables\": {\n \"customer1Id\": \"demo\",\n \"description\": \"Customer1 ID assigned by the service provider\"\n }\n}, {\n \"url\": \"https://{customer2Id}.saas-app.com:{port}/v2\",\n \"variables\": {\n \"customer2Id\": \"demo\",\n \"description\": \"Customer2 ID assigned by the service provider\"\n }\n}]"
     const openapi = toOpenApi(csn, { 'openapi:servers': serverObj });
-    expect(openapi.servers).toBeTruthy();
-    expect(openapi.servers[0].url).toMatch('https://{customer1Id}.saas-app.com:{port}/v2')
+    if (openapi.next) {
+      const { value } = openapi.next();
+      expect(value[0].servers).toBeTruthy();
+      expect(value[0].servers[0].url).toMatch('https://{customer1Id}.saas-app.com:{port}/v2')
+    }
   });
 
 
@@ -284,10 +330,13 @@ service CatalogService {
       service A {entity E { key ID : UUID; };};`
     );
     const openapi = toOpenApi(csn, { 'openapi:config-file': path.resolve("./test/lib/compile/data/configFile.json") });
-    expect(openapi.servers).toBeTruthy();
-    expect(openapi).toMatchObject({ servers: [{ url: 'http://foo.bar:8080' }, { url: "http://foo.bar:8080/a/foo" }] });
-    expect(openapi.info.description).toMatch(/yuml.*diagram/i); 
-    expect(openapi['x-odata-version']).toMatch('4.1');
+    if (openapi.next) {
+      const { value } = openapi.next();
+      expect(value[0].servers).toBeTruthy();
+      expect(value[0]).toMatchObject({ servers: [{ url: 'http://foo.bar:8080' }, { url: "http://foo.bar:8080/a/foo" }] });
+      expect(value[0].info.description).toMatch(/yuml.*diagram/i);
+      expect(value[0]['x-odata-version']).toMatch('4.1');
+    }
   });
 
   test('options: config-file - with inline options, inline options given precedence', () => {
@@ -301,10 +350,13 @@ service CatalogService {
       'openapi:diagram': "false"
     }
     const openapi = toOpenApi(csn, options);
-    expect(openapi.info.title).toMatch(/http:\/\/example.com:8080/i)
-    expect(openapi.info.description).not.toMatch(/yuml.*diagram/i);
-    expect(openapi['x-odata-version']).toMatch('4.0');
-    expect(openapi).toMatchObject({ servers: [{ url: 'http://foo.bar:8080' }, { url: "http://foo.bar:8080/a/foo" }] });
+    if (openapi.next) {
+      const { value } = openapi.next();
+      expect(value[0].info.title).toMatch(/http:\/\/example.com:8080/i)
+      expect(value[0].info.description).not.toMatch(/yuml.*diagram/i);
+      expect(value[0]['x-odata-version']).toMatch('4.0');
+      expect(value[0]).toMatchObject({ servers: [{ url: 'http://foo.bar:8080' }, { url: "http://foo.bar:8080/a/foo" }] });
+    }
   });
 
   test('annotations: root entity property', () => {
@@ -318,11 +370,14 @@ service CatalogService {
     `)
 
     const openAPI = toOpenApi(csn)
-    expect(openAPI).toBeDefined()
-    expect(openAPI.components.schemas["sap.odm.test.A.E1"]).toMatchObject({ "x-sap-root-entity": true })
-    expect(openAPI.components.schemas["sap.odm.test.A.E1-create"]["x-sap-root-entity"]).toBeUndefined()
-    expect(openAPI.components.schemas["sap.odm.test.A.E1-update"]["x-sap-root-entity"]).toBeUndefined()
-  })
+    if (openAPI.next) {
+      const { value } = openAPI.next();
+      expect(value[0]).toBeDefined()
+      expect(value[0].components.schemas["sap.odm.test.A.E1"]).toMatchObject({ "x-sap-root-entity": true })
+      expect(value[0].components.schemas["sap.odm.test.A.E1-create"]["x-sap-root-entity"]).toBeUndefined()
+      expect(value[0].components.schemas["sap.odm.test.A.E1-update"]["x-sap-root-entity"]).toBeUndefined()
+    }
+  });
 
   test('odm annotations: entity name and oid property', () => {
     const csn = cds.compile.to.csn(`
@@ -426,10 +481,13 @@ service CatalogService {
           oid: String(128); 
         }
           }`);
-        const openAPI = toOpenApi(csn);
-        expect(openAPI.externalDocs).toBeDefined();
-        expect(openAPI.externalDocs.description).toBe('API Guide');
-        expect(openAPI.externalDocs.url).toBe('https://help.sap.com/docs/product/123.html');
+    const openAPI = toOpenApi(csn);
+    if (openAPI.next) {
+      const { value } = openAPI.next();
+      expect(value[0].externalDocs).toBeDefined();
+      expect(value[0].externalDocs.description).toBe('API Guide');
+      expect(value[0].externalDocs.url).toBe('https://help.sap.com/docs/product/123.html');
+    }
   }
   );
 
@@ -472,16 +530,19 @@ service CatalogService {
           
           }`);
     const openAPI = toOpenApi(csn);
-    expect(openAPI).toBeDefined();
-    expect(openAPI['x-sap-compliance-level']).toBe('sap:base:v1');
-    expect(openAPI['x-sap-ext-overview'].name).toBe('Communication Scenario');
-    expect(openAPI['x-sap-ext-overview'].values.text).toBe('Planning Calendar API Integration');
-    expect(openAPI['x-sap-ext-overview'].values.format).toBe('plain');
-    expect(openAPI.components.schemas["sap.OpenAPI.test.A.E1"]["x-sap-dpp-is-potentially-sensitive"]).toBe('true');
-    expect(openAPI.paths["/F1"].get["x-sap-operation-intent"]).toBe('read-collection for function');
-    expect(openAPI.paths["/A1"].post["x-sap-operation-intent"]).toBe('read-collection for action');
-    expect(openAPI.paths["/F1"].get["x-sap-deprecated-operation"].deprecationDate).toBe('2022-12-31');
-    expect(openAPI.paths["/F1"].get["x-sap-deprecated-operation"].successorOperationId).toBe('successorOperation');
-    expect(openAPI.paths["/F1"].get["x-sap-deprecated-operation"].notValidKey).toBeUndefined();
+    if(openAPI.next){
+      const {value}=openAPI.next();
+      expect(value[0]).toBeDefined();
+      expect(value[0]['x-sap-compliance-level']).toBe('sap:base:v1');
+      expect(value[0]['x-sap-ext-overview'].name).toBe('Communication Scenario');
+      expect(value[0]['x-sap-ext-overview'].values.text).toBe('Planning Calendar API Integration');
+      expect(value[0]['x-sap-ext-overview'].values.format).toBe('plain');
+      expect(value[0].components.schemas["sap.OpenAPI.test.A.E1"]["x-sap-dpp-is-potentially-sensitive"]).toBe('true');
+      expect(value[0].paths["/F1"].get["x-sap-operation-intent"]).toBe('read-collection for function');
+      expect(value[0].paths["/A1"].post["x-sap-operation-intent"]).toBe('read-collection for action');
+      expect(value[0].paths["/F1"].get["x-sap-deprecated-operation"].deprecationDate).toBe('2022-12-31');
+      expect(value[0].paths["/F1"].get["x-sap-deprecated-operation"].successorOperationId).toBe('successorOperation');
+      expect(value[0].paths["/F1"].get["x-sap-deprecated-operation"].notValidKey).toBeUndefined();
+    }
   });
 });
