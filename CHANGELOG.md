@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ## Version 1.1.2 - tbd
 
+### Added
+
+- Now supports `odata-v4` protocol in the `@protocol` allowed values in CDS along with `odata` and `rest`.
+
 ### Fixed
 
 - Fixed the filename issue: when there is only one service in the CDL source, the OpenAPI document is now generated with the filename corresponding to the service name rather than the CDL source filename.
