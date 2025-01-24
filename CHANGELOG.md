@@ -48,7 +48,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 - OpenAPI documents can now have `externalDocs` object provided through `@OpenAPI.externalDocs` annotation in the service level of CDS.
 - OpenAPI documents now throws warning if `securitySchemas` are not found.
-- Introduced --openapi:config-file option to incorporate all the options for cds compile command in a JSON configuration file, inline options take precedence over those defined in the configuration file.
+- Introduced `--openapi:config-file` option to incorporate all the options for cds compile command in a JSON configuration file, inline options take precedence over those defined in the configuration file.
 
 ## Version 1.0.6 - 23.09.2024
 
