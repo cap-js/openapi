@@ -8,8 +8,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Added
 
-- Fixed action/function invocation on navigation path to align with CAP runtime.
 - Now supports `@EntityRelationship` annotations.
+
+### Fixed
+
+- Fixed action/function invocation on navigation path to align with CAP runtime.
 
 ## Version 1.1.2 - 27.01.2025
 
