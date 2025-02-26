@@ -12,64 +12,64 @@ const SCENARIO = Object.freeze({
 
 function checkAnnotations(csn, annotations, scenario = SCENARIO.positive, property = '') {
   const openApi = toOpenApi(csn);
-    const schemas = Object.entries(openApi.components.schemas).filter(([key]) => key.startsWith('sap.odm.test.A.E1'))
-    // Test if the openAPI document was generated with some schemas.
-    expect(openApi.components.schemas).toBeDefined()
-    expect(openApi).toBeDefined()
-    expect(schemas.length > 0).toBeTruthy()
+  const schemas = Object.entries(openApi.components.schemas).filter(([key]) => key.startsWith('sap.odm.test.A.E1'))
+  // Test if the openAPI document was generated with some schemas.
+  expect(openApi.components.schemas).toBeDefined()
+  expect(openApi).toBeDefined()
+  expect(schemas.length > 0).toBeTruthy()
 
-    // Expect that not-allowed ODM annotations are unavailable in the schema.
-    if (scenario === SCENARIO.notAllowedAnnotations) {
-      for (const [, schema] of schemas) {
-        for (const [annKey] of annotations) {
-          expect(schema[annKey]).not.toBeDefined()
-        }
+  // Expect that not-allowed ODM annotations are unavailable in the schema.
+  if (scenario === SCENARIO.notAllowedAnnotations) {
+    for (const [, schema] of schemas) {
+      for (const [annKey] of annotations) {
+        expect(schema[annKey]).not.toBeDefined()
       }
-      return;
     }
+    return;
+  }
 
-    // Expect that even the ODM annotations with not-matched values will be derived.
-    if (scenario === SCENARIO.notMatchingValues) {
-      for (const [, schema] of schemas) {
-        for (const [annKey, annValue] of annotations) {
-          expect(schema[annKey]).toBe(annValue)
-        }
-      }
-      return;
-    }
-
-    if (scenario === SCENARIO.checkProperty) {
-      for (const [, schema] of schemas) {
-        const propertyObj = schema.properties[property]
-        for (const [annKey, annValue] of annotations) {
-          expect(propertyObj[annKey]).toBe(annValue)
-        }
-      }
-      return
-    }
-
+  // Expect that even the ODM annotations with not-matched values will be derived.
+  if (scenario === SCENARIO.notMatchingValues) {
     for (const [, schema] of schemas) {
       for (const [annKey, annValue] of annotations) {
         expect(schema[annKey]).toBe(annValue)
       }
     }
+    return;
+  }
 
-    // Test that no other places contain the ODM extensions in the OpenAPI document.
-
-    // components.schemas where the schemas are not from entity E1.
-    const notE1 = Object.entries(openApi.components.schemas).filter(([key]) => !key.startsWith('sap.odm.test.A.E1'))
-    for (const [, schema] of notE1) {
-      const schemaString = JSON.stringify(schema)
-      for (const [annKey] of annotations) {
-        expect(schemaString).not.toContain(annKey)
+  if (scenario === SCENARIO.checkProperty) {
+    for (const [, schema] of schemas) {
+      const propertyObj = schema.properties[property]
+      for (const [annKey, annValue] of annotations) {
+        expect(propertyObj[annKey]).toBe(annValue)
       }
     }
+    return
+  }
 
-    // all other components of the OpenAPI document except the schemas.
-    const openApiNoSchemas = JSON.stringify({ ...openApi, components: { parameters: { ...openApi.components.parameters }, responses: { ...openApi.components.responses } } })
-    for (const [annKey] of annotations) {
-      expect(openApiNoSchemas).not.toContain(annKey)
+  for (const [, schema] of schemas) {
+    for (const [annKey, annValue] of annotations) {
+      expect(schema[annKey]).toBe(annValue)
     }
+  }
+
+  // Test that no other places contain the ODM extensions in the OpenAPI document.
+
+  // components.schemas where the schemas are not from entity E1.
+  const notE1 = Object.entries(openApi.components.schemas).filter(([key]) => !key.startsWith('sap.odm.test.A.E1'))
+  for (const [, schema] of notE1) {
+    const schemaString = JSON.stringify(schema)
+    for (const [annKey] of annotations) {
+      expect(schemaString).not.toContain(annKey)
+    }
+  }
+
+  // all other components of the OpenAPI document except the schemas.
+  const openApiNoSchemas = JSON.stringify({ ...openApi, components: { parameters: { ...openApi.components.parameters }, responses: { ...openApi.components.responses } } })
+  for (const [annKey] of annotations) {
+    expect(openApiNoSchemas).not.toContain(annKey)
+  }
 
 }
 
@@ -416,6 +416,87 @@ service CatalogService {
     )
   })
 
+  describe('ER annotations', () => {
+    test('er annotations is correct', () => {
+      const csn = cds.compile.to.csn(`
+        service A {
+          @EntityRelationship.entityType: 'sap.vdm.sont:Material'
+          @EntityRelationship.entityIds : [{propertyTypes: ['sap.vdm.gfn:MaterialId']}]
+          @ODM.entityName               : 'Product'
+          @ODM.oid                      : 'oid'
+          entity Material {
+                @EntityRelationship.propertyType: 'sap.vdm.gfn:MaterialId'
+            key ObjectID      : String(18);
+
+                @EntityRelationship.reference   : {
+                  referencedEntityType  : 'sap.vdm.sont:BusinessPartner',
+                  referencedPropertyType: 'sap.vdm.gfn::BusinessPartnerNumber'
+                }
+                manufacturer  : String(40);
+
+                @EntityRelationship.reference   : {
+                  referencedEntityType  : 'sap.sm:PurchaseOrder',
+                  referencedPropertyType: 'sap.sm:PurchaseOrderUUID'
+                }
+                @ODM.oidReference.entityName    : 'PurchaseOrder'
+                PurchaseOrder : UUID;
+
+                @EntityRelationship.reference   : {
+                  referencedEntityType  : 'sap.vdm.sont:BillOfMaterial',
+                  referencedPropertyType: 'sap.vdm.gfn:BillOfMaterialId'
+                }
+                BOM           : String(30);
+          }
+        }
+      `)
+      const openAPI = toOpenApi(csn);
+      expect(openAPI).toBeDefined();
+      const materialSchema = openAPI.components.schemas["A.Material"];
+      expect(materialSchema).toBeDefined();
+      expect(materialSchema["x-entity-relationship-entity-type"]).toBe('sap.vdm.sont:Material');
+      expect(materialSchema["x-entity-relationship-entity-ids"]).toMatchObject([{ "propertyTypes": ["sap.vdm.gfn:MaterialId"] }]);
+      expect(materialSchema["x-sap-odm-entity-name"]).toBe('Product');
+      expect(materialSchema["x-sap-odm-oid"]).toBe('oid');
+
+      const properties = materialSchema.properties;
+      expect(properties).toBeDefined();
+      expect(properties.ObjectID).toMatchObject({
+        maxLength: 18,
+        type: 'string',
+        "x-entity-relationship-property-type": 'sap.vdm.gfn:MaterialId'
+      });
+      expect(properties.manufacturer).toMatchObject({
+        maxLength: 40,
+        nullable: true,
+        type: 'string',
+        "x-entity-relationship-reference": {
+          referencedEntityType: 'sap.vdm.sont:BusinessPartner',
+          referencedPropertyType: 'sap.vdm.gfn::BusinessPartnerNumber'
+        }
+      });
+      expect(properties.PurchaseOrder).toMatchObject({
+        example: '01234567-89ab-cdef-0123-456789abcdef',
+        format: 'uuid',
+        nullable: true,
+        type: 'string',
+        "x-entity-relationship-reference": {
+          referencedEntityType: 'sap.sm:PurchaseOrder',
+          referencedPropertyType: 'sap.sm:PurchaseOrderUUID'
+        },
+        "x-sap-odm-oid-reference-entity-name": 'PurchaseOrder'
+      });
+      expect(properties.BOM).toMatchObject({
+        maxLength: 30,
+        nullable: true,
+        type: 'string',
+        "x-entity-relationship-reference": {
+          referencedEntityType: 'sap.vdm.sont:BillOfMaterial',
+          referencedPropertyType: 'sap.vdm.gfn:BillOfMaterialId'
+        }
+      });
+    })
+  });
+
   test('OpenAPI annotations: @OpenAPI.externalDocs annotation is added to the schema', () => {
     const csn = cds.compile.to.csn(`
       namespace sap.OpenAPI.test;
@@ -475,16 +556,16 @@ service CatalogService {
           
           }`);
     const openAPI = toOpenApi(csn);
-      expect(openAPI).toBeDefined();
-      expect(openAPI['x-sap-compliance-level']).toBe('sap:base:v1');
-      expect(openAPI['x-sap-ext-overview'].name).toBe('Communication Scenario');
-      expect(openAPI['x-sap-ext-overview'].values.text).toBe('Planning Calendar API Integration');
-      expect(openAPI['x-sap-ext-overview'].values.format).toBe('plain');
-      expect(openAPI.components.schemas["sap.OpenAPI.test.A.E1"]["x-sap-dpp-is-potentially-sensitive"]).toBe('true');
-      expect(openAPI.paths["/F1"].get["x-sap-operation-intent"]).toBe('read-collection for function');
-      expect(openAPI.paths["/A1"].post["x-sap-operation-intent"]).toBe('read-collection for action');
-      expect(openAPI.paths["/F1"].get["x-sap-deprecated-operation"].deprecationDate).toBe('2022-12-31');
-      expect(openAPI.paths["/F1"].get["x-sap-deprecated-operation"].successorOperationId).toBe('successorOperation');
-      expect(openAPI.paths["/F1"].get["x-sap-deprecated-operation"].notValidKey).toBeUndefined();
+    expect(openAPI).toBeDefined();
+    expect(openAPI['x-sap-compliance-level']).toBe('sap:base:v1');
+    expect(openAPI['x-sap-ext-overview'].name).toBe('Communication Scenario');
+    expect(openAPI['x-sap-ext-overview'].values.text).toBe('Planning Calendar API Integration');
+    expect(openAPI['x-sap-ext-overview'].values.format).toBe('plain');
+    expect(openAPI.components.schemas["sap.OpenAPI.test.A.E1"]["x-sap-dpp-is-potentially-sensitive"]).toBe('true');
+    expect(openAPI.paths["/F1"].get["x-sap-operation-intent"]).toBe('read-collection for function');
+    expect(openAPI.paths["/A1"].post["x-sap-operation-intent"]).toBe('read-collection for action');
+    expect(openAPI.paths["/F1"].get["x-sap-deprecated-operation"].deprecationDate).toBe('2022-12-31');
+    expect(openAPI.paths["/F1"].get["x-sap-deprecated-operation"].successorOperationId).toBe('successorOperation');
+    expect(openAPI.paths["/F1"].get["x-sap-deprecated-operation"].notValidKey).toBeUndefined();
   });
 });
