@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ## Version 1.2.0 - tbd
 
+### Fixed
+
+- Parameter aliases conflict with system query options.
+
 ### Added
 
 - Now supports `@EntityRelationship` annotations.
