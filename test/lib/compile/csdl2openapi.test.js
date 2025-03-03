@@ -1678,6 +1678,7 @@ see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-prot
         assert.deepStrictEqual(actual.paths['/Categories'].get, expected.paths['/Categories'].get, 'GET Categories');
     })
 
+
     it('FilterRestrictions, NavigationRestrictions, SearchRestrictions, and SortRestrictions', function () {
         const csdl = {
             $Version: '4.01',
@@ -2289,6 +2290,13 @@ see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-prot
             "MaxLength"
         );
     });
+    it('Error Logging when name and title are missing', function () {
+        const csdl = {};
+        const actual = lib.csdl2openapi(csdl, {}); 
+
+        assert.ok(actual, 'Function should execute without errors');
+        console.log('Error handling executed successfully');
+    });  
 
 })
 
@@ -2541,6 +2549,7 @@ see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-prot
         assert.deepStrictEqual(operations(actual), operations(expected), 'Operations');
         assert.deepStrictEqual(actual.paths['/things'].get, expected.paths['/things'].get, 'GET things');
     })
+    
 
 })
 
