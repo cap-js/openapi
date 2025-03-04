@@ -2290,14 +2290,6 @@ see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-prot
             "MaxLength"
         );
     });
-    it('Error Logging when name and title are missing', function () {
-        const csdl = {};
-        const actual = lib.csdl2openapi(csdl, {}); 
-
-        assert.ok(actual, 'Function should execute without errors');
-        console.log('Error handling executed successfully');
-    });  
-
 })
 
 it("AllowedValues on various Edm types", function () {
@@ -2387,6 +2379,14 @@ it("AllowedValues on various Edm types", function () {
 
     assert.deepStrictEqual(messages, [], "messages");
 })
+
+it('Error Logging when name and title are missing', function () {
+    const csdl = {name:undefined,title:undefined};
+    const actual = lib.csdl2openapi(csdl, {}); 
+
+    assert.ok(actual, 'Function should execute without errors');
+    console.log('Error handling executed successfully');
+});  
 
 describe('CAP / CS01', function () {
 
