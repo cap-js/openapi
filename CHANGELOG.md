@@ -12,6 +12,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Fixed
 
+- Parameter aliases conflict with system query options.
 - Fixed action/function invocation on navigation path to align with CAP runtime.
 
 ## Version 1.1.2 - 27.01.2025
