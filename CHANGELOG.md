@@ -8,7 +8,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Changed
 
-- Replaced console warn to cds debug logs.
+- Replaced `console.warn` statements with `cds.debug` logs for warning messages.
 
 ## Version 1.2.0 - 28.02.2025
 
