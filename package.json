@@ -1,6 +1,6 @@
 {
   "name": "@cap-js/openapi",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "CAP tool for OpenAPI",
   "repository": {
     "type": "git",
