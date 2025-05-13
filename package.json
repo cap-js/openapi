@@ -14,7 +14,7 @@
     "Node.js"
   ],
   "author": "SAP SE (https://www.sap.com)",
-  "license": "SEE LICENSE IN LICENSE",
+  "license": "Apache-2.0",
   "main": "index.js",
   "files": [
     "lib/",
