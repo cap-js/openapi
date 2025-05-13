@@ -4,6 +4,29 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## Version 1.2.2 - tbd
+
+### Fixed
+
+- Properties with `@mandatory` annotation is now added to `required` array.
+
+## Version 1.2.1 - 11.03.2025
+
+### Changed
+
+- Replaced `console.warn` statements with `cds.debug` logs for warning messages.
+
+## Version 1.2.0 - 28.02.2025
+
+### Added
+
+- Now supports `@EntityRelationship` annotations.
+
+### Fixed
+
+- Parameter aliases conflict with system query options.
+- Fixed action/function invocation on navigation path to align with CAP runtime.
+
 ## Version 1.1.2 - 27.01.2025
 
 ### Added

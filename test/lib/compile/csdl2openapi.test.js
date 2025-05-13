@@ -814,6 +814,75 @@ describe('Edge cases', function () {
         assert.deepStrictEqual(actual.paths[path].get.tags, expected.paths[path].get.tags, 'function tags');
     })
 
+    it('function with @ parameter aliases', function () {
+      const csdl = {
+        $Version: '4.01',
+        $Reference: {
+          dummy: {
+            $Include: [{ $Namespace: 'Org.OData.Core.V1', $Alias: 'Core' }],
+          },
+        },
+        $EntityContainer: 'model.Container',
+        model: {
+          $Alias: 'this',
+          FavoritePhotos: [
+            {
+              $Kind: 'Function',
+              $Parameter: [
+                {
+                  $Name: 'SKIP',
+                  $Type: 'Edm.Date',
+                  $Collection: true,
+                  '@Core.Description': 'Dates to be skipped',
+                },
+                {
+                  $Name: 'filter',
+                  '@Core.Description': 'Boolean expression to filter the result',
+                },
+              ],
+              $ReturnType: {},
+            },
+          ],
+          Container: {
+            fav: { $Function: 'this.FavoritePhotos' },
+          },
+        },
+      };
+      const expected = {
+        paths: {
+          '/fav': {
+            get: {
+              parameters: [
+                {
+                  name: '@SKIP',
+                  in: 'query',
+                  required: true,
+                  description:
+                    'Dates to be skipped  \nThis is a URL-encoded JSON array with items of type Edm.Date, see [Complex and Collection Literals](https://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part2-url-conventions.html#sec_ComplexandCollectionLiterals)',
+                  schema: { type: 'string' },
+                  example: '[]',
+                },
+                {
+                  name: '@filter',
+                  in: 'query',
+                  required: true,
+                  schema: { type: 'string', pattern: "^'([^']|'')*'$" },
+                  description:
+                    'Boolean expression to filter the result  \nString value needs to be enclosed in single quotes',
+                },
+              ],
+              summary: 'Invokes function FavoritePhotos',
+              tags: ['Service Operations'],
+            },
+          },
+        },
+      };
+      const actual = lib.csdl2openapi(csdl, { diagram: true });
+      delete actual.paths['/$batch'];
+      delete actual.paths['/fav'].get.responses;
+      assert.deepStrictEqual(actual.paths, expected.paths);
+    });
+    
     it('return type with facets', function () {
         const csdl = {
             $EntityContainer: 'this.Container',
@@ -1609,6 +1678,7 @@ see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-prot
         assert.deepStrictEqual(actual.paths['/Categories'].get, expected.paths['/Categories'].get, 'GET Categories');
     })
 
+
     it('FilterRestrictions, NavigationRestrictions, SearchRestrictions, and SortRestrictions', function () {
         const csdl = {
             $Version: '4.01',
@@ -2220,7 +2290,6 @@ see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-prot
             "MaxLength"
         );
     });
-
 })
 
 it("AllowedValues on various Edm types", function () {
@@ -2310,6 +2379,14 @@ it("AllowedValues on various Edm types", function () {
 
     assert.deepStrictEqual(messages, [], "messages");
 })
+
+it('Error Logging when name and title are missing', function () {
+    const csdl = {name:undefined,title:undefined};
+    const actual = lib.csdl2openapi(csdl, {}); 
+
+    assert.ok(actual, 'Function should execute without errors');
+    console.log('Error handling executed successfully');
+});  
 
 describe('CAP / CS01', function () {
 
@@ -2472,6 +2549,7 @@ see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-prot
         assert.deepStrictEqual(operations(actual), operations(expected), 'Operations');
         assert.deepStrictEqual(actual.paths['/things'].get, expected.paths['/things'].get, 'GET things');
     })
+    
 
 })
 
