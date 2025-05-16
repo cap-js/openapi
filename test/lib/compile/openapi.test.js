@@ -286,7 +286,7 @@ service CatalogService {
     const csn = cds.compile.to.csn(`
       service A {entity E { key ID : UUID; };};`
     );
-    const openapi = toOpenApi(csn, { 'openapi:config-file': path.resolve("./test/lib/compile/data/configFile.json") });
+    const openapi = toOpenApi(csn, { 'openapi:config-file': path.resolve(__dirname, "data/configFile.json") });
     expect(openapi.servers).toBeTruthy();
     expect(openapi).toMatchObject({ servers: [{ url: 'http://foo.bar:8080' }, { url: "http://foo.bar:8080/a/foo" }] });
     expect(openapi.info.description).toMatch(/yuml.*diagram/i);
@@ -298,7 +298,7 @@ service CatalogService {
        @title:'It is located at http://example.com:8080' service A {entity E { key ID : UUID;};};`
     );
     const options = {
-      'openapi:config-file': path.resolve("./test/lib/compile/data/configFile.json"),
+      'openapi:config-file': path.resolve(__dirname, "data/configFile.json"),
       'openapi:url': "http://example.com:8080",
       'odata-version': '4.0',
       'openapi:diagram': "false"
@@ -398,9 +398,9 @@ service CatalogService {
     const csn = cds.compile.to.csn(`
       namespace sap.odm.test;
       service A {
-        entity E1 { 
-          key id: String(4); 
-          oid: String(128); 
+        entity E1 {
+          key id: String(4);
+          oid: String(128);
           @ODM.oidReference.entityName: 'ReferencedEntityName'
           ref: Association to one E2;
         }
@@ -505,9 +505,9 @@ service CatalogService {
         url: 'https://help.sap.com/docs/product/123.html'
       }
       service A {
-        entity E1 { 
-          key id: String(4); 
-          oid: String(128); 
+        entity E1 {
+          key id: String(4);
+          oid: String(128);
         }
           }`);
     const openAPI = toOpenApi(csn);
@@ -534,17 +534,17 @@ service CatalogService {
       @OpenAPI.Extensions: {
         ![dpp-is-potentially-sensitive]: 'true'
       }
-        entity E1 { 
-          key id: String(4); 
-          oid: String(128); 
+        entity E1 {
+          key id: String(4);
+          oid: String(128);
         }
-        
+
         @OpenAPI.Extensions: {
         ![x-sap-operation-intent]: 'read-collection for function',
         ![sap-deprecated-operation] : {
           deprecationDate: '2022-12-31',
           successorOperationId: 'successorOperation',
-          notValidKey: 'notValidValue'  
+          notValidKey: 'notValidValue'
         }
       }
         function F1(param: String) returns String;
@@ -553,7 +553,7 @@ service CatalogService {
         ![x-sap-operation-intent]: 'read-collection for action'
     }
         action A1(param: String) returns String;
-          
+
           }`);
     const openAPI = toOpenApi(csn);
     expect(openAPI).toBeDefined();
