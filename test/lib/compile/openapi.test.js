@@ -155,7 +155,7 @@ service CatalogService {
       service A {entity E { key ID : UUID; };};
       service B {entity F { key ID : UUID; };};`
     )
-    expect(() => toOpenApi(csn, { service: 'foo' })).toThrowError(/no service/si)
+    expect(() => toOpenApi(csn, { service: 'foo' })).toThrow(/no service/si)
 
     let openapi = toOpenApi(csn, { service: 'A' });
     expect(openapi).toMatchObject(someOpenApi);
@@ -178,7 +178,7 @@ service CatalogService {
       service A {entity E { key ID : UUID; };};
       service B {entity F { key ID : UUID; };};`
     )
-    expect(() => toOpenApi(csn, { service: 'foo' })).toThrowError(/no service/si)
+    expect(() => toOpenApi(csn, { service: 'foo' })).toThrow(/no service/si)
 
     let openapi = toOpenApi(csn, { service: 'com.sap.A' });
     expect(openapi).toMatchObject(someOpenApi);
