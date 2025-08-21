@@ -1,0 +1,32 @@
+{
+  // Visit https://aka.ms/tsconfig to read more about this file
+  "compilerOptions": {
+    //"rootDir": "./lib/compile",
+    "module": "nodenext",
+    "target": "esnext",
+    "lib": ["esnext"],
+    "types": ["node"],
+    "allowJs": true,
+    "checkJs": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "noImplicitOverride": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "strict": true,
+    "jsx": "react-jsx",
+    "verbatimModuleSyntax": true,
+    "isolatedModules": true,
+    "noUncheckedSideEffectImports": true,
+    "moduleDetection": "force",
+    "skipLibCheck": true,
+    // enable after first round
+    "noImplicitReturns": false,
+    "noImplicitAny": false,
+  },
+  "exclude": [
+    "**/*.test.js"
+  ]
+}
