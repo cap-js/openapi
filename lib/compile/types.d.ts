@@ -41,3 +41,10 @@ type AllOf = { allOf: Schema[] } & Meta
 type MultiSchema = AnyOf | AllOf
 
 export type Schema = (SingleSchema | MultiSchema)
+
+
+
+export type TargetRestrictions = {
+    Countable?: boolean
+    Expandable?: boolean
+}
