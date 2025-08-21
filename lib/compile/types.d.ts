@@ -26,16 +26,18 @@ type ArraySchema = {
     items: Schema
 }
 
-type SingleSchema = StringSchema | NumberSchema | BooleanSchema | ArraySchema
-
-type AnyOf = { anyOf: Schema[] }
-type AllOf = { allOf: Schema[] }
-type MultiSchema = AnyOf | AllOf
-
-export type Schema = (SingleSchema | MultiSchema) & {
+type Meta = {
     nullable?: boolean
     default?: unknown
     example?: string | number,
     description?: string
     '$ref'?: unknown
 }
+
+type SingleSchema = (StringSchema | NumberSchema | BooleanSchema | ArraySchema) & Meta
+
+type AnyOf = { anyOf: Schema[] } & Meta
+type AllOf = { allOf: Schema[] } & Meta
+type MultiSchema = AnyOf | AllOf
+
+export type Schema = (SingleSchema | MultiSchema)
