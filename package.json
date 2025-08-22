@@ -21,7 +21,7 @@
     "LICENSE"
   ],
   "scripts": {
-    "test": "npx jest --silent",
+    "test": "node --test",
     "lint": "npx eslint .",
     "check:types": "npx tsc --noEmit"
   },
