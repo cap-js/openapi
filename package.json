@@ -22,7 +22,8 @@
   ],
   "scripts": {
     "test": "npx jest --silent",
-    "lint": "npx eslint ."
+    "lint": "npx eslint .",
+    "check:types": "npx tsc --noEmit"
   },
   "dependencies": {
     "pluralize": "^8.0.0"
@@ -31,7 +32,9 @@
     "@sap/cds": ">=7.6"
   },
   "devDependencies": {
+    "@types/node": "^24.3.0",
     "eslint": "^9.33.0",
-    "jest": ">=29"
+    "jest": ">=29",
+    "typescript": "^5.9.2"
   }
 }
