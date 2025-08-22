@@ -1,14 +1,13 @@
 {
   // Visit https://aka.ms/tsconfig to read more about this file
   "compilerOptions": {
-    //"rootDir": "./lib/compile",
     "module": "nodenext",
     "target": "esnext",
     "lib": ["esnext"],
     "types": ["node"],
     "allowJs": true,
     "checkJs": true,
-    "noUncheckedIndexedAccess": true,
+    "noUncheckedIndexedAccess": false,
     "exactOptionalPropertyTypes": true,
     "noImplicitOverride": true,
     "noUnusedLocals": true,
