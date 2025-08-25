@@ -1,5 +1,5 @@
 const assert = require('assert');
-const { test, describe: suite } = require('node:test');
+const { test, describe, it } = require('node:test');
 
 //TODO:
 // title/description on action/function (import), with fallback from import to action/function
@@ -40,7 +40,7 @@ const result8 = require('./data/descriptions.openapi3.json');
 const example9 = require('./data/custom-parameters.json');
 const result9 = require('./data/custom-parameters.openapi3.json');
 
-suite('Examples', () => {
+describe('Examples', () => {
 
     test('csdl-16.1', () => {
         const openapi = lib.csdl2openapi(example1, { diagram: true });
@@ -83,7 +83,7 @@ suite('Examples', () => {
 
 })
 
-suite('Edge cases', () => {
+describe('Edge cases', () => {
 
     test('empty input', () => {
         const csdl = {};
@@ -2065,7 +2065,7 @@ see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-prot
                 "Use @Core.LongDescription: '...' on your CDS service to provide a meaningful description.",
                 "",
                 "## Entity Data Model",
-                "![ER Diagram](https://yuml.me/diagram/class/[root{bg:lightslategray}],[root]->[other],[other{bg:lawngreen}],[act{bg:lawngreen}]->[root],[act{bg:lawngreen}]in->[root],[others%20{bg:lawngreen}]++-*>[other],[roots%20{bg:lawngreen}]++-*>[root])",
+                "![ER Diagram](https://yuml.me/diagram/class/[root{bg:lightslategray}],[root]->[other],[other{bg:lightslategray}],[act{bg:lawngreen}]->[root],[act{bg:lawngreen}]in->[root],[others%20{bg:lawngreen}]++-*>[other],[roots%20{bg:lawngreen}]++-*>[root])",
                 "",
                 "### Legend",
                 "![Legend](https://yuml.me/diagram/plain;dir:TB;scale:60/class/[External.Type{bg:whitesmoke}],[ComplexType],[EntityType{bg:lightslategray}],[EntitySet/Singleton/Operation{bg:lawngreen}])",

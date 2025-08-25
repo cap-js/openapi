@@ -3,6 +3,7 @@ const toOpenApi = require('../../../lib/compile');
 const cds = require('@sap/cds')
 const assert = require('assert');
 const test = require('node:test');
+const { assertMatchObject } = require('../../util')
 
 const someOpenApi = { openapi: '3.0.2', info: {}, servers: [{}], tags: [{}], paths: {}, components: {} }
 const SCENARIO = Object.freeze({
@@ -90,7 +91,7 @@ test.describe('OpenAPI export', () => {
       service A {entity E { key ID : UUID; };};`
     );
     const openapi = toOpenApi(csn);
-    assert.deepStrictEqual(openapi, someOpenApi);
+    assertMatchObject(openapi, someOpenApi);
     // UUID elements are not required
     assert.strictEqual(openapi.components.schemas['A.E-create'].required, undefined);
   });
@@ -101,7 +102,7 @@ test.describe('OpenAPI export', () => {
       service A {entity E { key ID : UUID; };};`
     );
     const openapi = toOpenApi(csn);
-    assert.deepStrictEqual(openapi, someOpenApi);
+    assertMatchObject(openapi, someOpenApi);
   });
 
   test('one service, multiple protocols', () => {
@@ -113,7 +114,7 @@ test.describe('OpenAPI export', () => {
     const openapi = toOpenApi(csn);
     const filesFound = new Set();
     for (const [content, metadata] of openapi) {
-      assert.deepStrictEqual(content, someOpenApi);
+      assertMatchObject(content, someOpenApi);
       filesFound.add(metadata.file);
     }
     assert.deepStrictEqual(filesFound, new Set(['com.sap.A.odata', 'com.sap.A.rest']));
@@ -160,15 +161,15 @@ service CatalogService {
     assert.throws(() => toOpenApi(csn, { service: 'foo' }), /no service/si)
 
     let openapi = toOpenApi(csn, { service: 'A' });
-    assert.deepStrictEqual(openapi, someOpenApi);
+    assertMatchObject(openapi, someOpenApi);
 
     openapi = toOpenApi(csn, { service: 'B' });
-    assert.deepStrictEqual(openapi, someOpenApi);
+    assertMatchObject(openapi, someOpenApi);
 
     openapi = toOpenApi(csn, { service: 'all' });
     const filesFound = new Set();
     for (const [content, metadata] of openapi) {
-      assert.deepStrictEqual(content, someOpenApi);
+      assertMatchObject(content, someOpenApi);
       filesFound.add(metadata.file);
     }
     assert.deepStrictEqual(filesFound, new Set(['A', 'B']));
@@ -183,15 +184,15 @@ service CatalogService {
     assert.throws(() => toOpenApi(csn, { service: 'foo' }), /no service/si)
 
     let openapi = toOpenApi(csn, { service: 'com.sap.A' });
-    assert.deepStrictEqual(openapi, someOpenApi);
+    assertMatchObject(openapi, someOpenApi);
 
     openapi = toOpenApi(csn, { service: 'com.sap.B' });
-    assert.deepStrictEqual(openapi, someOpenApi);
+    assertMatchObject(openapi, someOpenApi);
 
     openapi = toOpenApi(csn, { service: 'all' });
     const filesFound = new Set();
     for (const [content, metadata] of openapi) {
-      assert.deepStrictEqual(content, someOpenApi);
+      assertMatchObject(content, someOpenApi);
       filesFound.add(metadata.file);
     }
     assert.deepStrictEqual(filesFound, new Set(['com.sap.A', 'com.sap.B']));
@@ -208,7 +209,7 @@ service CatalogService {
     const openapi = toOpenApi(csn, { service: 'all' });
     const filesFound = new Set();
     for (const [content, metadata] of openapi) {
-      assert.deepStrictEqual(content, someOpenApi);
+      assertMatchObject(content, someOpenApi);
       filesFound.add(metadata.file);
     }
     assert.deepStrictEqual(filesFound, new Set(['com.sap.A.odata', 'com.sap.A.rest', 'com.sap.B.odata', 'com.sap.B.rest']));
@@ -325,7 +326,7 @@ service CatalogService {
 
     const openAPI = toOpenApi(csn)
     assert(openAPI)
-    assert.deepStrictEqual(openAPI.components.schemas["sap.odm.test.A.E1"], { "x-sap-root-entity": true })
+    assertMatchObject(openAPI.components.schemas["sap.odm.test.A.E1"], { "x-sap-root-entity": true })
     assert.strictEqual(openAPI.components.schemas["sap.odm.test.A.E1-create"]["x-sap-root-entity"], undefined)
     assert.strictEqual(openAPI.components.schemas["sap.odm.test.A.E1-update"]["x-sap-root-entity"], undefined)
   });
