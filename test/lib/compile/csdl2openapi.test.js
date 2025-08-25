@@ -2253,7 +2253,8 @@ see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-prot
                 $Annotations: {
                     "typeExamples.single/foo/bar": {
                         /* more than two target path segments */
-                    },"typeExamples.single/foo": {
+                    },
+                    "typeExamples.single/foo": {
                         /* invalid annotation target */
                     },
                     "typeExamples.not-there": {
