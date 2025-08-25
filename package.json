@@ -23,7 +23,7 @@
   "scripts": {
     "test": "node --test",
     "lint": "npx eslint .",
-    "check:types": "npx tsc --noEmit"
+    "check:types": "npx tsc"
   },
   "dependencies": {
     "pluralize": "^8.0.0"

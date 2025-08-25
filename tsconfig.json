@@ -21,6 +21,7 @@
     "noUncheckedSideEffectImports": true,
     "moduleDetection": "force",
     "skipLibCheck": true,
+    "noEmit": true,
     // enable after first round
     "noImplicitReturns": false,
     "noImplicitAny": false,
