@@ -1,4 +1,4 @@
-type StringSchema = {
+export type StringSchema = {
     type: 'string'
     format?: 'base64url' | 'uuid' | 'time' | 'date' | 'date-time' | 'duration'
     maxLength?: number
@@ -6,7 +6,7 @@ type StringSchema = {
     pattern?: string
 }
 
-type NumberSchema = {
+export type NumberSchema = {
     type: 'number' | 'integer'
     format?: 'float' | 'double' | 'decimal' | 'uint8' | 'int8' | 'int16' | 'int32' | 'int64'
     multipleOf?: number
@@ -17,11 +17,11 @@ type NumberSchema = {
     exclusiveMaximum?: boolean
 }
 
-type BooleanSchema = {
+export type BooleanSchema = {
     type: 'boolean'
 }
 
-type ArraySchema = {
+export type ArraySchema = {
     type: 'array',
     items: Schema
 }
@@ -36,8 +36,8 @@ type Meta = {
 
 type SingleSchema = (StringSchema | NumberSchema | BooleanSchema | ArraySchema) & Meta
 
-type AnyOf = { anyOf: Schema[] } & Meta
-type AllOf = { allOf: Schema[] } & Meta
+export type AnyOf = { anyOf: Schema[] } & Meta
+export type AllOf = { allOf: Schema[] } & Meta
 type MultiSchema = AnyOf | AllOf
 
 export type Schema = (SingleSchema | MultiSchema)
@@ -48,4 +48,4 @@ export type TargetRestrictions = {
     Expandable?: boolean
 }
 
-export type { CSDL } from './cdsdl';
+export type { CSDL } from './csdl';
