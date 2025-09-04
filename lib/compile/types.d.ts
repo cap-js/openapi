@@ -42,10 +42,13 @@ type MultiSchema = AnyOf | AllOf
 
 export type Schema = (SingleSchema | MultiSchema)
 
-
 export type TargetRestrictions = {
     Countable?: boolean
     Expandable?: boolean
 }
 
-export type { CSDL } from './csdl';
+// in spite of how CSDL is define in the standard,
+// we assume to be working with its .properties field
+// throughout our conversion
+import type { CSDL as CSDL_ } from './csdl';
+export type CSDL = CSDL_['properties'];

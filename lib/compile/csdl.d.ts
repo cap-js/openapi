@@ -1,5 +1,8 @@
 // generated using https://app.quicktype.io/
 // and https://raw.githubusercontent.com/oasis-tcs/odata-csdl-schemas/refs/heads/main/schemas/csdl.schema.json
+// modifcations:
+// - CSDLProperties.$Version changed to string, as that is how we use it
+// - CSDLProperties.$EntityContrainer changed to string
 
 export type CSDL = {
     readonly $schema:              string;
@@ -522,8 +525,8 @@ export type CSDLPatternProperties = {
 }
 
 export type CSDLProperties = {
-    readonly $Version:         Version;
-    readonly $EntityContainer: Srid;
+    $Version:         string;
+    readonly $EntityContainer: string;
     readonly $Reference:       Reference;
 }
 
