@@ -48,4 +48,5 @@ export type TargetRestrictions = {
     Expandable?: boolean
 }
 
-export type { CSDL } from './cdsdl';
+import type { CSDL as CSDL_ } from './cdsdl';
+export type CSDL = CSDL_['properties'];
