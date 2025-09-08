@@ -48,5 +48,8 @@ export type TargetRestrictions = {
     Expandable?: boolean
 }
 
+// despite of how CSDL is defined in the standard,
+// we assume to be working with its .properties field
+// throughout our conversion
 import type { CSDL as CSDL_ } from './cdsdl';
 export type CSDL = CSDL_['properties'];
