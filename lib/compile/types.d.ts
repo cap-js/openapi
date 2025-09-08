@@ -72,7 +72,7 @@ export type PathItem = {
     delete?: Request,
 } | Request
 
-type MIMEType = 'multipart/mixed' | 'application/json' | 'application/xml' | 'text/plain' | 'application/octet-stream' | 'application/pdf' | 'image/png' | 'image/jpeg' | 'image/gif' | 'image/tiff' | 'image/svg+xml' | 'audio/mpeg' | 'audio/wav' | 'video/mp4' | 'video/mpeg'
+type MIMEType = 'multipart/mixed' | 'application/json'
 
 type Request = {
     summary?: string,
