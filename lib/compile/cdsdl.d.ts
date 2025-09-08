@@ -525,7 +525,7 @@ export type CSDLPatternProperties = {
 }
 
 export type CSDLProperties = {
-    readonly $Version:         string;
+    $Version:         string;
     readonly $EntityContainer: string;
     readonly $Reference:       Reference;
 }
