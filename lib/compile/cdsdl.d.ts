@@ -55,10 +55,10 @@ export type Ction = {
 }
 
 export type ActionPatternProperties = {
-    readonly "^@": PLPNlPLPNlPNdPMnPMcPPCPCF0127__PLPNlPLPNlPNdPMnPMcPPCPCF0127$;
+    readonly "^@": ReferenceObject;
 }
 
-export type PLPNlPLPNlPNdPMnPMcPPCPCF0127__PLPNlPLPNlPNdPMnPMcPPCPCF0127$ = {
+export type ReferenceObject = {
     readonly $ref: string;
 }
 
@@ -66,8 +66,8 @@ export type ActionProperties = {
     readonly $Kind:          Version;
     readonly $IsBound:       Unicode;
     readonly $EntitySetPath: Srid;
-    readonly $Parameter:     PLPNlPLPNlPNdPMnPMcPPCPCF0127__PLPNlPLPNlPNdPMnPMcPPCPCF0127$;
-    readonly $ReturnType:    PLPNlPLPNlPNdPMnPMcPPCPCF0127__PLPNlPLPNlPNdPMnPMcPPCPCF0127$;
+    readonly $Parameter:     ReferenceObject;
+    readonly $ReturnType:    ReferenceObject;
     readonly $IsComposable?: Unicode;
 }
 
@@ -125,12 +125,12 @@ export type ComplexType = {
 }
 
 export type ComplexTypePatternProperties = {
-    readonly "^@":                                                                                    PLPNlPLPNlPNdPMnPMcPPCPCF0127__PLPNlPLPNlPNdPMnPMcPPCPCF0127$;
-    readonly "^(_|\\p{L}|\\p{Nl})(_|\\p{L}|\\p{Nl}|\\p{Nd}|\\p{Mn}|\\p{Mc}|\\p{Pc}|\\p{Cf}){0,127}$": PurplePLPNlPLPNlPNdPMnPMcPPCPCF0127$;
+    readonly "^@":                                                                                    ReferenceObject;
+    readonly "^(_|\\p{L}|\\p{Nl})(_|\\p{L}|\\p{Nl}|\\p{Nd}|\\p{Mn}|\\p{Mc}|\\p{Pc}|\\p{Cf}){0,127}$": IdentifierOrReference;
 }
 
-export type PurplePLPNlPLPNlPNdPMnPMcPPCPCF0127$ = {
-    readonly oneOf: PLPNlPLPNlPNdPMnPMcPPCPCF0127__PLPNlPLPNlPNdPMnPMcPPCPCF0127$[];
+export type IdentifierOrReference = {
+    readonly oneOf: ReferenceObject[];
 }
 
 export type ComplexTypeProperties = {
@@ -166,7 +166,7 @@ export type EntitySet = {
 export type EntitySetProperties = {
     readonly $Collection:                Collection;
     readonly $Type:                      Class;
-    readonly $NavigationPropertyBinding: PLPNlPLPNlPNdPMnPMcPPCPCF0127__PLPNlPLPNlPNdPMnPMcPPCPCF0127$;
+    readonly $NavigationPropertyBinding: ReferenceObject;
     readonly $IncludeInServiceDocument:  Unicode;
 }
 
@@ -281,8 +281,8 @@ export type NavigationProperty = {
 }
 
 export type NavigationPropertyPatternProperties = {
-    readonly "^@":            PLPNlPLPNlPNdPMnPMcPPCPCF0127__PLPNlPLPNlPNdPMnPMcPPCPCF0127$;
-    readonly "^\\$OnDelete@": PLPNlPLPNlPNdPMnPMcPPCPCF0127__PLPNlPLPNlPNdPMnPMcPPCPCF0127$;
+    readonly "^@":            ReferenceObject;
+    readonly "^\\$OnDelete@": ReferenceObject;
 }
 
 export type NavigationPropertyProperties = {
@@ -331,11 +331,11 @@ export type PropertyProperties = {
     readonly $Type:          Type;
     readonly $Collection:    Unicode;
     readonly $Nullable:      Unicode;
-    readonly $MaxLength:     PLPNlPLPNlPNdPMnPMcPPCPCF0127__PLPNlPLPNlPNdPMnPMcPPCPCF0127$;
-    readonly $Unicode:       PLPNlPLPNlPNdPMnPMcPPCPCF0127__PLPNlPLPNlPNdPMnPMcPPCPCF0127$;
-    readonly $Precision:     PLPNlPLPNlPNdPMnPMcPPCPCF0127__PLPNlPLPNlPNdPMnPMcPPCPCF0127$;
-    readonly $Scale:         PLPNlPLPNlPNdPMnPMcPPCPCF0127__PLPNlPLPNlPNdPMnPMcPPCPCF0127$;
-    readonly $SRID:          PLPNlPLPNlPNdPMnPMcPPCPCF0127__PLPNlPLPNlPNdPMnPMcPPCPCF0127$;
+    readonly $MaxLength:     ReferenceObject;
+    readonly $Unicode:       ReferenceObject;
+    readonly $Precision:     ReferenceObject;
+    readonly $Scale:         ReferenceObject;
+    readonly $SRID:          ReferenceObject;
     readonly $Kind?:         Version;
     readonly $DefaultValue?: Annotation;
     readonly $BaseTerm?:     Srid;
@@ -385,11 +385,11 @@ export type ReturnTypeProperties = {
     readonly $Type?:               Type;
     readonly $Collection?:         Unicode;
     readonly $Nullable?:           Unicode;
-    readonly $MaxLength?:          PLPNlPLPNlPNdPMnPMcPPCPCF0127__PLPNlPLPNlPNdPMnPMcPPCPCF0127$;
-    readonly $Unicode?:            PLPNlPLPNlPNdPMnPMcPPCPCF0127__PLPNlPLPNlPNdPMnPMcPPCPCF0127$;
-    readonly $Precision?:          PLPNlPLPNlPNdPMnPMcPPCPCF0127__PLPNlPLPNlPNdPMnPMcPPCPCF0127$;
-    readonly $Scale?:              PLPNlPLPNlPNdPMnPMcPPCPCF0127__PLPNlPLPNlPNdPMnPMcPPCPCF0127$;
-    readonly $SRID?:               PLPNlPLPNlPNdPMnPMcPPCPCF0127__PLPNlPLPNlPNdPMnPMcPPCPCF0127$;
+    readonly $MaxLength?:          ReferenceObject;
+    readonly $Unicode?:            ReferenceObject;
+    readonly $Precision?:          ReferenceObject;
+    readonly $Scale?:              ReferenceObject;
+    readonly $SRID?:               ReferenceObject;
     readonly $Include?:            Include;
     readonly $IncludeAnnotations?: IncludeAnnotations;
 }
@@ -446,19 +446,19 @@ export type Schema = {
 }
 
 export type SchemaPatternProperties = {
-    readonly "^@":                                                                                    PLPNlPLPNlPNdPMnPMcPPCPCF0127__PLPNlPLPNlPNdPMnPMcPPCPCF0127$;
-    readonly "^(_|\\p{L}|\\p{Nl})(_|\\p{L}|\\p{Nl}|\\p{Nd}|\\p{Mn}|\\p{Mc}|\\p{Pc}|\\p{Cf}){0,127}$": FluffyPLPNlPLPNlPNdPMnPMcPPCPCF0127$;
+    readonly "^@":                                                                                    ReferenceObject;
+    readonly "^(_|\\p{L}|\\p{Nl})(_|\\p{L}|\\p{Nl}|\\p{Nd}|\\p{Mn}|\\p{Mc}|\\p{Pc}|\\p{Cf}){0,127}$": SchemaOneOf;
 }
 
-export type FluffyPLPNlPLPNlPNdPMnPMcPPCPCF0127$ = {
-    readonly oneOf: PLPNlPLPNlPNdPMnPMcPPCPCF0127$_OneOf[];
+export type SchemaOneOf = {
+    readonly oneOf: SchemaOneOfItem[];
 }
 
-export type PLPNlPLPNlPNdPMnPMcPPCPCF0127$_OneOf = {
+export type SchemaOneOfItem = {
     readonly $ref?:        string;
     readonly description?: string;
     readonly type?:        string;
-    readonly items?:       PLPNlPLPNlPNdPMnPMcPPCPCF0127__PLPNlPLPNlPNdPMnPMcPPCPCF0127$;
+    readonly items?:       ReferenceObject;
 }
 
 export type SchemaProperties = {
@@ -489,7 +489,7 @@ export type Singleton = {
 export type SingletonProperties = {
     readonly $Type:                      Class;
     readonly $Nullable:                  Unicode;
-    readonly $NavigationPropertyBinding: PLPNlPLPNlPNdPMnPMcPPCPCF0127__PLPNlPLPNlPNdPMnPMcPPCPCF0127$;
+    readonly $NavigationPropertyBinding: ReferenceObject;
 }
 
 export type Term = {
@@ -513,15 +513,15 @@ export type TypeDefinition = {
 export type TypeDefinitionProperties = {
     readonly $Kind:           Version;
     readonly $UnderlyingType: Srid;
-    readonly $MaxLength:      PLPNlPLPNlPNdPMnPMcPPCPCF0127__PLPNlPLPNlPNdPMnPMcPPCPCF0127$;
-    readonly $Unicode:        PLPNlPLPNlPNdPMnPMcPPCPCF0127__PLPNlPLPNlPNdPMnPMcPPCPCF0127$;
-    readonly $Precision:      PLPNlPLPNlPNdPMnPMcPPCPCF0127__PLPNlPLPNlPNdPMnPMcPPCPCF0127$;
-    readonly $Scale:          PLPNlPLPNlPNdPMnPMcPPCPCF0127__PLPNlPLPNlPNdPMnPMcPPCPCF0127$;
-    readonly $SRID:           PLPNlPLPNlPNdPMnPMcPPCPCF0127__PLPNlPLPNlPNdPMnPMcPPCPCF0127$;
+    readonly $MaxLength:      ReferenceObject;
+    readonly $Unicode:        ReferenceObject;
+    readonly $Precision:      ReferenceObject;
+    readonly $Scale:          ReferenceObject;
+    readonly $SRID:           ReferenceObject;
 }
 
 export type CSDLPatternProperties = {
-    readonly "^(_|\\p{L}|\\p{Nl})(_|\\p{L}|\\p{Nl}|\\p{Nd}|\\p{Mn}|\\p{Mc}|\\p{Pc}|\\p{Cf}){0,127}(\\.(_|\\p{L}|\\p{Nl})(_|\\p{L}|\\p{Nl}|\\p{Nd}|\\p{Mn}|\\p{Mc}|\\p{Pc}|\\p{Cf}){0,127})*$": PLPNlPLPNlPNdPMnPMcPPCPCF0127__PLPNlPLPNlPNdPMnPMcPPCPCF0127$;
+    readonly "^(_|\\p{L}|\\p{Nl})(_|\\p{L}|\\p{Nl}|\\p{Nd}|\\p{Mn}|\\p{Mc}|\\p{Pc}|\\p{Cf}){0,127}(\\.(_|\\p{L}|\\p{Nl})(_|\\p{L}|\\p{Nl}|\\p{Nd}|\\p{Mn}|\\p{Mc}|\\p{Pc}|\\p{Cf}){0,127})*$": ReferenceObject;
 }
 
 export type CSDLProperties = {
