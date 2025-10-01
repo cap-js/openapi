@@ -25,8 +25,8 @@ export type Definitions = {
     readonly EnumType:                  EnumType;
     readonly TypeDefinition:            TypeDefinition;
     readonly Term:                      Term;
-    readonly Action:                    Ction;
-    readonly Function:                  Ction;
+    readonly Action:                    ActionOrFunction;
+    readonly Function:                  ActionOrFunction;
     readonly EntityContainer:           EntityContainer;
     readonly EntitySet:                 EntitySet;
     readonly Singleton:                 Singleton;
@@ -45,7 +45,7 @@ export type Definitions = {
     readonly Annotation:                Annotation;
 }
 
-export type Ction = {
+export type ActionOrFunction = {
     readonly description:          string;
     readonly type:                 string;
     readonly additionalProperties: boolean;
@@ -403,12 +403,12 @@ export type Include = {
 export type IncludeItems = {
     readonly type:                 string;
     readonly additionalProperties: boolean;
-    readonly properties:           PurpleProperties;
+    readonly properties:           IncludeItemProperties;
     readonly patternProperties:    ActionPatternProperties;
     readonly required:             string[];
 }
 
-export type PurpleProperties = {
+export type IncludeItemProperties = {
     readonly $Namespace: Class;
     readonly $Alias:     Class;
 }
@@ -422,11 +422,11 @@ export type IncludeAnnotations = {
 export type IncludeAnnotationsItems = {
     readonly type:                 string;
     readonly additionalProperties: boolean;
-    readonly properties:           FluffyProperties;
+    readonly properties:           IncludeAnnotationsItemProperties;
     readonly required:             string[];
 }
 
-export type FluffyProperties = {
+export type IncludeAnnotationsItemProperties = {
     readonly $TermNamespace:   Class;
     readonly $TargetNamespace: Class;
     readonly $Qualifier:       Class;
