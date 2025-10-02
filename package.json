@@ -23,7 +23,8 @@
   "scripts": {
     "test": "node --test",
     "lint": "npx eslint .",
-    "check:types": "npx tsc"
+    "check:types": "npx tsc",
+    "gen:coverage": "node --test --experimental-test-coverage --test-reporter=lcov --test-reporter-destination=lcov.info"
   },
   "dependencies": {
     "pluralize": "^8.0.0"
