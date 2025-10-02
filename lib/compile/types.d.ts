@@ -59,7 +59,7 @@ export type TargetRestrictions = {
 // despite of how CSDL is defined in the standard,
 // we assume to be working with its .properties field
 // throughout our conversion
-import type { CSDL as CSDL_ } from './cdsdl';
+import type { CSDL as CSDL_ } from './csdl';
 export type CSDL = CSDL_['properties'];
 
 
