@@ -1,0 +1,49 @@
+name: Test & Check Coverage
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Install project dependencies
+        run: npm ci
+
+      - name: Install lcov-total and bc
+        run: |
+          npm install -g lcov-total
+          sudo apt-get update
+          sudo apt-get install -y bc
+
+      - name: Run tests and generate coverage
+        run: >
+          node --test
+          --experimental-test-coverage
+          --test-reporter=lcov
+          --test-reporter-destination=lcov.info
+
+      - name: Check coverage against threshold
+        run: |
+          COVERAGE=$(lcov-total lcov.info)
+          echo "Total Coverage: $COVERAGE%"
+
+          # Minimum allowed coverage
+          THRESHOLD=95.0
+
+          # Use bc to compare floats
+          COMPARE=$(echo "$COVERAGE < $THRESHOLD" | bc)
+          if [ "$COMPARE" -eq 1 ]; then
+            echo "❌ Coverage ($COVERAGE%) is below threshold ($THRESHOLD%)"
+            exit 1
+          else
+            echo "✅ Coverage ($COVERAGE%) meets threshold ($THRESHOLD%)"
+          fi
