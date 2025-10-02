@@ -3,3 +3,6 @@ gen/
 out/
 @cds-models/
 lcov.info
+
+# IDEs
+.idea
