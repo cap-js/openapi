@@ -16,7 +16,7 @@ jobs:
           node-version: 24
 
       - name: Install project dependencies
-        run: npm ci
+        run: npm i
 
       - name: Install lcov-total and bc
         run: |
