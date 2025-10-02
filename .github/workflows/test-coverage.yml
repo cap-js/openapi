@@ -1,6 +1,8 @@
-name: Test & Check Coverage
+name: Test & Branch Coverage Check
 
-on: [pull_request]
+on:
+  pull_request:
+    branches: [main]
 
 jobs:
   test:
@@ -15,35 +17,14 @@ jobs:
         with:
           node-version: 24
 
-      - name: Install project dependencies
-        run: npm i
-
-      - name: Install lcov-total and bc
-        run: |
-          npm install -g lcov-total
-          sudo apt-get update
-          sudo apt-get install -y bc
+      - name: Install dependencies
+        run: npm ci
 
       - name: Run tests and generate coverage
-        run: >
-          node --test
-          --experimental-test-coverage
-          --test-reporter=lcov
-          --test-reporter-destination=lcov.info
+        run: npm run gen:coverage
 
-      - name: Check coverage against threshold
-        run: |
-          COVERAGE=$(lcov-total lcov.info)
-          echo "Total Coverage: $COVERAGE%"
-
-          # Minimum allowed coverage
-          THRESHOLD=95.0
-
-          # Use bc to compare floats
-          COMPARE=$(echo "$COVERAGE < $THRESHOLD" | bc)
-          if [ "$COMPARE" -eq 1 ]; then
-            echo "❌ Coverage ($COVERAGE%) is below threshold ($THRESHOLD%)"
-            exit 1
-          else
-            echo "✅ Coverage ($COVERAGE%) meets threshold ($THRESHOLD%)"
-          fi
+      - name: Check line and branch coverage thresholds
+        env:
+          COVERAGE_THRESHOLD_LINE: 95
+          COVERAGE_THRESHOLD_BRANCH: 95
+        run: node .github/scripts/check-coverage.js
