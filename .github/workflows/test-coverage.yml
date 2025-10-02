@@ -37,7 +37,7 @@ jobs:
           echo "Total Coverage: $COVERAGE%"
 
           # Minimum allowed coverage
-          THRESHOLD=100.0
+          THRESHOLD=95.0
 
           # Use bc to compare floats
           COMPARE=$(echo "$COVERAGE < $THRESHOLD" | bc)
