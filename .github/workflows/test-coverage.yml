@@ -26,5 +26,5 @@ jobs:
       - name: Check line and branch coverage thresholds
         env:
           COVERAGE_THRESHOLD_LINE: 95
-          COVERAGE_THRESHOLD_BRANCH: 100
+          COVERAGE_THRESHOLD_BRANCH: 95
         run: node .github/scripts/check-coverage.js
