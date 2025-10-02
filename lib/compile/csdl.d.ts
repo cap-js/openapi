@@ -3,7 +3,7 @@
 // modifcations:
 // - CSDLProperties.$Version changed to string, as that is how we use it
 // - CSDLProperties.$EntityContrainer changed to string
-// - replace complex type names with descriptive ones
+// - replace generated and unclear type names with descriptive ones
 
 export type CSDL = {
     readonly $schema:              string;
