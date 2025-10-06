@@ -10,6 +10,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 - Now writes config file path in case of errors.
 
+### Changed
+
+- Allow array of objects for `@protocol` annotation
+
 ## Version 1.2.2 - 13.05.2025
 
 ### Fixed
