@@ -1,4 +1,5 @@
 const assert = require('assert');
+const { test, describe, it } = require('node:test');
 
 //TODO:
 // title/description on action/function (import), with fallback from import to action/function
@@ -39,52 +40,52 @@ const result8 = require('./data/descriptions.openapi3.json');
 const example9 = require('./data/custom-parameters.json');
 const result9 = require('./data/custom-parameters.openapi3.json');
 
-describe('Examples', function () {
+describe('Examples', () => {
 
-    it('csdl-16.1', function () {
+    test('csdl-16.1', () => {
         const openapi = lib.csdl2openapi(example1, { diagram: true });
         check(openapi, result1);
-    })
+    });
 
-    it('TripPin', function () {
+    test('TripPin', () => {
         const openapi = lib.csdl2openapi(example2, {
             host: 'services.odata.org',
             basePath: '/V4/(S(cnbm44wtbc1v5bgrlek5lpcc))/TripPinServiceRW',
             diagram: true
         });
         check(openapi, result2);
-    })
+    });
 
-    it('annotations', function () {
+    test('annotations', () => {
         const openapi = lib.csdl2openapi(example5, { diagram: true });
         check(openapi, result5);
-    })
+    });
 
-    it('containment', function () {
+    test('containment', () => {
         const openapi = lib.csdl2openapi(example6, { diagram: true });
         check(openapi, result6);
-    })
+    });
 
-    it('authorization', function () {
+    test('authorization', () => {
         const openapi = lib.csdl2openapi(example7, { diagram: true });
         check(openapi, result7);
-    })
+    });
 
-    it('descriptions', function () {
+    test('descriptions', () => {
         const openapi = lib.csdl2openapi(example8, { diagram: true });
         check(openapi, result8);
-    })
+    });
 
-    it('custom-parameters', function () {
+    test('custom-parameters', () => {
         const openapi = lib.csdl2openapi(example9, { diagram: true });
         check(openapi, result9);
     });
 
 })
 
-describe('Edge cases', function () {
+describe('Edge cases', () => {
 
-    it('empty input', function () {
+    test('empty input', () => {
         const csdl = {};
         const expected = {
             openapi: '3.0.2',
@@ -94,16 +95,16 @@ describe('Edge cases', function () {
                 version: ''
             },
             paths: {},
-            'x-odata-version': '4.01', 
-            'x-sap-api-type': 'ODATAV4', 
+            'x-odata-version': '4.01',
+            'x-sap-api-type': 'ODATAV4',
             'x-sap-shortText': "Use @Core.Description: '...' on your CDS service to provide a meaningful short text.",
             components: { schemas: {} }
         };
         const openapi = lib.csdl2openapi(csdl, {});
         assert.deepStrictEqual(openapi, expected, 'Empty CSDL document');
     });
-    
-    it('omit unused types', function () {
+
+    test('omit unused types', () => {
         const csdl = {
             $Reference: { dummy: { '$Include': [{ '$Namespace': 'Org.OData.Core.V1', '$Alias': 'Core' }] } },
             ReuseTypes: {
@@ -125,8 +126,8 @@ describe('Edge cases', function () {
                 version: ''
             },
             paths: {},
-            'x-odata-version': '4.01', 
-            'x-sap-api-type': 'ODATAV4', 
+            'x-odata-version': '4.01',
+            'x-sap-api-type': 'ODATAV4',
             'x-sap-shortText': "Use @Core.Description: '...' on your CDS service to provide a meaningful short text.",
             components: {
                 schemas: {},
@@ -136,7 +137,7 @@ describe('Edge cases', function () {
         assert.deepStrictEqual(openapi, expected, 'Empty CSDL document');
     });
 
-    it('omit unused types with cyclic references', function () {
+    test('omit unused types with cyclic references', () => {
         const csdl = {
             $Reference: {
                 dummy: {
@@ -179,7 +180,7 @@ describe('Edge cases', function () {
         assert.deepStrictEqual(openapi, expected, 'Empty CSDL document');
     });
 
-    it('InsertRestrictions, UpdateRestrictions, ReadRestrictions', function () {
+    test('InsertRestrictions, UpdateRestrictions, ReadRestrictions', () => {
         //TODO: restrictions
         const csdl = {
             $Version: "4.01",
@@ -385,7 +386,7 @@ describe('Edge cases', function () {
     });
 
 
-    it('circular reference on collect primitive paths', function () {
+    test('circular reference on collect primitive paths', () => {
         const csdl = {
             $EntityContainer: 'this.Container',
             this: {
@@ -452,7 +453,7 @@ describe('Edge cases', function () {
         assert.deepStrictEqual(openapi.paths['/sources'].get.parameters[5], expected_sources_get_param);
     })
 
-    it('type definition with @JSON.Schema', function () {
+    test('type definition with @JSON.Schema', () => {
         const csdl = {
             $EntityContainer: 'jsonExamples.Container',
             $Reference: {
@@ -525,7 +526,7 @@ describe('Edge cases', function () {
         );
     })
 
-    it('type definition with @Org.OData.JSON.V1.Schema', function () {
+    test('type definition with @Org.OData.JSON.V1.Schema', () => {
         const csdl = {
             $EntityContainer: "jsonExamples.Container",
             $Reference: {
@@ -588,7 +589,7 @@ describe('Edge cases', function () {
           );
     })
 
-    it('no key', function () {
+    test('no key', () => {
         const csdl = {
             $EntityContainer: 'this.Container',
             this: {
@@ -607,7 +608,7 @@ describe('Edge cases', function () {
         assert.deepStrictEqual(operations(actual), operations(expected), 'Operations');
     })
 
-    it('base type not found', function () {
+    test('base type not found', () => {
         const csdl = {
             $EntityContainer: 'this.Container',
             this: {
@@ -626,7 +627,7 @@ describe('Edge cases', function () {
         assert.deepStrictEqual(operations(actual), operations(expected), 'Operations');
     })
 
-    it('no inherited key', function () {
+    test('no inherited key', () => {
         const csdl = {
             $EntityContainer: 'this.Container',
             this: {
@@ -646,7 +647,7 @@ describe('Edge cases', function () {
         assert.deepStrictEqual(operations(actual), operations(expected), 'Operations');
     })
 
-    it('inherited key', function () {
+    test('inherited key', () => {
         const csdl = {
             $EntityContainer: 'this.Container',
             this: {
@@ -667,7 +668,7 @@ describe('Edge cases', function () {
         assert.deepStrictEqual(operations(actual), operations(expected), 'Operations');
     })
 
-    it('key-as-segment', function () {
+    test('key-as-segment', () => {
         const csdl = {
             $Reference: {
                 dummy: {
@@ -708,7 +709,7 @@ describe('Edge cases', function () {
         assert.strictEqual(actual.paths['/$batch'].post.description, 'BatchSupport - LongDescription\n\n*Please note that "Try it out" is not supported for this request.*', 'Batch description');
     })
 
-    it('function without parameters', function () {
+    test('function without parameters', () => {
         const csdl = {
             $EntityContainer: 'this.Container',
             this: {
@@ -727,7 +728,7 @@ describe('Edge cases', function () {
         assert.deepStrictEqual(operations(actual), operations(expected), 'Operations');
     })
 
-    it("function with complex and optional collection parameter", function () {
+    test("function with complex and optional collection parameter", () => {
         const csdl = {
             $Reference: {
                 dummy: {
@@ -814,7 +815,7 @@ describe('Edge cases', function () {
         assert.deepStrictEqual(actual.paths[path].get.tags, expected.paths[path].get.tags, 'function tags');
     })
 
-    it('function with @ parameter aliases', function () {
+    test('function with @ parameter aliases', () => {
       const csdl = {
         $Version: '4.01',
         $Reference: {
@@ -882,8 +883,8 @@ describe('Edge cases', function () {
       delete actual.paths['/fav'].get.responses;
       assert.deepStrictEqual(actual.paths, expected.paths);
     });
-    
-    it('return type with facets', function () {
+
+    test('return type with facets', () => {
         const csdl = {
             $EntityContainer: 'this.Container',
             this: {
@@ -985,7 +986,7 @@ describe('Edge cases', function () {
             expected.paths["/fun(in={in})"].get.responses[200], 'fun(in)');
     })
 
-    it('delta link, no $batch', function () {
+    test('delta link, no $batch', () => {
         const csdl = {
             $Reference: { dummy: { "$Include": [{ "$Namespace": "Org.OData.Capabilities.V1", "$Alias": "Capa" }] } },
             $EntityContainer: 'this.Container',
@@ -1033,7 +1034,7 @@ describe('Edge cases', function () {
             expectedGetResponseProperties, 'get list with delta');
     })
 
-    it('entity set and singleton with non-existing type', function () {
+    test('entity set and singleton with non-existing type', () => {
         const csdl = {
             $EntityContainer: 'this.Container',
             this: {
@@ -1177,7 +1178,7 @@ describe('Edge cases', function () {
         assert.deepStrictEqual(actual.paths['/single'].patch, expected.paths['/single'].patch, 'PATCH single');
     })
 
-    it('inheritance', function () {
+    test('inheritance', () => {
         const csdl = {
             $EntityContainer: 'this.Container',
             this: {
@@ -1352,7 +1353,7 @@ see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-prot
         assert.deepStrictEqual(actual.paths['/set'].get, expected.paths['/set'].get, 'GET set');
     })
 
-    it('navigation property in complex type', function () {
+    test('navigation property in complex type', () => {
         const csdl = {
             $EntityContainer: 'this.Container',
             this: {
@@ -1529,7 +1530,7 @@ see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-prot
         assert.deepStrictEqual(actual.paths['/sources'].get, expected.paths['/sources'].get, 'GET sources');
     })
 
-    it('key aliases', function () {
+    test('key aliases', () => {
         const csdl = {
             $EntityContainer: 'this.Container',
             this: {
@@ -1679,7 +1680,7 @@ see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-prot
     })
 
 
-    it('FilterRestrictions, NavigationRestrictions, SearchRestrictions, and SortRestrictions', function () {
+    test('FilterRestrictions, NavigationRestrictions, SearchRestrictions, and SortRestrictions', () => {
         const csdl = {
             $Version: '4.01',
             $Reference: {
@@ -1855,7 +1856,7 @@ see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-prot
         assert.deepStrictEqual(actual.components.schemas["this.thing"].properties.one, { type: "string", default: "def" }, "Property with default value");
     })
 
-    it('ExpandRestrictions', function () {
+    test('ExpandRestrictions', () => {
         const csdl = {
             $Reference: {
                 dummy: {
@@ -1930,7 +1931,7 @@ see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-prot
         assert.strictEqual(actual.paths['/roots'].get.parameters.find(item => item.name == '$expand').description, 'Expanding has some restrictions here.', 'expand description')
     })
 
-    it('Default Namespace', function () {
+    test('Default Namespace', () => {
         const csdl = {
             $Version: '4.01',
             $Reference: {
@@ -2083,7 +2084,7 @@ see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-prot
         assert.deepStrictEqual(actual.tags, [{ name: 'First', description: 'The first thingy' }, { name: 'Second', description: 'The second thingy' }], 'global tags');
     })
 
-    it('Deep update on container level', function () {
+    test('Deep update on container level', () => {
         const csdl = {
             $Reference: { dummy: { "$Include": [{ "$Namespace": "Org.OData.Capabilities.V1", "$Alias": "Capabilities" }] } },
             $EntityContainer: 'this.Container',
@@ -2159,7 +2160,7 @@ see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-prot
         assert.deepStrictEqual(actual.components.schemas['this.child-update'], expected.components.schemas['this.child-update'], 'child update structure')
     });
 
-    it("Unknown authorization type", function () {
+    test("Unknown authorization type", () => {
         const csdl = {
             $Version: "4.0",
             $Reference: {
@@ -2223,7 +2224,7 @@ see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-prot
         );
     });
 
-    it("various types and fishy annotations", function () {
+    test("various types and fishy annotations", () => {
         const csdl = {
             $EntityContainer: "typeExamples.Container",
             typeExamples: {
@@ -2285,7 +2286,7 @@ see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-prot
                 unknown: {
                     $ref: "#/components/schemas/typeExamples.un-known",
                 },
-  
+
         },
             "MaxLength"
         );
@@ -2382,11 +2383,11 @@ it("AllowedValues on various Edm types", function () {
 
 it('Error Logging when name and title are missing', function () {
     const csdl = {name:undefined,title:undefined};
-    const actual = lib.csdl2openapi(csdl, {}); 
+    const actual = lib.csdl2openapi(csdl, {});
 
     assert.ok(actual, 'Function should execute without errors');
     console.log('Error handling executed successfully');
-});  
+});
 
 describe('CAP / CS01', function () {
 
@@ -2549,7 +2550,7 @@ see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-prot
         assert.deepStrictEqual(operations(actual), operations(expected), 'Operations');
         assert.deepStrictEqual(actual.paths['/things'].get, expected.paths['/things'].get, 'GET things');
     })
-    
+
 
 })
 
