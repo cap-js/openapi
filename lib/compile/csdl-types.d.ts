@@ -544,14 +544,3 @@ export type ReferencePatternProperties = {
 export type PropertyNames = {
     readonly maxLength: number;
 }
-
-// Converts JSON strings to/from your types
-export class Convert {
-    public static toCSDL(json: string): CSDL {
-        return JSON.parse(json);
-    }
-
-    public static CSDLToJson(value: CSDL): string {
-        return JSON.stringify(value);
-    }
-}
