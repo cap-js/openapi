@@ -10,7 +10,7 @@ The conversion from a CDS model (CSN) to an OpenAPI specification is orchestrate
 
 ## OData Vocabularies
 
-The conversion process relies on OData annotations, which are present in the CSN and then translated into the CSDL. These annotations are defined in standard vocabularies, which you can find in the official documentation:
+The conversion process relies on OData annotations, which are present in the CSN and then translated into the CSDL. These annotations are defined in standard vocabularies, which you can find in both the official and the complementary SAP documentation:
 
 [OASIS OData Vocabularies](https://oasis-tcs.github.io/odata-vocabularies/vocabularies/)
-
+[SAP OData Vocabularies](https://sap.github.io/odata-vocabularies/)
