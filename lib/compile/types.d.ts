@@ -26,6 +26,14 @@ type ArraySchema = {
     items: Schema
 }
 
+type ObjectSchema = {
+    type: 'object',
+    properties: { value: any } & {},
+}
+
+// for responses that only contain meta information
+type EmptySchema = {}
+
 type Meta = {
     nullable?: boolean
     default?: unknown
@@ -34,7 +42,7 @@ type Meta = {
     '$ref'?: unknown
 }
 
-type SingleSchema = (StringSchema | NumberSchema | BooleanSchema | ArraySchema) & Meta
+type SingleSchema = (StringSchema | NumberSchema | BooleanSchema | ArraySchema | ObjectSchema | EmptySchema) & Meta
 
 type AnyOf = { anyOf: Schema[] } & Meta
 type AllOf = { allOf: Schema[] } & Meta
@@ -43,8 +51,56 @@ type MultiSchema = AnyOf | AllOf
 export type Schema = (SingleSchema | MultiSchema)
 
 
-
 export type TargetRestrictions = {
     Countable?: boolean
     Expandable?: boolean
 }
+
+// despite how CSDL is defined in the standard,
+// we assume to be working with its .properties field
+// throughout our conversion
+import type { CSDL as CSDL_ } from './csdl-types';
+export type CSDL = CSDL_['properties'];
+
+
+
+export type PathItem = {
+    get?: Request,
+    post?: Request,
+    put?: Request,
+    patch?: Request,
+    delete?: Request,
+} | Request
+
+type MIMEType = 'multipart/mixed' | 'application/json'
+
+type Request = {
+    summary?: string,
+    description?: string,
+    tags?: string[],
+    parameters?: string[],
+    responses?: Record<string, Response>,
+    requestBody?: RequestBody,
+}
+
+type Response = {
+    required?: boolean,
+    description?: string,
+    content?: {[mime in MIMEType]?: {
+        schema?: SingleSchema & { title?: string },
+        example?: string
+    }},
+    responses?: Record<string, { $ref: string }>,
+    $ref?: string
+}
+
+type RequestBody = {
+    required: boolean,
+    description: string,
+    content: Record<string, {
+        schema: { type: string },
+        example: string
+    }>,
+}
+
+export type Paths = { [path: string]: PathItem }
