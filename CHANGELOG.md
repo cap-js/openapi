@@ -14,6 +14,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 - Allow array of objects for `@protocol` annotation
 
+### Fixed
+
+- Properly consume `@Capabilities.UpdateRestrictions.UpdateMethod`
+
 ## Version 1.2.2 - 13.05.2025
 
 ### Fixed
