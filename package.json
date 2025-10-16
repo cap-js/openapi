@@ -24,7 +24,8 @@
     "test": "node --test",
     "lint": "npx eslint .",
     "check:types": "npx tsc",
-    "gen:coverage": "node --test --experimental-test-coverage --test-reporter=lcov --test-reporter-destination=lcov.info"
+    "gen:coverage": "node --test --experimental-test-coverage --test-reporter=lcov --test-reporter-destination=lcov.info",
+    "gen:call-graph": "node scripts/generate-call-graph-svg.js"
   },
   "dependencies": {
     "pluralize": "^8.0.0"
@@ -35,6 +36,7 @@
   "devDependencies": {
     "@types/node": "^24.3.0",
     "eslint": "^9.33.0",
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.2",
+    "@mermaid-js/mermaid-cli": "^11.12.0"
   }
 }
