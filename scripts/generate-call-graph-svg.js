@@ -20,7 +20,8 @@ async function main() {
     await generateSvgFromMermaid(mermaidDiagram, svgOutputPath);
     console.log(`SVG diagram saved to ${svgOutputPath}`);
   } catch (error) {
-    console.error('Failed to generate call graph:', error.message);
+    const message = error instanceof Error ? error.message : String(error);
+    console.error('Failed to generate call graph:', message);
     process.exit(1);
   }
 }
@@ -181,8 +182,10 @@ function generateSvgFromMermaid(mermaidDiagram, outputPath) {
       resolve(stdout);
     });
     
-    child.stdin.write(mermaidDiagram);
-    child.stdin.end();
+    if (child.stdin) {
+      child.stdin.write(mermaidDiagram);
+      child.stdin.end();
+    }
   });
 }
 
