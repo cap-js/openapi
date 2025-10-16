@@ -133,7 +133,7 @@ function convertCallGraphToMermaid(callGraph, filterPrefix) {
   const nodes = new Set();
   
   const createNodeId = (fileName, functionName) => {
-    const safeFileName = path.basename(fileName).replace(/[.\-]/g, '_');
+    const safeFileName = path.basename(fileName).replace(/[.-]/g, '_');
     const safeFunctionName = functionName.replace(/[^a-zA-Z0-9_]/g, '_');
     return `${safeFileName}__${safeFunctionName}`;
   };
