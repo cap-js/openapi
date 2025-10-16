@@ -120,3 +120,15 @@ When adding new code to the project, follow these guidelines:
 5. Perform a self-review before submitting your code for review
 
 Remember, the goal is to write code that is easy to understand, maintain, and extend. When in doubt, prioritize readability and simplicity over cleverness.
+
+## ESLint Configuration
+
+Key configuration choices:
+
+- `func-style`: Off. Use the most appropriate function style for each situation.
+- `no-nested-ternary`: Removed. Use newlines for readability in nested ternaries.
+- `no-param-reassign`: Warn. Consider alternatives to parameter reassignment.
+- `object-shorthand`: Warn. Use concise object literal syntax when possible.
+- `require-await`: Warn. Ensure async functions use `await`.
+
+These rules guide code quality and consistency. Use good judgment in their application.
