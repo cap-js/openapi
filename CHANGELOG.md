@@ -4,11 +4,7 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
-## Version 1.2.3 - 28.05.2025
-
-### Added
-
-- Now writes config file path in case of errors.
+## [Unreleased]
 
 ### Changed
 
@@ -17,6 +13,13 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ### Fixed
 
 - Properly consume `@Capabilities.UpdateRestrictions.UpdateMethod`
+- Reading json files from project root
+
+## Version 1.2.3 - 28.05.2025
+
+### Added
+
+- Now writes config file path in case of errors.
 
 ## Version 1.2.2 - 13.05.2025
 
