@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ## [Unreleased]
 
+### Fixed
+
+- Prioritize `@Core.LongDescription` over `@Core.Description` for key parameter descriptions to avoid concatenation.
+
+
 
 ## Version 1.2.3 - 28.05.2025
 
