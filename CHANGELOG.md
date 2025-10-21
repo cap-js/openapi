@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ## [Unreleased]
 
+### Fixed
+- Reading json from project root
 
 ## Version 1.2.3 - 28.05.2025
 
