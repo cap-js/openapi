@@ -40,6 +40,9 @@ const result8 = require('./data/descriptions.openapi3.json');
 const example9 = require('./data/custom-parameters.json');
 const result9 = require('./data/custom-parameters.openapi3.json');
 
+const example10 = require('./data/immutable-composition.json');
+const result10 = require('./data/immutable-composition.openapi3.json');
+
 describe('Examples', () => {
 
     test('csdl-16.1', () => {
@@ -81,6 +84,10 @@ describe('Examples', () => {
         check(openapi, result9);
     });
 
+    test('immutable-composition', () => {
+        const openapi = lib.csdl2openapi(example10, { diagram: true });
+        check(openapi, result10);
+    });
 })
 
 describe('Edge cases', () => {

@@ -1,0 +1,42 @@
+{
+    "$Version": "4.01",
+    "$Reference": {
+        "dummy": {
+            "$Include": [
+                { "$Namespace": "Org.OData.Core.V1", "$Alias": "Core" }
+            ]
+        }
+    },
+    "$EntityContainer": "test.Container",
+    "test": {
+        "Parent": {
+            "$Kind": "EntityType",
+            "$Key": ["ID"],
+            "ID": { "$Type": "Edm.Guid" },
+            "child": {
+                "$Kind": "NavigationProperty",
+                "$Type": "test.Child",
+                "$ContainsTarget": true
+            },
+            "immutable_child": {
+                "$Kind": "NavigationProperty",
+                "$Type": "test.Child",
+                "$ContainsTarget": true,
+                "@Core.Immutable": true
+            }
+        },
+        "Child": {
+            "$Kind": "EntityType",
+            "$Key": ["ID"],
+            "ID": { "$Type": "Edm.Guid" },
+            "value": { "$Type": "Edm.String" }
+        },
+        "Container": {
+            "$Kind": "EntityContainer",
+            "Parents": {
+                "$Collection": true,
+                "$Type": "test.Parent"
+            }
+        }
+    }
+}
