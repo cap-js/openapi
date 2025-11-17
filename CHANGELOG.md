@@ -8,7 +8,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Fixed
 - Reading json from project root
-- Correctly handle @Core.Immutable properties in PATCH requests.
+- Correctly handle `@Core.Immutable` properties in PATCH requests.
 
 ## Version 1.2.3 - 28.05.2025
 
