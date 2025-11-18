@@ -1059,7 +1059,6 @@
           {
             "required": true,
             "description": "Function Bound Overload Nonbinding Parameter - LongDescription  \nString value needs to be enclosed in single quotes",
-            "summary": "Function Bound Overload Nonbinding Parameter Ext - Description",
             "in": "query",
             "name": "nonbinding",
             "schema": {
@@ -1847,7 +1846,6 @@
           {
             "required": true,
             "description": "Function Bound Overload Nonbinding Parameter - LongDescription  \nString value needs to be enclosed in single quotes",
-            "summary": "Function Bound Overload Nonbinding Parameter Ext - Description",
             "in": "query",
             "name": "nonbinding",
             "schema": {
@@ -1900,7 +1898,6 @@
           {
             "required": true,
             "description": "Function Unbound Overload Parameter Ext - LongDescription  \nString value needs to be enclosed in single quotes",
-            "summary": "Function Unbound Overload Parameter - Description",
             "in": "query",
             "name": "nonbinding",
             "schema": {
@@ -1953,7 +1950,6 @@
           {
             "required": true,
             "description": "Function Unbound Overload Parameter Ext - LongDescription  \nString value needs to be enclosed in single quotes",
-            "summary": "Function Unbound Overload Parameter - Description",
             "in": "query",
             "name": "nonbinding",
             "schema": {
@@ -2006,7 +2002,6 @@
           {
             "required": true,
             "description": "Function Unbound Overload Parameter Ext - LongDescription  \nString value needs to be enclosed in single quotes",
-            "summary": "Function Unbound Overload Parameter - Description",
             "in": "query",
             "name": "nonbinding",
             "schema": {
@@ -2599,7 +2594,6 @@
           {
             "required": true,
             "description": "Function Bound Overload Nonbinding Parameter - LongDescription  \nString value needs to be enclosed in single quotes",
-            "summary": "Function Bound Overload Nonbinding Parameter Ext - Description",
             "in": "query",
             "name": "nonbinding",
             "schema": {
@@ -3156,7 +3150,6 @@
           {
             "required": true,
             "description": "Function Bound Overload Nonbinding Parameter - LongDescription  \nString value needs to be enclosed in single quotes",
-            "summary": "Function Bound Overload Nonbinding Parameter Ext - Description",
             "in": "query",
             "name": "nonbinding",
             "schema": {
