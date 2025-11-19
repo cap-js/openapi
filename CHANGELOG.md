@@ -6,6 +6,14 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ## [Unreleased]
 
+### Added
+- Util to regenerate OpenAPI test snapshots
+
+### Changed
+- Operations and parameters: `@Core.Description` maps to `summary`, `@Core.LongDescription` maps to `description`
+- Schema properties and service info: use `@Core.LongDescription` with fallback to `@Core.Description`
+- Error messages now mention both `@Core.LongDescription` and `@Core.Description` annotation options
+
 ### Fixed
 - Reading json from project root
 - Correctly handle `@Core.Immutable` properties in PATCH requests.
