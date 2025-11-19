@@ -2,7 +2,7 @@
   "openapi": "3.0.2",
   "info": {
     "title": "Use @title: '...' on your CDS service to provide a meaningful title.",
-    "description": "Examples from Part 3: CSDL\n\n## Entity Data Model\n![ER Diagram](https://yuml.me/diagram/class/[Measurement],[Example7to11],[Product{bg:lightslategray}],[Product]*-[Category],[Product]-0..1>[Supplier],[Supplier{bg:lightslategray}],[Customer{bg:lightslategray}],[Order{bg:lightslategray}],[Category{bg:lightslategray}],[Employee{bg:lightslategray}],[Employee]-0..1>[Manager],[Employee]^[Manager{bg:lightslategray}],[Manager]-*>[Employee],[Category17{bg:lightslategray}],[Category18{bg:lightslategray}],[Category18]++-[EntityInfo],[EntityInfo],[OrderLine{bg:lightslategray}],[Dimensions],[Product22{bg:lightslategray}],[Product22]++-0..1[Dimensions],[Product22]++-0..1[Dimensions],[ShipmentBox{bg:lightslategray}],[ShipmentBox]++-0..1[Dimensions],[Size],[Size]++-0..1[Length],[Size]++-0..1[Weight],[Product2{bg:lightslategray}],[NullablePrimitiveTypes],[NullablePrimitiveTypes]++-0..1[Color],[NullablePrimitiveTypes]++-0..1[IntegerDecimal],[NonNullablePrimitiveTypes],[NonNullablePrimitiveTypes]++-[Color],[NonNullablePrimitiveTypes]++-[IntegerDecimal],[NonNullablePrimitiveTypes]++-[Text],[Weird{bg:lightslategray}],[Weird]++-[Core.Permission{bg:whitesmoke}],[Weird]++-0..1[Core.Permission{bg:whitesmoke}],[Address],[Address]-0..1>[City],[Address]-0..1>[Region],[Address]-0..1>[Country],[City{bg:lightslategray}],[Region{bg:lightslategray}],[Country{bg:lightslategray}],[Planet{bg:lightslategray}],[NavigationOnly],[NavigationOnly]-0..1>[Planet],[AnnotationOnly],[Order{bg:lightslategray}],[PersonType],[MovieType],[FriendType{bg:lightslategray}],[PersonType]^[DeveloperType],[ScrumTeamType],[ScrumTeamType]++-0..1[DeveloperType],[MovieType]^[ArchivedMovieType],[SomeThingType],[SomeThingType]++-*[PersonType],[SomeThingType]-*>[FriendType],[ChangeTrackingType],[Categories35%20{bg:lawngreen}]++-*>[Category],[Categories34%20{bg:lawngreen}]++-*>[Category],[ProductsByRating{bg:lawngreen}]-*>[Product],[LeaveRequestApproval{bg:lawngreen}],[MainSupplier%20{bg:lawngreen}]++->[Supplier],[Suppliers%20{bg:lawngreen}]++-*>[Supplier],[Categories%20{bg:lawngreen}]++-*>[Category],[Products%20{bg:lawngreen}]++-*>[Product],[TopSellingProducts{bg:lawngreen}]-*>[Product],[Orders%20{bg:lawngreen}]++-*>[Order],[PreferredCustomers%20{bg:lawngreen}]++-*>[Customer],[StandardCustomers%20{bg:lawngreen}]++-*>[Customer])\n\n### Legend\n![Legend](https://yuml.me/diagram/plain;dir:TB;scale:60/class/[External.Type{bg:whitesmoke}],[ComplexType],[EntityType{bg:lightslategray}],[EntitySet/Singleton/Operation{bg:lawngreen}])",
+    "description": "Use @Core.LongDescription: '...' or @Core.Description: '...' on your CDS service to provide a meaningful description.\n\n## Entity Data Model\n![ER Diagram](https://yuml.me/diagram/class/[Measurement],[Example7to11],[Product{bg:lightslategray}],[Product]*-[Category],[Product]-0..1>[Supplier],[Supplier{bg:lightslategray}],[Customer{bg:lightslategray}],[Order{bg:lightslategray}],[Category{bg:lightslategray}],[Employee{bg:lightslategray}],[Employee]-0..1>[Manager],[Employee]^[Manager{bg:lightslategray}],[Manager]-*>[Employee],[Category17{bg:lightslategray}],[Category18{bg:lightslategray}],[Category18]++-[EntityInfo],[EntityInfo],[OrderLine{bg:lightslategray}],[Dimensions],[Product22{bg:lightslategray}],[Product22]++-0..1[Dimensions],[Product22]++-0..1[Dimensions],[ShipmentBox{bg:lightslategray}],[ShipmentBox]++-0..1[Dimensions],[Size],[Size]++-0..1[Length],[Size]++-0..1[Weight],[Product2{bg:lightslategray}],[NullablePrimitiveTypes],[NullablePrimitiveTypes]++-0..1[Color],[NullablePrimitiveTypes]++-0..1[IntegerDecimal],[NonNullablePrimitiveTypes],[NonNullablePrimitiveTypes]++-[Color],[NonNullablePrimitiveTypes]++-[IntegerDecimal],[NonNullablePrimitiveTypes]++-[Text],[Weird{bg:lightslategray}],[Weird]++-[Core.Permission{bg:whitesmoke}],[Weird]++-0..1[Core.Permission{bg:whitesmoke}],[Address],[Address]-0..1>[City],[Address]-0..1>[Region],[Address]-0..1>[Country],[City{bg:lightslategray}],[Region{bg:lightslategray}],[Country{bg:lightslategray}],[Planet{bg:lightslategray}],[NavigationOnly],[NavigationOnly]-0..1>[Planet],[AnnotationOnly],[Order{bg:lightslategray}],[PersonType],[MovieType],[FriendType{bg:lightslategray}],[PersonType]^[DeveloperType],[ScrumTeamType],[ScrumTeamType]++-0..1[DeveloperType],[MovieType]^[ArchivedMovieType],[SomeThingType],[SomeThingType]++-*[PersonType],[SomeThingType]-*>[FriendType],[ChangeTrackingType],[Categories35%20{bg:lawngreen}]++-*>[Category],[Categories34%20{bg:lawngreen}]++-*>[Category],[ProductsByRating{bg:lawngreen}]-*>[Product],[LeaveRequestApproval{bg:lawngreen}],[MainSupplier%20{bg:lawngreen}]++->[Supplier],[Suppliers%20{bg:lawngreen}]++-*>[Supplier],[Categories%20{bg:lawngreen}]++-*>[Category],[Products%20{bg:lawngreen}]++-*>[Product],[TopSellingProducts{bg:lawngreen}]-*>[Product],[Orders%20{bg:lawngreen}]++-*>[Order],[PreferredCustomers%20{bg:lawngreen}]++-*>[Customer],[StandardCustomers%20{bg:lawngreen}]++-*>[Customer])\n\n### Legend\n![Legend](https://yuml.me/diagram/plain;dir:TB;scale:60/class/[External.Type{bg:whitesmoke}],[ComplexType],[EntityType{bg:lightslategray}],[EntitySet/Singleton/Operation{bg:lawngreen}])",
     "version": ""
   },
   "x-sap-api-type": "ODATAV4",
@@ -222,13 +222,13 @@
     "/Categories('{ID}')": {
       "parameters": [
         {
-          "description": "key: ID",
           "in": "path",
           "name": "ID",
           "required": true,
           "schema": {
             "type": "string"
-          }
+          },
+          "description": "key: ID"
         }
       ],
       "get": {
@@ -330,13 +330,13 @@
     "/Categories('{ID}')/Products": {
       "parameters": [
         {
-          "description": "key: ID",
           "in": "path",
           "name": "ID",
           "required": true,
           "schema": {
             "type": "string"
-          }
+          },
+          "description": "key: ID"
         }
       ],
       "get": {
@@ -625,13 +625,13 @@
     "/Categories34('{ID}')": {
       "parameters": [
         {
-          "description": "key: ID",
           "in": "path",
           "name": "ID",
           "required": true,
           "schema": {
             "type": "string"
-          }
+          },
+          "description": "key: ID"
         }
       ],
       "get": {
@@ -733,13 +733,13 @@
     "/Categories34('{ID}')/Products": {
       "parameters": [
         {
-          "description": "key: ID",
           "in": "path",
           "name": "ID",
           "required": true,
           "schema": {
             "type": "string"
-          }
+          },
+          "description": "key: ID"
         }
       ],
       "get": {
@@ -994,13 +994,13 @@
     "/Categories35('{ID}')": {
       "parameters": [
         {
-          "description": "key: ID",
           "in": "path",
           "name": "ID",
           "required": true,
           "schema": {
             "type": "string"
-          }
+          },
+          "description": "key: ID"
         }
       ],
       "get": {
@@ -1102,13 +1102,13 @@
     "/Categories35('{ID}')/Products": {
       "parameters": [
         {
-          "description": "key: ID",
           "in": "path",
           "name": "ID",
           "required": true,
           "schema": {
             "type": "string"
-          }
+          },
+          "description": "key: ID"
         }
       ],
       "get": {
@@ -1428,7 +1428,6 @@
     "/Orders({ID})": {
       "parameters": [
         {
-          "description": "key: ID",
           "in": "path",
           "name": "ID",
           "required": true,
@@ -1443,7 +1442,8 @@
               }
             ],
             "example": "42"
-          }
+          },
+          "description": "key: ID"
         }
       ],
       "get": {
@@ -1650,13 +1650,13 @@
     "/PreferredCustomers('{ID}')": {
       "parameters": [
         {
-          "description": "key: ID",
           "in": "path",
           "name": "ID",
           "required": true,
           "schema": {
             "type": "string"
-          }
+          },
+          "description": "key: ID"
         }
       ],
       "get": {
@@ -1884,13 +1884,13 @@
     "/Products('{ID}')": {
       "parameters": [
         {
-          "description": "key: ID",
           "in": "path",
           "name": "ID",
           "required": true,
           "schema": {
             "type": "string"
-          }
+          },
+          "description": "key: ID"
         }
       ],
       "get": {
@@ -1994,13 +1994,13 @@
     "/Products('{ID}')/Category": {
       "parameters": [
         {
-          "description": "key: ID",
           "in": "path",
           "name": "ID",
           "required": true,
           "schema": {
             "type": "string"
-          }
+          },
+          "description": "key: ID"
         }
       ],
       "get": {
@@ -2064,13 +2064,13 @@
     "/Products('{ID}')/Supplier": {
       "parameters": [
         {
-          "description": "key: ID",
           "in": "path",
           "name": "ID",
           "required": true,
           "schema": {
             "type": "string"
-          }
+          },
+          "description": "key: ID"
         }
       ],
       "get": {
@@ -2340,13 +2340,13 @@
     "/StandardCustomers('{ID}')": {
       "parameters": [
         {
-          "description": "key: ID",
           "in": "path",
           "name": "ID",
           "required": true,
           "schema": {
             "type": "string"
-          }
+          },
+          "description": "key: ID"
         }
       ],
       "get": {
@@ -2553,13 +2553,13 @@
     "/Suppliers('{ID}')": {
       "parameters": [
         {
-          "description": "key: ID",
           "in": "path",
           "name": "ID",
           "required": true,
           "schema": {
             "type": "string"
-          }
+          },
+          "description": "key: ID"
         }
       ],
       "get": {

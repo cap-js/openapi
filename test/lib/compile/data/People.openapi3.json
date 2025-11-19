@@ -207,14 +207,14 @@
     "/People({ID})": {
       "parameters": [
         {
-          "description": "key: ID",
           "in": "path",
           "name": "ID",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          }
+          },
+          "description": "key: ID"
         }
       ],
       "get": {
@@ -317,14 +317,14 @@
     "/People({ID})/PersonDetail": {
       "parameters": [
         {
-          "description": "key: ID",
           "in": "path",
           "name": "ID",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          }
+          },
+          "description": "key: ID"
         }
       ],
       "get": {
@@ -555,14 +555,14 @@
     "/PersonDetails({PersonID})": {
       "parameters": [
         {
-          "description": "key: PersonID",
           "in": "path",
           "name": "PersonID",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          }
+          },
+          "description": "key: PersonID"
         }
       ],
       "get": {
@@ -669,14 +669,14 @@
     "/PersonDetails({PersonID})/Person": {
       "parameters": [
         {
-          "description": "key: PersonID",
           "in": "path",
           "name": "PersonID",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          }
+          },
+          "description": "key: PersonID"
         }
       ],
       "get": {
@@ -899,14 +899,14 @@
     "/Suppliers({ID})": {
       "parameters": [
         {
-          "description": "key: ID",
           "in": "path",
           "name": "ID",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          }
+          },
+          "description": "key: ID"
         }
       ],
       "get": {
@@ -1012,14 +1012,14 @@
     "/Suppliers({ID})/Products": {
       "parameters": [
         {
-          "description": "key: ID",
           "in": "path",
           "name": "ID",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          }
+          },
+          "description": "key: ID"
         }
       ],
       "get": {

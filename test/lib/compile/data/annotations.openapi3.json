@@ -215,13 +215,13 @@
     "/AllSet('{ID}')": {
       "parameters": [
         {
-          "description": "key: ID",
           "in": "path",
           "name": "ID",
           "required": true,
           "schema": {
             "type": "string"
-          }
+          },
+          "description": "key: ID"
         }
       ],
       "get": {
@@ -304,13 +304,13 @@
     "/AllSet('{ID}')/AllMany": {
       "parameters": [
         {
-          "description": "key: ID",
           "in": "path",
           "name": "ID",
           "required": true,
           "schema": {
             "type": "string"
-          }
+          },
+          "description": "key: ID"
         }
       ],
       "get": {
@@ -407,13 +407,13 @@
     "/AllSet('{ID}')/AllOne": {
       "parameters": [
         {
-          "description": "key: ID",
           "in": "path",
           "name": "ID",
           "required": true,
           "schema": {
             "type": "string"
-          }
+          },
+          "description": "key: ID"
         }
       ],
       "get": {
@@ -461,13 +461,13 @@
     "/AllSet('{ID}')/ReadOnlyMany": {
       "parameters": [
         {
-          "description": "key: ID",
           "in": "path",
           "name": "ID",
           "required": true,
           "schema": {
             "type": "string"
-          }
+          },
+          "description": "key: ID"
         }
       ],
       "get": {
@@ -506,13 +506,13 @@
     "/AllSet('{ID}')/ReadOnlyOne": {
       "parameters": [
         {
-          "description": "key: ID",
           "in": "path",
           "name": "ID",
           "required": true,
           "schema": {
             "type": "string"
-          }
+          },
+          "description": "key: ID"
         }
       ],
       "get": {
@@ -971,13 +971,13 @@
     "/NoNavigationSet('{ID}')": {
       "parameters": [
         {
-          "description": "key: ID",
           "in": "path",
           "name": "ID",
           "required": true,
           "schema": {
             "type": "string"
-          }
+          },
+          "description": "key: ID"
         }
       ],
       "get": {
@@ -1217,13 +1217,13 @@
     "/OneNavigationSet('{ID}')": {
       "parameters": [
         {
-          "description": "key: ID",
           "in": "path",
           "name": "ID",
           "required": true,
           "schema": {
             "type": "string"
-          }
+          },
+          "description": "key: ID"
         }
       ],
       "get": {
@@ -1306,13 +1306,13 @@
     "/OneNavigationSet('{ID}')/AllMany": {
       "parameters": [
         {
-          "description": "key: ID",
           "in": "path",
           "name": "ID",
           "required": true,
           "schema": {
             "type": "string"
-          }
+          },
+          "description": "key: ID"
         }
       ],
       "get": {
@@ -1880,24 +1880,24 @@
     "/TwoAllSet(One={One},Two={Two})": {
       "parameters": [
         {
-          "description": "key: One",
           "in": "path",
           "name": "One",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          }
+          },
+          "description": "key: One"
         },
         {
-          "description": "key: Two",
           "in": "path",
           "name": "Two",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          }
+          },
+          "description": "key: Two"
         }
       ],
       "get": {
@@ -1983,24 +1983,24 @@
     "/TwoReadOnlyByKeySet(One={One},Two={Two})": {
       "parameters": [
         {
-          "description": "key: One",
           "in": "path",
           "name": "One",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          }
+          },
+          "description": "key: One"
         },
         {
-          "description": "key: Two",
           "in": "path",
           "name": "Two",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          }
+          },
+          "description": "key: Two"
         }
       ],
       "get": {
@@ -2081,24 +2081,24 @@
     "/TwoReadOnlySet(One={One},Two={Two})": {
       "parameters": [
         {
-          "description": "key: One",
           "in": "path",
           "name": "One",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          }
+          },
+          "description": "key: One"
         },
         {
-          "description": "key: Two",
           "in": "path",
           "name": "Two",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          }
+          },
+          "description": "key: Two"
         }
       ],
       "get": {
@@ -2161,24 +2161,24 @@
     "/TwoWriteOnlySet(One={One},Two={Two})": {
       "parameters": [
         {
-          "description": "key: One",
           "in": "path",
           "name": "One",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          }
+          },
+          "description": "key: One"
         },
         {
-          "description": "key: Two",
           "in": "path",
           "name": "Two",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          }
+          },
+          "description": "key: Two"
         }
       ],
       "patch": {

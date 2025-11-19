@@ -187,13 +187,13 @@
     "/Currencies('{Code}')": {
       "parameters": [
         {
-          "description": "key: Code",
           "in": "path",
           "name": "Code",
           "required": true,
           "schema": {
             "type": "string"
-          }
+          },
+          "description": "key: Code"
         }
       ],
       "get": {
@@ -425,13 +425,13 @@
     "/Sales('{ID}')": {
       "parameters": [
         {
-          "description": "key: ID",
           "in": "path",
           "name": "ID",
           "required": true,
           "schema": {
             "type": "string"
-          }
+          },
+          "description": "key: ID"
         }
       ],
       "get": {
@@ -538,13 +538,13 @@
     "/Sales('{ID}')/Currency": {
       "parameters": [
         {
-          "description": "key: ID",
           "in": "path",
           "name": "ID",
           "required": true,
           "schema": {
             "type": "string"
-          }
+          },
+          "description": "key: ID"
         }
       ],
       "get": {
@@ -591,13 +591,13 @@
     "/Sales('{ID}')/Customer": {
       "parameters": [
         {
-          "description": "key: ID",
           "in": "path",
           "name": "ID",
           "required": true,
           "schema": {
             "type": "string"
-          }
+          },
+          "description": "key: ID"
         }
       ],
       "get": {
@@ -662,13 +662,13 @@
     "/Sales('{ID}')/Product": {
       "parameters": [
         {
-          "description": "key: ID",
           "in": "path",
           "name": "ID",
           "required": true,
           "schema": {
             "type": "string"
-          }
+          },
+          "description": "key: ID"
         }
       ],
       "get": {
@@ -735,13 +735,13 @@
     "/Sales('{ID}')/SalesOrganization": {
       "parameters": [
         {
-          "description": "key: ID",
           "in": "path",
           "name": "ID",
           "required": true,
           "schema": {
             "type": "string"
-          }
+          },
+          "description": "key: ID"
         }
       ],
       "get": {
@@ -805,13 +805,13 @@
     "/Sales('{ID}')/Time": {
       "parameters": [
         {
-          "description": "key: ID",
           "in": "path",
           "name": "ID",
           "required": true,
           "schema": {
             "type": "string"
-          }
+          },
+          "description": "key: ID"
         }
       ],
       "get": {
