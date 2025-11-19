@@ -43,6 +43,9 @@ const result9 = require('./data/custom-parameters.openapi3.json');
 const example10 = require('./data/immutable-composition.json');
 const result10 = require('./data/immutable-composition.openapi3.json');
 
+const example11 = require('./data/description-fallback.json');
+const result11 = require('./data/description-fallback.openapi3.json');
+
 describe('Examples', () => {
 
     test('csdl-16.1', () => {
@@ -87,6 +90,11 @@ describe('Examples', () => {
     test('immutable-composition', () => {
         const openapi = lib.csdl2openapi(example10, { diagram: true });
         check(openapi, result10);
+    });
+
+    test('description-fallback', () => {
+        const openapi = lib.csdl2openapi(example11, { diagram: true });
+        check(openapi, result11);
     });
 })
 
