@@ -2,7 +2,7 @@
   "openapi": "3.0.2",
   "info": {
     "title": "Use @title: '...' on your CDS service to provide a meaningful title.",
-    "description": "Use @Core.LongDescription: '...' or @Core.Description: '...' on your CDS service to provide a meaningful description.\n\n## Entity Data Model\n![ER Diagram](https://yuml.me/diagram/class/[Parent{bg:lightslategray}],[Parent]++->[Child],[Parent]++->[Child],[Child{bg:lightslategray}],[Parents%20{bg:lawngreen}]++-*>[Parent])\n\n### Legend\n![Legend](https://yuml.me/diagram/plain;dir:TB;scale:60/class/[External.Type{bg:whitesmoke}],[ComplexType],[EntityType{bg:lightslategray}],[EntitySet/Singleton/Operation{bg:lawngreen}])",
+    "description": "Use @Core.LongDescription: '...' or @Core.Description: '...' on your CDS service to provide a meaningful description.\n\n## Entity Data Model\n![ER Diagram](https://yuml.me/diagram/class/[Item{bg:lightslategray}],[processItem{bg:lawngreen}],[Items%20{bg:lawngreen}]++-*>[Item])\n\n### Legend\n![Legend](https://yuml.me/diagram/plain;dir:TB;scale:60/class/[External.Type{bg:whitesmoke}],[ComplexType],[EntityType{bg:lightslategray}],[EntitySet/Singleton/Operation{bg:lawngreen}])",
     "version": ""
   },
   "x-sap-api-type": "ODATAV4",
@@ -15,7 +15,7 @@
   ],
   "tags": [
     {
-      "name": "Parents"
+      "name": "Items"
     }
   ],
   "paths": {
@@ -34,7 +34,7 @@
               "schema": {
                 "type": "string"
               },
-              "example": "--request-separator\nContent-Type: application/http\nContent-Transfer-Encoding: binary\n\nGET Parents HTTP/1.1\nAccept: application/json\n\n\n--request-separator--"
+              "example": "--request-separator\nContent-Type: application/http\nContent-Transfer-Encoding: binary\n\nGET Items HTTP/1.1\nAccept: application/json\n\n\n--request-separator--"
             }
           }
         },
@@ -56,11 +56,11 @@
         }
       }
     },
-    "/Parents": {
+    "/Items": {
       "get": {
-        "summary": "Retrieves a list of parents.",
+        "summary": "Retrieves a list of items.",
         "tags": [
-          "Parents"
+          "Items"
         ],
         "parameters": [
           {
@@ -95,7 +95,9 @@
                 "type": "string",
                 "enum": [
                   "ID",
-                  "ID desc"
+                  "ID desc",
+                  "name",
+                  "name desc"
                 ]
               }
             }
@@ -111,25 +113,8 @@
               "items": {
                 "type": "string",
                 "enum": [
-                  "ID"
-                ]
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "description": "The value of $expand query option is a comma-separated list of navigation property names, stream property names, or $value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
-            "in": "query",
-            "explode": false,
-            "schema": {
-              "type": "array",
-              "uniqueItems": true,
-              "items": {
-                "type": "string",
-                "enum": [
-                  "*",
-                  "child",
-                  "immutable_child"
+                  "ID",
+                  "name"
                 ]
               }
             }
@@ -137,12 +122,12 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved parents",
+            "description": "Retrieved items",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "title": "Collection of Parent",
+                  "title": "Collection of Item",
                   "properties": {
                     "@count": {
                       "$ref": "#/components/schemas/count"
@@ -150,7 +135,7 @@
                     "value": {
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/test.Parent"
+                        "$ref": "#/components/schemas/test.Item"
                       }
                     }
                   }
@@ -164,28 +149,28 @@
         }
       },
       "post": {
-        "summary": "Creates a single parent.",
+        "summary": "Creates a single item.",
         "tags": [
-          "Parents"
+          "Items"
         ],
         "requestBody": {
-          "description": "New parent",
+          "description": "New item",
           "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/test.Parent-create"
+                "$ref": "#/components/schemas/test.Item-create"
               }
             }
           }
         },
         "responses": {
           "201": {
-            "description": "Created parent",
+            "description": "Created item",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/test.Parent"
+                  "$ref": "#/components/schemas/test.Item"
                 }
               }
             }
@@ -196,10 +181,10 @@
         }
       }
     },
-    "/Parents({ID})": {
+    "/Items({ID})": {
       "parameters": [
         {
-          "description": "key: ID",
+          "description": "Long detailed description of the identifier",
           "in": "path",
           "name": "ID",
           "required": true,
@@ -211,9 +196,9 @@
         }
       ],
       "get": {
-        "summary": "Retrieves a single parent.",
+        "summary": "Retrieves a single item.",
         "tags": [
-          "Parents"
+          "Items"
         ],
         "parameters": [
           {
@@ -227,25 +212,8 @@
               "items": {
                 "type": "string",
                 "enum": [
-                  "ID"
-                ]
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "description": "The value of $expand query option is a comma-separated list of navigation property names, stream property names, or $value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
-            "in": "query",
-            "explode": false,
-            "schema": {
-              "type": "array",
-              "uniqueItems": true,
-              "items": {
-                "type": "string",
-                "enum": [
-                  "*",
-                  "child",
-                  "immutable_child"
+                  "ID",
+                  "name"
                 ]
               }
             }
@@ -253,11 +221,11 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved parent",
+            "description": "Retrieved item",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/test.Parent"
+                  "$ref": "#/components/schemas/test.Item"
                 }
               }
             }
@@ -268,9 +236,9 @@
         }
       },
       "patch": {
-        "summary": "Changes a single parent.",
+        "summary": "Changes a single item.",
         "tags": [
-          "Parents"
+          "Items"
         ],
         "requestBody": {
           "description": "New property values",
@@ -278,7 +246,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/test.Parent-update"
+                "$ref": "#/components/schemas/test.Item-update"
               }
             }
           }
@@ -293,9 +261,9 @@
         }
       },
       "delete": {
-        "summary": "Deletes a single parent.",
+        "summary": "Deletes a single item.",
         "tags": [
-          "Parents"
+          "Items"
         ],
         "responses": {
           "204": {
@@ -307,131 +275,37 @@
         }
       }
     },
-    "/Parents({ID})/child": {
-      "parameters": [
-        {
-          "description": "key: ID",
-          "in": "path",
-          "name": "ID",
-          "required": true,
-          "schema": {
-            "type": "string",
-            "format": "uuid",
-            "example": "01234567-89ab-cdef-0123-456789abcdef"
-          }
-        }
-      ],
+    "/processItem": {
       "get": {
-        "summary": "Retrieves child of a parent.",
+        "summary": "Invokes function processItem",
         "tags": [
-          "Parents"
+          "Service Operations"
         ],
         "parameters": [
           {
-            "name": "$select",
-            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "description": "Long detailed parameter description",
+            "required": true,
             "in": "query",
-            "explode": false,
+            "name": "itemId",
             "schema": {
-              "type": "array",
-              "uniqueItems": true,
-              "items": {
-                "type": "string",
-                "enum": [
-                  "ID",
-                  "value"
-                ]
-              }
+              "type": "string",
+              "format": "uuid",
+              "example": "01234567-89ab-cdef-0123-456789abcdef "
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "Retrieved child",
+            "description": "Success",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/test.Child"
-                }
-              }
-            }
-          },
-          "4XX": {
-            "$ref": "#/components/responses/error"
-          }
-        }
-      },
-      "patch": {
-        "summary": "Changes child of a parent.",
-        "tags": [
-          "Parents"
-        ],
-        "requestBody": {
-          "description": "New property values",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/test.Child-update"
-              }
-            }
-          }
-        },
-        "responses": {
-          "204": {
-            "description": "Success"
-          },
-          "4XX": {
-            "$ref": "#/components/responses/error"
-          }
-        }
-      }
-    },
-    "/Parents({ID})/immutable_child": {
-      "parameters": [
-        {
-          "description": "key: ID",
-          "in": "path",
-          "name": "ID",
-          "required": true,
-          "schema": {
-            "type": "string",
-            "format": "uuid",
-            "example": "01234567-89ab-cdef-0123-456789abcdef"
-          }
-        }
-      ],
-      "get": {
-        "summary": "Retrieves immutable_child of a parent.",
-        "tags": [
-          "Parents"
-        ],
-        "parameters": [
-          {
-            "name": "$select",
-            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
-            "in": "query",
-            "explode": false,
-            "schema": {
-              "type": "array",
-              "uniqueItems": true,
-              "items": {
-                "type": "string",
-                "enum": [
-                  "ID",
-                  "value"
-                ]
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Retrieved immutable_child",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/test.Child"
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "string"
+                    }
+                  }
                 }
               }
             }
@@ -445,89 +319,48 @@
   },
   "components": {
     "schemas": {
-      "test.Child": {
-        "title": "Child",
+      "test.Item": {
+        "title": "Item",
         "type": "object",
         "properties": {
           "ID": {
             "type": "string",
             "format": "uuid",
-            "example": "01234567-89ab-cdef-0123-456789abcdef"
+            "example": "01234567-89ab-cdef-0123-456789abcdef",
+            "description": "Long detailed description of the identifier"
           },
-          "value": {
-            "type": "string"
+          "name": {
+            "type": "string",
+            "description": "Full name of the item"
           }
         }
       },
-      "test.Child-create": {
-        "title": "Child (for create)",
+      "test.Item-create": {
+        "title": "Item (for create)",
         "type": "object",
         "properties": {
           "ID": {
             "type": "string",
             "format": "uuid",
-            "example": "01234567-89ab-cdef-0123-456789abcdef"
+            "example": "01234567-89ab-cdef-0123-456789abcdef",
+            "description": "Long detailed description of the identifier"
           },
-          "value": {
-            "type": "string"
+          "name": {
+            "type": "string",
+            "description": "Full name of the item"
           }
         },
         "required": [
           "ID"
         ]
       },
-      "test.Child-update": {
-        "title": "Child (for update)",
+      "test.Item-update": {
+        "title": "Item (for update)",
         "type": "object",
         "properties": {
-          "value": {
-            "type": "string"
-          }
-        }
-      },
-      "test.Parent": {
-        "title": "Parent",
-        "type": "object",
-        "properties": {
-          "ID": {
+          "name": {
             "type": "string",
-            "format": "uuid",
-            "example": "01234567-89ab-cdef-0123-456789abcdef"
-          },
-          "child": {
-            "$ref": "#/components/schemas/test.Child"
-          },
-          "immutable_child": {
-            "$ref": "#/components/schemas/test.Child"
-          }
-        }
-      },
-      "test.Parent-create": {
-        "title": "Parent (for create)",
-        "type": "object",
-        "properties": {
-          "ID": {
-            "type": "string",
-            "format": "uuid",
-            "example": "01234567-89ab-cdef-0123-456789abcdef"
-          },
-          "child": {
-            "$ref": "#/components/schemas/test.Child-create"
-          },
-          "immutable_child": {
-            "$ref": "#/components/schemas/test.Child-create"
-          }
-        },
-        "required": [
-          "ID"
-        ]
-      },
-      "test.Parent-update": {
-        "title": "Parent (for update)",
-        "type": "object",
-        "properties": {
-          "child": {
-            "$ref": "#/components/schemas/test.Child-create"
+            "description": "Full name of the item"
           }
         }
       },
