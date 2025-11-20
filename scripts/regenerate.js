@@ -1,8 +1,8 @@
 // This script regenerates the OpenAPI snapshot files used in csdl2openapi.test.js.
 // It automatically finds all test cases in the data directory and applies the correct options.
 
-const fs = require('fs');
-const path = require('path');
+const fs = require('node:fs');
+const path = require('node:path');
 const lib = require('../lib/compile/csdl2openapi.js');
 
 const dataDir = path.join(__dirname, '../test/lib/compile/data');
