@@ -10,6 +10,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 - Reading json from project root
 - Correctly handle `@Core.Immutable` properties in PATCH requests.
 
+### Changed
+- Tags now display with spaces instead of underscores, and camelCase tags are automatically converted to space-separated words (e.g., "camelCase" becomes "camel Case").
+
 ## Version 1.2.3 - 28.05.2025
 
 ### Added
