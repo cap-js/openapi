@@ -411,8 +411,7 @@
             "maxLength": 70,
             "default": "0000"
           },
-          "description": "Property - LongDescription",
-          "summary": "Property - Description"
+          "description": "Property - LongDescription"
         }
       ],
       "get": {
@@ -547,8 +546,7 @@
             "maxLength": 70,
             "default": "0000"
           },
-          "description": "Property - LongDescription",
-          "summary": "Property - Description"
+          "description": "Property - LongDescription"
         }
       ],
       "get": {
@@ -699,8 +697,7 @@
             "maxLength": 70,
             "default": "0000"
           },
-          "description": "Property - LongDescription",
-          "summary": "Property - Description"
+          "description": "Property - LongDescription"
         },
         {
           "in": "path",
@@ -827,8 +824,7 @@
             "maxLength": 70,
             "default": "0000"
           },
-          "description": "Property - LongDescription",
-          "summary": "Property - Description"
+          "description": "Property - LongDescription"
         }
       ],
       "get": {
@@ -1020,8 +1016,7 @@
               "maxLength": 70,
               "default": "0000"
             },
-            "description": "Property - LongDescription",
-            "summary": "Property - Description"
+            "description": "Property - LongDescription"
           }
         ],
         "requestBody": {
@@ -1059,13 +1054,11 @@
               "maxLength": 70,
               "default": "0000"
             },
-            "description": "Property - LongDescription",
-            "summary": "Property - Description"
+            "description": "Property - LongDescription"
           },
           {
             "required": true,
             "description": "Function Bound Overload Nonbinding Parameter - LongDescription  \nString value needs to be enclosed in single quotes",
-            "summary": "Function Bound Overload Nonbinding Parameter Ext - Description",
             "in": "query",
             "name": "nonbinding",
             "schema": {
@@ -1261,8 +1254,7 @@
             "maxLength": 70,
             "default": "0000"
           },
-          "description": "Property - LongDescription",
-          "summary": "Property - Description"
+          "description": "Property - LongDescription"
         }
       ],
       "get": {
@@ -1376,8 +1368,7 @@
             "maxLength": 70,
             "default": "0000"
           },
-          "description": "Property - LongDescription",
-          "summary": "Property - Description"
+          "description": "Property - LongDescription"
         }
       ],
       "get": {
@@ -1514,8 +1505,7 @@
             "maxLength": 70,
             "default": "0000"
           },
-          "description": "Property - LongDescription",
-          "summary": "Property - Description"
+          "description": "Property - LongDescription"
         },
         {
           "in": "path",
@@ -1621,8 +1611,7 @@
             "maxLength": 70,
             "default": "0000"
           },
-          "description": "Property - LongDescription",
-          "summary": "Property - Description"
+          "description": "Property - LongDescription"
         }
       ],
       "get": {
@@ -1814,8 +1803,7 @@
               "maxLength": 70,
               "default": "0000"
             },
-            "description": "Property - LongDescription",
-            "summary": "Property - Description"
+            "description": "Property - LongDescription"
           }
         ],
         "requestBody": {
@@ -1853,13 +1841,11 @@
               "maxLength": 70,
               "default": "0000"
             },
-            "description": "Property - LongDescription",
-            "summary": "Property - Description"
+            "description": "Property - LongDescription"
           },
           {
             "required": true,
             "description": "Function Bound Overload Nonbinding Parameter - LongDescription  \nString value needs to be enclosed in single quotes",
-            "summary": "Function Bound Overload Nonbinding Parameter Ext - Description",
             "in": "query",
             "name": "nonbinding",
             "schema": {
@@ -1912,7 +1898,6 @@
           {
             "required": true,
             "description": "Function Unbound Overload Parameter Ext - LongDescription  \nString value needs to be enclosed in single quotes",
-            "summary": "Function Unbound Overload Parameter - Description",
             "in": "query",
             "name": "nonbinding",
             "schema": {
@@ -1965,7 +1950,6 @@
           {
             "required": true,
             "description": "Function Unbound Overload Parameter Ext - LongDescription  \nString value needs to be enclosed in single quotes",
-            "summary": "Function Unbound Overload Parameter - Description",
             "in": "query",
             "name": "nonbinding",
             "schema": {
@@ -2018,7 +2002,6 @@
           {
             "required": true,
             "description": "Function Unbound Overload Parameter Ext - LongDescription  \nString value needs to be enclosed in single quotes",
-            "summary": "Function Unbound Overload Parameter - Description",
             "in": "query",
             "name": "nonbinding",
             "schema": {
@@ -2611,7 +2594,6 @@
           {
             "required": true,
             "description": "Function Bound Overload Nonbinding Parameter - LongDescription  \nString value needs to be enclosed in single quotes",
-            "summary": "Function Bound Overload Nonbinding Parameter Ext - Description",
             "in": "query",
             "name": "nonbinding",
             "schema": {
@@ -3168,7 +3150,6 @@
           {
             "required": true,
             "description": "Function Bound Overload Nonbinding Parameter - LongDescription  \nString value needs to be enclosed in single quotes",
-            "summary": "Function Bound Overload Nonbinding Parameter Ext - Description",
             "in": "query",
             "name": "nonbinding",
             "schema": {
