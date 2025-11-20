@@ -184,13 +184,13 @@
     "/People('{ID}')": {
       "parameters": [
         {
+          "description": "key: ID",
           "in": "path",
           "name": "ID",
           "required": true,
           "schema": {
             "type": "string"
-          },
-          "description": "key: ID"
+          }
         }
       ],
       "get": {

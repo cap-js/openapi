@@ -286,43 +286,43 @@
     "/Alphabetical_list_of_products/{CategoryName}/{Discontinued}/{ProductID}/{ProductName}": {
       "parameters": [
         {
+          "description": "key: CategoryName",
           "in": "path",
           "name": "CategoryName",
           "required": true,
           "schema": {
             "type": "string",
             "maxLength": 15
-          },
-          "description": "key: CategoryName"
+          }
         },
         {
+          "description": "key: Discontinued",
           "in": "path",
           "name": "Discontinued",
           "required": true,
           "schema": {
             "type": "boolean"
-          },
-          "description": "key: Discontinued"
+          }
         },
         {
+          "description": "key: ProductID",
           "in": "path",
           "name": "ProductID",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: ProductID"
+          }
         },
         {
+          "description": "key: ProductName",
           "in": "path",
           "name": "ProductName",
           "required": true,
           "schema": {
             "type": "string",
             "maxLength": 40
-          },
-          "description": "key: ProductName"
+          }
         }
       ],
       "get": {
@@ -565,14 +565,14 @@
     "/Categories/{CategoryID}": {
       "parameters": [
         {
+          "description": "key: CategoryID",
           "in": "path",
           "name": "CategoryID",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: CategoryID"
+          }
         }
       ],
       "get": {
@@ -677,14 +677,14 @@
     "/Categories/{CategoryID}/Products": {
       "parameters": [
         {
+          "description": "key: CategoryID",
           "in": "path",
           "name": "CategoryID",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: CategoryID"
+          }
         }
       ],
       "get": {
@@ -984,14 +984,14 @@
     "/Category_Sales_for_1997/{CategoryName}": {
       "parameters": [
         {
+          "description": "key: CategoryName",
           "in": "path",
           "name": "CategoryName",
           "required": true,
           "schema": {
             "type": "string",
             "maxLength": 15
-          },
-          "description": "key: CategoryName"
+          }
         }
       ],
       "get": {
@@ -1202,24 +1202,24 @@
     "/Current_Product_Lists/{ProductID}/{ProductName}": {
       "parameters": [
         {
+          "description": "key: ProductID",
           "in": "path",
           "name": "ProductID",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: ProductID"
+          }
         },
         {
+          "description": "key: ProductName",
           "in": "path",
           "name": "ProductName",
           "required": true,
           "schema": {
             "type": "string",
             "maxLength": 40
-          },
-          "description": "key: ProductName"
+          }
         }
       ],
       "get": {
@@ -1447,14 +1447,14 @@
     "/CustomerDemographics/{CustomerTypeID}": {
       "parameters": [
         {
+          "description": "key: CustomerTypeID",
           "in": "path",
           "name": "CustomerTypeID",
           "required": true,
           "schema": {
             "type": "string",
             "maxLength": 10
-          },
-          "description": "key: CustomerTypeID"
+          }
         }
       ],
       "get": {
@@ -1557,14 +1557,14 @@
     "/CustomerDemographics/{CustomerTypeID}/Customers": {
       "parameters": [
         {
+          "description": "key: CustomerTypeID",
           "in": "path",
           "name": "CustomerTypeID",
           "required": true,
           "schema": {
             "type": "string",
             "maxLength": 10
-          },
-          "description": "key: CustomerTypeID"
+          }
         }
       ],
       "get": {
@@ -1872,24 +1872,24 @@
     "/Customer_and_Suppliers_by_Cities/{CompanyName}/{Relationship}": {
       "parameters": [
         {
+          "description": "key: CompanyName",
           "in": "path",
           "name": "CompanyName",
           "required": true,
           "schema": {
             "type": "string",
             "maxLength": 40
-          },
-          "description": "key: CompanyName"
+          }
         },
         {
+          "description": "key: Relationship",
           "in": "path",
           "name": "Relationship",
           "required": true,
           "schema": {
             "type": "string",
             "maxLength": 9
-          },
-          "description": "key: Relationship"
+          }
         }
       ],
       "get": {
@@ -2147,14 +2147,14 @@
     "/Customers/{CustomerID}": {
       "parameters": [
         {
+          "description": "key: CustomerID",
           "in": "path",
           "name": "CustomerID",
           "required": true,
           "schema": {
             "type": "string",
             "maxLength": 5
-          },
-          "description": "key: CustomerID"
+          }
         }
       ],
       "get": {
@@ -2267,14 +2267,14 @@
     "/Customers/{CustomerID}/CustomerDemographics": {
       "parameters": [
         {
+          "description": "key: CustomerID",
           "in": "path",
           "name": "CustomerID",
           "required": true,
           "schema": {
             "type": "string",
             "maxLength": 5
-          },
-          "description": "key: CustomerID"
+          }
         }
       ],
       "get": {
@@ -2423,14 +2423,14 @@
     "/Customers/{CustomerID}/Orders": {
       "parameters": [
         {
+          "description": "key: CustomerID",
           "in": "path",
           "name": "CustomerID",
           "required": true,
           "schema": {
             "type": "string",
             "maxLength": 5
-          },
-          "description": "key: CustomerID"
+          }
         }
       ],
       "get": {
@@ -2811,14 +2811,14 @@
     "/Employees/{EmployeeID}": {
       "parameters": [
         {
+          "description": "key: EmployeeID",
           "in": "path",
           "name": "EmployeeID",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: EmployeeID"
+          }
         }
       ],
       "get": {
@@ -2940,14 +2940,14 @@
     "/Employees/{EmployeeID}/Employee1": {
       "parameters": [
         {
+          "description": "key: EmployeeID",
           "in": "path",
           "name": "EmployeeID",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: EmployeeID"
+          }
         }
       ],
       "get": {
@@ -3030,14 +3030,14 @@
     "/Employees/{EmployeeID}/Employees1": {
       "parameters": [
         {
+          "description": "key: EmployeeID",
           "in": "path",
           "name": "EmployeeID",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: EmployeeID"
+          }
         }
       ],
       "get": {
@@ -3235,14 +3235,14 @@
     "/Employees/{EmployeeID}/Orders": {
       "parameters": [
         {
+          "description": "key: EmployeeID",
           "in": "path",
           "name": "EmployeeID",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: EmployeeID"
+          }
         }
       ],
       "get": {
@@ -3430,14 +3430,14 @@
     "/Employees/{EmployeeID}/Territories": {
       "parameters": [
         {
+          "description": "key: EmployeeID",
           "in": "path",
           "name": "EmployeeID",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: EmployeeID"
+          }
         }
       ],
       "get": {
@@ -3787,16 +3787,17 @@
     "/Invoices/{CustomerName}/{Discount}/{OrderID}/{ProductID}/{ProductName}/{Quantity}/{Salesperson}/{ShipperName}/{UnitPrice}": {
       "parameters": [
         {
+          "description": "key: CustomerName",
           "in": "path",
           "name": "CustomerName",
           "required": true,
           "schema": {
             "type": "string",
             "maxLength": 40
-          },
-          "description": "key: CustomerName"
+          }
         },
         {
+          "description": "key: Discount",
           "in": "path",
           "name": "Discount",
           "required": true,
@@ -3811,70 +3812,70 @@
               }
             ],
             "example": 3.14
-          },
-          "description": "key: Discount"
+          }
         },
         {
+          "description": "key: OrderID",
           "in": "path",
           "name": "OrderID",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: OrderID"
+          }
         },
         {
+          "description": "key: ProductID",
           "in": "path",
           "name": "ProductID",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: ProductID"
+          }
         },
         {
+          "description": "key: ProductName",
           "in": "path",
           "name": "ProductName",
           "required": true,
           "schema": {
             "type": "string",
             "maxLength": 40
-          },
-          "description": "key: ProductName"
+          }
         },
         {
+          "description": "key: Quantity",
           "in": "path",
           "name": "Quantity",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int16"
-          },
-          "description": "key: Quantity"
+          }
         },
         {
+          "description": "key: Salesperson",
           "in": "path",
           "name": "Salesperson",
           "required": true,
           "schema": {
             "type": "string",
             "maxLength": 31
-          },
-          "description": "key: Salesperson"
+          }
         },
         {
+          "description": "key: ShipperName",
           "in": "path",
           "name": "ShipperName",
           "required": true,
           "schema": {
             "type": "string",
             "maxLength": 40
-          },
-          "description": "key: ShipperName"
+          }
         },
         {
+          "description": "key: UnitPrice",
           "in": "path",
           "name": "UnitPrice",
           "required": true,
@@ -3892,8 +3893,7 @@
             "example": 0,
             "x-sap-precision": 19,
             "x-sap-scale": 4
-          },
-          "description": "key: UnitPrice"
+          }
         }
       ],
       "get": {
@@ -4155,24 +4155,24 @@
     "/Order_Details/{OrderID}/{ProductID}": {
       "parameters": [
         {
+          "description": "key: OrderID",
           "in": "path",
           "name": "OrderID",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: OrderID"
+          }
         },
         {
+          "description": "key: ProductID",
           "in": "path",
           "name": "ProductID",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: ProductID"
+          }
         }
       ],
       "get": {
@@ -4279,24 +4279,24 @@
     "/Order_Details/{OrderID}/{ProductID}/Order": {
       "parameters": [
         {
+          "description": "key: OrderID",
           "in": "path",
           "name": "OrderID",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: OrderID"
+          }
         },
         {
+          "description": "key: ProductID",
           "in": "path",
           "name": "ProductID",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: ProductID"
+          }
         }
       ],
       "get": {
@@ -4376,24 +4376,24 @@
     "/Order_Details/{OrderID}/{ProductID}/Product": {
       "parameters": [
         {
+          "description": "key: OrderID",
           "in": "path",
           "name": "OrderID",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: OrderID"
+          }
         },
         {
+          "description": "key: ProductID",
           "in": "path",
           "name": "ProductID",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: ProductID"
+          }
         }
       ],
       "get": {
@@ -4608,6 +4608,7 @@
     "/Order_Details_Extendeds/{Discount}/{OrderID}/{ProductID}/{ProductName}/{Quantity}/{UnitPrice}": {
       "parameters": [
         {
+          "description": "key: Discount",
           "in": "path",
           "name": "Discount",
           "required": true,
@@ -4622,50 +4623,50 @@
               }
             ],
             "example": 3.14
-          },
-          "description": "key: Discount"
+          }
         },
         {
+          "description": "key: OrderID",
           "in": "path",
           "name": "OrderID",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: OrderID"
+          }
         },
         {
+          "description": "key: ProductID",
           "in": "path",
           "name": "ProductID",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: ProductID"
+          }
         },
         {
+          "description": "key: ProductName",
           "in": "path",
           "name": "ProductName",
           "required": true,
           "schema": {
             "type": "string",
             "maxLength": 40
-          },
-          "description": "key: ProductName"
+          }
         },
         {
+          "description": "key: Quantity",
           "in": "path",
           "name": "Quantity",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int16"
-          },
-          "description": "key: Quantity"
+          }
         },
         {
+          "description": "key: UnitPrice",
           "in": "path",
           "name": "UnitPrice",
           "required": true,
@@ -4683,8 +4684,7 @@
             "example": 0,
             "x-sap-precision": 19,
             "x-sap-scale": 4
-          },
-          "description": "key: UnitPrice"
+          }
         }
       ],
       "get": {
@@ -4900,14 +4900,14 @@
     "/Order_Subtotals/{OrderID}": {
       "parameters": [
         {
+          "description": "key: OrderID",
           "in": "path",
           "name": "OrderID",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: OrderID"
+          }
         }
       ],
       "get": {
@@ -5174,14 +5174,14 @@
     "/Orders/{OrderID}": {
       "parameters": [
         {
+          "description": "key: OrderID",
           "in": "path",
           "name": "OrderID",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: OrderID"
+          }
         }
       ],
       "get": {
@@ -5299,14 +5299,14 @@
     "/Orders/{OrderID}/Customer": {
       "parameters": [
         {
+          "description": "key: OrderID",
           "in": "path",
           "name": "OrderID",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: OrderID"
+          }
         }
       ],
       "get": {
@@ -5381,14 +5381,14 @@
     "/Orders/{OrderID}/Employee": {
       "parameters": [
         {
+          "description": "key: OrderID",
           "in": "path",
           "name": "OrderID",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: OrderID"
+          }
         }
       ],
       "get": {
@@ -5472,14 +5472,14 @@
     "/Orders/{OrderID}/Order_Details": {
       "parameters": [
         {
+          "description": "key: OrderID",
           "in": "path",
           "name": "OrderID",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: OrderID"
+          }
         }
       ],
       "get": {
@@ -5638,14 +5638,14 @@
     "/Orders/{OrderID}/Shipper": {
       "parameters": [
         {
+          "description": "key: OrderID",
           "in": "path",
           "name": "OrderID",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: OrderID"
+          }
         }
       ],
       "get": {
@@ -5890,24 +5890,24 @@
     "/Orders_Qries/{CompanyName}/{OrderID}": {
       "parameters": [
         {
+          "description": "key: CompanyName",
           "in": "path",
           "name": "CompanyName",
           "required": true,
           "schema": {
             "type": "string",
             "maxLength": 40
-          },
-          "description": "key: CompanyName"
+          }
         },
         {
+          "description": "key: OrderID",
           "in": "path",
           "name": "OrderID",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: OrderID"
+          }
         }
       ],
       "get": {
@@ -6139,24 +6139,24 @@
     "/Product_Sales_for_1997/{CategoryName}/{ProductName}": {
       "parameters": [
         {
+          "description": "key: CategoryName",
           "in": "path",
           "name": "CategoryName",
           "required": true,
           "schema": {
             "type": "string",
             "maxLength": 15
-          },
-          "description": "key: CategoryName"
+          }
         },
         {
+          "description": "key: ProductName",
           "in": "path",
           "name": "ProductName",
           "required": true,
           "schema": {
             "type": "string",
             "maxLength": 40
-          },
-          "description": "key: ProductName"
+          }
         }
       ],
       "get": {
@@ -6411,14 +6411,14 @@
     "/Products/{ProductID}": {
       "parameters": [
         {
+          "description": "key: ProductID",
           "in": "path",
           "name": "ProductID",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: ProductID"
+          }
         }
       ],
       "get": {
@@ -6531,14 +6531,14 @@
     "/Products/{ProductID}/Category": {
       "parameters": [
         {
+          "description": "key: ProductID",
           "in": "path",
           "name": "ProductID",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: ProductID"
+          }
         }
       ],
       "get": {
@@ -6605,14 +6605,14 @@
     "/Products/{ProductID}/Order_Details": {
       "parameters": [
         {
+          "description": "key: ProductID",
           "in": "path",
           "name": "ProductID",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: ProductID"
+          }
         }
       ],
       "get": {
@@ -6771,14 +6771,14 @@
     "/Products/{ProductID}/Supplier": {
       "parameters": [
         {
+          "description": "key: ProductID",
           "in": "path",
           "name": "ProductID",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: ProductID"
+          }
         }
       ],
       "get": {
@@ -6978,14 +6978,14 @@
     "/Products_Above_Average_Prices/{ProductName}": {
       "parameters": [
         {
+          "description": "key: ProductName",
           "in": "path",
           "name": "ProductName",
           "required": true,
           "schema": {
             "type": "string",
             "maxLength": 40
-          },
-          "description": "key: ProductName"
+          }
         }
       ],
       "get": {
@@ -7205,33 +7205,33 @@
     "/Products_by_Categories/{CategoryName}/{Discontinued}/{ProductName}": {
       "parameters": [
         {
+          "description": "key: CategoryName",
           "in": "path",
           "name": "CategoryName",
           "required": true,
           "schema": {
             "type": "string",
             "maxLength": 15
-          },
-          "description": "key: CategoryName"
+          }
         },
         {
+          "description": "key: Discontinued",
           "in": "path",
           "name": "Discontinued",
           "required": true,
           "schema": {
             "type": "boolean"
-          },
-          "description": "key: Discontinued"
+          }
         },
         {
+          "description": "key: ProductName",
           "in": "path",
           "name": "ProductName",
           "required": true,
           "schema": {
             "type": "string",
             "maxLength": 40
-          },
-          "description": "key: ProductName"
+          }
         }
       ],
       "get": {
@@ -7462,14 +7462,14 @@
     "/Regions/{RegionID}": {
       "parameters": [
         {
+          "description": "key: RegionID",
           "in": "path",
           "name": "RegionID",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: RegionID"
+          }
         }
       ],
       "get": {
@@ -7572,14 +7572,14 @@
     "/Regions/{RegionID}/Territories": {
       "parameters": [
         {
+          "description": "key: RegionID",
           "in": "path",
           "name": "RegionID",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: RegionID"
+          }
         }
       ],
       "get": {
@@ -7863,24 +7863,24 @@
     "/Sales_Totals_by_Amounts/{CompanyName}/{OrderID}": {
       "parameters": [
         {
+          "description": "key: CompanyName",
           "in": "path",
           "name": "CompanyName",
           "required": true,
           "schema": {
             "type": "string",
             "maxLength": 40
-          },
-          "description": "key: CompanyName"
+          }
         },
         {
+          "description": "key: OrderID",
           "in": "path",
           "name": "OrderID",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: OrderID"
+          }
         }
       ],
       "get": {
@@ -8099,34 +8099,34 @@
     "/Sales_by_Categories/{CategoryID}/{CategoryName}/{ProductName}": {
       "parameters": [
         {
+          "description": "key: CategoryID",
           "in": "path",
           "name": "CategoryID",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: CategoryID"
+          }
         },
         {
+          "description": "key: CategoryName",
           "in": "path",
           "name": "CategoryName",
           "required": true,
           "schema": {
             "type": "string",
             "maxLength": 15
-          },
-          "description": "key: CategoryName"
+          }
         },
         {
+          "description": "key: ProductName",
           "in": "path",
           "name": "ProductName",
           "required": true,
           "schema": {
             "type": "string",
             "maxLength": 40
-          },
-          "description": "key: ProductName"
+          }
         }
       ],
       "get": {
@@ -8359,14 +8359,14 @@
     "/Shippers/{ShipperID}": {
       "parameters": [
         {
+          "description": "key: ShipperID",
           "in": "path",
           "name": "ShipperID",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: ShipperID"
+          }
         }
       ],
       "get": {
@@ -8470,14 +8470,14 @@
     "/Shippers/{ShipperID}/Orders": {
       "parameters": [
         {
+          "description": "key: ShipperID",
           "in": "path",
           "name": "ShipperID",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: ShipperID"
+          }
         }
       ],
       "get": {
@@ -8793,14 +8793,14 @@
     "/Summary_of_Sales_by_Quarters/{OrderID}": {
       "parameters": [
         {
+          "description": "key: OrderID",
           "in": "path",
           "name": "OrderID",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: OrderID"
+          }
         }
       ],
       "get": {
@@ -9015,14 +9015,14 @@
     "/Summary_of_Sales_by_Years/{OrderID}": {
       "parameters": [
         {
+          "description": "key: OrderID",
           "in": "path",
           "name": "OrderID",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: OrderID"
+          }
         }
       ],
       "get": {
@@ -9281,14 +9281,14 @@
     "/Suppliers/{SupplierID}": {
       "parameters": [
         {
+          "description": "key: SupplierID",
           "in": "path",
           "name": "SupplierID",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: SupplierID"
+          }
         }
       ],
       "get": {
@@ -9401,14 +9401,14 @@
     "/Suppliers/{SupplierID}/Products": {
       "parameters": [
         {
+          "description": "key: SupplierID",
           "in": "path",
           "name": "SupplierID",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: SupplierID"
+          }
         }
       ],
       "get": {
@@ -9729,14 +9729,14 @@
     "/Territories/{TerritoryID}": {
       "parameters": [
         {
+          "description": "key: TerritoryID",
           "in": "path",
           "name": "TerritoryID",
           "required": true,
           "schema": {
             "type": "string",
             "maxLength": 20
-          },
-          "description": "key: TerritoryID"
+          }
         }
       ],
       "get": {
@@ -9841,14 +9841,14 @@
     "/Territories/{TerritoryID}/Employees": {
       "parameters": [
         {
+          "description": "key: TerritoryID",
           "in": "path",
           "name": "TerritoryID",
           "required": true,
           "schema": {
             "type": "string",
             "maxLength": 20
-          },
-          "description": "key: TerritoryID"
+          }
         }
       ],
       "get": {
@@ -10048,14 +10048,14 @@
     "/Territories/{TerritoryID}/Region": {
       "parameters": [
         {
+          "description": "key: TerritoryID",
           "in": "path",
           "name": "TerritoryID",
           "required": true,
           "schema": {
             "type": "string",
             "maxLength": 20
-          },
-          "description": "key: TerritoryID"
+          }
         }
       ],
       "get": {

@@ -215,14 +215,14 @@
     "/Categories({ID})": {
       "parameters": [
         {
+          "description": "key: ID",
           "in": "path",
           "name": "ID",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: ID"
+          }
         }
       ],
       "get": {
@@ -325,14 +325,14 @@
     "/Categories({ID})/Products": {
       "parameters": [
         {
+          "description": "key: ID",
           "in": "path",
           "name": "ID",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: ID"
+          }
         }
       ],
       "get": {
@@ -622,14 +622,14 @@
     "/Countries('{Code}')": {
       "parameters": [
         {
+          "description": "key: Code",
           "in": "path",
           "name": "Code",
           "required": true,
           "schema": {
             "type": "string",
             "maxLength": 2
-          },
-          "description": "key: Code"
+          }
         }
       ],
       "get": {
@@ -1162,13 +1162,13 @@
     "/Products('{ID}')": {
       "parameters": [
         {
+          "description": "key: ID",
           "in": "path",
           "name": "ID",
           "required": true,
           "schema": {
             "type": "string"
-          },
-          "description": "key: ID"
+          }
         }
       ],
       "get": {
@@ -1277,13 +1277,13 @@
     "/Products('{ID}')/Category": {
       "parameters": [
         {
+          "description": "key: ID",
           "in": "path",
           "name": "ID",
           "required": true,
           "schema": {
             "type": "string"
-          },
-          "description": "key: ID"
+          }
         }
       ],
       "get": {
@@ -1348,13 +1348,13 @@
     "/Products('{ID}')/Supplier": {
       "parameters": [
         {
+          "description": "key: ID",
           "in": "path",
           "name": "ID",
           "required": true,
           "schema": {
             "type": "string"
-          },
-          "description": "key: ID"
+          }
         }
       ],
       "get": {
@@ -1626,13 +1626,13 @@
     "/Suppliers('{ID}')": {
       "parameters": [
         {
+          "description": "key: ID",
           "in": "path",
           "name": "ID",
           "required": true,
           "schema": {
             "type": "string"
-          },
-          "description": "key: ID"
+          }
         }
       ],
       "get": {
@@ -1738,13 +1738,13 @@
     "/Suppliers('{ID}')/Address/Country": {
       "parameters": [
         {
+          "description": "key: ID",
           "in": "path",
           "name": "ID",
           "required": true,
           "schema": {
             "type": "string"
-          },
-          "description": "key: ID"
+          }
         }
       ],
       "get": {
@@ -1792,13 +1792,13 @@
     "/Suppliers('{ID}')/Products": {
       "parameters": [
         {
+          "description": "key: ID",
           "in": "path",
           "name": "ID",
           "required": true,
           "schema": {
             "type": "string"
-          },
-          "description": "key: ID"
+          }
         }
       ],
       "get": {

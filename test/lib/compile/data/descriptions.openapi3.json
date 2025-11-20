@@ -403,6 +403,7 @@
     "/entities('{id}')": {
       "parameters": [
         {
+          "description": "Property - LongDescription",
           "in": "path",
           "name": "id",
           "required": true,
@@ -410,8 +411,7 @@
             "type": "string",
             "maxLength": 70,
             "default": "0000"
-          },
-          "description": "Property - LongDescription"
+          }
         }
       ],
       "get": {
@@ -538,6 +538,7 @@
     "/entities('{id}')/contained": {
       "parameters": [
         {
+          "description": "Property - LongDescription",
           "in": "path",
           "name": "id",
           "required": true,
@@ -545,8 +546,7 @@
             "type": "string",
             "maxLength": 70,
             "default": "0000"
-          },
-          "description": "Property - LongDescription"
+          }
         }
       ],
       "get": {
@@ -689,6 +689,7 @@
     "/entities('{id}')/contained('{id_1}')": {
       "parameters": [
         {
+          "description": "Property - LongDescription",
           "in": "path",
           "name": "id",
           "required": true,
@@ -696,18 +697,17 @@
             "type": "string",
             "maxLength": 70,
             "default": "0000"
-          },
-          "description": "Property - LongDescription"
+          }
         },
         {
+          "description": "key: id",
           "in": "path",
           "name": "id_1",
           "required": true,
           "schema": {
             "type": "string",
             "maxLength": 70
-          },
-          "description": "key: id"
+          }
         }
       ],
       "get": {
@@ -816,6 +816,7 @@
     "/entities('{id}')/related": {
       "parameters": [
         {
+          "description": "Property - LongDescription",
           "in": "path",
           "name": "id",
           "required": true,
@@ -823,8 +824,7 @@
             "type": "string",
             "maxLength": 70,
             "default": "0000"
-          },
-          "description": "Property - LongDescription"
+          }
         }
       ],
       "get": {
@@ -1008,6 +1008,7 @@
         "description": "Action Bound Overload - LongDescription",
         "parameters": [
           {
+            "description": "Property - LongDescription",
             "in": "path",
             "name": "id",
             "required": true,
@@ -1015,8 +1016,7 @@
               "type": "string",
               "maxLength": 70,
               "default": "0000"
-            },
-            "description": "Property - LongDescription"
+            }
           }
         ],
         "requestBody": {
@@ -1046,6 +1046,7 @@
         ],
         "parameters": [
           {
+            "description": "Property - LongDescription",
             "in": "path",
             "name": "id",
             "required": true,
@@ -1053,12 +1054,11 @@
               "type": "string",
               "maxLength": 70,
               "default": "0000"
-            },
-            "description": "Property - LongDescription"
+            }
           },
           {
-            "required": true,
             "description": "Function Bound Overload Nonbinding Parameter - LongDescription  \nString value needs to be enclosed in single quotes",
+            "required": true,
             "in": "query",
             "name": "nonbinding",
             "schema": {
@@ -1246,6 +1246,7 @@
     "/entities_ext('{id}')": {
       "parameters": [
         {
+          "description": "Property - LongDescription",
           "in": "path",
           "name": "id",
           "required": true,
@@ -1253,8 +1254,7 @@
             "type": "string",
             "maxLength": 70,
             "default": "0000"
-          },
-          "description": "Property - LongDescription"
+          }
         }
       ],
       "get": {
@@ -1360,6 +1360,7 @@
     "/entities_ext('{id}')/contained": {
       "parameters": [
         {
+          "description": "Property - LongDescription",
           "in": "path",
           "name": "id",
           "required": true,
@@ -1367,8 +1368,7 @@
             "type": "string",
             "maxLength": 70,
             "default": "0000"
-          },
-          "description": "Property - LongDescription"
+          }
         }
       ],
       "get": {
@@ -1497,6 +1497,7 @@
     "/entities_ext('{id}')/contained('{id_1}')": {
       "parameters": [
         {
+          "description": "Property - LongDescription",
           "in": "path",
           "name": "id",
           "required": true,
@@ -1504,18 +1505,17 @@
             "type": "string",
             "maxLength": 70,
             "default": "0000"
-          },
-          "description": "Property - LongDescription"
+          }
         },
         {
+          "description": "key: id",
           "in": "path",
           "name": "id_1",
           "required": true,
           "schema": {
             "type": "string",
             "maxLength": 70
-          },
-          "description": "key: id"
+          }
         }
       ],
       "get": {
@@ -1603,6 +1603,7 @@
     "/entities_ext('{id}')/related": {
       "parameters": [
         {
+          "description": "Property - LongDescription",
           "in": "path",
           "name": "id",
           "required": true,
@@ -1610,8 +1611,7 @@
             "type": "string",
             "maxLength": 70,
             "default": "0000"
-          },
-          "description": "Property - LongDescription"
+          }
         }
       ],
       "get": {
@@ -1795,6 +1795,7 @@
         "description": "Action Bound Overload - LongDescription",
         "parameters": [
           {
+            "description": "Property - LongDescription",
             "in": "path",
             "name": "id",
             "required": true,
@@ -1802,8 +1803,7 @@
               "type": "string",
               "maxLength": 70,
               "default": "0000"
-            },
-            "description": "Property - LongDescription"
+            }
           }
         ],
         "requestBody": {
@@ -1833,6 +1833,7 @@
         ],
         "parameters": [
           {
+            "description": "Property - LongDescription",
             "in": "path",
             "name": "id",
             "required": true,
@@ -1840,12 +1841,11 @@
               "type": "string",
               "maxLength": 70,
               "default": "0000"
-            },
-            "description": "Property - LongDescription"
+            }
           },
           {
-            "required": true,
             "description": "Function Bound Overload Nonbinding Parameter - LongDescription  \nString value needs to be enclosed in single quotes",
+            "required": true,
             "in": "query",
             "name": "nonbinding",
             "schema": {
@@ -1896,8 +1896,8 @@
         ],
         "parameters": [
           {
-            "required": true,
             "description": "Function Unbound Overload Parameter Ext - LongDescription  \nString value needs to be enclosed in single quotes",
+            "required": true,
             "in": "query",
             "name": "nonbinding",
             "schema": {
@@ -1948,8 +1948,8 @@
         ],
         "parameters": [
           {
-            "required": true,
             "description": "Function Unbound Overload Parameter Ext - LongDescription  \nString value needs to be enclosed in single quotes",
+            "required": true,
             "in": "query",
             "name": "nonbinding",
             "schema": {
@@ -2000,8 +2000,8 @@
         ],
         "parameters": [
           {
-            "required": true,
             "description": "Function Unbound Overload Parameter Ext - LongDescription  \nString value needs to be enclosed in single quotes",
+            "required": true,
             "in": "query",
             "name": "nonbinding",
             "schema": {
@@ -2293,14 +2293,14 @@
     "/single/contained('{id_1}')": {
       "parameters": [
         {
+          "description": "key: id",
           "in": "path",
           "name": "id_1",
           "required": true,
           "schema": {
             "type": "string",
             "maxLength": 70
-          },
-          "description": "key: id"
+          }
         }
       ],
       "get": {
@@ -2592,8 +2592,8 @@
         ],
         "parameters": [
           {
-            "required": true,
             "description": "Function Bound Overload Nonbinding Parameter - LongDescription  \nString value needs to be enclosed in single quotes",
+            "required": true,
             "in": "query",
             "name": "nonbinding",
             "schema": {
@@ -2849,14 +2849,14 @@
     "/single_ext/contained('{id_1}')": {
       "parameters": [
         {
+          "description": "key: id",
           "in": "path",
           "name": "id_1",
           "required": true,
           "schema": {
             "type": "string",
             "maxLength": 70
-          },
-          "description": "key: id"
+          }
         }
       ],
       "get": {
@@ -3148,8 +3148,8 @@
         ],
         "parameters": [
           {
-            "required": true,
             "description": "Function Bound Overload Nonbinding Parameter - LongDescription  \nString value needs to be enclosed in single quotes",
+            "required": true,
             "in": "query",
             "name": "nonbinding",
             "schema": {

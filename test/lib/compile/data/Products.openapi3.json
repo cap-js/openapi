@@ -213,6 +213,7 @@
     "/Advertisements({ID})": {
       "parameters": [
         {
+          "description": "key: ID",
           "in": "path",
           "name": "ID",
           "required": true,
@@ -220,8 +221,7 @@
             "type": "string",
             "format": "uuid",
             "example": "01234567-89ab-cdef-0123-456789abcdef"
-          },
-          "description": "key: ID"
+          }
         }
       ],
       "get": {
@@ -325,6 +325,7 @@
     "/Advertisements({ID})/FeaturedProduct": {
       "parameters": [
         {
+          "description": "key: ID",
           "in": "path",
           "name": "ID",
           "required": true,
@@ -332,8 +333,7 @@
             "type": "string",
             "format": "uuid",
             "example": "01234567-89ab-cdef-0123-456789abcdef"
-          },
-          "description": "key: ID"
+          }
         }
       ],
       "get": {
@@ -548,14 +548,14 @@
     "/Categories({ID})": {
       "parameters": [
         {
+          "description": "key: ID",
           "in": "path",
           "name": "ID",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: ID"
+          }
         }
       ],
       "get": {
@@ -658,14 +658,14 @@
     "/Categories({ID})/Products": {
       "parameters": [
         {
+          "description": "key: ID",
           "in": "path",
           "name": "ID",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: ID"
+          }
         }
       ],
       "get": {
@@ -973,14 +973,14 @@
     "/ProductDetails({ProductID})": {
       "parameters": [
         {
+          "description": "key: ProductID",
           "in": "path",
           "name": "ProductID",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: ProductID"
+          }
         }
       ],
       "get": {
@@ -1083,14 +1083,14 @@
     "/ProductDetails({ProductID})/Product": {
       "parameters": [
         {
+          "description": "key: ProductID",
           "in": "path",
           "name": "ProductID",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: ProductID"
+          }
         }
       ],
       "get": {
@@ -1321,14 +1321,14 @@
     "/Products({ID})": {
       "parameters": [
         {
+          "description": "key: ID",
           "in": "path",
           "name": "ID",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: ID"
+          }
         }
       ],
       "get": {
@@ -1438,14 +1438,14 @@
     "/Products({ID})/Categories": {
       "parameters": [
         {
+          "description": "key: ID",
           "in": "path",
           "name": "ID",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: ID"
+          }
         }
       ],
       "get": {
@@ -1594,14 +1594,14 @@
     "/Products({ID})/ProductDetail": {
       "parameters": [
         {
+          "description": "key: ID",
           "in": "path",
           "name": "ID",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: ID"
+          }
         }
       ],
       "get": {
@@ -1700,14 +1700,14 @@
         },
         "parameters": [
           {
+            "description": "key: ID",
             "in": "path",
             "name": "ID",
             "required": true,
             "schema": {
               "type": "integer",
               "format": "int32"
-            },
-            "description": "key: ID"
+            }
           }
         ],
         "requestBody": {
@@ -1731,14 +1731,14 @@
     "/Products({ID})/Supplier": {
       "parameters": [
         {
+          "description": "key: ID",
           "in": "path",
           "name": "ID",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: ID"
+          }
         }
       ],
       "get": {

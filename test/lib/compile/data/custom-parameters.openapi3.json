@@ -301,13 +301,13 @@
     "/ents/{name}": {
       "parameters": [
         {
+          "description": "key: name",
           "in": "path",
           "name": "name",
           "required": true,
           "schema": {
             "type": "string"
-          },
-          "description": "key: name"
+          }
         }
       ],
       "get": {
@@ -493,13 +493,13 @@
         },
         "parameters": [
           {
+            "description": "key: name",
             "in": "path",
             "name": "name",
             "required": true,
             "schema": {
               "type": "string"
-            },
-            "description": "key: name"
+            }
           },
           {
             "name": "custom-bound-action",
@@ -552,13 +552,13 @@
         ],
         "parameters": [
           {
+            "description": "key: name",
             "in": "path",
             "name": "name",
             "required": true,
             "schema": {
               "type": "string"
-            },
-            "description": "key: name"
+            }
           },
           {
             "required": true,

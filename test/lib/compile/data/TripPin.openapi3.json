@@ -196,13 +196,13 @@
     "/Airlines('{AirlineCode}')": {
       "parameters": [
         {
+          "description": "key: AirlineCode",
           "in": "path",
           "name": "AirlineCode",
           "required": true,
           "schema": {
             "type": "string"
-          },
-          "description": "key: AirlineCode"
+          }
         }
       ],
       "get": {
@@ -395,13 +395,13 @@
     "/Airports('{IcaoCode}')": {
       "parameters": [
         {
+          "description": "key: IcaoCode",
           "in": "path",
           "name": "IcaoCode",
           "required": true,
           "schema": {
             "type": "string"
-          },
-          "description": "key: IcaoCode"
+          }
         }
       ],
       "get": {
@@ -1102,14 +1102,14 @@
     "/Me/Trips({TripId_1})": {
       "parameters": [
         {
+          "description": "key: TripId",
           "in": "path",
           "name": "TripId_1",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: TripId"
+          }
         }
       ],
       "get": {
@@ -1219,14 +1219,14 @@
     "/Me/Trips({TripId_1})/Photos": {
       "parameters": [
         {
+          "description": "key: TripId",
           "in": "path",
           "name": "TripId_1",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: TripId"
+          }
         }
       ],
       "get": {
@@ -1324,14 +1324,14 @@
     "/Me/Trips({TripId_1})/PlanItems": {
       "parameters": [
         {
+          "description": "key: TripId",
           "in": "path",
           "name": "TripId_1",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: TripId"
+          }
         }
       ],
       "get": {
@@ -1470,24 +1470,24 @@
     "/Me/Trips({TripId_1})/PlanItems({PlanItemId_2})": {
       "parameters": [
         {
+          "description": "key: TripId",
           "in": "path",
           "name": "TripId_1",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: TripId"
+          }
         },
         {
+          "description": "key: PlanItemId",
           "in": "path",
           "name": "PlanItemId_2",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: PlanItemId"
+          }
         }
       ],
       "get": {
@@ -1741,13 +1741,13 @@
     "/People('{UserName}')": {
       "parameters": [
         {
+          "description": "key: UserName",
           "in": "path",
           "name": "UserName",
           "required": true,
           "schema": {
             "type": "string"
-          },
-          "description": "key: UserName"
+          }
         }
       ],
       "get": {
@@ -1857,13 +1857,13 @@
     "/People('{UserName}')/Friends": {
       "parameters": [
         {
+          "description": "key: UserName",
           "in": "path",
           "name": "UserName",
           "required": true,
           "schema": {
             "type": "string"
-          },
-          "description": "key: UserName"
+          }
         }
       ],
       "get": {
@@ -2038,13 +2038,13 @@
         ],
         "parameters": [
           {
+            "description": "key: UserName",
             "in": "path",
             "name": "UserName",
             "required": true,
             "schema": {
               "type": "string"
-            },
-            "description": "key: UserName"
+            }
           }
         ],
         "responses": {
@@ -2072,13 +2072,13 @@
         ],
         "parameters": [
           {
+            "description": "key: UserName",
             "in": "path",
             "name": "UserName",
             "required": true,
             "schema": {
               "type": "string"
-            },
-            "description": "key: UserName"
+            }
           },
           {
             "required": true,
@@ -2136,13 +2136,13 @@
         },
         "parameters": [
           {
+            "description": "key: UserName",
             "in": "path",
             "name": "UserName",
             "required": true,
             "schema": {
               "type": "string"
-            },
-            "description": "key: UserName"
+            }
           }
         ],
         "requestBody": {
@@ -2169,13 +2169,13 @@
     "/People('{UserName}')/Photo": {
       "parameters": [
         {
+          "description": "key: UserName",
           "in": "path",
           "name": "UserName",
           "required": true,
           "schema": {
             "type": "string"
-          },
-          "description": "key: UserName"
+          }
         }
       ],
       "get": {
@@ -2223,13 +2223,13 @@
     "/People('{UserName}')/Trips": {
       "parameters": [
         {
+          "description": "key: UserName",
           "in": "path",
           "name": "UserName",
           "required": true,
           "schema": {
             "type": "string"
-          },
-          "description": "key: UserName"
+          }
         }
       ],
       "get": {
@@ -2395,23 +2395,23 @@
     "/People('{UserName}')/Trips({TripId_1})": {
       "parameters": [
         {
+          "description": "key: UserName",
           "in": "path",
           "name": "UserName",
           "required": true,
           "schema": {
             "type": "string"
-          },
-          "description": "key: UserName"
+          }
         },
         {
+          "description": "key: TripId",
           "in": "path",
           "name": "TripId_1",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: TripId"
+          }
         }
       ],
       "get": {
@@ -2521,23 +2521,23 @@
     "/People('{UserName}')/Trips({TripId_1})/Photos": {
       "parameters": [
         {
+          "description": "key: UserName",
           "in": "path",
           "name": "UserName",
           "required": true,
           "schema": {
             "type": "string"
-          },
-          "description": "key: UserName"
+          }
         },
         {
+          "description": "key: TripId",
           "in": "path",
           "name": "TripId_1",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: TripId"
+          }
         }
       ],
       "get": {
@@ -2635,23 +2635,23 @@
     "/People('{UserName}')/Trips({TripId_1})/PlanItems": {
       "parameters": [
         {
+          "description": "key: UserName",
           "in": "path",
           "name": "UserName",
           "required": true,
           "schema": {
             "type": "string"
-          },
-          "description": "key: UserName"
+          }
         },
         {
+          "description": "key: TripId",
           "in": "path",
           "name": "TripId_1",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: TripId"
+          }
         }
       ],
       "get": {
@@ -2790,33 +2790,33 @@
     "/People('{UserName}')/Trips({TripId_1})/PlanItems({PlanItemId_2})": {
       "parameters": [
         {
+          "description": "key: UserName",
           "in": "path",
           "name": "UserName",
           "required": true,
           "schema": {
             "type": "string"
-          },
-          "description": "key: UserName"
+          }
         },
         {
+          "description": "key: TripId",
           "in": "path",
           "name": "TripId_1",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: TripId"
+          }
         },
         {
+          "description": "key: PlanItemId",
           "in": "path",
           "name": "PlanItemId_2",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: PlanItemId"
+          }
         }
       ],
       "get": {
@@ -3030,6 +3030,7 @@
     "/Photos({Id})": {
       "parameters": [
         {
+          "description": "key: Id",
           "in": "path",
           "name": "Id",
           "required": true,
@@ -3044,8 +3045,7 @@
               }
             ],
             "example": "42"
-          },
-          "description": "key: Id"
+          }
         }
       ],
       "get": {

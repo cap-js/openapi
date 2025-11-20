@@ -184,14 +184,14 @@
     "/Books({ID})": {
       "parameters": [
         {
+          "description": "Book ID with only Description",
           "in": "path",
           "name": "ID",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "Book ID with only Description"
+          }
         }
       ],
       "get": {
@@ -282,8 +282,8 @@
         ],
         "parameters": [
           {
-            "required": true,
             "description": "Parameter with only Description  \nString value needs to be enclosed in single quotes",
+            "required": true,
             "in": "query",
             "name": "input",
             "schema": {

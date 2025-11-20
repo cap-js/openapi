@@ -173,13 +173,13 @@
     "/Folders('{Name}')": {
       "parameters": [
         {
+          "description": "key: Name",
           "in": "path",
           "name": "Name",
           "required": true,
           "schema": {
             "type": "string"
-          },
-          "description": "key: Name"
+          }
         }
       ],
       "get": {
@@ -282,13 +282,13 @@
     "/Folders('{Name}')/Folders": {
       "parameters": [
         {
+          "description": "key: Name",
           "in": "path",
           "name": "Name",
           "required": true,
           "schema": {
             "type": "string"
-          },
-          "description": "key: Name"
+          }
         }
       ],
       "get": {
@@ -435,22 +435,22 @@
     "/Folders('{Name}')/Folders('{Name_1}')": {
       "parameters": [
         {
+          "description": "key: Name",
           "in": "path",
           "name": "Name",
           "required": true,
           "schema": {
             "type": "string"
-          },
-          "description": "key: Name"
+          }
         },
         {
+          "description": "key: Name",
           "in": "path",
           "name": "Name_1",
           "required": true,
           "schema": {
             "type": "string"
-          },
-          "description": "key: Name"
+          }
         }
       ],
       "get": {
@@ -553,22 +553,22 @@
     "/Folders('{Name}')/Folders('{Name_1}')/Folders": {
       "parameters": [
         {
+          "description": "key: Name",
           "in": "path",
           "name": "Name",
           "required": true,
           "schema": {
             "type": "string"
-          },
-          "description": "key: Name"
+          }
         },
         {
+          "description": "key: Name",
           "in": "path",
           "name": "Name_1",
           "required": true,
           "schema": {
             "type": "string"
-          },
-          "description": "key: Name"
+          }
         }
       ],
       "get": {
@@ -715,31 +715,31 @@
     "/Folders('{Name}')/Folders('{Name_1}')/Folders('{Name_2}')": {
       "parameters": [
         {
+          "description": "key: Name",
           "in": "path",
           "name": "Name",
           "required": true,
           "schema": {
             "type": "string"
-          },
-          "description": "key: Name"
+          }
         },
         {
+          "description": "key: Name",
           "in": "path",
           "name": "Name_1",
           "required": true,
           "schema": {
             "type": "string"
-          },
-          "description": "key: Name"
+          }
         },
         {
+          "description": "key: Name",
           "in": "path",
           "name": "Name_2",
           "required": true,
           "schema": {
             "type": "string"
-          },
-          "description": "key: Name"
+          }
         }
       ],
       "get": {
@@ -842,31 +842,31 @@
     "/Folders('{Name}')/Folders('{Name_1}')/Folders('{Name_2}')/Folders": {
       "parameters": [
         {
+          "description": "key: Name",
           "in": "path",
           "name": "Name",
           "required": true,
           "schema": {
             "type": "string"
-          },
-          "description": "key: Name"
+          }
         },
         {
+          "description": "key: Name",
           "in": "path",
           "name": "Name_1",
           "required": true,
           "schema": {
             "type": "string"
-          },
-          "description": "key: Name"
+          }
         },
         {
+          "description": "key: Name",
           "in": "path",
           "name": "Name_2",
           "required": true,
           "schema": {
             "type": "string"
-          },
-          "description": "key: Name"
+          }
         }
       ],
       "get": {
@@ -1013,40 +1013,40 @@
     "/Folders('{Name}')/Folders('{Name_1}')/Folders('{Name_2}')/Folders('{Name_3}')": {
       "parameters": [
         {
+          "description": "key: Name",
           "in": "path",
           "name": "Name",
           "required": true,
           "schema": {
             "type": "string"
-          },
-          "description": "key: Name"
+          }
         },
         {
+          "description": "key: Name",
           "in": "path",
           "name": "Name_1",
           "required": true,
           "schema": {
             "type": "string"
-          },
-          "description": "key: Name"
+          }
         },
         {
+          "description": "key: Name",
           "in": "path",
           "name": "Name_2",
           "required": true,
           "schema": {
             "type": "string"
-          },
-          "description": "key: Name"
+          }
         },
         {
+          "description": "key: Name",
           "in": "path",
           "name": "Name_3",
           "required": true,
           "schema": {
             "type": "string"
-          },
-          "description": "key: Name"
+          }
         }
       ],
       "get": {
@@ -1149,40 +1149,40 @@
     "/Folders('{Name}')/Folders('{Name_1}')/Folders('{Name_2}')/Folders('{Name_3}')/Folders": {
       "parameters": [
         {
+          "description": "key: Name",
           "in": "path",
           "name": "Name",
           "required": true,
           "schema": {
             "type": "string"
-          },
-          "description": "key: Name"
+          }
         },
         {
+          "description": "key: Name",
           "in": "path",
           "name": "Name_1",
           "required": true,
           "schema": {
             "type": "string"
-          },
-          "description": "key: Name"
+          }
         },
         {
+          "description": "key: Name",
           "in": "path",
           "name": "Name_2",
           "required": true,
           "schema": {
             "type": "string"
-          },
-          "description": "key: Name"
+          }
         },
         {
+          "description": "key: Name",
           "in": "path",
           "name": "Name_3",
           "required": true,
           "schema": {
             "type": "string"
-          },
-          "description": "key: Name"
+          }
         }
       ],
       "get": {
@@ -1329,49 +1329,49 @@
     "/Folders('{Name}')/Folders('{Name_1}')/Folders('{Name_2}')/Folders('{Name_3}')/Folders('{Name_4}')": {
       "parameters": [
         {
+          "description": "key: Name",
           "in": "path",
           "name": "Name",
           "required": true,
           "schema": {
             "type": "string"
-          },
-          "description": "key: Name"
+          }
         },
         {
+          "description": "key: Name",
           "in": "path",
           "name": "Name_1",
           "required": true,
           "schema": {
             "type": "string"
-          },
-          "description": "key: Name"
+          }
         },
         {
+          "description": "key: Name",
           "in": "path",
           "name": "Name_2",
           "required": true,
           "schema": {
             "type": "string"
-          },
-          "description": "key: Name"
+          }
         },
         {
+          "description": "key: Name",
           "in": "path",
           "name": "Name_3",
           "required": true,
           "schema": {
             "type": "string"
-          },
-          "description": "key: Name"
+          }
         },
         {
+          "description": "key: Name",
           "in": "path",
           "name": "Name_4",
           "required": true,
           "schema": {
             "type": "string"
-          },
-          "description": "key: Name"
+          }
         }
       ],
       "get": {
@@ -1474,49 +1474,49 @@
     "/Folders('{Name}')/Folders('{Name_1}')/Folders('{Name_2}')/Folders('{Name_3}')/Folders('{Name_4}')/Folders": {
       "parameters": [
         {
+          "description": "key: Name",
           "in": "path",
           "name": "Name",
           "required": true,
           "schema": {
             "type": "string"
-          },
-          "description": "key: Name"
+          }
         },
         {
+          "description": "key: Name",
           "in": "path",
           "name": "Name_1",
           "required": true,
           "schema": {
             "type": "string"
-          },
-          "description": "key: Name"
+          }
         },
         {
+          "description": "key: Name",
           "in": "path",
           "name": "Name_2",
           "required": true,
           "schema": {
             "type": "string"
-          },
-          "description": "key: Name"
+          }
         },
         {
+          "description": "key: Name",
           "in": "path",
           "name": "Name_3",
           "required": true,
           "schema": {
             "type": "string"
-          },
-          "description": "key: Name"
+          }
         },
         {
+          "description": "key: Name",
           "in": "path",
           "name": "Name_4",
           "required": true,
           "schema": {
             "type": "string"
-          },
-          "description": "key: Name"
+          }
         }
       ],
       "get": {
@@ -1890,14 +1890,14 @@
     "/TheWhole/Many({index_1})": {
       "parameters": [
         {
+          "description": "key: index",
           "in": "path",
           "name": "index_1",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: index"
+          }
         }
       ],
       "get": {
@@ -2002,14 +2002,14 @@
     "/TheWhole/Many({index_1})/Many": {
       "parameters": [
         {
+          "description": "key: index",
           "in": "path",
           "name": "index_1",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: index"
+          }
         }
       ],
       "get": {
@@ -2139,34 +2139,34 @@
     "/TheWhole/Many({index_1})/Many(One={One_2},Two={Two_2})": {
       "parameters": [
         {
+          "description": "key: index",
           "in": "path",
           "name": "index_1",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: index"
+          }
         },
         {
+          "description": "key: One",
           "in": "path",
           "name": "One_2",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: One"
+          }
         },
         {
+          "description": "key: Two",
           "in": "path",
           "name": "Two_2",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: Two"
+          }
         }
       ],
       "get": {
@@ -2252,34 +2252,34 @@
     "/TheWhole/Many({index_1})/ManyReadByKeyOnly(One={One_2},Two={Two_2})": {
       "parameters": [
         {
+          "description": "key: index",
           "in": "path",
           "name": "index_1",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: index"
+          }
         },
         {
+          "description": "key: One",
           "in": "path",
           "name": "One_2",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: One"
+          }
         },
         {
+          "description": "key: Two",
           "in": "path",
           "name": "Two_2",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: Two"
+          }
         }
       ],
       "get": {
@@ -2309,14 +2309,14 @@
     "/TheWhole/Many({index_1})/ManyReadListOnly": {
       "parameters": [
         {
+          "description": "key: index",
           "in": "path",
           "name": "index_1",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: index"
+          }
         }
       ],
       "get": {
@@ -2362,14 +2362,14 @@
     "/TheWhole/Many({index_1})/One": {
       "parameters": [
         {
+          "description": "key: index",
           "in": "path",
           "name": "index_1",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: index"
+          }
         }
       ],
       "get": {
@@ -2680,24 +2680,24 @@
     "/TheWhole/One/Many(One={One_2},Two={Two_2})": {
       "parameters": [
         {
+          "description": "key: One",
           "in": "path",
           "name": "One_2",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: One"
+          }
         },
         {
+          "description": "key: Two",
           "in": "path",
           "name": "Two_2",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: Two"
+          }
         }
       ],
       "get": {
@@ -3054,13 +3054,13 @@
     "/Wholes('{ID}')": {
       "parameters": [
         {
+          "description": "key: ID",
           "in": "path",
           "name": "ID",
           "required": true,
           "schema": {
             "type": "string"
-          },
-          "description": "key: ID"
+          }
         }
       ],
       "get": {
@@ -3164,13 +3164,13 @@
     "/Wholes('{ID}')/Many": {
       "parameters": [
         {
+          "description": "key: ID",
           "in": "path",
           "name": "ID",
           "required": true,
           "schema": {
             "type": "string"
-          },
-          "description": "key: ID"
+          }
         }
       ],
       "get": {
@@ -3317,23 +3317,23 @@
     "/Wholes('{ID}')/Many({index_1})": {
       "parameters": [
         {
+          "description": "key: ID",
           "in": "path",
           "name": "ID",
           "required": true,
           "schema": {
             "type": "string"
-          },
-          "description": "key: ID"
+          }
         },
         {
+          "description": "key: index",
           "in": "path",
           "name": "index_1",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: index"
+          }
         }
       ],
       "get": {
@@ -3438,23 +3438,23 @@
     "/Wholes('{ID}')/Many({index_1})/Many": {
       "parameters": [
         {
+          "description": "key: ID",
           "in": "path",
           "name": "ID",
           "required": true,
           "schema": {
             "type": "string"
-          },
-          "description": "key: ID"
+          }
         },
         {
+          "description": "key: index",
           "in": "path",
           "name": "index_1",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: index"
+          }
         }
       ],
       "get": {
@@ -3584,43 +3584,43 @@
     "/Wholes('{ID}')/Many({index_1})/Many(One={One_2},Two={Two_2})": {
       "parameters": [
         {
+          "description": "key: ID",
           "in": "path",
           "name": "ID",
           "required": true,
           "schema": {
             "type": "string"
-          },
-          "description": "key: ID"
+          }
         },
         {
+          "description": "key: index",
           "in": "path",
           "name": "index_1",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: index"
+          }
         },
         {
+          "description": "key: One",
           "in": "path",
           "name": "One_2",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: One"
+          }
         },
         {
+          "description": "key: Two",
           "in": "path",
           "name": "Two_2",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: Two"
+          }
         }
       ],
       "get": {
@@ -3706,43 +3706,43 @@
     "/Wholes('{ID}')/Many({index_1})/ManyReadByKeyOnly(One={One_2},Two={Two_2})": {
       "parameters": [
         {
+          "description": "key: ID",
           "in": "path",
           "name": "ID",
           "required": true,
           "schema": {
             "type": "string"
-          },
-          "description": "key: ID"
+          }
         },
         {
+          "description": "key: index",
           "in": "path",
           "name": "index_1",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: index"
+          }
         },
         {
+          "description": "key: One",
           "in": "path",
           "name": "One_2",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: One"
+          }
         },
         {
+          "description": "key: Two",
           "in": "path",
           "name": "Two_2",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: Two"
+          }
         }
       ],
       "get": {
@@ -3771,23 +3771,23 @@
     "/Wholes('{ID}')/Many({index_1})/ManyReadListOnly": {
       "parameters": [
         {
+          "description": "key: ID",
           "in": "path",
           "name": "ID",
           "required": true,
           "schema": {
             "type": "string"
-          },
-          "description": "key: ID"
+          }
         },
         {
+          "description": "key: index",
           "in": "path",
           "name": "index_1",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: index"
+          }
         }
       ],
       "get": {
@@ -3885,23 +3885,23 @@
     "/Wholes('{ID}')/Many({index_1})/One": {
       "parameters": [
         {
+          "description": "key: ID",
           "in": "path",
           "name": "ID",
           "required": true,
           "schema": {
             "type": "string"
-          },
-          "description": "key: ID"
+          }
         },
         {
+          "description": "key: index",
           "in": "path",
           "name": "index_1",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: index"
+          }
         }
       ],
       "get": {
@@ -3987,13 +3987,13 @@
     "/Wholes('{ID}')/One": {
       "parameters": [
         {
+          "description": "key: ID",
           "in": "path",
           "name": "ID",
           "required": true,
           "schema": {
             "type": "string"
-          },
-          "description": "key: ID"
+          }
         }
       ],
       "get": {
@@ -4098,13 +4098,13 @@
     "/Wholes('{ID}')/One/Many": {
       "parameters": [
         {
+          "description": "key: ID",
           "in": "path",
           "name": "ID",
           "required": true,
           "schema": {
             "type": "string"
-          },
-          "description": "key: ID"
+          }
         }
       ],
       "get": {
@@ -4234,33 +4234,33 @@
     "/Wholes('{ID}')/One/Many(One={One_2},Two={Two_2})": {
       "parameters": [
         {
+          "description": "key: ID",
           "in": "path",
           "name": "ID",
           "required": true,
           "schema": {
             "type": "string"
-          },
-          "description": "key: ID"
+          }
         },
         {
+          "description": "key: One",
           "in": "path",
           "name": "One_2",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: One"
+          }
         },
         {
+          "description": "key: Two",
           "in": "path",
           "name": "Two_2",
           "required": true,
           "schema": {
             "type": "integer",
             "format": "int32"
-          },
-          "description": "key: Two"
+          }
         }
       ],
       "get": {
@@ -4346,13 +4346,13 @@
     "/Wholes('{ID}')/One/One": {
       "parameters": [
         {
+          "description": "key: ID",
           "in": "path",
           "name": "ID",
           "required": true,
           "schema": {
             "type": "string"
-          },
-          "description": "key: ID"
+          }
         }
       ],
       "get": {
@@ -4451,13 +4451,13 @@
         },
         "parameters": [
           {
+            "description": "key: ID",
             "in": "path",
             "name": "ID",
             "required": true,
             "schema": {
               "type": "string"
-            },
-            "description": "key: ID"
+            }
           }
         ]
       }
@@ -4470,13 +4470,13 @@
         ],
         "parameters": [
           {
+            "description": "key: ID",
             "in": "path",
             "name": "ID",
             "required": true,
             "schema": {
               "type": "string"
-            },
-            "description": "key: ID"
+            }
           }
         ],
         "responses": {

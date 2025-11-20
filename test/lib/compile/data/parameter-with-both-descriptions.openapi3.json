@@ -2,7 +2,7 @@
   "openapi": "3.0.2",
   "info": {
     "title": "Use @title: '...' on your CDS service to provide a meaningful title.",
-    "description": "Use @Core.LongDescription: '...' or @Core.Description: '...' on your CDS service to provide a meaningful description.",
+    "description": "Use @Core.LongDescription: '...' or @Core.Description: '...' on your CDS service to provide a meaningful description.\n\n## Entity Data Model\n![ER Diagram](https://yuml.me/diagram/class/[Item{bg:lightslategray}],[processItem{bg:lawngreen}],[Items%20{bg:lawngreen}]++-*>[Item])\n\n### Legend\n![Legend](https://yuml.me/diagram/plain;dir:TB;scale:60/class/[External.Type{bg:whitesmoke}],[ComplexType],[EntityType{bg:lightslategray}],[EntitySet/Singleton/Operation{bg:lawngreen}])",
     "version": ""
   },
   "x-sap-api-type": "ODATAV4",
@@ -184,6 +184,7 @@
     "/Items({ID})": {
       "parameters": [
         {
+          "description": "Long detailed description of the identifier",
           "in": "path",
           "name": "ID",
           "required": true,
@@ -191,8 +192,7 @@
             "type": "string",
             "format": "uuid",
             "example": "01234567-89ab-cdef-0123-456789abcdef"
-          },
-          "description": "Long detailed description of the identifier"
+          }
         }
       ],
       "get": {
@@ -283,8 +283,8 @@
         ],
         "parameters": [
           {
-            "required": true,
             "description": "Long detailed parameter description",
+            "required": true,
             "in": "query",
             "name": "itemId",
             "schema": {
