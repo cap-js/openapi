@@ -120,3 +120,9 @@ When adding new code to the project, follow these guidelines:
 5. Perform a self-review before submitting your code for review
 
 Remember, the goal is to write code that is easy to understand, maintain, and extend. When in doubt, prioritize readability and simplicity over cleverness.
+
+## ESLint Configuration
+
+Our ESLint configuration is based on best practices from the JavaScript community, with inspiration from comprehensive templates like [Phoenix35/eslint-config](https://github.com/Phoenix35/eslint-config). We focus on a pragmatic set of rules that catch real bugs without being overly restrictive. The configuration balances code quality with developer flexibility, explicitly allowing patterns like the comma operator, nested ternaries with newlines, and implicit type coercion when clear in context.
+
+For details on specific rules and their reasoning, see the inline comments in `eslint.config.mjs`.
