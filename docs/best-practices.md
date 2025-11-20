@@ -123,12 +123,6 @@ Remember, the goal is to write code that is easy to understand, maintain, and ex
 
 ## ESLint Configuration
 
-Key configuration choices:
+Our ESLint configuration is based on best practices from the JavaScript community, with inspiration from comprehensive templates like [Phoenix35/eslint-config](https://github.com/Phoenix35/eslint-config). We focus on a pragmatic set of rules that catch real bugs without being overly restrictive. The configuration balances code quality with developer flexibility, explicitly allowing patterns like the comma operator, nested ternaries with newlines, and implicit type coercion when clear in context.
 
-- `func-style`: Off. Use the most appropriate function style for each situation.
-- `no-nested-ternary`: Removed. Use newlines for readability in nested ternaries.
-- `no-param-reassign`: Warn. Consider alternatives to parameter reassignment.
-- `object-shorthand`: Warn. Use concise object literal syntax when possible.
-- `require-await`: Warn. Ensure async functions use `await`.
-
-These rules guide code quality and consistency. Use good judgment in their application.
+For details on specific rules and their reasoning, see the inline comments in `eslint.config.mjs`.
