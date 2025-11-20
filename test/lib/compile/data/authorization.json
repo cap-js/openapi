@@ -4,7 +4,7 @@
         "https://sap.github.io/odata-vocabularies/vocabularies/Common.xml": {
             "$Include": [
                 {
-                    "$Alias": "Common",
+                    "$Alias": "Common", 
                     "$Namespace": "com.sap.vocabularies.Common.v1"
                 }
             ]

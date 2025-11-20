@@ -3,10 +3,7 @@
     "$Reference": {
         "https://sap.github.io/odata-vocabularies/vocabularies/Common.xml": {
             "$Include": [
-                {
-                    "$Alias": "Common",
-                    "$Namespace": "com.sap.vocabularies.Common.v1"
-                }
+              { "$Alias": "Common", "$Namespace": "com.sap.vocabularies.Common.v1" }
             ]
         },
         "https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.json": {

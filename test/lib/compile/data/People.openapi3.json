@@ -21,7 +21,7 @@
             "name": "People"
         },
         {
-            "name": "Person Details"
+            "name": "PersonDetails"
         }
     ],
     "paths": {
@@ -132,7 +132,7 @@
                                     "type": "object",
                                     "title": "Collection of Supplier",
                                     "properties": {
-                                        "@count": {
+                                        "@count":  {
                                             "$ref": "#/components/schemas/count"
                                         },
                                         "value": {
@@ -346,7 +346,7 @@
                                     "type": "object",
                                     "title": "Collection of Product",
                                     "properties": {
-                                        "@count": {
+                                        "@count":  {
                                             "$ref": "#/components/schemas/count"
                                         },
                                         "value": {
@@ -456,7 +456,7 @@
                                     "type": "object",
                                     "title": "Collection of Person",
                                     "properties": {
-                                        "@count": {
+                                        "@count":  {
                                             "$ref": "#/components/schemas/count"
                                         },
                                         "value": {
@@ -635,7 +635,7 @@
                 "summary": "Retrieve person detail of a person.",
                 "tags": [
                     "People",
-                    "Person Details"
+                    "PersonDetails"
                 ],
                 "parameters": [
                     {
@@ -698,7 +698,7 @@
             "get": {
                 "summary": "Retrieve a list of person details.",
                 "tags": [
-                    "Person Details"
+                    "PersonDetails"
                 ],
                 "parameters": [
                     {
@@ -804,7 +804,7 @@
                                     "type": "object",
                                     "title": "Collection of PersonDetail",
                                     "properties": {
-                                        "@count": {
+                                        "@count":  {
                                             "$ref": "#/components/schemas/count"
                                         },
                                         "value": {
@@ -826,7 +826,7 @@
             "post": {
                 "summary": "Create a single person detail.",
                 "tags": [
-                    "Person Details"
+                    "PersonDetails"
                 ],
                 "requestBody": {
                     "description": "New person detail",
@@ -872,7 +872,7 @@
             "get": {
                 "summary": "Retrieve a single person detail.",
                 "tags": [
-                    "Person Details"
+                    "PersonDetails"
                 ],
                 "parameters": [
                     {
@@ -933,7 +933,7 @@
             "patch": {
                 "summary": "Change a single person detail.",
                 "tags": [
-                    "Person Details"
+                    "PersonDetails"
                 ],
                 "requestBody": {
                     "description": "New property values",
@@ -958,7 +958,7 @@
             "delete": {
                 "summary": "Delete a single person detail.",
                 "tags": [
-                    "Person Details"
+                    "PersonDetails"
                 ],
                 "responses": {
                     "204": {
@@ -986,7 +986,7 @@
             "get": {
                 "summary": "Retrieve person of a person detail.",
                 "tags": [
-                    "Person Details"
+                    "PersonDetails"
                 ],
                 "parameters": [
                     {

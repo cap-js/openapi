@@ -3,10 +3,7 @@
     "$Reference": {
         "dummy": {
             "$Include": [
-                {
-                    "$Namespace": "Org.OData.Core.V1",
-                    "$Alias": "Core"
-                }
+                { "$Namespace": "Org.OData.Core.V1", "$Alias": "Core" }
             ]
         }
     },
@@ -14,12 +11,8 @@
     "test": {
         "Parent": {
             "$Kind": "EntityType",
-            "$Key": [
-                "ID"
-            ],
-            "ID": {
-                "$Type": "Edm.Guid"
-            },
+            "$Key": ["ID"],
+            "ID": { "$Type": "Edm.Guid" },
             "child": {
                 "$Kind": "NavigationProperty",
                 "$Type": "test.Child",
@@ -34,15 +27,9 @@
         },
         "Child": {
             "$Kind": "EntityType",
-            "$Key": [
-                "ID"
-            ],
-            "ID": {
-                "$Type": "Edm.Guid"
-            },
-            "value": {
-                "$Type": "Edm.String"
-            }
+            "$Key": ["ID"],
+            "ID": { "$Type": "Edm.Guid" },
+            "value": { "$Type": "Edm.String" }
         },
         "Container": {
             "$Kind": "EntityContainer",

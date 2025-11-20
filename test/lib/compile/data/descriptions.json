@@ -1,635 +1,632 @@
 {
     "$Version": "4.01",
     "$Reference": {
-        "https://sap.github.io/odata-vocabularies/vocabularies/Common.xml": {
-            "$Include": [
-                {
-                    "$Alias": "Common",
-                    "$Namespace": "com.sap.vocabularies.Common.v1"
-                }
-            ]
-        },
-        "https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.json": {
-            "$Include": [
-                {
-                    "$Namespace": "Org.OData.Core.V1",
-                    "$Alias": "Core"
-                }
-            ]
-        },
-        "https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Capabilities.V1.json": {
-            "$Include": [
-                {
-                    "$Namespace": "Org.OData.Capabilities.V1",
-                    "$Alias": "Capabilities"
-                }
-            ]
-        }
+      "https://sap.github.io/odata-vocabularies/vocabularies/Common.xml": {
+        "$Include": [
+          {
+            "$Alias": "Common", 
+            "$Namespace": "com.sap.vocabularies.Common.v1"
+          }
+        ]
+      },
+      "https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.json": {
+        "$Include": [
+          {
+            "$Namespace": "Org.OData.Core.V1",
+            "$Alias": "Core"
+          }
+        ]
+      },
+      "https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Capabilities.V1.json": {
+        "$Include": [
+          {
+            "$Namespace": "Org.OData.Capabilities.V1",
+            "$Alias": "Capabilities"
+          }
+        ]
+      }
     },
     "descriptions": {
-        "$Alias": "self",
-        "@Core.SchemaVersion": "0.0.1",
-        "Default": {
-            "$Kind": "EntityContainer",
-            "entities": {
-                "$Collection": true,
-                "$Type": "self.entity",
-                "$NavigationPropertyBinding": {
-                    "related": "entities_ext"
-                },
-                "@Core.Description": "Entity Set - Description",
-                "@Core.LongDescription": "Entity Set - LongDescription",
-                "@Capabilities.ReadRestrictions": {
-                    "Description": "Query Entity Set - Description",
-                    "LongDescription": "Query Entity Set - LongDescription",
-                    "ErrorResponses": [
-                        {
-                            "StatusCode": "418",
-                            "Description": "Out of coffee on query"
-                        },
-                        {
-                            "StatusCode": "5XX",
-                            "Description": "This should never have happened"
-                        }
-                    ],
-                    "ReadByKeyRestrictions": {
-                        "Description": "Read Entity by Key - Description",
-                        "LongDescription": "Read Entity by Key - LongDescription",
-                        "ErrorResponses": [
-                            {
-                                "StatusCode": "418",
-                                "Description": "Out of coffee on read-by-key"
-                            }
-                        ]
-                    }
-                },
-                "@Capabilities.InsertRestrictions": {
-                    "Description": "Create Entity - Description",
-                    "LongDescription": "Create Entity - LongDescription",
-                    "ErrorResponses": [
-                        {
-                            "StatusCode": "418",
-                            "Description": "Out of coffee on create"
-                        }
-                    ]
-                },
-                "@Capabilities.UpdateRestrictions": {
-                    "Description": "Update Entity - Description",
-                    "LongDescription": "Update Entity - LongDescription",
-                    "ErrorResponses": [
-                        {
-                            "StatusCode": "418",
-                            "Description": "Out of coffee on update"
-                        }
-                    ]
-                },
-                "@Capabilities.DeleteRestrictions": {
-                    "Description": "Delete Entity - Description",
-                    "LongDescription": "Delete Entity - LongDescription",
-                    "ErrorResponses": [
-                        {
-                            "StatusCode": "418",
-                            "Description": "Out of coffee on delete"
-                        }
-                    ]
-                },
-                "@Capabilities.NavigationRestrictions": {
-                    "RestrictedProperties": [
-                        {
-                            "NavigationProperty": "contained",
-                            "ReadRestrictions": {
-                                "Description": "Query Contained - Description",
-                                "LongDescription": "Query Contained - LongDescription",
-                                "ErrorResponses": [
-                                    {
-                                        "StatusCode": "418",
-                                        "Description": "Out of coffee on query contained"
-                                    }
-                                ],
-                                "ReadByKeyRestrictions": {
-                                    "Description": "Read Contained by Key - Description",
-                                    "LongDescription": "Read Contained by Key - LongDescription",
-                                    "ErrorResponses": [
-                                        {
-                                            "StatusCode": "418",
-                                            "Description": "Out of coffee on read contained by key"
-                                        }
-                                    ]
-                                }
-                            },
-                            "InsertRestrictions": {
-                                "Description": "Create Contained - Description",
-                                "LongDescription": "Create Contained - LongDescription",
-                                "ErrorResponses": [
-                                    {
-                                        "StatusCode": "418",
-                                        "Description": "Out of coffee on create contained"
-                                    }
-                                ]
-                            },
-                            "UpdateRestrictions": {
-                                "Description": "Update Contained - Description",
-                                "LongDescription": "Update Contained - LongDescription",
-                                "ErrorResponses": [
-                                    {
-                                        "StatusCode": "418",
-                                        "Description": "Out of coffee on update contained"
-                                    }
-                                ]
-                            },
-                            "DeleteRestrictions": {
-                                "Description": "Delete Contained - Description",
-                                "LongDescription": "Delete Contained - LongDescription",
-                                "ErrorResponses": [
-                                    {
-                                        "StatusCode": "418",
-                                        "Description": "Out of coffee on delete contained"
-                                    }
-                                ]
-                            }
-                        },
-                        {
-                            "NavigationProperty": "related",
-                            "ReadRestrictions": {
-                                "Description": "Query Related - Description",
-                                "LongDescription": "Query Related - LongDescription"
-                            },
-                            "InsertRestrictions": {
-                                "Description": "Create Related - Description",
-                                "LongDescription": "Create Related - LongDescription"
-                            }
-                        }
-                    ]
-                }
-            },
-            "entities_ext": {
-                "$Collection": true,
-                "$Type": "self.entity",
-                "$NavigationPropertyBinding": {
-                    "related": "entities"
-                }
-            },
-            "single": {
-                "$Type": "self.entity",
-                "$Nullable": true,
-                "$NavigationPropertyBinding": {
-                    "related": "entities_ext"
-                },
-                "@Core.Description": "Singleton - Description",
-                "@Core.LongDescription": "Singleton - LongDescription",
-                "@Capabilities.ReadRestrictions": {
-                    "Description": "Read Singleton - Description",
-                    "LongDescription": "Read Singleton - LongDescription",
-                    "ErrorResponses": [
-                        {
-                            "StatusCode": "418",
-                            "Description": "Out of coffee on read singleton"
-                        }
-                    ]
-                },
-                "@Capabilities.UpdateRestrictions": {
-                    "Description": "Update Singleton - Description",
-                    "LongDescription": "Update Singleton - LongDescription",
-                    "ErrorResponses": [
-                        {
-                            "StatusCode": "418",
-                            "Description": "Out of coffee on update singleton"
-                        }
-                    ]
-                },
-                "@Capabilities.DeleteRestrictions": {
-                    "Description": "Delete Singleton - Description",
-                    "LongDescription": "Delete Singleton - LongDescription",
-                    "ErrorResponses": [
-                        {
-                            "StatusCode": "418",
-                            "Description": "Out of coffee on delete singleton"
-                        }
-                    ]
-                },
-                "@Capabilities.NavigationRestrictions": {
-                    "RestrictedProperties": [
-                        {
-                            "NavigationProperty": "contained",
-                            "ReadRestrictions": {
-                                "Description": "Singleton Query Contained - Description",
-                                "LongDescription": "Singleton Query Contained - LongDescription",
-                                "ReadByKeyRestrictions": {
-                                    "Description": "Singleton Read Contained by Key - Description",
-                                    "LongDescription": "Singleton Read Contained by Key - LongDescription"
-                                }
-                            },
-                            "InsertRestrictions": {
-                                "Description": "Singleton Create Contained - Description",
-                                "LongDescription": "Singleton Create Contained - LongDescription"
-                            },
-                            "UpdateRestrictions": {
-                                "Description": "Singleton Update Contained - Description",
-                                "LongDescription": "Singleton Update Contained - LongDescription"
-                            },
-                            "DeleteRestrictions": {
-                                "Description": "Singleton Delete Contained - Description",
-                                "LongDescription": "Singleton Delete Contained - LongDescription"
-                            }
-                        },
-                        {
-                            "NavigationProperty": "related",
-                            "ReadRestrictions": {
-                                "Description": "Singleton Query Related - Description",
-                                "LongDescription": "Singleton Query Related - LongDescription"
-                            },
-                            "InsertRestrictions": {
-                                "Description": "Singleton Create Related - Description",
-                                "LongDescription": "Singleton Create Related - LongDescription"
-                            }
-                        }
-                    ]
-                }
-            },
-            "single_ext": {
-                "$Type": "self.entity",
-                "$NavigationPropertyBinding": {
-                    "related": "entities"
-                }
-            },
-            "actionimport": {
-                "$Action": "self.action",
-                "@Core.Description": "Action Import - Description",
-                "@Core.LongDescription": "Action Import - LongDescription"
-            },
-            "actionimport_ext": {
-                "$Action": "self.action"
-            },
-            "actionimport_no_descriptions": {
-                "$Action": "self.action"
-            },
-            "functionimport": {
-                "$Function": "self.function",
-                "@Core.Description": "Function Import - Description",
-                "@Core.LongDescription": "Function Import - LongDescription"
-            },
-            "functionimport_ext": {
-                "$Function": "self.function"
-            },
-            "functionimport_no_descriptions": {
-                "$Function": "self.function"
-            }
-        },
-        "$Annotations": {
-            "self.Default": {
-                "@Common.Label": "Container - Label",
-                "@Core.Description": "Container - Description",
-                "@Core.LongDescription": "Container - LongDescription"
-            },
-            "self.Default/entities_ext": {
-                "@Core.Description": "Entity Set Ext - Description",
-                "@Core.LongDescription": "Entity Set Ext - LongDescription",
-                "@Capabilities.ReadRestrictions": {
-                    "Description": "Query Entity Set Ext - Description",
-                    "LongDescription": "Query Entity Set Ext - LongDescription",
-                    "ReadByKeyRestrictions": {
-                        "Description": "Read Entity Set by Key Ext - Description",
-                        "LongDescription": "Read Entity Set by Key Ext - LongDescription"
-                    }
-                },
-                "@Capabilities.InsertRestrictions": {
-                    "Description": "Create Entity Ext - Description",
-                    "LongDescription": "Create Entity Ext - LongDescription"
-                },
-                "@Capabilities.UpdateRestrictions": {
-                    "Description": "Update Entity Ext - Description",
-                    "LongDescription": "Update Entity Ext - LongDescription"
-                },
-                "@Capabilities.DeleteRestrictions": {
-                    "Description": "Delete Entity Ext - Description",
-                    "LongDescription": "Delete Entity Ext - LongDescription"
-                },
-                "@Capabilities.NavigationRestrictions": {
-                    "RestrictedProperties": [
-                        {
-                            "NavigationProperty": "contained",
-                            "ReadRestrictions": {
-                                "Description": "Query Contained Ext - Description",
-                                "LongDescription": "Query Contained Ext - LongDescription",
-                                "ReadByKeyRestrictions": {
-                                    "Description": "Read Contained by Key Ext - Description",
-                                    "LongDescription": "Read Contained by Key Ext - LongDescription"
-                                }
-                            },
-                            "InsertRestrictions": {
-                                "Description": "Create Contained Ext - Description",
-                                "LongDescription": "Create Contained Ext - LongDescription"
-                            },
-                            "UpdateRestrictions": {
-                                "Description": "Update Contained Ext - Description",
-                                "LongDescription": "Update Contained Ext - LongDescription"
-                            },
-                            "DeleteRestrictions": {
-                                "Description": "Delete Contained Ext - Description",
-                                "LongDescription": "Delete Contained Ext - LongDescription"
-                            }
-                        },
-                        {
-                            "NavigationProperty": "related",
-                            "ReadRestrictions": {
-                                "Description": "Query Related Ext - Description",
-                                "LongDescription": "Query Related Ext - LongDescription"
-                            },
-                            "InsertRestrictions": {
-                                "Description": "Create Related Ext - Description",
-                                "LongDescription": "Create Related Ext - LongDescription"
-                            }
-                        }
-                    ]
-                }
-            },
-            "self.Default/single_ext": {
-                "@Core.Description": "Singleton Ext - Description",
-                "@Core.LongDescription": "Singleton Ext - LongDescription",
-                "@Capabilities.ReadRestrictions": {
-                    "Description": "Read Singleton Ext - Description",
-                    "LongDescription": "Read Singleton Ext - LongDescription"
-                },
-                "@Capabilities.UpdateRestrictions": {
-                    "Description": "Update Singleton Ext - Description",
-                    "LongDescription": "Update Singleton Ext - LongDescription"
-                },
-                "@Capabilities.NavigationRestrictions": {
-                    "RestrictedProperties": [
-                        {
-                            "NavigationProperty": "contained",
-                            "ReadRestrictions": {
-                                "Description": "Singleton Query Contained Ext - Description",
-                                "LongDescription": "Singleton Query Contained Ext - LongDescription",
-                                "ReadByKeyRestrictions": {
-                                    "Description": "Singleton Read Contained by Key Ext - Description",
-                                    "LongDescription": "Singleton Read Contained by Key Ext - LongDescription"
-                                }
-                            },
-                            "InsertRestrictions": {
-                                "Description": "Singleton Create Contained Ext - Description",
-                                "LongDescription": "Singleton Create Contained Ext - LongDescription"
-                            },
-                            "UpdateRestrictions": {
-                                "Description": "Singleton Update Contained Ext - Description",
-                                "LongDescription": "Singleton Update Contained Ext - LongDescription"
-                            },
-                            "DeleteRestrictions": {
-                                "Description": "Singleton Delete Contained Ext - Description",
-                                "LongDescription": "Singleton Delete Contained Ext - LongDescription"
-                            }
-                        },
-                        {
-                            "NavigationProperty": "related",
-                            "ReadRestrictions": {
-                                "Description": "Singleton Query Related Ext - Description",
-                                "LongDescription": "Singleton Query Related Ext - LongDescription"
-                            },
-                            "InsertRestrictions": {
-                                "Description": "Singleton Create Related Ext - Description",
-                                "LongDescription": "Singleton Create Related Ext - LongDescription"
-                            }
-                        }
-                    ]
-                }
-            },
-            "self.Default/actionimport_ext": {
-                "@Core.Description": "Action Import Ext - Description",
-                "@Core.LongDescription": "Action Import Ext - LongDescription"
-            },
-            "self.Default/functionimport_ext": {
-                "@Core.Description": "Function Import Ext - Description",
-                "@Core.LongDescription": "Function Import Ext - LongDescription"
-            },
-            "self.entity": {
-                "@Core.Description": "Entity Type - Description"
-            },
-            "self.entity/id": {
-                "@Core.LongDescription": "Property - LongDescription"
-            },
-            "self.action()": {
-                "@Core.LongDescription": "Action Unbound Overload Ext - LongDescription",
-                "@Capabilities.OperationRestrictions": {
-                    "ErrorResponses": [
-                        {
-                            "StatusCode": "418",
-                            "Description": "Out of coffee on unbound action call"
-                        }
-                    ]
-                }
-            },
-            "self.action()/nonbinding": {
-                "@Core.LongDescription": "Action Unbound Overload Parameter Ext - LongDescription"
-            },
-            "self.action()/$ReturnType": {
-                "@Core.LongDescription": "Action Unbound Overload Return Type Ext - LongDescription"
-            },
-            "self.action(self.entity)": {
-                "@Core.Description": "Action Bound Overload Ext - Description",
-                "@Capabilities.OperationRestrictions": {
-                    "ErrorResponses": [
-                        {
-                            "StatusCode": "418",
-                            "Description": "Out of coffee on bound action call"
-                        }
-                    ]
-                }
-            },
-            "self.action(self.entity)/binding": {
-                "@Core.Description": "Action Bound Overload Binding Parameter Ext - Description - is ignored"
-            },
-            "self.action(self.entity)/nonbinding": {
-                "@Core.Description": "Action Bound Overload Nonbinding Parameter Ext - Description"
-            },
-            "self.action(self.entity)/$ReturnType": {
-                "@Core.Description": "Action Bound Overload Return Type Ext - Description"
-            },
-            "self.action(self.subEntity)": {
-                "@Core.Description": "Action Bound Overload Ext subEntity - Description",
-                "@Capabilities.OperationRestrictions": {
-                    "ErrorResponses": [
-                        {
-                            "StatusCode": "418",
-                            "Description": "Out of coffee on bound action call on subEntity"
-                        }
-                    ]
-                }
-            },
-            "self.action(self.subEntity)/binding": {
-                "@Core.Description": "Action Bound Overload Binding Parameter Ext subEntity - Description - is ignored"
-            },
-            "self.action(self.subEntity)/nonbinding": {
-                "@Core.Description": "Action Bound Overload Nonbinding Parameter Ext subEntity - Description"
-            },
-            "self.action(self.subEntity)/$ReturnType": {
-                "@Core.Description": "Action Bound Overload Return Type Ext subEntity - Description - is ignored, no return type"
-            },
-            "self.function(Edm.String)": {
-                "@Core.LongDescription": "Function Unbound Overload Ext - LongDescription",
-                "@Capabilities.OperationRestrictions": {
-                    "ErrorResponses": [
-                        {
-                            "StatusCode": "418",
-                            "Description": "Out of coffee on unbound function call"
-                        }
-                    ]
-                }
-            },
-            "self.function(Edm.String)/nonbinding": {
-                "@Core.LongDescription": "Function Unbound Overload Parameter Ext - LongDescription"
-            },
-            "self.function(Edm.String)/$ReturnType": {
-                "@Core.LongDescription": "Function Unbound Overload Return Type Ext - LongDescription"
-            },
-            "self.function(self.entity,Edm.String)": {
-                "@Core.Description": "Function Bound Overload Ext - Description"
-            },
-            "self.function(self.entity,Edm.String)/binding": {
-                "@Core.Description": "Function Bound Overload Binding Parameter Ext - Description - is ignored"
-            },
-            "self.function(self.entity,Edm.String)/nonbinding": {
-                "@Core.Description": "Function Bound Overload Nonbinding Parameter Ext - Description"
-            },
-            "self.function(self.entity,Edm.String)/$ReturnType": {
-                "@Core.Description": "Function Bound Overload Return Type Ext - Description"
-            }
-        },
-        "entity": {
-            "$Kind": "EntityType",
-            "@Core.LongDescription": "Entity Type - LongDescription",
-            "$Key": [
-                "id"
+      "$Alias": "self",
+      "@Core.SchemaVersion": "0.0.1",
+      "Default": {
+        "$Kind": "EntityContainer",
+        "entities": {
+          "$Collection": true,
+          "$Type": "self.entity",
+          "$NavigationPropertyBinding": {
+            "related": "entities_ext"
+          },
+          "@Core.Description": "Entity Set - Description",
+          "@Core.LongDescription": "Entity Set - LongDescription",
+          "@Capabilities.ReadRestrictions": {
+            "Description": "Query Entity Set - Description",
+            "LongDescription": "Query Entity Set - LongDescription",
+            "ErrorResponses": [
+              {
+                "StatusCode": "418",
+                "Description": "Out of coffee on query"
+              },
+              {
+                "StatusCode": "5XX",
+                "Description": "This should never have happened"
+              }
             ],
-            "id": {
-                "$MaxLength": 70,
-                "$DefaultValue": "0000",
-                "@Core.Description": "Property - Description"
-            },
-            "contained": {
-                "$Kind": "NavigationProperty",
-                "$Collection": true,
-                "$Type": "self.subEntity",
-                "$ContainsTarget": true
-            },
-            "related": {
-                "$Kind": "NavigationProperty",
-                "$Collection": true,
-                "$Type": "self.entity"
-            }
-        },
-        "subEntity": {
-            "$Kind": "EntityType",
-            "$Key": [
-                "id"
-            ],
-            "id": {
-                "$MaxLength": 70
-            }
-        },
-        "action": [
-            {
-                "$Kind": "Action",
-                "@Core.Description": "Action Unbound Overload - Description",
-                "$Parameter": [
-                    {
-                        "$Name": "nonbinding",
-                        "$Nullable": true,
-                        "@Core.Description": "Action Unbound Overload Parameter - Description"
-                    }
-                ],
-                "$ReturnType": {
-                    "$Nullable": true,
-                    "@Core.Description": "Action Unbound Overload Return Type - Description"
+            "ReadByKeyRestrictions": {
+              "Description": "Read Entity by Key - Description",
+              "LongDescription": "Read Entity by Key - LongDescription",
+              "ErrorResponses": [
+                {
+                  "StatusCode": "418",
+                  "Description": "Out of coffee on read-by-key"
                 }
-            },
-            {
-                "$Kind": "Action",
-                "$IsBound": true,
-                "@Core.LongDescription": "Action Bound Overload - LongDescription",
-                "$Parameter": [
-                    {
-                        "$Name": "binding",
-                        "$Type": "self.entity",
-                        "$Nullable": true,
-                        "@Core.LongDescription": "Action Bound Overload Binding Parameter - LongDescription - is ignored"
-                    },
-                    {
-                        "$Name": "nonbinding",
-                        "$Nullable": true,
-                        "@Core.LongDescription": "Action Bound Overload Non-Binding Parameter - LongDescription"
-                    }
-                ],
-                "$ReturnType": {
-                    "$Nullable": true,
-                    "@Core.LongDescription": "Action Bound Overload Return Type - LongDescription"
-                }
-            },
-            {
-                "$Kind": "Action",
-                "$IsBound": true,
-                "@Core.LongDescription": "Action Bound Overload subEntity - LongDescription",
-                "$Parameter": [
-                    {
-                        "$Name": "binding",
-                        "$Type": "self.subEntity",
-                        "$Nullable": true,
-                        "@Core.LongDescription": "Action Bound Overload Binding Parameter subEntity - LongDescription - is ignored"
-                    },
-                    {
-                        "$Name": "nonbinding",
-                        "$Nullable": true,
-                        "@Core.LongDescription": "Action Bound Overload Non-Binding Parameter subEntity - LongDescription"
-                    }
-                ]
+              ]
             }
-        ],
-        "function": [
-            {
-                "$Kind": "Function",
-                "@Core.Description": "Function Unbound Overload - Description",
-                "$Parameter": [
+          },
+          "@Capabilities.InsertRestrictions": {
+            "Description": "Create Entity - Description",
+            "LongDescription": "Create Entity - LongDescription",
+            "ErrorResponses": [
+              {
+                "StatusCode": "418",
+                "Description": "Out of coffee on create"
+              }
+            ]
+          },
+          "@Capabilities.UpdateRestrictions": {
+            "Description": "Update Entity - Description",
+            "LongDescription": "Update Entity - LongDescription",
+            "ErrorResponses": [
+              {
+                "StatusCode": "418",
+                "Description": "Out of coffee on update"
+              }
+            ]
+          },
+          "@Capabilities.DeleteRestrictions": {
+            "Description": "Delete Entity - Description",
+            "LongDescription": "Delete Entity - LongDescription",
+            "ErrorResponses": [
+              {
+                "StatusCode": "418",
+                "Description": "Out of coffee on delete"
+              }
+            ]
+          },
+          "@Capabilities.NavigationRestrictions": {
+            "RestrictedProperties": [
+              {
+                "NavigationProperty": "contained",
+                "ReadRestrictions": {
+                  "Description": "Query Contained - Description",
+                  "LongDescription": "Query Contained - LongDescription",
+                  "ErrorResponses": [
                     {
-                        "$Name": "nonbinding",
-                        "$Nullable": true,
-                        "@Core.Description": "Function Unbound Overload Parameter - Description"
+                      "StatusCode": "418",
+                      "Description": "Out of coffee on query contained"
                     }
-                ],
-                "$ReturnType": {
-                    "$Nullable": true,
-                    "@Core.Description": "Function Unbound Overload Return Type - Description"
-                }
-            },
-            {
-                "$Kind": "Function",
-                "$IsBound": true,
-                "@Core.LongDescription": "Function Bound Overload - LongDescription",
-                "$Parameter": [
-                    {
-                        "$Name": "binding",
-                        "$Type": "self.entity",
-                        "$Nullable": true,
-                        "@Core.LongDescription": "Function Bound Overload Binding Parameter - LongDescription - is ignored"
-                    },
-                    {
-                        "$Name": "nonbinding",
-                        "$Nullable": true,
-                        "@Core.LongDescription": "Function Bound Overload Nonbinding Parameter - LongDescription"
-                    }
-                ],
-                "$ReturnType": {
-                    "$Nullable": true,
-                    "@Core.LongDescription": "Function Bound Overload Return Type - LongDescription"
-                },
-                "@Capabilities.OperationRestrictions": {
+                  ],
+                  "ReadByKeyRestrictions": {
+                    "Description": "Read Contained by Key - Description",
+                    "LongDescription": "Read Contained by Key - LongDescription",
                     "ErrorResponses": [
-                        {
-                            "StatusCode": "418",
-                            "Description": "Out of coffee on bound function call"
-                        }
+                      {
+                        "StatusCode": "418",
+                        "Description": "Out of coffee on read contained by key"
+                      }
                     ]
+                  }
+                },
+                "InsertRestrictions": {
+                  "Description": "Create Contained - Description",
+                  "LongDescription": "Create Contained - LongDescription",
+                  "ErrorResponses": [
+                    {
+                      "StatusCode": "418",
+                      "Description": "Out of coffee on create contained"
+                    }
+                  ]
+                },
+                "UpdateRestrictions": {
+                  "Description": "Update Contained - Description",
+                  "LongDescription": "Update Contained - LongDescription",
+                  "ErrorResponses": [
+                    {
+                      "StatusCode": "418",
+                      "Description": "Out of coffee on update contained"
+                    }
+                  ]
+                },
+                "DeleteRestrictions": {
+                  "Description": "Delete Contained - Description",
+                  "LongDescription": "Delete Contained - LongDescription",
+                  "ErrorResponses": [
+                    {
+                      "StatusCode": "418",
+                      "Description": "Out of coffee on delete contained"
+                    }
+                  ]
                 }
+              },
+              {
+                "NavigationProperty": "related",
+                "ReadRestrictions": {
+                  "Description": "Query Related - Description",
+                  "LongDescription": "Query Related - LongDescription"
+                },
+                "InsertRestrictions": {
+                  "Description": "Create Related - Description",
+                  "LongDescription": "Create Related - LongDescription"
+                }
+              }
+            ]
+          }
+        },
+        "entities_ext": {
+          "$Collection": true,
+          "$Type": "self.entity",
+          "$NavigationPropertyBinding": {
+            "related": "entities"
+          }
+        },
+        "single": {
+          "$Type": "self.entity",
+          "$Nullable": true,
+          "$NavigationPropertyBinding": {
+            "related": "entities_ext"
+          },
+          "@Core.Description": "Singleton - Description",
+          "@Core.LongDescription": "Singleton - LongDescription",
+          "@Capabilities.ReadRestrictions": {
+            "Description": "Read Singleton - Description",
+            "LongDescription": "Read Singleton - LongDescription",
+            "ErrorResponses": [
+              {
+                "StatusCode": "418",
+                "Description": "Out of coffee on read singleton"
+              }
+            ]
+          },
+          "@Capabilities.UpdateRestrictions": {
+            "Description": "Update Singleton - Description",
+            "LongDescription": "Update Singleton - LongDescription",
+            "ErrorResponses": [
+              {
+                "StatusCode": "418",
+                "Description": "Out of coffee on update singleton"
+              }
+            ]
+          },
+          "@Capabilities.DeleteRestrictions": {
+            "Description": "Delete Singleton - Description",
+            "LongDescription": "Delete Singleton - LongDescription",
+            "ErrorResponses": [
+              {
+                "StatusCode": "418",
+                "Description": "Out of coffee on delete singleton"
+              }
+            ]
+          },
+          "@Capabilities.NavigationRestrictions": {
+            "RestrictedProperties": [
+              {
+                "NavigationProperty": "contained",
+                "ReadRestrictions": {
+                  "Description": "Singleton Query Contained - Description",
+                  "LongDescription": "Singleton Query Contained - LongDescription",
+                  "ReadByKeyRestrictions": {
+                    "Description": "Singleton Read Contained by Key - Description",
+                    "LongDescription": "Singleton Read Contained by Key - LongDescription"
+                  }
+                },
+                "InsertRestrictions": {
+                  "Description": "Singleton Create Contained - Description",
+                  "LongDescription": "Singleton Create Contained - LongDescription"
+                },
+                "UpdateRestrictions": {
+                  "Description": "Singleton Update Contained - Description",
+                  "LongDescription": "Singleton Update Contained - LongDescription"
+                },
+                "DeleteRestrictions": {
+                  "Description": "Singleton Delete Contained - Description",
+                  "LongDescription": "Singleton Delete Contained - LongDescription"
+                }
+              },
+              {
+                "NavigationProperty": "related",
+                "ReadRestrictions": {
+                  "Description": "Singleton Query Related - Description",
+                  "LongDescription": "Singleton Query Related - LongDescription"
+                },
+                "InsertRestrictions": {
+                  "Description": "Singleton Create Related - Description",
+                  "LongDescription": "Singleton Create Related - LongDescription"
+                }
+              }
+            ]
+          }
+        },
+        "single_ext": {
+          "$Type": "self.entity",
+          "$NavigationPropertyBinding": {
+            "related": "entities"
+          }
+        },
+        "actionimport": {
+          "$Action": "self.action",
+          "@Core.Description": "Action Import - Description",
+          "@Core.LongDescription": "Action Import - LongDescription"
+        },
+        "actionimport_ext": {
+          "$Action": "self.action"
+        },
+        "actionimport_no_descriptions": {
+          "$Action": "self.action"
+        },
+        "functionimport": {
+          "$Function": "self.function",
+          "@Core.Description": "Function Import - Description",
+          "@Core.LongDescription": "Function Import - LongDescription"
+        },
+        "functionimport_ext": {
+          "$Function": "self.function"
+        },
+        "functionimport_no_descriptions": {
+          "$Function": "self.function"
+        }
+      },
+      "$Annotations": {
+        "self.Default": {
+          "@Common.Label": "Container - Label",
+          "@Core.Description": "Container - Description",
+          "@Core.LongDescription": "Container - LongDescription"
+        },
+        "self.Default/entities_ext": {
+          "@Core.Description": "Entity Set Ext - Description",
+          "@Core.LongDescription": "Entity Set Ext - LongDescription",
+          "@Capabilities.ReadRestrictions": {
+            "Description": "Query Entity Set Ext - Description",
+            "LongDescription": "Query Entity Set Ext - LongDescription",
+            "ReadByKeyRestrictions": {
+              "Description": "Read Entity Set by Key Ext - Description",
+              "LongDescription": "Read Entity Set by Key Ext - LongDescription"
             }
-        ]
+          },
+          "@Capabilities.InsertRestrictions": {
+            "Description": "Create Entity Ext - Description",
+            "LongDescription": "Create Entity Ext - LongDescription"
+          },
+          "@Capabilities.UpdateRestrictions": {
+            "Description": "Update Entity Ext - Description",
+            "LongDescription": "Update Entity Ext - LongDescription"
+          },
+          "@Capabilities.DeleteRestrictions": {
+            "Description": "Delete Entity Ext - Description",
+            "LongDescription": "Delete Entity Ext - LongDescription"
+          },
+          "@Capabilities.NavigationRestrictions": {
+            "RestrictedProperties": [
+              {
+                "NavigationProperty": "contained",
+                "ReadRestrictions": {
+                  "Description": "Query Contained Ext - Description",
+                  "LongDescription": "Query Contained Ext - LongDescription",
+                  "ReadByKeyRestrictions": {
+                    "Description": "Read Contained by Key Ext - Description",
+                    "LongDescription": "Read Contained by Key Ext - LongDescription"
+                  }
+                },
+                "InsertRestrictions": {
+                  "Description": "Create Contained Ext - Description",
+                  "LongDescription": "Create Contained Ext - LongDescription"
+                },
+                "UpdateRestrictions": {
+                  "Description": "Update Contained Ext - Description",
+                  "LongDescription": "Update Contained Ext - LongDescription"
+                },
+                "DeleteRestrictions": {
+                  "Description": "Delete Contained Ext - Description",
+                  "LongDescription": "Delete Contained Ext - LongDescription"
+                }
+              },
+              {
+                "NavigationProperty": "related",
+                "ReadRestrictions": {
+                  "Description": "Query Related Ext - Description",
+                  "LongDescription": "Query Related Ext - LongDescription"
+                },
+                "InsertRestrictions": {
+                  "Description": "Create Related Ext - Description",
+                  "LongDescription": "Create Related Ext - LongDescription"
+                }
+              }
+            ]
+          }
+        },
+        "self.Default/single_ext": {
+          "@Core.Description": "Singleton Ext - Description",
+          "@Core.LongDescription": "Singleton Ext - LongDescription",
+          "@Capabilities.ReadRestrictions": {
+            "Description": "Read Singleton Ext - Description",
+            "LongDescription": "Read Singleton Ext - LongDescription"
+          },
+          "@Capabilities.UpdateRestrictions": {
+            "Description": "Update Singleton Ext - Description",
+            "LongDescription": "Update Singleton Ext - LongDescription"
+          },
+          "@Capabilities.NavigationRestrictions": {
+            "RestrictedProperties": [
+              {
+                "NavigationProperty": "contained",
+                "ReadRestrictions": {
+                  "Description": "Singleton Query Contained Ext - Description",
+                  "LongDescription": "Singleton Query Contained Ext - LongDescription",
+                  "ReadByKeyRestrictions": {
+                    "Description": "Singleton Read Contained by Key Ext - Description",
+                    "LongDescription": "Singleton Read Contained by Key Ext - LongDescription"
+                  }
+                },
+                "InsertRestrictions": {
+                  "Description": "Singleton Create Contained Ext - Description",
+                  "LongDescription": "Singleton Create Contained Ext - LongDescription"
+                },
+                "UpdateRestrictions": {
+                  "Description": "Singleton Update Contained Ext - Description",
+                  "LongDescription": "Singleton Update Contained Ext - LongDescription"
+                },
+                "DeleteRestrictions": {
+                  "Description": "Singleton Delete Contained Ext - Description",
+                  "LongDescription": "Singleton Delete Contained Ext - LongDescription"
+                }
+              },
+              {
+                "NavigationProperty": "related",
+                "ReadRestrictions": {
+                  "Description": "Singleton Query Related Ext - Description",
+                  "LongDescription": "Singleton Query Related Ext - LongDescription"
+                },
+                "InsertRestrictions": {
+                  "Description": "Singleton Create Related Ext - Description",
+                  "LongDescription": "Singleton Create Related Ext - LongDescription"
+                }
+              }
+            ]
+          }
+        },
+        "self.Default/actionimport_ext": {
+          "@Core.Description": "Action Import Ext - Description",
+          "@Core.LongDescription": "Action Import Ext - LongDescription"
+        },
+        "self.Default/functionimport_ext": {
+          "@Core.Description": "Function Import Ext - Description",
+          "@Core.LongDescription": "Function Import Ext - LongDescription"
+        },
+        "self.entity": {
+          "@Core.Description": "Entity Type - Description"
+        },
+        "self.entity/id": {
+          "@Core.LongDescription": "Property - LongDescription"
+        },
+        "self.action()": {
+          "@Core.LongDescription": "Action Unbound Overload Ext - LongDescription",
+          "@Capabilities.OperationRestrictions": {
+            "ErrorResponses": [
+              {
+                "StatusCode": "418",
+                "Description": "Out of coffee on unbound action call"
+              }
+            ]
+          }
+        },
+        "self.action()/nonbinding": {
+          "@Core.LongDescription": "Action Unbound Overload Parameter Ext - LongDescription"
+        },
+        "self.action()/$ReturnType": {
+          "@Core.LongDescription": "Action Unbound Overload Return Type Ext - LongDescription"
+        },
+        "self.action(self.entity)": {
+          "@Core.Description": "Action Bound Overload Ext - Description",
+          "@Capabilities.OperationRestrictions": {
+            "ErrorResponses": [
+              {
+                "StatusCode": "418",
+                "Description": "Out of coffee on bound action call"
+              }
+            ]
+          }
+        },
+        "self.action(self.entity)/binding": {
+          "@Core.Description": "Action Bound Overload Binding Parameter Ext - Description - is ignored"
+        },
+        "self.action(self.entity)/nonbinding": {
+          "@Core.Description": "Action Bound Overload Nonbinding Parameter Ext - Description"
+        },
+        "self.action(self.entity)/$ReturnType": {
+          "@Core.Description": "Action Bound Overload Return Type Ext - Description"
+        },
+        "self.action(self.subEntity)": {
+          "@Core.Description": "Action Bound Overload Ext subEntity - Description",
+          "@Capabilities.OperationRestrictions": {
+            "ErrorResponses": [
+              {
+                "StatusCode": "418",
+                "Description": "Out of coffee on bound action call on subEntity"
+              }
+            ]
+          }
+        },
+        "self.action(self.subEntity)/binding": {
+          "@Core.Description": "Action Bound Overload Binding Parameter Ext subEntity - Description - is ignored"
+        },
+        "self.action(self.subEntity)/nonbinding": {
+          "@Core.Description": "Action Bound Overload Nonbinding Parameter Ext subEntity - Description"
+        },
+        "self.action(self.subEntity)/$ReturnType": {
+          "@Core.Description": "Action Bound Overload Return Type Ext subEntity - Description - is ignored, no return type"
+        },
+        "self.function(Edm.String)": {
+          "@Core.LongDescription": "Function Unbound Overload Ext - LongDescription",
+          "@Capabilities.OperationRestrictions": {
+            "ErrorResponses": [
+              {
+                "StatusCode": "418",
+                "Description": "Out of coffee on unbound function call"
+              }
+            ]
+          }
+        },
+        "self.function(Edm.String)/nonbinding": {
+          "@Core.LongDescription": "Function Unbound Overload Parameter Ext - LongDescription"
+        },
+        "self.function(Edm.String)/$ReturnType": {
+          "@Core.LongDescription": "Function Unbound Overload Return Type Ext - LongDescription"
+        },
+        "self.function(self.entity,Edm.String)": {
+          "@Core.Description": "Function Bound Overload Ext - Description"
+        },
+        "self.function(self.entity,Edm.String)/binding": {
+          "@Core.Description": "Function Bound Overload Binding Parameter Ext - Description - is ignored"
+        },
+        "self.function(self.entity,Edm.String)/nonbinding": {
+          "@Core.Description": "Function Bound Overload Nonbinding Parameter Ext - Description"
+        },
+        "self.function(self.entity,Edm.String)/$ReturnType": {
+          "@Core.Description": "Function Bound Overload Return Type Ext - Description"
+        }
+      },
+      "entity": {
+        "$Kind": "EntityType",
+        "@Core.LongDescription": "Entity Type - LongDescription",
+        "$Key": ["id"],
+        "id": {
+          "$MaxLength": 70,
+          "$DefaultValue": "0000",
+          "@Core.Description": "Property - Description"
+        },
+        "contained": {
+          "$Kind": "NavigationProperty",
+          "$Collection": true,
+          "$Type": "self.subEntity",
+          "$ContainsTarget": true
+        },
+        "related": {
+          "$Kind": "NavigationProperty",
+          "$Collection": true,
+          "$Type": "self.entity"
+        }
+      },
+      "subEntity": {
+        "$Kind": "EntityType",
+        "$Key": ["id"],
+        "id": {
+          "$MaxLength": 70
+        }
+      },
+      "action": [
+        {
+          "$Kind": "Action",
+          "@Core.Description": "Action Unbound Overload - Description",
+          "$Parameter": [
+            {
+              "$Name": "nonbinding",
+              "$Nullable": true,
+              "@Core.Description": "Action Unbound Overload Parameter - Description"
+            }
+          ],
+          "$ReturnType": {
+            "$Nullable": true,
+            "@Core.Description": "Action Unbound Overload Return Type - Description"
+          }
+        },
+        {
+          "$Kind": "Action",
+          "$IsBound": true,
+          "@Core.LongDescription": "Action Bound Overload - LongDescription",
+          "$Parameter": [
+            {
+              "$Name": "binding",
+              "$Type": "self.entity",
+              "$Nullable": true,
+              "@Core.LongDescription": "Action Bound Overload Binding Parameter - LongDescription - is ignored"
+            },
+            {
+              "$Name": "nonbinding",
+              "$Nullable": true,
+              "@Core.LongDescription": "Action Bound Overload Non-Binding Parameter - LongDescription"
+            }
+          ],
+          "$ReturnType": {
+            "$Nullable": true,
+            "@Core.LongDescription": "Action Bound Overload Return Type - LongDescription"
+          }
+        },
+        {
+          "$Kind": "Action",
+          "$IsBound": true,
+          "@Core.LongDescription": "Action Bound Overload subEntity - LongDescription",
+          "$Parameter": [
+            {
+              "$Name": "binding",
+              "$Type": "self.subEntity",
+              "$Nullable": true,
+              "@Core.LongDescription": "Action Bound Overload Binding Parameter subEntity - LongDescription - is ignored"
+            },
+            {
+              "$Name": "nonbinding",
+              "$Nullable": true,
+              "@Core.LongDescription": "Action Bound Overload Non-Binding Parameter subEntity - LongDescription"
+            }
+          ]
+        }
+      ],
+      "function": [
+        {
+          "$Kind": "Function",
+          "@Core.Description": "Function Unbound Overload - Description",
+          "$Parameter": [
+            {
+              "$Name": "nonbinding",
+              "$Nullable": true,
+              "@Core.Description": "Function Unbound Overload Parameter - Description"
+            }
+          ],
+          "$ReturnType": {
+            "$Nullable": true,
+            "@Core.Description": "Function Unbound Overload Return Type - Description"
+          }
+        },
+        {
+          "$Kind": "Function",
+          "$IsBound": true,
+          "@Core.LongDescription": "Function Bound Overload - LongDescription",
+          "$Parameter": [
+            {
+              "$Name": "binding",
+              "$Type": "self.entity",
+              "$Nullable": true,
+              "@Core.LongDescription": "Function Bound Overload Binding Parameter - LongDescription - is ignored"
+            },
+            {
+              "$Name": "nonbinding",
+              "$Nullable": true,
+              "@Core.LongDescription": "Function Bound Overload Nonbinding Parameter - LongDescription"
+            }
+          ],
+          "$ReturnType": {
+            "$Nullable": true,
+            "@Core.LongDescription": "Function Bound Overload Return Type - LongDescription"
+          },
+          "@Capabilities.OperationRestrictions": {
+            "ErrorResponses": [
+              {
+                "StatusCode": "418",
+                "Description": "Out of coffee on bound function call"
+              }
+            ]
+          }
+        }
+      ]
     },
     "$EntityContainer": "descriptions.Default"
-}
+  }
+  

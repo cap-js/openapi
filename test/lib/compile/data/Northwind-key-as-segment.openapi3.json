@@ -18,7 +18,7 @@
             "name": "Categories"
         },
         {
-            "name": "Customer Demographics"
+            "name": "CustomerDemographics"
         },
         {
             "name": "Customers"
@@ -27,7 +27,7 @@
             "name": "Employees"
         },
         {
-            "name": "Order Details"
+            "name": "Order_Details"
         },
         {
             "name": "Orders"
@@ -48,49 +48,49 @@
             "name": "Territories"
         },
         {
-            "name": "Alphabetical list of products"
+            "name": "Alphabetical_list_of_products"
         },
         {
-            "name": "Category Sales for 1997"
+            "name": "Category_Sales_for_1997"
         },
         {
-            "name": "Current Product Lists"
+            "name": "Current_Product_Lists"
         },
         {
-            "name": "Customer and Suppliers by Cities"
+            "name": "Customer_and_Suppliers_by_Cities"
         },
         {
             "name": "Invoices"
         },
         {
-            "name": "Order Details Extendeds"
+            "name": "Order_Details_Extendeds"
         },
         {
-            "name": "Order Subtotals"
+            "name": "Order_Subtotals"
         },
         {
-            "name": "Orders Qries"
+            "name": "Orders_Qries"
         },
         {
-            "name": "Product Sales for 1997"
+            "name": "Product_Sales_for_1997"
         },
         {
-            "name": "Products Above Average Prices"
+            "name": "Products_Above_Average_Prices"
         },
         {
-            "name": "Products by Categories"
+            "name": "Products_by_Categories"
         },
         {
-            "name": "Sales by Categories"
+            "name": "Sales_by_Categories"
         },
         {
-            "name": "Sales Totals by Amounts"
+            "name": "Sales_Totals_by_Amounts"
         },
         {
-            "name": "Summary of Sales by Quarters"
+            "name": "Summary_of_Sales_by_Quarters"
         },
         {
-            "name": "Summary of Sales by Years"
+            "name": "Summary_of_Sales_by_Years"
         }
     ],
     "paths": {
@@ -190,7 +190,7 @@
                                     "type": "object",
                                     "title": "Collection of Category",
                                     "properties": {
-                                        "@count": {
+                                        "@count":  {
                                             "$ref": "#/components/schemas/count"
                                         },
                                         "value": {
@@ -483,7 +483,7 @@
                                     "type": "object",
                                     "title": "Collection of Product",
                                     "properties": {
-                                        "@count": {
+                                        "@count":  {
                                             "$ref": "#/components/schemas/count"
                                         },
                                         "value": {
@@ -540,7 +540,7 @@
             "get": {
                 "summary": "Retrieve a list of customer demographics.",
                 "tags": [
-                    "Customer Demographics"
+                    "CustomerDemographics"
                 ],
                 "parameters": [
                     {
@@ -626,7 +626,7 @@
                                     "type": "object",
                                     "title": "Collection of CustomerDemographic",
                                     "properties": {
-                                        "@count": {
+                                        "@count":  {
                                             "$ref": "#/components/schemas/count"
                                         },
                                         "value": {
@@ -648,7 +648,7 @@
             "post": {
                 "summary": "Create a single customer demographic.",
                 "tags": [
-                    "Customer Demographics"
+                    "CustomerDemographics"
                 ],
                 "requestBody": {
                     "description": "New customer demographic",
@@ -694,7 +694,7 @@
             "get": {
                 "summary": "Retrieve a single customer demographic.",
                 "tags": [
-                    "Customer Demographics"
+                    "CustomerDemographics"
                 ],
                 "parameters": [
                     {
@@ -751,7 +751,7 @@
             "patch": {
                 "summary": "Change a single customer demographic.",
                 "tags": [
-                    "Customer Demographics"
+                    "CustomerDemographics"
                 ],
                 "requestBody": {
                     "description": "New property values",
@@ -776,7 +776,7 @@
             "delete": {
                 "summary": "Delete a single customer demographic.",
                 "tags": [
-                    "Customer Demographics"
+                    "CustomerDemographics"
                 ],
                 "responses": {
                     "204": {
@@ -804,7 +804,7 @@
             "get": {
                 "summary": "Retrieve a list of customers of a customer demographic.",
                 "tags": [
-                    "Customer Demographics",
+                    "CustomerDemographics",
                     "Customers"
                 ],
                 "parameters": [
@@ -919,7 +919,7 @@
                                     "type": "object",
                                     "title": "Collection of Customer",
                                     "properties": {
-                                        "@count": {
+                                        "@count":  {
                                             "$ref": "#/components/schemas/count"
                                         },
                                         "value": {
@@ -941,7 +941,7 @@
             "post": {
                 "summary": "Create a single customer of a customer demographic.",
                 "tags": [
-                    "Customer Demographics",
+                    "CustomerDemographics",
                     "Customers"
                 ],
                 "requestBody": {
@@ -1090,7 +1090,7 @@
                                     "type": "object",
                                     "title": "Collection of Customer",
                                     "properties": {
-                                        "@count": {
+                                        "@count":  {
                                             "$ref": "#/components/schemas/count"
                                         },
                                         "value": {
@@ -1404,7 +1404,7 @@
                                     "type": "object",
                                     "title": "Collection of Order",
                                     "properties": {
-                                        "@count": {
+                                        "@count":  {
                                             "$ref": "#/components/schemas/count"
                                         },
                                         "value": {
@@ -1474,7 +1474,7 @@
                 "summary": "Retrieve a list of customer demographics of a customer.",
                 "tags": [
                     "Customers",
-                    "Customer Demographics"
+                    "CustomerDemographics"
                 ],
                 "parameters": [
                     {
@@ -1560,7 +1560,7 @@
                                     "type": "object",
                                     "title": "Collection of CustomerDemographic",
                                     "properties": {
-                                        "@count": {
+                                        "@count":  {
                                             "$ref": "#/components/schemas/count"
                                         },
                                         "value": {
@@ -1583,7 +1583,7 @@
                 "summary": "Create a single customer demographic of a customer.",
                 "tags": [
                     "Customers",
-                    "Customer Demographics"
+                    "CustomerDemographics"
                 ],
                 "requestBody": {
                     "description": "New customer demographic",
@@ -1754,7 +1754,7 @@
                                     "type": "object",
                                     "title": "Collection of Employee",
                                     "properties": {
-                                        "@count": {
+                                        "@count":  {
                                             "$ref": "#/components/schemas/count"
                                         },
                                         "value": {
@@ -2088,7 +2088,7 @@
                                     "type": "object",
                                     "title": "Collection of Employee",
                                     "properties": {
-                                        "@count": {
+                                        "@count":  {
                                             "$ref": "#/components/schemas/count"
                                         },
                                         "value": {
@@ -2372,7 +2372,7 @@
                                     "type": "object",
                                     "title": "Collection of Order",
                                     "properties": {
-                                        "@count": {
+                                        "@count":  {
                                             "$ref": "#/components/schemas/count"
                                         },
                                         "value": {
@@ -2532,7 +2532,7 @@
                                     "type": "object",
                                     "title": "Collection of Territory",
                                     "properties": {
-                                        "@count": {
+                                        "@count":  {
                                             "$ref": "#/components/schemas/count"
                                         },
                                         "value": {
@@ -2589,7 +2589,7 @@
             "get": {
                 "summary": "Retrieve a list of order_ details.",
                 "tags": [
-                    "Order Details"
+                    "Order_Details"
                 ],
                 "parameters": [
                     {
@@ -2685,7 +2685,7 @@
                                     "type": "object",
                                     "title": "Collection of Order_Detail",
                                     "properties": {
-                                        "@count": {
+                                        "@count":  {
                                             "$ref": "#/components/schemas/count"
                                         },
                                         "value": {
@@ -2707,7 +2707,7 @@
             "post": {
                 "summary": "Create a single order_ detail.",
                 "tags": [
-                    "Order Details"
+                    "Order_Details"
                 ],
                 "requestBody": {
                     "description": "New order_ detail",
@@ -2763,7 +2763,7 @@
             "get": {
                 "summary": "Retrieve a single order_ detail.",
                 "tags": [
-                    "Order Details"
+                    "Order_Details"
                 ],
                 "parameters": [
                     {
@@ -2824,7 +2824,7 @@
             "patch": {
                 "summary": "Change a single order_ detail.",
                 "tags": [
-                    "Order Details"
+                    "Order_Details"
                 ],
                 "requestBody": {
                     "description": "New property values",
@@ -2849,7 +2849,7 @@
             "delete": {
                 "summary": "Delete a single order_ detail.",
                 "tags": [
-                    "Order Details"
+                    "Order_Details"
                 ],
                 "responses": {
                     "204": {
@@ -2887,7 +2887,7 @@
             "get": {
                 "summary": "Retrieve order of a order_ detail.",
                 "tags": [
-                    "Order Details",
+                    "Order_Details",
                     "Orders"
                 ],
                 "parameters": [
@@ -2984,7 +2984,7 @@
             "get": {
                 "summary": "Retrieve product of a order_ detail.",
                 "tags": [
-                    "Order Details",
+                    "Order_Details",
                     "Products"
                 ],
                 "parameters": [
@@ -3179,7 +3179,7 @@
                                     "type": "object",
                                     "title": "Collection of Order",
                                     "properties": {
-                                        "@count": {
+                                        "@count":  {
                                             "$ref": "#/components/schemas/count"
                                         },
                                         "value": {
@@ -3546,7 +3546,7 @@
                 "summary": "Retrieve a list of order_ details of a order.",
                 "tags": [
                     "Orders",
-                    "Order Details"
+                    "Order_Details"
                 ],
                 "parameters": [
                     {
@@ -3642,7 +3642,7 @@
                                     "type": "object",
                                     "title": "Collection of Order_Detail",
                                     "properties": {
-                                        "@count": {
+                                        "@count":  {
                                             "$ref": "#/components/schemas/count"
                                         },
                                         "value": {
@@ -3665,7 +3665,7 @@
                 "summary": "Create a single order_ detail of a order.",
                 "tags": [
                     "Orders",
-                    "Order Details"
+                    "Order_Details"
                 ],
                 "requestBody": {
                     "description": "New order_ detail",
@@ -3884,7 +3884,7 @@
                                     "type": "object",
                                     "title": "Collection of Product",
                                     "properties": {
-                                        "@count": {
+                                        "@count":  {
                                             "$ref": "#/components/schemas/count"
                                         },
                                         "value": {
@@ -4147,7 +4147,7 @@
                 "summary": "Retrieve a list of order_ details of a product.",
                 "tags": [
                     "Products",
-                    "Order Details"
+                    "Order_Details"
                 ],
                 "parameters": [
                     {
@@ -4243,7 +4243,7 @@
                                     "type": "object",
                                     "title": "Collection of Order_Detail",
                                     "properties": {
-                                        "@count": {
+                                        "@count":  {
                                             "$ref": "#/components/schemas/count"
                                         },
                                         "value": {
@@ -4266,7 +4266,7 @@
                 "summary": "Create a single order_ detail of a product.",
                 "tags": [
                     "Products",
-                    "Order Details"
+                    "Order_Details"
                 ],
                 "requestBody": {
                     "description": "New order_ detail",
@@ -4468,7 +4468,7 @@
                                     "type": "object",
                                     "title": "Collection of Region",
                                     "properties": {
-                                        "@count": {
+                                        "@count":  {
                                             "$ref": "#/components/schemas/count"
                                         },
                                         "value": {
@@ -4737,7 +4737,7 @@
                                     "type": "object",
                                     "title": "Collection of Territory",
                                     "properties": {
-                                        "@count": {
+                                        "@count":  {
                                             "$ref": "#/components/schemas/count"
                                         },
                                         "value": {
@@ -4883,7 +4883,7 @@
                                     "type": "object",
                                     "title": "Collection of Shipper",
                                     "properties": {
-                                        "@count": {
+                                        "@count":  {
                                             "$ref": "#/components/schemas/count"
                                         },
                                         "value": {
@@ -5188,7 +5188,7 @@
                                     "type": "object",
                                     "title": "Collection of Order",
                                     "properties": {
-                                        "@count": {
+                                        "@count":  {
                                             "$ref": "#/components/schemas/count"
                                         },
                                         "value": {
@@ -5361,7 +5361,7 @@
                                     "type": "object",
                                     "title": "Collection of Supplier",
                                     "properties": {
-                                        "@count": {
+                                        "@count":  {
                                             "$ref": "#/components/schemas/count"
                                         },
                                         "value": {
@@ -5662,7 +5662,7 @@
                                     "type": "object",
                                     "title": "Collection of Product",
                                     "properties": {
-                                        "@count": {
+                                        "@count":  {
                                             "$ref": "#/components/schemas/count"
                                         },
                                         "value": {
@@ -5809,7 +5809,7 @@
                                     "type": "object",
                                     "title": "Collection of Territory",
                                     "properties": {
-                                        "@count": {
+                                        "@count":  {
                                             "$ref": "#/components/schemas/count"
                                         },
                                         "value": {
@@ -6199,7 +6199,7 @@
                                     "type": "object",
                                     "title": "Collection of Employee",
                                     "properties": {
-                                        "@count": {
+                                        "@count":  {
                                             "$ref": "#/components/schemas/count"
                                         },
                                         "value": {
@@ -6256,7 +6256,7 @@
             "get": {
                 "summary": "Retrieve a list of alphabetical_list_of_products.",
                 "tags": [
-                    "Alphabetical list of products"
+                    "Alphabetical_list_of_products"
                 ],
                 "parameters": [
                     {
@@ -6352,7 +6352,7 @@
                                     "type": "object",
                                     "title": "Collection of Alphabetical_list_of_product",
                                     "properties": {
-                                        "@count": {
+                                        "@count":  {
                                             "$ref": "#/components/schemas/count"
                                         },
                                         "value": {
@@ -6374,7 +6374,7 @@
             "post": {
                 "summary": "Create a single alphabetical_list_of_product.",
                 "tags": [
-                    "Alphabetical list of products"
+                    "Alphabetical_list_of_products"
                 ],
                 "requestBody": {
                     "description": "New alphabetical_list_of_product",
@@ -6449,7 +6449,7 @@
             "get": {
                 "summary": "Retrieve a single alphabetical_list_of_product.",
                 "tags": [
-                    "Alphabetical list of products"
+                    "Alphabetical_list_of_products"
                 ],
                 "parameters": [
                     {
@@ -6498,7 +6498,7 @@
             "patch": {
                 "summary": "Change a single alphabetical_list_of_product.",
                 "tags": [
-                    "Alphabetical list of products"
+                    "Alphabetical_list_of_products"
                 ],
                 "requestBody": {
                     "description": "New property values",
@@ -6523,7 +6523,7 @@
             "delete": {
                 "summary": "Delete a single alphabetical_list_of_product.",
                 "tags": [
-                    "Alphabetical list of products"
+                    "Alphabetical_list_of_products"
                 ],
                 "responses": {
                     "204": {
@@ -6539,7 +6539,7 @@
             "get": {
                 "summary": "Retrieve a list of category_ sales_for_1997.",
                 "tags": [
-                    "Category Sales for 1997"
+                    "Category_Sales_for_1997"
                 ],
                 "parameters": [
                     {
@@ -6608,7 +6608,7 @@
                                     "type": "object",
                                     "title": "Collection of Category_Sales_for_1997",
                                     "properties": {
-                                        "@count": {
+                                        "@count":  {
                                             "$ref": "#/components/schemas/count"
                                         },
                                         "value": {
@@ -6630,7 +6630,7 @@
             "post": {
                 "summary": "Create a single category_ sales_for_1997.",
                 "tags": [
-                    "Category Sales for 1997"
+                    "Category_Sales_for_1997"
                 ],
                 "requestBody": {
                     "description": "New category_ sales_for_1997",
@@ -6676,7 +6676,7 @@
             "get": {
                 "summary": "Retrieve a single category_ sales_for_1997.",
                 "tags": [
-                    "Category Sales for 1997"
+                    "Category_Sales_for_1997"
                 ],
                 "parameters": [
                     {
@@ -6716,7 +6716,7 @@
             "patch": {
                 "summary": "Change a single category_ sales_for_1997.",
                 "tags": [
-                    "Category Sales for 1997"
+                    "Category_Sales_for_1997"
                 ],
                 "requestBody": {
                     "description": "New property values",
@@ -6741,7 +6741,7 @@
             "delete": {
                 "summary": "Delete a single category_ sales_for_1997.",
                 "tags": [
-                    "Category Sales for 1997"
+                    "Category_Sales_for_1997"
                 ],
                 "responses": {
                     "204": {
@@ -6757,7 +6757,7 @@
             "get": {
                 "summary": "Retrieve a list of current_ product_ lists.",
                 "tags": [
-                    "Current Product Lists"
+                    "Current_Product_Lists"
                 ],
                 "parameters": [
                     {
@@ -6826,7 +6826,7 @@
                                     "type": "object",
                                     "title": "Collection of Current_Product_List",
                                     "properties": {
-                                        "@count": {
+                                        "@count":  {
                                             "$ref": "#/components/schemas/count"
                                         },
                                         "value": {
@@ -6848,7 +6848,7 @@
             "post": {
                 "summary": "Create a single current_ product_ list.",
                 "tags": [
-                    "Current Product Lists"
+                    "Current_Product_Lists"
                 ],
                 "requestBody": {
                     "description": "New current_ product_ list",
@@ -6904,7 +6904,7 @@
             "get": {
                 "summary": "Retrieve a single current_ product_ list.",
                 "tags": [
-                    "Current Product Lists"
+                    "Current_Product_Lists"
                 ],
                 "parameters": [
                     {
@@ -6944,7 +6944,7 @@
             "patch": {
                 "summary": "Change a single current_ product_ list.",
                 "tags": [
-                    "Current Product Lists"
+                    "Current_Product_Lists"
                 ],
                 "requestBody": {
                     "description": "New property values",
@@ -6969,7 +6969,7 @@
             "delete": {
                 "summary": "Delete a single current_ product_ list.",
                 "tags": [
-                    "Current Product Lists"
+                    "Current_Product_Lists"
                 ],
                 "responses": {
                     "204": {
@@ -6985,7 +6985,7 @@
             "get": {
                 "summary": "Retrieve a list of customer_and_ suppliers_by_ cities.",
                 "tags": [
-                    "Customer and Suppliers by Cities"
+                    "Customer_and_Suppliers_by_Cities"
                 ],
                 "parameters": [
                     {
@@ -7060,7 +7060,7 @@
                                     "type": "object",
                                     "title": "Collection of Customer_and_Suppliers_by_City",
                                     "properties": {
-                                        "@count": {
+                                        "@count":  {
                                             "$ref": "#/components/schemas/count"
                                         },
                                         "value": {
@@ -7082,7 +7082,7 @@
             "post": {
                 "summary": "Create a single customer_and_ suppliers_by_ city.",
                 "tags": [
-                    "Customer and Suppliers by Cities"
+                    "Customer_and_Suppliers_by_Cities"
                 ],
                 "requestBody": {
                     "description": "New customer_and_ suppliers_by_ city",
@@ -7138,7 +7138,7 @@
             "get": {
                 "summary": "Retrieve a single customer_and_ suppliers_by_ city.",
                 "tags": [
-                    "Customer and Suppliers by Cities"
+                    "Customer_and_Suppliers_by_Cities"
                 ],
                 "parameters": [
                     {
@@ -7180,7 +7180,7 @@
             "patch": {
                 "summary": "Change a single customer_and_ suppliers_by_ city.",
                 "tags": [
-                    "Customer and Suppliers by Cities"
+                    "Customer_and_Suppliers_by_Cities"
                 ],
                 "requestBody": {
                     "description": "New property values",
@@ -7205,7 +7205,7 @@
             "delete": {
                 "summary": "Delete a single customer_and_ suppliers_by_ city.",
                 "tags": [
-                    "Customer and Suppliers by Cities"
+                    "Customer_and_Suppliers_by_Cities"
                 ],
                 "responses": {
                     "204": {
@@ -7362,7 +7362,7 @@
                                     "type": "object",
                                     "title": "Collection of Invoice",
                                     "properties": {
-                                        "@count": {
+                                        "@count":  {
                                             "$ref": "#/components/schemas/count"
                                         },
                                         "value": {
@@ -7632,7 +7632,7 @@
             "get": {
                 "summary": "Retrieve a list of order_ details_ extendeds.",
                 "tags": [
-                    "Order Details Extendeds"
+                    "Order_Details_Extendeds"
                 ],
                 "parameters": [
                     {
@@ -7716,7 +7716,7 @@
                                     "type": "object",
                                     "title": "Collection of Order_Details_Extended",
                                     "properties": {
-                                        "@count": {
+                                        "@count":  {
                                             "$ref": "#/components/schemas/count"
                                         },
                                         "value": {
@@ -7738,7 +7738,7 @@
             "post": {
                 "summary": "Create a single order_ details_ extended.",
                 "tags": [
-                    "Order Details Extendeds"
+                    "Order_Details_Extendeds"
                 ],
                 "requestBody": {
                     "description": "New order_ details_ extended",
@@ -7851,7 +7851,7 @@
             "get": {
                 "summary": "Retrieve a single order_ details_ extended.",
                 "tags": [
-                    "Order Details Extendeds"
+                    "Order_Details_Extendeds"
                 ],
                 "parameters": [
                     {
@@ -7896,7 +7896,7 @@
             "patch": {
                 "summary": "Change a single order_ details_ extended.",
                 "tags": [
-                    "Order Details Extendeds"
+                    "Order_Details_Extendeds"
                 ],
                 "requestBody": {
                     "description": "New property values",
@@ -7921,7 +7921,7 @@
             "delete": {
                 "summary": "Delete a single order_ details_ extended.",
                 "tags": [
-                    "Order Details Extendeds"
+                    "Order_Details_Extendeds"
                 ],
                 "responses": {
                     "204": {
@@ -7937,7 +7937,7 @@
             "get": {
                 "summary": "Retrieve a list of order_ subtotals.",
                 "tags": [
-                    "Order Subtotals"
+                    "Order_Subtotals"
                 ],
                 "parameters": [
                     {
@@ -8006,7 +8006,7 @@
                                     "type": "object",
                                     "title": "Collection of Order_Subtotal",
                                     "properties": {
-                                        "@count": {
+                                        "@count":  {
                                             "$ref": "#/components/schemas/count"
                                         },
                                         "value": {
@@ -8028,7 +8028,7 @@
             "post": {
                 "summary": "Create a single order_ subtotal.",
                 "tags": [
-                    "Order Subtotals"
+                    "Order_Subtotals"
                 ],
                 "requestBody": {
                     "description": "New order_ subtotal",
@@ -8074,7 +8074,7 @@
             "get": {
                 "summary": "Retrieve a single order_ subtotal.",
                 "tags": [
-                    "Order Subtotals"
+                    "Order_Subtotals"
                 ],
                 "parameters": [
                     {
@@ -8114,7 +8114,7 @@
             "patch": {
                 "summary": "Change a single order_ subtotal.",
                 "tags": [
-                    "Order Subtotals"
+                    "Order_Subtotals"
                 ],
                 "requestBody": {
                     "description": "New property values",
@@ -8139,7 +8139,7 @@
             "delete": {
                 "summary": "Delete a single order_ subtotal.",
                 "tags": [
-                    "Order Subtotals"
+                    "Order_Subtotals"
                 ],
                 "responses": {
                     "204": {
@@ -8155,7 +8155,7 @@
             "get": {
                 "summary": "Retrieve a list of orders_ qries.",
                 "tags": [
-                    "Orders Qries"
+                    "Orders_Qries"
                 ],
                 "parameters": [
                     {
@@ -8278,7 +8278,7 @@
                                     "type": "object",
                                     "title": "Collection of Orders_Qry",
                                     "properties": {
-                                        "@count": {
+                                        "@count":  {
                                             "$ref": "#/components/schemas/count"
                                         },
                                         "value": {
@@ -8300,7 +8300,7 @@
             "post": {
                 "summary": "Create a single orders_ qry.",
                 "tags": [
-                    "Orders Qries"
+                    "Orders_Qries"
                 ],
                 "requestBody": {
                     "description": "New orders_ qry",
@@ -8356,7 +8356,7 @@
             "get": {
                 "summary": "Retrieve a single orders_ qry.",
                 "tags": [
-                    "Orders Qries"
+                    "Orders_Qries"
                 ],
                 "parameters": [
                     {
@@ -8414,7 +8414,7 @@
             "patch": {
                 "summary": "Change a single orders_ qry.",
                 "tags": [
-                    "Orders Qries"
+                    "Orders_Qries"
                 ],
                 "requestBody": {
                     "description": "New property values",
@@ -8439,7 +8439,7 @@
             "delete": {
                 "summary": "Delete a single orders_ qry.",
                 "tags": [
-                    "Orders Qries"
+                    "Orders_Qries"
                 ],
                 "responses": {
                     "204": {
@@ -8455,7 +8455,7 @@
             "get": {
                 "summary": "Retrieve a list of product_ sales_for_1997.",
                 "tags": [
-                    "Product Sales for 1997"
+                    "Product_Sales_for_1997"
                 ],
                 "parameters": [
                     {
@@ -8527,7 +8527,7 @@
                                     "type": "object",
                                     "title": "Collection of Product_Sales_for_1997",
                                     "properties": {
-                                        "@count": {
+                                        "@count":  {
                                             "$ref": "#/components/schemas/count"
                                         },
                                         "value": {
@@ -8549,7 +8549,7 @@
             "post": {
                 "summary": "Create a single product_ sales_for_1997.",
                 "tags": [
-                    "Product Sales for 1997"
+                    "Product_Sales_for_1997"
                 ],
                 "requestBody": {
                     "description": "New product_ sales_for_1997",
@@ -8605,7 +8605,7 @@
             "get": {
                 "summary": "Retrieve a single product_ sales_for_1997.",
                 "tags": [
-                    "Product Sales for 1997"
+                    "Product_Sales_for_1997"
                 ],
                 "parameters": [
                     {
@@ -8646,7 +8646,7 @@
             "patch": {
                 "summary": "Change a single product_ sales_for_1997.",
                 "tags": [
-                    "Product Sales for 1997"
+                    "Product_Sales_for_1997"
                 ],
                 "requestBody": {
                     "description": "New property values",
@@ -8671,7 +8671,7 @@
             "delete": {
                 "summary": "Delete a single product_ sales_for_1997.",
                 "tags": [
-                    "Product Sales for 1997"
+                    "Product_Sales_for_1997"
                 ],
                 "responses": {
                     "204": {
@@ -8687,7 +8687,7 @@
             "get": {
                 "summary": "Retrieve a list of products_ above_ average_ prices.",
                 "tags": [
-                    "Products Above Average Prices"
+                    "Products_Above_Average_Prices"
                 ],
                 "parameters": [
                     {
@@ -8756,7 +8756,7 @@
                                     "type": "object",
                                     "title": "Collection of Products_Above_Average_Price",
                                     "properties": {
-                                        "@count": {
+                                        "@count":  {
                                             "$ref": "#/components/schemas/count"
                                         },
                                         "value": {
@@ -8778,7 +8778,7 @@
             "post": {
                 "summary": "Create a single products_ above_ average_ price.",
                 "tags": [
-                    "Products Above Average Prices"
+                    "Products_Above_Average_Prices"
                 ],
                 "requestBody": {
                     "description": "New products_ above_ average_ price",
@@ -8824,7 +8824,7 @@
             "get": {
                 "summary": "Retrieve a single products_ above_ average_ price.",
                 "tags": [
-                    "Products Above Average Prices"
+                    "Products_Above_Average_Prices"
                 ],
                 "parameters": [
                     {
@@ -8864,7 +8864,7 @@
             "patch": {
                 "summary": "Change a single products_ above_ average_ price.",
                 "tags": [
-                    "Products Above Average Prices"
+                    "Products_Above_Average_Prices"
                 ],
                 "requestBody": {
                     "description": "New property values",
@@ -8889,7 +8889,7 @@
             "delete": {
                 "summary": "Delete a single products_ above_ average_ price.",
                 "tags": [
-                    "Products Above Average Prices"
+                    "Products_Above_Average_Prices"
                 ],
                 "responses": {
                     "204": {
@@ -8905,7 +8905,7 @@
             "get": {
                 "summary": "Retrieve a list of products_by_ categories.",
                 "tags": [
-                    "Products by Categories"
+                    "Products_by_Categories"
                 ],
                 "parameters": [
                     {
@@ -8983,7 +8983,7 @@
                                     "type": "object",
                                     "title": "Collection of Products_by_Category",
                                     "properties": {
-                                        "@count": {
+                                        "@count":  {
                                             "$ref": "#/components/schemas/count"
                                         },
                                         "value": {
@@ -9005,7 +9005,7 @@
             "post": {
                 "summary": "Create a single products_by_ category.",
                 "tags": [
-                    "Products by Categories"
+                    "Products_by_Categories"
                 ],
                 "requestBody": {
                     "description": "New products_by_ category",
@@ -9070,7 +9070,7 @@
             "get": {
                 "summary": "Retrieve a single products_by_ category.",
                 "tags": [
-                    "Products by Categories"
+                    "Products_by_Categories"
                 ],
                 "parameters": [
                     {
@@ -9113,7 +9113,7 @@
             "patch": {
                 "summary": "Change a single products_by_ category.",
                 "tags": [
-                    "Products by Categories"
+                    "Products_by_Categories"
                 ],
                 "requestBody": {
                     "description": "New property values",
@@ -9138,7 +9138,7 @@
             "delete": {
                 "summary": "Delete a single products_by_ category.",
                 "tags": [
-                    "Products by Categories"
+                    "Products_by_Categories"
                 ],
                 "responses": {
                     "204": {
@@ -9154,7 +9154,7 @@
             "get": {
                 "summary": "Retrieve a list of sales_by_ categories.",
                 "tags": [
-                    "Sales by Categories"
+                    "Sales_by_Categories"
                 ],
                 "parameters": [
                     {
@@ -9229,7 +9229,7 @@
                                     "type": "object",
                                     "title": "Collection of Sales_by_Category",
                                     "properties": {
-                                        "@count": {
+                                        "@count":  {
                                             "$ref": "#/components/schemas/count"
                                         },
                                         "value": {
@@ -9251,7 +9251,7 @@
             "post": {
                 "summary": "Create a single sales_by_ category.",
                 "tags": [
-                    "Sales by Categories"
+                    "Sales_by_Categories"
                 ],
                 "requestBody": {
                     "description": "New sales_by_ category",
@@ -9317,7 +9317,7 @@
             "get": {
                 "summary": "Retrieve a single sales_by_ category.",
                 "tags": [
-                    "Sales by Categories"
+                    "Sales_by_Categories"
                 ],
                 "parameters": [
                     {
@@ -9359,7 +9359,7 @@
             "patch": {
                 "summary": "Change a single sales_by_ category.",
                 "tags": [
-                    "Sales by Categories"
+                    "Sales_by_Categories"
                 ],
                 "requestBody": {
                     "description": "New property values",
@@ -9384,7 +9384,7 @@
             "delete": {
                 "summary": "Delete a single sales_by_ category.",
                 "tags": [
-                    "Sales by Categories"
+                    "Sales_by_Categories"
                 ],
                 "responses": {
                     "204": {
@@ -9400,7 +9400,7 @@
             "get": {
                 "summary": "Retrieve a list of sales_ totals_by_ amounts.",
                 "tags": [
-                    "Sales Totals by Amounts"
+                    "Sales_Totals_by_Amounts"
                 ],
                 "parameters": [
                     {
@@ -9475,7 +9475,7 @@
                                     "type": "object",
                                     "title": "Collection of Sales_Totals_by_Amount",
                                     "properties": {
-                                        "@count": {
+                                        "@count":  {
                                             "$ref": "#/components/schemas/count"
                                         },
                                         "value": {
@@ -9497,7 +9497,7 @@
             "post": {
                 "summary": "Create a single sales_ totals_by_ amount.",
                 "tags": [
-                    "Sales Totals by Amounts"
+                    "Sales_Totals_by_Amounts"
                 ],
                 "requestBody": {
                     "description": "New sales_ totals_by_ amount",
@@ -9553,7 +9553,7 @@
             "get": {
                 "summary": "Retrieve a single sales_ totals_by_ amount.",
                 "tags": [
-                    "Sales Totals by Amounts"
+                    "Sales_Totals_by_Amounts"
                 ],
                 "parameters": [
                     {
@@ -9595,7 +9595,7 @@
             "patch": {
                 "summary": "Change a single sales_ totals_by_ amount.",
                 "tags": [
-                    "Sales Totals by Amounts"
+                    "Sales_Totals_by_Amounts"
                 ],
                 "requestBody": {
                     "description": "New property values",
@@ -9620,7 +9620,7 @@
             "delete": {
                 "summary": "Delete a single sales_ totals_by_ amount.",
                 "tags": [
-                    "Sales Totals by Amounts"
+                    "Sales_Totals_by_Amounts"
                 ],
                 "responses": {
                     "204": {
@@ -9636,7 +9636,7 @@
             "get": {
                 "summary": "Retrieve a list of summary_of_ sales_by_ quarters.",
                 "tags": [
-                    "Summary of Sales by Quarters"
+                    "Summary_of_Sales_by_Quarters"
                 ],
                 "parameters": [
                     {
@@ -9708,7 +9708,7 @@
                                     "type": "object",
                                     "title": "Collection of Summary_of_Sales_by_Quarter",
                                     "properties": {
-                                        "@count": {
+                                        "@count":  {
                                             "$ref": "#/components/schemas/count"
                                         },
                                         "value": {
@@ -9730,7 +9730,7 @@
             "post": {
                 "summary": "Create a single summary_of_ sales_by_ quarter.",
                 "tags": [
-                    "Summary of Sales by Quarters"
+                    "Summary_of_Sales_by_Quarters"
                 ],
                 "requestBody": {
                     "description": "New summary_of_ sales_by_ quarter",
@@ -9776,7 +9776,7 @@
             "get": {
                 "summary": "Retrieve a single summary_of_ sales_by_ quarter.",
                 "tags": [
-                    "Summary of Sales by Quarters"
+                    "Summary_of_Sales_by_Quarters"
                 ],
                 "parameters": [
                     {
@@ -9817,7 +9817,7 @@
             "patch": {
                 "summary": "Change a single summary_of_ sales_by_ quarter.",
                 "tags": [
-                    "Summary of Sales by Quarters"
+                    "Summary_of_Sales_by_Quarters"
                 ],
                 "requestBody": {
                     "description": "New property values",
@@ -9842,7 +9842,7 @@
             "delete": {
                 "summary": "Delete a single summary_of_ sales_by_ quarter.",
                 "tags": [
-                    "Summary of Sales by Quarters"
+                    "Summary_of_Sales_by_Quarters"
                 ],
                 "responses": {
                     "204": {
@@ -9858,7 +9858,7 @@
             "get": {
                 "summary": "Retrieve a list of summary_of_ sales_by_ years.",
                 "tags": [
-                    "Summary of Sales by Years"
+                    "Summary_of_Sales_by_Years"
                 ],
                 "parameters": [
                     {
@@ -9930,7 +9930,7 @@
                                     "type": "object",
                                     "title": "Collection of Summary_of_Sales_by_Year",
                                     "properties": {
-                                        "@count": {
+                                        "@count":  {
                                             "$ref": "#/components/schemas/count"
                                         },
                                         "value": {
@@ -9952,7 +9952,7 @@
             "post": {
                 "summary": "Create a single summary_of_ sales_by_ year.",
                 "tags": [
-                    "Summary of Sales by Years"
+                    "Summary_of_Sales_by_Years"
                 ],
                 "requestBody": {
                     "description": "New summary_of_ sales_by_ year",
@@ -9998,7 +9998,7 @@
             "get": {
                 "summary": "Retrieve a single summary_of_ sales_by_ year.",
                 "tags": [
-                    "Summary of Sales by Years"
+                    "Summary_of_Sales_by_Years"
                 ],
                 "parameters": [
                     {
@@ -10039,7 +10039,7 @@
             "patch": {
                 "summary": "Change a single summary_of_ sales_by_ year.",
                 "tags": [
-                    "Summary of Sales by Years"
+                    "Summary_of_Sales_by_Years"
                 ],
                 "requestBody": {
                     "description": "New property values",
@@ -10064,7 +10064,7 @@
             "delete": {
                 "summary": "Delete a single summary_of_ sales_by_ year.",
                 "tags": [
-                    "Summary of Sales by Years"
+                    "Summary_of_Sales_by_Years"
                 ],
                 "responses": {
                     "204": {

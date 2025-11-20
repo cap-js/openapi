@@ -19,7 +19,7 @@
             "description": "Entity Set - Description"
         },
         {
-            "name": "entities ext",
+            "name": "entities_ext",
             "description": "Entity Set Ext - Description"
         },
         {
@@ -27,7 +27,7 @@
             "description": "Singleton - Description"
         },
         {
-            "name": "single ext",
+            "name": "single_ext",
             "description": "Singleton Ext - Description"
         }
     ],
@@ -831,7 +831,7 @@
                 "summary": "Query Related - Description",
                 "tags": [
                     "entities",
-                    "entities ext"
+                    "entities_ext"
                 ],
                 "parameters": [
                     {
@@ -939,7 +939,7 @@
                 "summary": "Create Related - Description",
                 "tags": [
                     "entities",
-                    "entities ext"
+                    "entities_ext"
                 ],
                 "requestBody": {
                     "description": "Entity Type - Description",
@@ -1105,7 +1105,7 @@
             "get": {
                 "summary": "Query Entity Set Ext - Description",
                 "tags": [
-                    "entities ext"
+                    "entities_ext"
                 ],
                 "parameters": [
                     {
@@ -1212,7 +1212,7 @@
             "post": {
                 "summary": "Create Entity Ext - Description",
                 "tags": [
-                    "entities ext"
+                    "entities_ext"
                 ],
                 "requestBody": {
                     "description": "Entity Type - Description",
@@ -1260,7 +1260,7 @@
             "get": {
                 "summary": "Read Entity Set by Key Ext - Description",
                 "tags": [
-                    "entities ext"
+                    "entities_ext"
                 ],
                 "parameters": [
                     {
@@ -1318,7 +1318,7 @@
             "patch": {
                 "summary": "Update Entity Ext - Description",
                 "tags": [
-                    "entities ext"
+                    "entities_ext"
                 ],
                 "requestBody": {
                     "description": "Entity Type - Description",
@@ -1344,7 +1344,7 @@
             "delete": {
                 "summary": "Delete Entity Ext - Description",
                 "tags": [
-                    "entities ext"
+                    "entities_ext"
                 ],
                 "responses": {
                     "204": {
@@ -1374,7 +1374,7 @@
             "get": {
                 "summary": "Query Contained Ext - Description",
                 "tags": [
-                    "entities ext"
+                    "entities_ext"
                 ],
                 "parameters": [
                     {
@@ -1463,7 +1463,7 @@
             "post": {
                 "summary": "Create Contained Ext - Description",
                 "tags": [
-                    "entities ext"
+                    "entities_ext"
                 ],
                 "requestBody": {
                     "description": "New contained",
@@ -1521,7 +1521,7 @@
             "get": {
                 "summary": "Read Contained by Key Ext - Description",
                 "tags": [
-                    "entities ext"
+                    "entities_ext"
                 ],
                 "parameters": [
                     {
@@ -1561,7 +1561,7 @@
             "patch": {
                 "summary": "Update Contained Ext - Description",
                 "tags": [
-                    "entities ext"
+                    "entities_ext"
                 ],
                 "requestBody": {
                     "description": "New property values",
@@ -1587,7 +1587,7 @@
             "delete": {
                 "summary": "Delete Contained Ext - Description",
                 "tags": [
-                    "entities ext"
+                    "entities_ext"
                 ],
                 "responses": {
                     "204": {
@@ -1617,7 +1617,7 @@
             "get": {
                 "summary": "Query Related Ext - Description",
                 "tags": [
-                    "entities ext",
+                    "entities_ext",
                     "entities"
                 ],
                 "parameters": [
@@ -1725,7 +1725,7 @@
             "post": {
                 "summary": "Create Related Ext - Description",
                 "tags": [
-                    "entities ext",
+                    "entities_ext",
                     "entities"
                 ],
                 "requestBody": {
@@ -1761,7 +1761,7 @@
             "post": {
                 "summary": "Action Bound Overload Ext - Description",
                 "tags": [
-                    "entities ext"
+                    "entities_ext"
                 ],
                 "responses": {
                     "200": {
@@ -1829,7 +1829,7 @@
             "get": {
                 "summary": "Function Bound Overload Ext - Description",
                 "tags": [
-                    "entities ext"
+                    "entities_ext"
                 ],
                 "parameters": [
                     {
@@ -2390,7 +2390,7 @@
                 "summary": "Singleton Query Related - Description",
                 "tags": [
                     "single",
-                    "entities ext"
+                    "entities_ext"
                 ],
                 "parameters": [
                     {
@@ -2498,7 +2498,7 @@
                 "summary": "Singleton Create Related - Description",
                 "tags": [
                     "single",
-                    "entities ext"
+                    "entities_ext"
                 ],
                 "requestBody": {
                     "description": "Entity Type - Description",
@@ -2640,7 +2640,7 @@
             "get": {
                 "summary": "Read Singleton Ext - Description",
                 "tags": [
-                    "single ext"
+                    "single_ext"
                 ],
                 "parameters": [
                     {
@@ -2698,7 +2698,7 @@
             "patch": {
                 "summary": "Update Singleton Ext - Description",
                 "tags": [
-                    "single ext"
+                    "single_ext"
                 ],
                 "requestBody": {
                     "description": "Entity Type - Description",
@@ -2726,7 +2726,7 @@
             "get": {
                 "summary": "Singleton Query Contained Ext - Description",
                 "tags": [
-                    "single ext"
+                    "single_ext"
                 ],
                 "parameters": [
                     {
@@ -2815,7 +2815,7 @@
             "post": {
                 "summary": "Singleton Create Contained Ext - Description",
                 "tags": [
-                    "single ext"
+                    "single_ext"
                 ],
                 "requestBody": {
                     "description": "New contained",
@@ -2862,7 +2862,7 @@
             "get": {
                 "summary": "Singleton Read Contained by Key Ext - Description",
                 "tags": [
-                    "single ext"
+                    "single_ext"
                 ],
                 "parameters": [
                     {
@@ -2902,7 +2902,7 @@
             "patch": {
                 "summary": "Singleton Update Contained Ext - Description",
                 "tags": [
-                    "single ext"
+                    "single_ext"
                 ],
                 "requestBody": {
                     "description": "New property values",
@@ -2928,7 +2928,7 @@
             "delete": {
                 "summary": "Singleton Delete Contained Ext - Description",
                 "tags": [
-                    "single ext"
+                    "single_ext"
                 ],
                 "responses": {
                     "204": {
@@ -2945,7 +2945,7 @@
             "get": {
                 "summary": "Singleton Query Related Ext - Description",
                 "tags": [
-                    "single ext",
+                    "single_ext",
                     "entities"
                 ],
                 "parameters": [
@@ -3053,7 +3053,7 @@
             "post": {
                 "summary": "Singleton Create Related Ext - Description",
                 "tags": [
-                    "single ext",
+                    "single_ext",
                     "entities"
                 ],
                 "requestBody": {
@@ -3089,7 +3089,7 @@
             "post": {
                 "summary": "Action Bound Overload Ext - Description",
                 "tags": [
-                    "single ext"
+                    "single_ext"
                 ],
                 "responses": {
                     "200": {
@@ -3144,7 +3144,7 @@
             "get": {
                 "summary": "Function Bound Overload Ext - Description",
                 "tags": [
-                    "single ext"
+                    "single_ext"
                 ],
                 "parameters": [
                     {

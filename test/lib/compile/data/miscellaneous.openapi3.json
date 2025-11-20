@@ -15,10 +15,10 @@
     ],
     "tags": [
         {
-            "name": "Standard Customers"
+            "name": "StandardCustomers"
         },
         {
-            "name": "Preferred Customers"
+            "name": "PreferredCustomers"
         },
         {
             "name": "Orders"
@@ -33,7 +33,7 @@
             "name": "Suppliers"
         },
         {
-            "name": "Main Supplier"
+            "name": "MainSupplier"
         },
         {
             "name": "Categories34"
@@ -47,7 +47,7 @@
             "get": {
                 "summary": "Retrieve a list of standard customers.",
                 "tags": [
-                    "Standard Customers"
+                    "StandardCustomers"
                 ],
                 "parameters": [
                     {
@@ -113,7 +113,7 @@
                                     "type": "object",
                                     "title": "Collection of Customer",
                                     "properties": {
-                                        "@count": {
+                                        "@count":  {
                                             "$ref": "#/components/schemas/count"
                                         },
                                         "value": {
@@ -135,7 +135,7 @@
             "post": {
                 "summary": "Create a single standard customer.",
                 "tags": [
-                    "Standard Customers"
+                    "StandardCustomers"
                 ],
                 "requestBody": {
                     "description": "New standard customer",
@@ -180,7 +180,7 @@
             "get": {
                 "summary": "Retrieve a single standard customer.",
                 "tags": [
-                    "Standard Customers"
+                    "StandardCustomers"
                 ],
                 "parameters": [
                     {
@@ -219,7 +219,7 @@
             "patch": {
                 "summary": "Change a single standard customer.",
                 "tags": [
-                    "Standard Customers"
+                    "StandardCustomers"
                 ],
                 "requestBody": {
                     "description": "New property values",
@@ -244,7 +244,7 @@
             "delete": {
                 "summary": "Delete a single standard customer.",
                 "tags": [
-                    "Standard Customers"
+                    "StandardCustomers"
                 ],
                 "responses": {
                     "204": {
@@ -260,7 +260,7 @@
             "get": {
                 "summary": "Retrieve a list of preferred customers.",
                 "tags": [
-                    "Preferred Customers"
+                    "PreferredCustomers"
                 ],
                 "parameters": [
                     {
@@ -326,7 +326,7 @@
                                     "type": "object",
                                     "title": "Collection of Customer",
                                     "properties": {
-                                        "@count": {
+                                        "@count":  {
                                             "$ref": "#/components/schemas/count"
                                         },
                                         "value": {
@@ -348,7 +348,7 @@
             "post": {
                 "summary": "Create a single preferred customer.",
                 "tags": [
-                    "Preferred Customers"
+                    "PreferredCustomers"
                 ],
                 "requestBody": {
                     "description": "New preferred customer",
@@ -393,7 +393,7 @@
             "get": {
                 "summary": "Retrieve a single preferred customer.",
                 "tags": [
-                    "Preferred Customers"
+                    "PreferredCustomers"
                 ],
                 "parameters": [
                     {
@@ -432,7 +432,7 @@
             "patch": {
                 "summary": "Change a single preferred customer.",
                 "tags": [
-                    "Preferred Customers"
+                    "PreferredCustomers"
                 ],
                 "requestBody": {
                     "description": "New property values",
@@ -457,7 +457,7 @@
             "delete": {
                 "summary": "Delete a single preferred customer.",
                 "tags": [
-                    "Preferred Customers"
+                    "PreferredCustomers"
                 ],
                 "responses": {
                     "204": {
@@ -539,7 +539,7 @@
                                     "type": "object",
                                     "title": "Collection of Order",
                                     "properties": {
-                                        "@count": {
+                                        "@count":  {
                                             "$ref": "#/components/schemas/count"
                                         },
                                         "value": {
@@ -731,7 +731,7 @@
                                     "type": "object",
                                     "title": "Collection of Product",
                                     "properties": {
-                                        "@count": {
+                                        "@count":  {
                                             "$ref": "#/components/schemas/count"
                                         },
                                         "value": {
@@ -843,7 +843,7 @@
                                     "type": "object",
                                     "title": "Collection of Product",
                                     "properties": {
-                                        "@count": {
+                                        "@count":  {
                                             "$ref": "#/components/schemas/count"
                                         },
                                         "value": {
@@ -1255,7 +1255,7 @@
                                     "type": "object",
                                     "title": "Collection of Category",
                                     "properties": {
-                                        "@count": {
+                                        "@count":  {
                                             "$ref": "#/components/schemas/count"
                                         },
                                         "value": {
@@ -1518,7 +1518,7 @@
                                     "type": "object",
                                     "title": "Collection of Product",
                                     "properties": {
-                                        "@count": {
+                                        "@count":  {
                                             "$ref": "#/components/schemas/count"
                                         },
                                         "value": {
@@ -1702,7 +1702,7 @@
                                     "type": "object",
                                     "title": "Collection of Supplier",
                                     "properties": {
-                                        "@count": {
+                                        "@count":  {
                                             "$ref": "#/components/schemas/count"
                                         },
                                         "value": {
@@ -1849,7 +1849,7 @@
             "get": {
                 "summary": "Retrieve main supplier.",
                 "tags": [
-                    "Main Supplier"
+                    "MainSupplier"
                 ],
                 "parameters": [
                     {
@@ -1888,7 +1888,7 @@
             "patch": {
                 "summary": "Change main supplier.",
                 "tags": [
-                    "Main Supplier"
+                    "MainSupplier"
                 ],
                 "requestBody": {
                     "description": "New property values",
@@ -1966,7 +1966,7 @@
                                     "type": "object",
                                     "title": "Collection of Product",
                                     "properties": {
-                                        "@count": {
+                                        "@count":  {
                                             "$ref": "#/components/schemas/count"
                                         },
                                         "value": {
@@ -2073,7 +2073,7 @@
                                     "type": "object",
                                     "title": "Collection of Category",
                                     "properties": {
-                                        "@count": {
+                                        "@count":  {
                                             "$ref": "#/components/schemas/count"
                                         },
                                         "value": {
@@ -2335,7 +2335,7 @@
                                     "type": "object",
                                     "title": "Collection of Product",
                                     "properties": {
-                                        "@count": {
+                                        "@count":  {
                                             "$ref": "#/components/schemas/count"
                                         },
                                         "value": {
@@ -2503,7 +2503,7 @@
                                     "type": "object",
                                     "title": "Collection of Category",
                                     "properties": {
-                                        "@count": {
+                                        "@count":  {
                                             "$ref": "#/components/schemas/count"
                                         },
                                         "value": {
@@ -2765,7 +2765,7 @@
                                     "type": "object",
                                     "title": "Collection of Product",
                                     "properties": {
-                                        "@count": {
+                                        "@count":  {
                                             "$ref": "#/components/schemas/count"
                                         },
                                         "value": {
