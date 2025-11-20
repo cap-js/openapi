@@ -11,7 +11,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 - Correctly handle `@Core.Immutable` properties in PATCH requests.
 
 ### Changed
-- Tags now display with spaces instead of underscores, and camelCase tags are automatically converted to space-separated words (e.g., "camelCase" becomes "camel Case").
+- Acronyms in names are now preserved and not split in description fields.
 
 ## Version 1.2.3 - 28.05.2025
 
