@@ -19,7 +19,7 @@
             "description": "List of folders"
         },
         {
-            "name": "TheWhole",
+            "name": "The Whole",
             "description": "Special container"
         },
         {
@@ -1664,7 +1664,7 @@
             "get": {
                 "summary": "Retrieves the whole.",
                 "tags": [
-                    "TheWhole"
+                    "The Whole"
                 ],
                 "parameters": [
                     {
@@ -1722,7 +1722,7 @@
             "patch": {
                 "summary": "Changes the whole.",
                 "tags": [
-                    "TheWhole"
+                    "The Whole"
                 ],
                 "requestBody": {
                     "description": "New property values",
@@ -1749,7 +1749,7 @@
             "get": {
                 "summary": "Retrieves a list of many of a the whole.",
                 "tags": [
-                    "TheWhole"
+                    "The Whole"
                 ],
                 "parameters": [
                     {
@@ -1857,7 +1857,7 @@
             "post": {
                 "summary": "Creates a single many of a the whole.",
                 "tags": [
-                    "TheWhole"
+                    "The Whole"
                 ],
                 "requestBody": {
                     "description": "New many",
@@ -1903,7 +1903,7 @@
             "get": {
                 "summary": "Retrieves a single many of a the whole.",
                 "tags": [
-                    "TheWhole"
+                    "The Whole"
                 ],
                 "parameters": [
                     {
@@ -1962,7 +1962,7 @@
             "patch": {
                 "summary": "Changes a single many of a the whole.",
                 "tags": [
-                    "TheWhole"
+                    "The Whole"
                 ],
                 "requestBody": {
                     "description": "New property values",
@@ -1987,7 +1987,7 @@
             "delete": {
                 "summary": "Deletes a single many of a the whole.",
                 "tags": [
-                    "TheWhole"
+                    "The Whole"
                 ],
                 "responses": {
                     "204": {
@@ -2015,7 +2015,7 @@
             "get": {
                 "summary": "Retrieves a list of many of a the whole.",
                 "tags": [
-                    "TheWhole"
+                    "The Whole"
                 ],
                 "parameters": [
                     {
@@ -2106,7 +2106,7 @@
             "post": {
                 "summary": "Creates a single many of a the whole.",
                 "tags": [
-                    "TheWhole"
+                    "The Whole"
                 ],
                 "requestBody": {
                     "description": "New many",
@@ -2172,7 +2172,7 @@
             "get": {
                 "summary": "Retrieves a single many of a the whole.",
                 "tags": [
-                    "TheWhole"
+                    "The Whole"
                 ],
                 "parameters": [
                     {
@@ -2212,7 +2212,7 @@
             "patch": {
                 "summary": "Changes a single many of a the whole.",
                 "tags": [
-                    "TheWhole"
+                    "The Whole"
                 ],
                 "requestBody": {
                     "description": "New property values",
@@ -2237,7 +2237,7 @@
             "delete": {
                 "summary": "Deletes a single many of a the whole.",
                 "tags": [
-                    "TheWhole"
+                    "The Whole"
                 ],
                 "responses": {
                     "204": {
@@ -2285,7 +2285,7 @@
             "get": {
                 "summary": "Supports only read-by-key",
                 "tags": [
-                    "TheWhole"
+                    "The Whole"
                 ],
                 "parameters": [],
                 "responses": {
@@ -2322,7 +2322,7 @@
             "get": {
                 "summary": "Supports only read-list",
                 "tags": [
-                    "TheWhole"
+                    "The Whole"
                 ],
                 "parameters": [
                     {
@@ -2375,7 +2375,7 @@
             "get": {
                 "summary": "Retrieves one of a the whole.",
                 "tags": [
-                    "TheWhole"
+                    "The Whole"
                 ],
                 "parameters": [
                     {
@@ -2415,7 +2415,7 @@
             "patch": {
                 "summary": "Changes one of a the whole.",
                 "tags": [
-                    "TheWhole"
+                    "The Whole"
                 ],
                 "requestBody": {
                     "description": "New property values",
@@ -2440,7 +2440,7 @@
             "delete": {
                 "summary": "Deletes one of a the whole.",
                 "tags": [
-                    "TheWhole"
+                    "The Whole"
                 ],
                 "responses": {
                     "204": {
@@ -2456,7 +2456,7 @@
             "get": {
                 "summary": "Retrieves one of a the whole.",
                 "tags": [
-                    "TheWhole"
+                    "The Whole"
                 ],
                 "parameters": [
                     {
@@ -2515,7 +2515,7 @@
             "patch": {
                 "summary": "Changes one of a the whole.",
                 "tags": [
-                    "TheWhole"
+                    "The Whole"
                 ],
                 "requestBody": {
                     "description": "New property values",
@@ -2540,7 +2540,7 @@
             "delete": {
                 "summary": "Deletes one of a the whole.",
                 "tags": [
-                    "TheWhole"
+                    "The Whole"
                 ],
                 "responses": {
                     "204": {
@@ -2556,7 +2556,7 @@
             "get": {
                 "summary": "Retrieves a list of many of a the whole.",
                 "tags": [
-                    "TheWhole"
+                    "The Whole"
                 ],
                 "parameters": [
                     {
@@ -2647,7 +2647,7 @@
             "post": {
                 "summary": "Supports insert",
                 "tags": [
-                    "TheWhole"
+                    "The Whole"
                 ],
                 "requestBody": {
                     "description": "New many",
@@ -2703,7 +2703,7 @@
             "get": {
                 "summary": "Retrieves a single many of a the whole.",
                 "tags": [
-                    "TheWhole"
+                    "The Whole"
                 ],
                 "parameters": [
                     {
@@ -2743,7 +2743,7 @@
             "patch": {
                 "summary": "Supports update",
                 "tags": [
-                    "TheWhole"
+                    "The Whole"
                 ],
                 "requestBody": {
                     "description": "New property values",
@@ -2768,7 +2768,7 @@
             "delete": {
                 "summary": "Supports delete",
                 "tags": [
-                    "TheWhole"
+                    "The Whole"
                 ],
                 "responses": {
                     "204": {
@@ -2784,7 +2784,7 @@
             "get": {
                 "summary": "Retrieves one of a the whole.",
                 "tags": [
-                    "TheWhole"
+                    "The Whole"
                 ],
                 "parameters": [
                     {
@@ -2824,7 +2824,7 @@
             "patch": {
                 "summary": "Changes one of a the whole.",
                 "tags": [
-                    "TheWhole"
+                    "The Whole"
                 ],
                 "requestBody": {
                     "description": "New property values",
@@ -2849,7 +2849,7 @@
             "delete": {
                 "summary": "Deletes one of a the whole.",
                 "tags": [
-                    "TheWhole"
+                    "The Whole"
                 ],
                 "responses": {
                     "204": {
@@ -2865,7 +2865,7 @@
             "post": {
                 "summary": "I like this whole",
                 "tags": [
-                    "TheWhole"
+                    "The Whole"
                 ],
                 "responses": {
                     "204": {
@@ -2881,7 +2881,7 @@
             "get": {
                 "summary": "How many like this whole",
                 "tags": [
-                    "TheWhole"
+                    "The Whole"
                 ],
                 "parameters": [],
                 "responses": {

@@ -39,9 +39,6 @@
                     }
                 },
                 "responses": {
-                    "4XX": {
-                        "$ref": "#/components/responses/error"
-                    },
                     "200": {
                         "description": "Batch response",
                         "content": {
@@ -52,6 +49,9 @@
                                 "example": "--response-separator\nContent-Type: application/http\n\nHTTP/1.1 200 OK\nContent-Type: application/json\n\n{...}\n--response-separator--"
                             }
                         }
+                    },
+                    "4XX": {
+                        "$ref": "#/components/responses/error"
                     }
                 }
             }
