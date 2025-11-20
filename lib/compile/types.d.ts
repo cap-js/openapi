@@ -74,11 +74,21 @@ export type PathItem = {
 
 type MIMEType = 'multipart/mixed' | 'application/json'
 
+export type Parameter = {
+    name?: string,
+    in?: 'path' | 'query' | 'header',
+    description?: string,
+    required?: boolean,
+    schema?: Schema,
+    example?: string | number,
+    explode?: boolean
+}
+
 type Request = {
     summary?: string,
     description?: string,
     tags?: string[],
-    parameters?: string[],
+    parameters?: Parameter[],
     responses?: Record<string, Response>,
     requestBody?: RequestBody,
 }
