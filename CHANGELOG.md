@@ -10,9 +10,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 - Util to regenerate OpenAPI test snapshots
 
 ### Changed
-- Operations and parameters: `@Core.Description` maps to `summary`, `@Core.LongDescription` maps to `description`
-- Schema properties and service info: use `@Core.LongDescription` with fallback to `@Core.Description`
-- Error messages now mention both `@Core.LongDescription` and `@Core.Description` annotation options
+- Operations: `@Core.Description` maps to `summary`, `@Core.LongDescription` maps to `description`
+- Parameters and schema properties: use `@Core.LongDescription` with fallback to `@Core.Description`
+- Service info: use `@Core.LongDescription` with fallback to `@Core.Description`
+
 
 ### Fixed
 - Reading json from project root
