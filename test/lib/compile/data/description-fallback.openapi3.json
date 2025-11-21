@@ -2,12 +2,12 @@
   "openapi": "3.0.2",
   "info": {
     "title": "Use @title: '...' on your CDS service to provide a meaningful title.",
-    "description": "Use @Core.LongDescription: '...' or @Core.Description: '...' on your CDS service to provide a meaningful description.\n\n## Entity Data Model\n![ER Diagram](https://yuml.me/diagram/class/[Parent{bg:lightslategray}],[Parent]++->[Child],[Parent]++->[Child],[Child{bg:lightslategray}],[Parents%20{bg:lawngreen}]++-*>[Parent])\n\n### Legend\n![Legend](https://yuml.me/diagram/plain;dir:TB;scale:60/class/[External.Type{bg:whitesmoke}],[ComplexType],[EntityType{bg:lightslategray}],[EntitySet/Singleton/Operation{bg:lawngreen}])",
+    "description": "Service with only Description annotation\n\n## Entity Data Model\n![ER Diagram](https://yuml.me/diagram/class/[Book{bg:lightslategray}],[doSomething{bg:lawngreen}],[Books%20{bg:lawngreen}]++-*>[Book])\n\n### Legend\n![Legend](https://yuml.me/diagram/plain;dir:TB;scale:60/class/[External.Type{bg:whitesmoke}],[ComplexType],[EntityType{bg:lightslategray}],[EntitySet/Singleton/Operation{bg:lawngreen}])",
     "version": ""
   },
   "x-sap-api-type": "ODATAV4",
   "x-odata-version": "4.01",
-  "x-sap-shortText": "Use @Core.Description: '...' on your CDS service to provide a meaningful short text.",
+  "x-sap-shortText": "Service with only Description annotation",
   "servers": [
     {
       "url": "https://localhost/service-root"
@@ -15,7 +15,7 @@
   ],
   "tags": [
     {
-      "name": "Parents"
+      "name": "Books"
     }
   ],
   "paths": {
@@ -34,7 +34,7 @@
               "schema": {
                 "type": "string"
               },
-              "example": "--request-separator\nContent-Type: application/http\nContent-Transfer-Encoding: binary\n\nGET Parents HTTP/1.1\nAccept: application/json\n\n\n--request-separator--"
+              "example": "--request-separator\nContent-Type: application/http\nContent-Transfer-Encoding: binary\n\nGET Books HTTP/1.1\nAccept: application/json\n\n\n--request-separator--"
             }
           }
         },
@@ -56,11 +56,11 @@
         }
       }
     },
-    "/Parents": {
+    "/Books": {
       "get": {
-        "summary": "Retrieves a list of parents.",
+        "summary": "Retrieves a list of books.",
         "tags": [
-          "Parents"
+          "Books"
         ],
         "parameters": [
           {
@@ -95,7 +95,9 @@
                 "type": "string",
                 "enum": [
                   "ID",
-                  "ID desc"
+                  "ID desc",
+                  "title",
+                  "title desc"
                 ]
               }
             }
@@ -111,25 +113,8 @@
               "items": {
                 "type": "string",
                 "enum": [
-                  "ID"
-                ]
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "description": "The value of $expand query option is a comma-separated list of navigation property names, stream property names, or $value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
-            "in": "query",
-            "explode": false,
-            "schema": {
-              "type": "array",
-              "uniqueItems": true,
-              "items": {
-                "type": "string",
-                "enum": [
-                  "*",
-                  "child",
-                  "immutable_child"
+                  "ID",
+                  "title"
                 ]
               }
             }
@@ -137,12 +122,12 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved parents",
+            "description": "Retrieved books",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "title": "Collection of Parent",
+                  "title": "Collection of Book",
                   "properties": {
                     "@count": {
                       "$ref": "#/components/schemas/count"
@@ -150,7 +135,7 @@
                     "value": {
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/test.Parent"
+                        "$ref": "#/components/schemas/test.Book"
                       }
                     }
                   }
@@ -164,28 +149,28 @@
         }
       },
       "post": {
-        "summary": "Creates a single parent.",
+        "summary": "Creates a single book.",
         "tags": [
-          "Parents"
+          "Books"
         ],
         "requestBody": {
-          "description": "New parent",
+          "description": "New book",
           "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/test.Parent-create"
+                "$ref": "#/components/schemas/test.Book-create"
               }
             }
           }
         },
         "responses": {
           "201": {
-            "description": "Created parent",
+            "description": "Created book",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/test.Parent"
+                  "$ref": "#/components/schemas/test.Book"
                 }
               }
             }
@@ -196,24 +181,23 @@
         }
       }
     },
-    "/Parents({ID})": {
+    "/Books({ID})": {
       "parameters": [
         {
-          "description": "key: ID",
+          "description": "Book ID with only Description",
           "in": "path",
           "name": "ID",
           "required": true,
           "schema": {
-            "type": "string",
-            "format": "uuid",
-            "example": "01234567-89ab-cdef-0123-456789abcdef"
+            "type": "integer",
+            "format": "int32"
           }
         }
       ],
       "get": {
-        "summary": "Retrieves a single parent.",
+        "summary": "Retrieves a single book.",
         "tags": [
-          "Parents"
+          "Books"
         ],
         "parameters": [
           {
@@ -227,25 +211,8 @@
               "items": {
                 "type": "string",
                 "enum": [
-                  "ID"
-                ]
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "description": "The value of $expand query option is a comma-separated list of navigation property names, stream property names, or $value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
-            "in": "query",
-            "explode": false,
-            "schema": {
-              "type": "array",
-              "uniqueItems": true,
-              "items": {
-                "type": "string",
-                "enum": [
-                  "*",
-                  "child",
-                  "immutable_child"
+                  "ID",
+                  "title"
                 ]
               }
             }
@@ -253,11 +220,11 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved parent",
+            "description": "Retrieved book",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/test.Parent"
+                  "$ref": "#/components/schemas/test.Book"
                 }
               }
             }
@@ -268,9 +235,9 @@
         }
       },
       "patch": {
-        "summary": "Changes a single parent.",
+        "summary": "Changes a single book.",
         "tags": [
-          "Parents"
+          "Books"
         ],
         "requestBody": {
           "description": "New property values",
@@ -278,7 +245,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/test.Parent-update"
+                "$ref": "#/components/schemas/test.Book-update"
               }
             }
           }
@@ -293,9 +260,9 @@
         }
       },
       "delete": {
-        "summary": "Deletes a single parent.",
+        "summary": "Deletes a single book.",
         "tags": [
-          "Parents"
+          "Books"
         ],
         "responses": {
           "204": {
@@ -307,131 +274,36 @@
         }
       }
     },
-    "/Parents({ID})/child": {
-      "parameters": [
-        {
-          "description": "key: ID",
-          "in": "path",
-          "name": "ID",
-          "required": true,
-          "schema": {
-            "type": "string",
-            "format": "uuid",
-            "example": "01234567-89ab-cdef-0123-456789abcdef"
-          }
-        }
-      ],
+    "/doSomething": {
       "get": {
-        "summary": "Retrieves child of a parent.",
+        "summary": "Invokes function doSomething",
         "tags": [
-          "Parents"
+          "Service Operations"
         ],
         "parameters": [
           {
-            "name": "$select",
-            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "description": "Parameter with only Description  \nString value needs to be enclosed in single quotes",
+            "required": true,
             "in": "query",
-            "explode": false,
+            "name": "input",
             "schema": {
-              "type": "array",
-              "uniqueItems": true,
-              "items": {
-                "type": "string",
-                "enum": [
-                  "ID",
-                  "value"
-                ]
-              }
+              "type": "string",
+              "pattern": "^'([^']|'')*'$"
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "Retrieved child",
+            "description": "Success",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/test.Child"
-                }
-              }
-            }
-          },
-          "4XX": {
-            "$ref": "#/components/responses/error"
-          }
-        }
-      },
-      "patch": {
-        "summary": "Changes child of a parent.",
-        "tags": [
-          "Parents"
-        ],
-        "requestBody": {
-          "description": "New property values",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/test.Child-update"
-              }
-            }
-          }
-        },
-        "responses": {
-          "204": {
-            "description": "Success"
-          },
-          "4XX": {
-            "$ref": "#/components/responses/error"
-          }
-        }
-      }
-    },
-    "/Parents({ID})/immutable_child": {
-      "parameters": [
-        {
-          "description": "key: ID",
-          "in": "path",
-          "name": "ID",
-          "required": true,
-          "schema": {
-            "type": "string",
-            "format": "uuid",
-            "example": "01234567-89ab-cdef-0123-456789abcdef"
-          }
-        }
-      ],
-      "get": {
-        "summary": "Retrieves immutable_child of a parent.",
-        "tags": [
-          "Parents"
-        ],
-        "parameters": [
-          {
-            "name": "$select",
-            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
-            "in": "query",
-            "explode": false,
-            "schema": {
-              "type": "array",
-              "uniqueItems": true,
-              "items": {
-                "type": "string",
-                "enum": [
-                  "ID",
-                  "value"
-                ]
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Retrieved immutable_child",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/test.Child"
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "string"
+                    }
+                  }
                 }
               }
             }
@@ -445,89 +317,46 @@
   },
   "components": {
     "schemas": {
-      "test.Child": {
-        "title": "Child",
+      "test.Book": {
+        "title": "Book",
         "type": "object",
         "properties": {
           "ID": {
-            "type": "string",
-            "format": "uuid",
-            "example": "01234567-89ab-cdef-0123-456789abcdef"
+            "type": "integer",
+            "format": "int32",
+            "description": "Book ID with only Description"
           },
-          "value": {
-            "type": "string"
+          "title": {
+            "type": "string",
+            "description": "Book title with only Description"
           }
         }
       },
-      "test.Child-create": {
-        "title": "Child (for create)",
+      "test.Book-create": {
+        "title": "Book (for create)",
         "type": "object",
         "properties": {
           "ID": {
-            "type": "string",
-            "format": "uuid",
-            "example": "01234567-89ab-cdef-0123-456789abcdef"
+            "type": "integer",
+            "format": "int32",
+            "description": "Book ID with only Description"
           },
-          "value": {
-            "type": "string"
+          "title": {
+            "type": "string",
+            "description": "Book title with only Description"
           }
         },
         "required": [
           "ID"
         ]
       },
-      "test.Child-update": {
-        "title": "Child (for update)",
+      "test.Book-update": {
+        "title": "Book (for update)",
         "type": "object",
         "properties": {
-          "value": {
-            "type": "string"
-          }
-        }
-      },
-      "test.Parent": {
-        "title": "Parent",
-        "type": "object",
-        "properties": {
-          "ID": {
+          "title": {
             "type": "string",
-            "format": "uuid",
-            "example": "01234567-89ab-cdef-0123-456789abcdef"
-          },
-          "child": {
-            "$ref": "#/components/schemas/test.Child"
-          },
-          "immutable_child": {
-            "$ref": "#/components/schemas/test.Child"
-          }
-        }
-      },
-      "test.Parent-create": {
-        "title": "Parent (for create)",
-        "type": "object",
-        "properties": {
-          "ID": {
-            "type": "string",
-            "format": "uuid",
-            "example": "01234567-89ab-cdef-0123-456789abcdef"
-          },
-          "child": {
-            "$ref": "#/components/schemas/test.Child-create"
-          },
-          "immutable_child": {
-            "$ref": "#/components/schemas/test.Child-create"
-          }
-        },
-        "required": [
-          "ID"
-        ]
-      },
-      "test.Parent-update": {
-        "title": "Parent (for update)",
-        "type": "object",
-        "properties": {
-          "child": {
-            "$ref": "#/components/schemas/test.Child-create"
+            "description": "Book title with only Description"
           }
         }
       },

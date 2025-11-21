@@ -1,0 +1,61 @@
+{
+  "$Version": "4.01",
+  "$Reference": {
+    "https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.json": {
+      "$Include": [
+        {
+          "$Namespace": "Org.OData.Core.V1",
+          "$Alias": "Core"
+        }
+      ]
+    }
+  },
+  "test": {
+    "$Alias": "self",
+    "Container": {
+      "$Kind": "EntityContainer",
+      "Books": {
+        "$Collection": true,
+        "$Type": "self.Book"
+      },
+      "doSomething": {
+        "$Function": "self.doSomething"
+      }
+    },
+    "$Annotations": {
+      "self.Container": {
+        "@Core.Description": "Service with only Description annotation"
+      },
+      "self.Book/title": {
+        "@Core.Description": "Book title with only Description"
+      }
+    },
+    "Book": {
+      "$Kind": "EntityType",
+      "$Key": ["ID"],
+      "ID": {
+        "$Type": "Edm.Int32",
+        "@Core.Description": "Book ID with only Description"
+      },
+      "title": {
+        "$Type": "Edm.String"
+      }
+    },
+    "doSomething": [
+      {
+        "$Kind": "Function",
+        "$Parameter": [
+          {
+            "$Name": "input",
+            "$Type": "Edm.String",
+            "@Core.Description": "Parameter with only Description"
+          }
+        ],
+        "$ReturnType": {
+          "$Type": "Edm.String"
+        }
+      }
+    ]
+  },
+  "$EntityContainer": "test.Container"
+}
