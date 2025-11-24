@@ -222,7 +222,7 @@ service CatalogService {
     );
     let openapi = toOpenApi(csn, { service: 'A' });
     assert.deepStrictEqual(openapi.servers, [{ url: '/a' }]);
-    assert.strictEqual(openapi.info.description, "Use @Core.LongDescription: '...' on your CDS service to provide a meaningful description.")
+    assert.strictEqual(openapi.info.description, "Use @Core.LongDescription: '...' or @Core.Description: '...' on your CDS service to provide a meaningful description.")
 
     openapi = toOpenApi(csn, { service: 'A', 'openapi:url': 'http://foo.bar:8080' });
     assert.deepStrictEqual(openapi.servers, [{ url: 'http://foo.bar:8080' }]);

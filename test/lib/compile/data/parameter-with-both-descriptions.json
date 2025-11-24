@@ -1,0 +1,57 @@
+{
+  "$Version": "4.01",
+  "$Reference": {
+    "https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.json": {
+      "$Include": [
+        {
+          "$Namespace": "Org.OData.Core.V1",
+          "$Alias": "Core"
+        }
+      ]
+    }
+  },
+  "test": {
+    "$Alias": "self",
+    "Container": {
+      "$Kind": "EntityContainer",
+      "Items": {
+        "$Collection": true,
+        "$Type": "self.Item"
+      },
+      "processItem": {
+        "$Function": "self.processItem"
+      }
+    },
+    "Item": {
+      "$Kind": "EntityType",
+      "$Key": ["ID"],
+      "ID": {
+        "$Type": "Edm.Guid",
+        "@Core.Description": "Short ID description",
+        "@Core.LongDescription": "Long detailed description of the identifier"
+      },
+      "name": {
+        "$Type": "Edm.String",
+        "@Core.Description": "Item name",
+        "@Core.LongDescription": "Full name of the item"
+      }
+    },
+    "processItem": [
+      {
+        "$Kind": "Function",
+        "$Parameter": [
+          {
+            "$Name": "itemId",
+            "$Type": "Edm.Guid",
+            "@Core.Description": "Short parameter description",
+            "@Core.LongDescription": "Long detailed parameter description"
+          }
+        ],
+        "$ReturnType": {
+          "$Type": "Edm.String"
+        }
+      }
+    ]
+  },
+  "$EntityContainer": "test.Container"
+}
