@@ -2607,7 +2607,7 @@ see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-prot
   });
 });
 
-it("AllowedValues on various Edm types", function () {
+it("AllowedValues on various Edm types", () => {
   const csdl = {
     $Reference: {
       dummy: {
@@ -2695,7 +2695,7 @@ it("AllowedValues on various Edm types", function () {
   assert.deepStrictEqual(messages, [], "messages");
 });
 
-it("Error Logging when name and title are missing", function () {
+it("Error Logging when name and title are missing", () => {
   const csdl = { name: undefined, title: undefined };
   const actual = lib.csdl2openapi(csdl, {});
 
@@ -2703,8 +2703,8 @@ it("Error Logging when name and title are missing", function () {
   console.log("Error handling executed successfully");
 });
 
-describe("CAP / CS01", function () {
-  it("FilterRestrictions, NavigationRestrictions, and SortRestrictions", function () {
+describe("CAP / CS01", () => {
+  it("FilterRestrictions, NavigationRestrictions, and SortRestrictions", () => {
     const csdl = {
       $Reference: {
         dummy: {
