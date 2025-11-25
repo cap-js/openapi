@@ -15,44 +15,44 @@
   ],
   "tags": [
     {
-      "name": "AllSet"
+      "name": "All Set"
     },
     {
-      "name": "AllSingleton",
+      "name": "All Singleton",
       "description": "First Singleton"
     },
     {
-      "name": "NoNavigationSet"
+      "name": "No Navigation Set"
     },
     {
-      "name": "OneNavigationSet"
+      "name": "One Navigation Set"
     },
     {
-      "name": "ReadListOnlySet"
+      "name": "Read List Only Set"
     },
     {
-      "name": "ReadOnlySingleton"
+      "name": "Read Only Singleton"
     },
     {
-      "name": "TwoAllSet"
+      "name": "Two All Set"
     },
     {
-      "name": "TwoNothingSet"
+      "name": "Two Nothing Set"
     },
     {
-      "name": "TwoNothingSingleton"
+      "name": "Two Nothing Singleton"
     },
     {
-      "name": "TwoReadOnlyByKeySet"
+      "name": "Two Read Only By Key Set"
     },
     {
-      "name": "TwoReadOnlySet"
+      "name": "Two Read Only Set"
     },
     {
-      "name": "TwoWriteOnlySet"
+      "name": "Two Write Only Set"
     },
     {
-      "name": "TwoWriteOnlySingleton"
+      "name": "Two Write Only Singleton"
     }
   ],
   "paths": {
@@ -60,7 +60,7 @@
       "get": {
         "summary": "Retrieves a list of all set.",
         "tags": [
-          "AllSet"
+          "All Set"
         ],
         "parameters": [
           {
@@ -227,7 +227,7 @@
       "get": {
         "summary": "Retrieves a single all set.",
         "tags": [
-          "AllSet"
+          "All Set"
         ],
         "parameters": [
           {
@@ -316,8 +316,8 @@
       "get": {
         "summary": "Retrieves a list of all many of a all set.",
         "tags": [
-          "AllSet",
-          "TwoAllSet"
+          "All Set",
+          "Two All Set"
         ],
         "parameters": [
           {
@@ -419,8 +419,8 @@
       "get": {
         "summary": "Retrieves all one of a all set.",
         "tags": [
-          "AllSet",
-          "TwoAllSet"
+          "All Set",
+          "Two All Set"
         ],
         "parameters": [
           {
@@ -473,8 +473,8 @@
       "get": {
         "summary": "Retrieves a list of read only many of a all set.",
         "tags": [
-          "AllSet",
-          "TwoReadOnlySet"
+          "All Set",
+          "Two Read Only Set"
         ],
         "parameters": [],
         "responses": {
@@ -518,8 +518,8 @@
       "get": {
         "summary": "Retrieves read only one of a all set.",
         "tags": [
-          "AllSet",
-          "TwoReadOnlySet"
+          "All Set",
+          "Two Read Only Set"
         ],
         "parameters": [],
         "responses": {
@@ -543,7 +543,7 @@
       "get": {
         "summary": "Retrieves all singleton.",
         "tags": [
-          "AllSingleton"
+          "All Singleton"
         ],
         "parameters": [
           {
@@ -621,8 +621,8 @@
       "get": {
         "summary": "Retrieves a list of all many of a all singleton.",
         "tags": [
-          "AllSingleton",
-          "TwoAllSet"
+          "All Singleton",
+          "Two All Set"
         ],
         "parameters": [
           {
@@ -713,8 +713,8 @@
       "get": {
         "summary": "Retrieves all one of a all singleton.",
         "tags": [
-          "AllSingleton",
-          "TwoAllSet"
+          "All Singleton",
+          "Two All Set"
         ],
         "parameters": [
           {
@@ -756,8 +756,8 @@
       "get": {
         "summary": "Retrieves a list of read only many of a all singleton.",
         "tags": [
-          "AllSingleton",
-          "TwoReadOnlySet"
+          "All Singleton",
+          "Two Read Only Set"
         ],
         "parameters": [],
         "responses": {
@@ -790,8 +790,8 @@
       "get": {
         "summary": "Retrieves read only one of a all singleton.",
         "tags": [
-          "AllSingleton",
-          "TwoReadOnlySet"
+          "All Singleton",
+          "Two Read Only Set"
         ],
         "parameters": [],
         "responses": {
@@ -815,7 +815,7 @@
       "get": {
         "summary": "Retrieves a list of no navigation set.",
         "tags": [
-          "NoNavigationSet"
+          "No Navigation Set"
         ],
         "parameters": [
           {
@@ -983,7 +983,7 @@
       "get": {
         "summary": "Retrieves a single no navigation set.",
         "tags": [
-          "NoNavigationSet"
+          "No Navigation Set"
         ],
         "parameters": [
           {
@@ -1061,7 +1061,7 @@
       "get": {
         "summary": "Retrieves a list of one navigation set.",
         "tags": [
-          "OneNavigationSet"
+          "One Navigation Set"
         ],
         "parameters": [
           {
@@ -1229,7 +1229,7 @@
       "get": {
         "summary": "Retrieves a single one navigation set.",
         "tags": [
-          "OneNavigationSet"
+          "One Navigation Set"
         ],
         "parameters": [
           {
@@ -1318,7 +1318,7 @@
       "get": {
         "summary": "Retrieves a list of all many of a one navigation set.",
         "tags": [
-          "OneNavigationSet"
+          "One Navigation Set"
         ],
         "parameters": [
           {
@@ -1411,7 +1411,7 @@
       "get": {
         "summary": "Supports only read-list",
         "tags": [
-          "ReadListOnlySet"
+          "Read List Only Set"
         ],
         "parameters": [],
         "responses": {
@@ -1445,7 +1445,7 @@
       "get": {
         "summary": "Supports only read",
         "tags": [
-          "ReadOnlySingleton"
+          "Read Only Singleton"
         ],
         "parameters": [],
         "responses": {
@@ -1470,8 +1470,8 @@
       "get": {
         "summary": "Retrieves a list of all many of a read only singleton.",
         "tags": [
-          "ReadOnlySingleton",
-          "TwoAllSet"
+          "Read Only Singleton",
+          "Two All Set"
         ],
         "parameters": [
           {
@@ -1562,8 +1562,8 @@
       "get": {
         "summary": "Retrieves all one of a read only singleton.",
         "tags": [
-          "ReadOnlySingleton",
-          "TwoAllSet"
+          "Read Only Singleton",
+          "Two All Set"
         ],
         "parameters": [
           {
@@ -1605,8 +1605,8 @@
       "get": {
         "summary": "Retrieves a list of nothing many of a read only singleton.",
         "tags": [
-          "ReadOnlySingleton",
-          "TwoNothingSet"
+          "Read Only Singleton",
+          "Two Nothing Set"
         ],
         "parameters": [
           {
@@ -1699,8 +1699,8 @@
       "get": {
         "summary": "Retrieves a list of read only many of a read only singleton.",
         "tags": [
-          "ReadOnlySingleton",
-          "TwoReadOnlySet"
+          "Read Only Singleton",
+          "Two Read Only Set"
         ],
         "parameters": [],
         "responses": {
@@ -1733,8 +1733,8 @@
       "get": {
         "summary": "Retrieves read only one of a read only singleton.",
         "tags": [
-          "ReadOnlySingleton",
-          "TwoReadOnlySet"
+          "Read Only Singleton",
+          "Two Read Only Set"
         ],
         "parameters": [],
         "responses": {
@@ -1758,7 +1758,7 @@
       "get": {
         "summary": "Retrieves a list of two all set.",
         "tags": [
-          "TwoAllSet"
+          "Two All Set"
         ],
         "parameters": [
           {
@@ -1847,7 +1847,7 @@
       "post": {
         "summary": "Creates a single two all set.",
         "tags": [
-          "TwoAllSet"
+          "Two All Set"
         ],
         "requestBody": {
           "description": "New two all set",
@@ -1903,7 +1903,7 @@
       "get": {
         "summary": "Retrieves a single two all set.",
         "tags": [
-          "TwoAllSet"
+          "Two All Set"
         ],
         "parameters": [
           {
@@ -1943,7 +1943,7 @@
       "patch": {
         "summary": "Changes a single two all set.",
         "tags": [
-          "TwoAllSet"
+          "Two All Set"
         ],
         "requestBody": {
           "description": "New property values",
@@ -1968,7 +1968,7 @@
       "delete": {
         "summary": "Deletes a single two all set.",
         "tags": [
-          "TwoAllSet"
+          "Two All Set"
         ],
         "responses": {
           "204": {
@@ -2006,7 +2006,7 @@
       "get": {
         "summary": "Retrieves a single two read only by key set.",
         "tags": [
-          "TwoReadOnlyByKeySet"
+          "Two Read Only By Key Set"
         ],
         "parameters": [
           {
@@ -2048,7 +2048,7 @@
       "get": {
         "summary": "Supports read-list",
         "tags": [
-          "TwoReadOnlySet"
+          "Two Read Only Set"
         ],
         "parameters": [],
         "responses": {
@@ -2104,7 +2104,7 @@
       "get": {
         "summary": "Retrieves a single two read only set.",
         "tags": [
-          "TwoReadOnlySet"
+          "Two Read Only Set"
         ],
         "parameters": [],
         "responses": {
@@ -2128,7 +2128,7 @@
       "post": {
         "summary": "Supports insert",
         "tags": [
-          "TwoWriteOnlySet"
+          "Two Write Only Set"
         ],
         "requestBody": {
           "description": "New two write only set",
@@ -2184,7 +2184,7 @@
       "patch": {
         "summary": "Supports update",
         "tags": [
-          "TwoWriteOnlySet"
+          "Two Write Only Set"
         ],
         "requestBody": {
           "description": "New property values",
@@ -2209,7 +2209,7 @@
       "delete": {
         "summary": "Supports delete",
         "tags": [
-          "TwoWriteOnlySet"
+          "Two Write Only Set"
         ],
         "responses": {
           "204": {
@@ -2225,7 +2225,7 @@
       "patch": {
         "summary": "Supports update",
         "tags": [
-          "TwoWriteOnlySingleton"
+          "Two Write Only Singleton"
         ],
         "requestBody": {
           "description": "New property values",

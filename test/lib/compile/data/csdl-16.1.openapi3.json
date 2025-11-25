@@ -22,7 +22,7 @@
       "name": "Countries"
     },
     {
-      "name": "MainSupplier",
+      "name": "Main Supplier",
       "description": "Primary Supplier"
     },
     {
@@ -716,7 +716,7 @@
       "get": {
         "summary": "Retrieves main supplier.",
         "tags": [
-          "MainSupplier"
+          "Main Supplier"
         ],
         "parameters": [
           {
@@ -776,7 +776,7 @@
       "patch": {
         "summary": "Changes main supplier.",
         "tags": [
-          "MainSupplier"
+          "Main Supplier"
         ],
         "requestBody": {
           "description": "New property values",
@@ -803,7 +803,7 @@
       "get": {
         "summary": "Retrieves country of a main supplier.",
         "tags": [
-          "MainSupplier"
+          "Main Supplier"
         ],
         "parameters": [
           {
@@ -845,7 +845,7 @@
       "get": {
         "summary": "Retrieves a list of products of a main supplier.",
         "tags": [
-          "MainSupplier",
+          "Main Supplier",
           "Products"
         ],
         "parameters": [
@@ -970,7 +970,7 @@
       "post": {
         "summary": "Creates a single product of a main supplier.",
         "tags": [
-          "MainSupplier",
+          "Main Supplier",
           "Products"
         ],
         "requestBody": {

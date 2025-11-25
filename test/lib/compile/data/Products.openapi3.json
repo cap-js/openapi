@@ -21,7 +21,7 @@
       "name": "Categories"
     },
     {
-      "name": "ProductDetails"
+      "name": "Product Details"
     },
     {
       "name": "Products"
@@ -832,7 +832,7 @@
       "get": {
         "summary": "Retrieves a list of product details.",
         "tags": [
-          "ProductDetails"
+          "Product Details"
         ],
         "parameters": [
           {
@@ -940,7 +940,7 @@
       "post": {
         "summary": "Creates a single product detail.",
         "tags": [
-          "ProductDetails"
+          "Product Details"
         ],
         "requestBody": {
           "description": "New product detail",
@@ -986,7 +986,7 @@
       "get": {
         "summary": "Retrieves a single product detail.",
         "tags": [
-          "ProductDetails"
+          "Product Details"
         ],
         "parameters": [
           {
@@ -1043,7 +1043,7 @@
       "patch": {
         "summary": "Changes a single product detail.",
         "tags": [
-          "ProductDetails"
+          "Product Details"
         ],
         "requestBody": {
           "description": "New property values",
@@ -1068,7 +1068,7 @@
       "delete": {
         "summary": "Deletes a single product detail.",
         "tags": [
-          "ProductDetails"
+          "Product Details"
         ],
         "responses": {
           "204": {
@@ -1096,7 +1096,7 @@
       "get": {
         "summary": "Retrieves product of a product detail.",
         "tags": [
-          "ProductDetails",
+          "Product Details",
           "Products"
         ],
         "parameters": [
@@ -1608,7 +1608,7 @@
         "summary": "Retrieves product detail of a product.",
         "tags": [
           "Products",
-          "ProductDetails"
+          "Product Details"
         ],
         "parameters": [
           {
