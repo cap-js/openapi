@@ -626,4 +626,30 @@ service CatalogService {
       cds.removeListener('cds.compile.to.openapi', handler);
     }
   });
+
+  test('propagates errors from event handlers', async () => {
+    const csn = cds.compile.to.csn(`
+      service CatalogService {
+        entity Books {
+          key ID : Integer;
+          title  : String;
+        }
+      }`);
+    
+    const handler = () => {
+      throw new Error('Handler error');
+    };
+    
+    cds.on('cds.compile.to.openapi', handler);
+    
+    try {
+      assert.throws(
+        () => toOpenApi(csn),
+        /Event handler error in cds\.compile\.to\.openapi.*Handler error/,
+        'Should propagate event handler errors with context'
+      );
+    } finally {
+      cds.removeListener('cds.compile.to.openapi', handler);
+    }
+  });
 });
