@@ -21,13 +21,13 @@
       "name": "Categories"
     },
     {
-      "name": "PersonDetails"
+      "name": "Person Details"
     },
     {
       "name": "Persons"
     },
     {
-      "name": "ProductDetails"
+      "name": "Product Details"
     },
     {
       "name": "Products"
@@ -881,7 +881,7 @@
       "get": {
         "summary": "Retrieves a list of person details.",
         "tags": [
-          "PersonDetails"
+          "Person Details"
         ],
         "parameters": [
           {
@@ -1009,7 +1009,7 @@
       "post": {
         "summary": "Creates a single person detail.",
         "tags": [
-          "PersonDetails"
+          "Person Details"
         ],
         "requestBody": {
           "description": "New person detail",
@@ -1055,7 +1055,7 @@
       "get": {
         "summary": "Retrieves a single person detail.",
         "tags": [
-          "PersonDetails"
+          "Person Details"
         ],
         "parameters": [
           {
@@ -1116,7 +1116,7 @@
       "patch": {
         "summary": "Changes a single person detail.",
         "tags": [
-          "PersonDetails"
+          "Person Details"
         ],
         "requestBody": {
           "description": "New property values",
@@ -1141,7 +1141,7 @@
       "delete": {
         "summary": "Deletes a single person detail.",
         "tags": [
-          "PersonDetails"
+          "Person Details"
         ],
         "responses": {
           "204": {
@@ -1169,7 +1169,7 @@
       "get": {
         "summary": "Retrieves person of a person detail.",
         "tags": [
-          "PersonDetails",
+          "Person Details",
           "Persons"
         ],
         "parameters": [
@@ -1494,7 +1494,7 @@
         "summary": "Retrieves person detail of a person.",
         "tags": [
           "Persons",
-          "PersonDetails"
+          "Person Details"
         ],
         "parameters": [
           {
@@ -1557,7 +1557,7 @@
       "get": {
         "summary": "Retrieves a list of product details.",
         "tags": [
-          "ProductDetails"
+          "Product Details"
         ],
         "parameters": [
           {
@@ -1665,7 +1665,7 @@
       "post": {
         "summary": "Creates a single product detail.",
         "tags": [
-          "ProductDetails"
+          "Product Details"
         ],
         "requestBody": {
           "description": "New product detail",
@@ -1711,7 +1711,7 @@
       "get": {
         "summary": "Retrieves a single product detail.",
         "tags": [
-          "ProductDetails"
+          "Product Details"
         ],
         "parameters": [
           {
@@ -1768,7 +1768,7 @@
       "patch": {
         "summary": "Changes a single product detail.",
         "tags": [
-          "ProductDetails"
+          "Product Details"
         ],
         "requestBody": {
           "description": "New property values",
@@ -1793,7 +1793,7 @@
       "delete": {
         "summary": "Deletes a single product detail.",
         "tags": [
-          "ProductDetails"
+          "Product Details"
         ],
         "responses": {
           "204": {
@@ -1821,7 +1821,7 @@
       "get": {
         "summary": "Retrieves product of a product detail.",
         "tags": [
-          "ProductDetails",
+          "Product Details",
           "Products"
         ],
         "parameters": [
@@ -2398,7 +2398,7 @@
         "summary": "Retrieves product detail of a product.",
         "tags": [
           "Products",
-          "ProductDetails"
+          "Product Details"
         ],
         "parameters": [
           {
