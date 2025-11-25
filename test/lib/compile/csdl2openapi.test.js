@@ -43,6 +43,9 @@ const result9 = require('./data/custom-parameters.openapi3.json');
 const example10 = require('./data/immutable-composition.json');
 const result10 = require('./data/immutable-composition.openapi3.json');
 
+const example11 = require('./data/description-fallback.json');
+const result11 = require('./data/description-fallback.openapi3.json');
+
 describe('Examples', () => {
 
     test('csdl-16.1', () => {
@@ -87,6 +90,11 @@ describe('Examples', () => {
     test('immutable-composition', () => {
         const openapi = lib.csdl2openapi(example10, { diagram: true });
         check(openapi, result10);
+    });
+
+    test('description-fallback', () => {
+        const openapi = lib.csdl2openapi(example11, { diagram: true });
+        check(openapi, result11);
     });
 })
 
@@ -2069,7 +2077,7 @@ see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-prot
         assert.deepStrictEqual(actual.paths['/roots/act'].post, expected.paths['/roots/act'].post, 'POST /roots/act');
         assert.deepStrictEqual(actual.info.description.split("\n"),
             [
-                "Use @Core.LongDescription: '...' on your CDS service to provide a meaningful description.",
+                "Use @Core.LongDescription: '...' or @Core.Description: '...' on your CDS service to provide a meaningful description.",
                 "",
                 "## Entity Data Model",
                 "![ER Diagram](https://yuml.me/diagram/class/[root{bg:lightslategray}],[root]->[other],[other{bg:lightslategray}],[act{bg:lawngreen}]->[root],[act{bg:lawngreen}]in->[root],[others%20{bg:lawngreen}]++-*>[other],[roots%20{bg:lawngreen}]++-*>[root])",

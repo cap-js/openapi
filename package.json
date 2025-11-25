@@ -25,7 +25,8 @@
     "lint": "npx eslint .",
     "check:types": "npx tsc",
     "gen:coverage": "node --test --experimental-test-coverage --test-reporter=lcov --test-reporter-destination=lcov.info",
-    "gen:call-graph": "node scripts/generate-call-graph-svg.js"
+    "gen:call-graph": "node scripts/generate-call-graph-svg.js",
+    "regenerate": "node scripts/regenerate.js"
   },
   "dependencies": {
     "pluralize": "^8.0.0"
