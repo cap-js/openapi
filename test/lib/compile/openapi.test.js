@@ -581,24 +581,24 @@ service CatalogService {
           title  : String;
         }
       }`);
-    
+
     let eventData;
     const handler = (data) => {
       eventData = data;
     };
-    
-    cds.on('cds.compile.to.openapi', handler);
-    
+
+    cds.on('compile.to.openapi', handler);
+
     try {
       const result = toOpenApi(csn);
-      
+
       assert(eventData, 'Event was not emitted');
       assert.strictEqual(eventData.csn, csn, 'Event should include original CSN');
       assert.strictEqual(eventData.result, result, 'Event should include compilation result');
       assert(eventData.options, 'Event should include options');
       assert.strictEqual(typeof eventData.options, 'object', 'Options should be an object');
     } finally {
-      cds.removeListener('cds.compile.to.openapi', handler);
+      cds.removeListener('compile.to.openapi', handler);
     }
   });
 
@@ -610,20 +610,20 @@ service CatalogService {
           title  : String;
         }
       }`);
-    
+
     const handler = ({ result }) => {
       result['x-custom-property'] = 'modified-by-handler';
     };
-    
-    cds.on('cds.compile.to.openapi', handler);
-    
+
+    cds.on('compile.to.openapi', handler);
+
     try {
       const result = toOpenApi(csn);
-      
+
       assert.strictEqual(result['x-custom-property'], 'modified-by-handler',
         'Event handler should be able to modify the result');
     } finally {
-      cds.removeListener('cds.compile.to.openapi', handler);
+      cds.removeListener('compile.to.openapi', handler);
     }
   });
 
@@ -635,21 +635,21 @@ service CatalogService {
           title  : String;
         }
       }`);
-    
+
     const handler = () => {
       throw new Error('Handler error');
     };
-    
-    cds.on('cds.compile.to.openapi', handler);
-    
+
+    cds.on('compile.to.openapi', handler);
+
     try {
       assert.throws(
         () => toOpenApi(csn),
-        /Event handler error in cds\.compile\.to\.openapi.*Handler error/,
+        /Event handler error in compile\.to\.openapi.*Handler error/,
         'Should propagate event handler errors with context'
       );
     } finally {
-      cds.removeListener('cds.compile.to.openapi', handler);
+      cds.removeListener('compile.to.openapi', handler);
     }
   });
 });
