@@ -133,7 +133,7 @@
     },
     "/Alphabetical_list_of_products": {
       "get": {
-        "summary": "Retrieves a list of alphabetical_list_of_products.",
+        "summary": "Retrieves a list of alphabetical list of products.",
         "tags": [
           "Alphabetical list of products"
         ],
@@ -224,7 +224,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved alphabetical_list_of_products",
+            "description": "Retrieved alphabetical list of products",
             "content": {
               "application/json": {
                 "schema": {
@@ -251,12 +251,12 @@
         }
       },
       "post": {
-        "summary": "Creates a single alphabetical_list_of_product.",
+        "summary": "Creates a single alphabetical list of product.",
         "tags": [
           "Alphabetical list of products"
         ],
         "requestBody": {
-          "description": "New alphabetical_list_of_product",
+          "description": "New alphabetical list of product",
           "required": true,
           "content": {
             "application/json": {
@@ -268,7 +268,7 @@
         },
         "responses": {
           "201": {
-            "description": "Created alphabetical_list_of_product",
+            "description": "Created alphabetical list of product",
             "content": {
               "application/json": {
                 "schema": {
@@ -326,7 +326,7 @@
         }
       ],
       "get": {
-        "summary": "Retrieves a single alphabetical_list_of_product.",
+        "summary": "Retrieves a single alphabetical list of product.",
         "tags": [
           "Alphabetical list of products"
         ],
@@ -360,7 +360,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved alphabetical_list_of_product",
+            "description": "Retrieved alphabetical list of product",
             "content": {
               "application/json": {
                 "schema": {
@@ -375,7 +375,7 @@
         }
       },
       "patch": {
-        "summary": "Changes a single alphabetical_list_of_product.",
+        "summary": "Changes a single alphabetical list of product.",
         "tags": [
           "Alphabetical list of products"
         ],
@@ -400,7 +400,7 @@
         }
       },
       "delete": {
-        "summary": "Deletes a single alphabetical_list_of_product.",
+        "summary": "Deletes a single alphabetical list of product.",
         "tags": [
           "Alphabetical list of products"
         ],
@@ -858,7 +858,7 @@
     },
     "/Category_Sales_for_1997": {
       "get": {
-        "summary": "Retrieves a list of category_ sales_for_1997.",
+        "summary": "Retrieves a list of category sales for 1997.",
         "tags": [
           "Category Sales for 1997"
         ],
@@ -922,7 +922,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved category_ sales_for_1997",
+            "description": "Retrieved category sales for 1997",
             "content": {
               "application/json": {
                 "schema": {
@@ -949,12 +949,12 @@
         }
       },
       "post": {
-        "summary": "Creates a single category_ sales_for_1997.",
+        "summary": "Creates a single category sales for 1997.",
         "tags": [
           "Category Sales for 1997"
         ],
         "requestBody": {
-          "description": "New category_ sales_for_1997",
+          "description": "New category sales for 1997",
           "required": true,
           "content": {
             "application/json": {
@@ -966,7 +966,7 @@
         },
         "responses": {
           "201": {
-            "description": "Created category_ sales_for_1997",
+            "description": "Created category sales for 1997",
             "content": {
               "application/json": {
                 "schema": {
@@ -995,7 +995,7 @@
         }
       ],
       "get": {
-        "summary": "Retrieves a single category_ sales_for_1997.",
+        "summary": "Retrieves a single category sales for 1997.",
         "tags": [
           "Category Sales for 1997"
         ],
@@ -1020,7 +1020,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved category_ sales_for_1997",
+            "description": "Retrieved category sales for 1997",
             "content": {
               "application/json": {
                 "schema": {
@@ -1035,7 +1035,7 @@
         }
       },
       "patch": {
-        "summary": "Changes a single category_ sales_for_1997.",
+        "summary": "Changes a single category sales for 1997.",
         "tags": [
           "Category Sales for 1997"
         ],
@@ -1060,7 +1060,7 @@
         }
       },
       "delete": {
-        "summary": "Deletes a single category_ sales_for_1997.",
+        "summary": "Deletes a single category sales for 1997.",
         "tags": [
           "Category Sales for 1997"
         ],
@@ -1076,7 +1076,7 @@
     },
     "/Current_Product_Lists": {
       "get": {
-        "summary": "Retrieves a list of current_ product_ lists.",
+        "summary": "Retrieves a list of current product lists.",
         "tags": [
           "Current Product Lists"
         ],
@@ -1140,7 +1140,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved current_ product_ lists",
+            "description": "Retrieved current product lists",
             "content": {
               "application/json": {
                 "schema": {
@@ -1167,12 +1167,12 @@
         }
       },
       "post": {
-        "summary": "Creates a single current_ product_ list.",
+        "summary": "Creates a single current product list.",
         "tags": [
           "Current Product Lists"
         ],
         "requestBody": {
-          "description": "New current_ product_ list",
+          "description": "New current product list",
           "required": true,
           "content": {
             "application/json": {
@@ -1184,7 +1184,7 @@
         },
         "responses": {
           "201": {
-            "description": "Created current_ product_ list",
+            "description": "Created current product list",
             "content": {
               "application/json": {
                 "schema": {
@@ -1223,7 +1223,7 @@
         }
       ],
       "get": {
-        "summary": "Retrieves a single current_ product_ list.",
+        "summary": "Retrieves a single current product list.",
         "tags": [
           "Current Product Lists"
         ],
@@ -1248,7 +1248,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved current_ product_ list",
+            "description": "Retrieved current product list",
             "content": {
               "application/json": {
                 "schema": {
@@ -1263,7 +1263,7 @@
         }
       },
       "patch": {
-        "summary": "Changes a single current_ product_ list.",
+        "summary": "Changes a single current product list.",
         "tags": [
           "Current Product Lists"
         ],
@@ -1288,7 +1288,7 @@
         }
       },
       "delete": {
-        "summary": "Deletes a single current_ product_ list.",
+        "summary": "Deletes a single current product list.",
         "tags": [
           "Current Product Lists"
         ],
@@ -1740,7 +1740,7 @@
     },
     "/Customer_and_Suppliers_by_Cities": {
       "get": {
-        "summary": "Retrieves a list of customer_and_ suppliers_by_ cities.",
+        "summary": "Retrieves a list of customer and suppliers by cities.",
         "tags": [
           "Customer and Suppliers by Cities"
         ],
@@ -1810,7 +1810,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved customer_and_ suppliers_by_ cities",
+            "description": "Retrieved customer and suppliers by cities",
             "content": {
               "application/json": {
                 "schema": {
@@ -1837,12 +1837,12 @@
         }
       },
       "post": {
-        "summary": "Creates a single customer_and_ suppliers_by_ city.",
+        "summary": "Creates a single customer and suppliers by city.",
         "tags": [
           "Customer and Suppliers by Cities"
         ],
         "requestBody": {
-          "description": "New customer_and_ suppliers_by_ city",
+          "description": "New customer and suppliers by city",
           "required": true,
           "content": {
             "application/json": {
@@ -1854,7 +1854,7 @@
         },
         "responses": {
           "201": {
-            "description": "Created customer_and_ suppliers_by_ city",
+            "description": "Created customer and suppliers by city",
             "content": {
               "application/json": {
                 "schema": {
@@ -1893,7 +1893,7 @@
         }
       ],
       "get": {
-        "summary": "Retrieves a single customer_and_ suppliers_by_ city.",
+        "summary": "Retrieves a single customer and suppliers by city.",
         "tags": [
           "Customer and Suppliers by Cities"
         ],
@@ -1920,7 +1920,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved customer_and_ suppliers_by_ city",
+            "description": "Retrieved customer and suppliers by city",
             "content": {
               "application/json": {
                 "schema": {
@@ -1935,7 +1935,7 @@
         }
       },
       "patch": {
-        "summary": "Changes a single customer_and_ suppliers_by_ city.",
+        "summary": "Changes a single customer and suppliers by city.",
         "tags": [
           "Customer and Suppliers by Cities"
         ],
@@ -1960,7 +1960,7 @@
         }
       },
       "delete": {
-        "summary": "Deletes a single customer_and_ suppliers_by_ city.",
+        "summary": "Deletes a single customer and suppliers by city.",
         "tags": [
           "Customer and Suppliers by Cities"
         ],
@@ -4002,7 +4002,7 @@
     },
     "/Order_Details": {
       "get": {
-        "summary": "Retrieves a list of order_ details.",
+        "summary": "Retrieves a list of order details.",
         "tags": [
           "Order Details"
         ],
@@ -4093,7 +4093,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved order_ details",
+            "description": "Retrieved order details",
             "content": {
               "application/json": {
                 "schema": {
@@ -4120,12 +4120,12 @@
         }
       },
       "post": {
-        "summary": "Creates a single order_ detail.",
+        "summary": "Creates a single order detail.",
         "tags": [
           "Order Details"
         ],
         "requestBody": {
-          "description": "New order_ detail",
+          "description": "New order detail",
           "required": true,
           "content": {
             "application/json": {
@@ -4137,7 +4137,7 @@
         },
         "responses": {
           "201": {
-            "description": "Created order_ detail",
+            "description": "Created order detail",
             "content": {
               "application/json": {
                 "schema": {
@@ -4176,7 +4176,7 @@
         }
       ],
       "get": {
-        "summary": "Retrieves a single order_ detail.",
+        "summary": "Retrieves a single order detail.",
         "tags": [
           "Order Details"
         ],
@@ -4222,7 +4222,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved order_ detail",
+            "description": "Retrieved order detail",
             "content": {
               "application/json": {
                 "schema": {
@@ -4237,7 +4237,7 @@
         }
       },
       "patch": {
-        "summary": "Changes a single order_ detail.",
+        "summary": "Changes a single order detail.",
         "tags": [
           "Order Details"
         ],
@@ -4262,7 +4262,7 @@
         }
       },
       "delete": {
-        "summary": "Deletes a single order_ detail.",
+        "summary": "Deletes a single order detail.",
         "tags": [
           "Order Details"
         ],
@@ -4300,7 +4300,7 @@
         }
       ],
       "get": {
-        "summary": "Retrieves order of a order_ detail.",
+        "summary": "Retrieves order of a order detail.",
         "tags": [
           "Order Details",
           "Orders"
@@ -4397,7 +4397,7 @@
         }
       ],
       "get": {
-        "summary": "Retrieves product of a order_ detail.",
+        "summary": "Retrieves product of a order detail.",
         "tags": [
           "Order Details",
           "Products"
@@ -4467,7 +4467,7 @@
     },
     "/Order_Details_Extendeds": {
       "get": {
-        "summary": "Retrieves a list of order_ details_ extendeds.",
+        "summary": "Retrieves a list of order details extendeds.",
         "tags": [
           "Order Details Extendeds"
         ],
@@ -4546,7 +4546,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved order_ details_ extendeds",
+            "description": "Retrieved order details extendeds",
             "content": {
               "application/json": {
                 "schema": {
@@ -4573,12 +4573,12 @@
         }
       },
       "post": {
-        "summary": "Creates a single order_ details_ extended.",
+        "summary": "Creates a single order details extended.",
         "tags": [
           "Order Details Extendeds"
         ],
         "requestBody": {
-          "description": "New order_ details_ extended",
+          "description": "New order details extended",
           "required": true,
           "content": {
             "application/json": {
@@ -4590,7 +4590,7 @@
         },
         "responses": {
           "201": {
-            "description": "Created order_ details_ extended",
+            "description": "Created order details extended",
             "content": {
               "application/json": {
                 "schema": {
@@ -4688,7 +4688,7 @@
         }
       ],
       "get": {
-        "summary": "Retrieves a single order_ details_ extended.",
+        "summary": "Retrieves a single order details extended.",
         "tags": [
           "Order Details Extendeds"
         ],
@@ -4718,7 +4718,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved order_ details_ extended",
+            "description": "Retrieved order details extended",
             "content": {
               "application/json": {
                 "schema": {
@@ -4733,7 +4733,7 @@
         }
       },
       "patch": {
-        "summary": "Changes a single order_ details_ extended.",
+        "summary": "Changes a single order details extended.",
         "tags": [
           "Order Details Extendeds"
         ],
@@ -4758,7 +4758,7 @@
         }
       },
       "delete": {
-        "summary": "Deletes a single order_ details_ extended.",
+        "summary": "Deletes a single order details extended.",
         "tags": [
           "Order Details Extendeds"
         ],
@@ -4774,7 +4774,7 @@
     },
     "/Order_Subtotals": {
       "get": {
-        "summary": "Retrieves a list of order_ subtotals.",
+        "summary": "Retrieves a list of order subtotals.",
         "tags": [
           "Order Subtotals"
         ],
@@ -4838,7 +4838,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved order_ subtotals",
+            "description": "Retrieved order subtotals",
             "content": {
               "application/json": {
                 "schema": {
@@ -4865,12 +4865,12 @@
         }
       },
       "post": {
-        "summary": "Creates a single order_ subtotal.",
+        "summary": "Creates a single order subtotal.",
         "tags": [
           "Order Subtotals"
         ],
         "requestBody": {
-          "description": "New order_ subtotal",
+          "description": "New order subtotal",
           "required": true,
           "content": {
             "application/json": {
@@ -4882,7 +4882,7 @@
         },
         "responses": {
           "201": {
-            "description": "Created order_ subtotal",
+            "description": "Created order subtotal",
             "content": {
               "application/json": {
                 "schema": {
@@ -4911,7 +4911,7 @@
         }
       ],
       "get": {
-        "summary": "Retrieves a single order_ subtotal.",
+        "summary": "Retrieves a single order subtotal.",
         "tags": [
           "Order Subtotals"
         ],
@@ -4936,7 +4936,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved order_ subtotal",
+            "description": "Retrieved order subtotal",
             "content": {
               "application/json": {
                 "schema": {
@@ -4951,7 +4951,7 @@
         }
       },
       "patch": {
-        "summary": "Changes a single order_ subtotal.",
+        "summary": "Changes a single order subtotal.",
         "tags": [
           "Order Subtotals"
         ],
@@ -4976,7 +4976,7 @@
         }
       },
       "delete": {
-        "summary": "Deletes a single order_ subtotal.",
+        "summary": "Deletes a single order subtotal.",
         "tags": [
           "Order Subtotals"
         ],
@@ -5483,7 +5483,7 @@
         }
       ],
       "get": {
-        "summary": "Retrieves a list of order_ details of a order.",
+        "summary": "Retrieves a list of order details of a order.",
         "tags": [
           "Orders",
           "Order Details"
@@ -5575,7 +5575,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved order_ details",
+            "description": "Retrieved order details",
             "content": {
               "application/json": {
                 "schema": {
@@ -5602,13 +5602,13 @@
         }
       },
       "post": {
-        "summary": "Creates a single order_ detail of a order.",
+        "summary": "Creates a single order detail of a order.",
         "tags": [
           "Orders",
           "Order Details"
         ],
         "requestBody": {
-          "description": "New order_ detail",
+          "description": "New order detail",
           "required": true,
           "content": {
             "application/json": {
@@ -5620,7 +5620,7 @@
         },
         "responses": {
           "201": {
-            "description": "Created order_ detail",
+            "description": "Created order detail",
             "content": {
               "application/json": {
                 "schema": {
@@ -5710,7 +5710,7 @@
     },
     "/Orders_Qries": {
       "get": {
-        "summary": "Retrieves a list of orders_ qries.",
+        "summary": "Retrieves a list of orders qries.",
         "tags": [
           "Orders Qries"
         ],
@@ -5828,7 +5828,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved orders_ qries",
+            "description": "Retrieved orders qries",
             "content": {
               "application/json": {
                 "schema": {
@@ -5855,12 +5855,12 @@
         }
       },
       "post": {
-        "summary": "Creates a single orders_ qry.",
+        "summary": "Creates a single orders qry.",
         "tags": [
           "Orders Qries"
         ],
         "requestBody": {
-          "description": "New orders_ qry",
+          "description": "New orders qry",
           "required": true,
           "content": {
             "application/json": {
@@ -5872,7 +5872,7 @@
         },
         "responses": {
           "201": {
-            "description": "Created orders_ qry",
+            "description": "Created orders qry",
             "content": {
               "application/json": {
                 "schema": {
@@ -5911,7 +5911,7 @@
         }
       ],
       "get": {
-        "summary": "Retrieves a single orders_ qry.",
+        "summary": "Retrieves a single orders qry.",
         "tags": [
           "Orders Qries"
         ],
@@ -5954,7 +5954,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved orders_ qry",
+            "description": "Retrieved orders qry",
             "content": {
               "application/json": {
                 "schema": {
@@ -5969,7 +5969,7 @@
         }
       },
       "patch": {
-        "summary": "Changes a single orders_ qry.",
+        "summary": "Changes a single orders qry.",
         "tags": [
           "Orders Qries"
         ],
@@ -5994,7 +5994,7 @@
         }
       },
       "delete": {
-        "summary": "Deletes a single orders_ qry.",
+        "summary": "Deletes a single orders qry.",
         "tags": [
           "Orders Qries"
         ],
@@ -6010,7 +6010,7 @@
     },
     "/Product_Sales_for_1997": {
       "get": {
-        "summary": "Retrieves a list of product_ sales_for_1997.",
+        "summary": "Retrieves a list of product sales for 1997.",
         "tags": [
           "Product Sales for 1997"
         ],
@@ -6077,7 +6077,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved product_ sales_for_1997",
+            "description": "Retrieved product sales for 1997",
             "content": {
               "application/json": {
                 "schema": {
@@ -6104,12 +6104,12 @@
         }
       },
       "post": {
-        "summary": "Creates a single product_ sales_for_1997.",
+        "summary": "Creates a single product sales for 1997.",
         "tags": [
           "Product Sales for 1997"
         ],
         "requestBody": {
-          "description": "New product_ sales_for_1997",
+          "description": "New product sales for 1997",
           "required": true,
           "content": {
             "application/json": {
@@ -6121,7 +6121,7 @@
         },
         "responses": {
           "201": {
-            "description": "Created product_ sales_for_1997",
+            "description": "Created product sales for 1997",
             "content": {
               "application/json": {
                 "schema": {
@@ -6160,7 +6160,7 @@
         }
       ],
       "get": {
-        "summary": "Retrieves a single product_ sales_for_1997.",
+        "summary": "Retrieves a single product sales for 1997.",
         "tags": [
           "Product Sales for 1997"
         ],
@@ -6186,7 +6186,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved product_ sales_for_1997",
+            "description": "Retrieved product sales for 1997",
             "content": {
               "application/json": {
                 "schema": {
@@ -6201,7 +6201,7 @@
         }
       },
       "patch": {
-        "summary": "Changes a single product_ sales_for_1997.",
+        "summary": "Changes a single product sales for 1997.",
         "tags": [
           "Product Sales for 1997"
         ],
@@ -6226,7 +6226,7 @@
         }
       },
       "delete": {
-        "summary": "Deletes a single product_ sales_for_1997.",
+        "summary": "Deletes a single product sales for 1997.",
         "tags": [
           "Product Sales for 1997"
         ],
@@ -6616,7 +6616,7 @@
         }
       ],
       "get": {
-        "summary": "Retrieves a list of order_ details of a product.",
+        "summary": "Retrieves a list of order details of a product.",
         "tags": [
           "Products",
           "Order Details"
@@ -6708,7 +6708,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved order_ details",
+            "description": "Retrieved order details",
             "content": {
               "application/json": {
                 "schema": {
@@ -6735,13 +6735,13 @@
         }
       },
       "post": {
-        "summary": "Creates a single order_ detail of a product.",
+        "summary": "Creates a single order detail of a product.",
         "tags": [
           "Products",
           "Order Details"
         ],
         "requestBody": {
-          "description": "New order_ detail",
+          "description": "New order detail",
           "required": true,
           "content": {
             "application/json": {
@@ -6753,7 +6753,7 @@
         },
         "responses": {
           "201": {
-            "description": "Created order_ detail",
+            "description": "Created order detail",
             "content": {
               "application/json": {
                 "schema": {
@@ -6852,7 +6852,7 @@
     },
     "/Products_Above_Average_Prices": {
       "get": {
-        "summary": "Retrieves a list of products_ above_ average_ prices.",
+        "summary": "Retrieves a list of products above average prices.",
         "tags": [
           "Products Above Average Prices"
         ],
@@ -6916,7 +6916,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved products_ above_ average_ prices",
+            "description": "Retrieved products above average prices",
             "content": {
               "application/json": {
                 "schema": {
@@ -6943,12 +6943,12 @@
         }
       },
       "post": {
-        "summary": "Creates a single products_ above_ average_ price.",
+        "summary": "Creates a single products above average price.",
         "tags": [
           "Products Above Average Prices"
         ],
         "requestBody": {
-          "description": "New products_ above_ average_ price",
+          "description": "New products above average price",
           "required": true,
           "content": {
             "application/json": {
@@ -6960,7 +6960,7 @@
         },
         "responses": {
           "201": {
-            "description": "Created products_ above_ average_ price",
+            "description": "Created products above average price",
             "content": {
               "application/json": {
                 "schema": {
@@ -6989,7 +6989,7 @@
         }
       ],
       "get": {
-        "summary": "Retrieves a single products_ above_ average_ price.",
+        "summary": "Retrieves a single products above average price.",
         "tags": [
           "Products Above Average Prices"
         ],
@@ -7014,7 +7014,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved products_ above_ average_ price",
+            "description": "Retrieved products above average price",
             "content": {
               "application/json": {
                 "schema": {
@@ -7029,7 +7029,7 @@
         }
       },
       "patch": {
-        "summary": "Changes a single products_ above_ average_ price.",
+        "summary": "Changes a single products above average price.",
         "tags": [
           "Products Above Average Prices"
         ],
@@ -7054,7 +7054,7 @@
         }
       },
       "delete": {
-        "summary": "Deletes a single products_ above_ average_ price.",
+        "summary": "Deletes a single products above average price.",
         "tags": [
           "Products Above Average Prices"
         ],
@@ -7070,7 +7070,7 @@
     },
     "/Products_by_Categories": {
       "get": {
-        "summary": "Retrieves a list of products_by_ categories.",
+        "summary": "Retrieves a list of products by categories.",
         "tags": [
           "Products by Categories"
         ],
@@ -7143,7 +7143,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved products_by_ categories",
+            "description": "Retrieved products by categories",
             "content": {
               "application/json": {
                 "schema": {
@@ -7170,12 +7170,12 @@
         }
       },
       "post": {
-        "summary": "Creates a single products_by_ category.",
+        "summary": "Creates a single products by category.",
         "tags": [
           "Products by Categories"
         ],
         "requestBody": {
-          "description": "New products_by_ category",
+          "description": "New products by category",
           "required": true,
           "content": {
             "application/json": {
@@ -7187,7 +7187,7 @@
         },
         "responses": {
           "201": {
-            "description": "Created products_by_ category",
+            "description": "Created products by category",
             "content": {
               "application/json": {
                 "schema": {
@@ -7235,7 +7235,7 @@
         }
       ],
       "get": {
-        "summary": "Retrieves a single products_by_ category.",
+        "summary": "Retrieves a single products by category.",
         "tags": [
           "Products by Categories"
         ],
@@ -7263,7 +7263,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved products_by_ category",
+            "description": "Retrieved products by category",
             "content": {
               "application/json": {
                 "schema": {
@@ -7278,7 +7278,7 @@
         }
       },
       "patch": {
-        "summary": "Changes a single products_by_ category.",
+        "summary": "Changes a single products by category.",
         "tags": [
           "Products by Categories"
         ],
@@ -7303,7 +7303,7 @@
         }
       },
       "delete": {
-        "summary": "Deletes a single products_by_ category.",
+        "summary": "Deletes a single products by category.",
         "tags": [
           "Products by Categories"
         ],
@@ -7731,7 +7731,7 @@
     },
     "/Sales_Totals_by_Amounts": {
       "get": {
-        "summary": "Retrieves a list of sales_ totals_by_ amounts.",
+        "summary": "Retrieves a list of sales totals by amounts.",
         "tags": [
           "Sales Totals by Amounts"
         ],
@@ -7801,7 +7801,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved sales_ totals_by_ amounts",
+            "description": "Retrieved sales totals by amounts",
             "content": {
               "application/json": {
                 "schema": {
@@ -7828,12 +7828,12 @@
         }
       },
       "post": {
-        "summary": "Creates a single sales_ totals_by_ amount.",
+        "summary": "Creates a single sales totals by amount.",
         "tags": [
           "Sales Totals by Amounts"
         ],
         "requestBody": {
-          "description": "New sales_ totals_by_ amount",
+          "description": "New sales totals by amount",
           "required": true,
           "content": {
             "application/json": {
@@ -7845,7 +7845,7 @@
         },
         "responses": {
           "201": {
-            "description": "Created sales_ totals_by_ amount",
+            "description": "Created sales totals by amount",
             "content": {
               "application/json": {
                 "schema": {
@@ -7884,7 +7884,7 @@
         }
       ],
       "get": {
-        "summary": "Retrieves a single sales_ totals_by_ amount.",
+        "summary": "Retrieves a single sales totals by amount.",
         "tags": [
           "Sales Totals by Amounts"
         ],
@@ -7911,7 +7911,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved sales_ totals_by_ amount",
+            "description": "Retrieved sales totals by amount",
             "content": {
               "application/json": {
                 "schema": {
@@ -7926,7 +7926,7 @@
         }
       },
       "patch": {
-        "summary": "Changes a single sales_ totals_by_ amount.",
+        "summary": "Changes a single sales totals by amount.",
         "tags": [
           "Sales Totals by Amounts"
         ],
@@ -7951,7 +7951,7 @@
         }
       },
       "delete": {
-        "summary": "Deletes a single sales_ totals_by_ amount.",
+        "summary": "Deletes a single sales totals by amount.",
         "tags": [
           "Sales Totals by Amounts"
         ],
@@ -7967,7 +7967,7 @@
     },
     "/Sales_by_Categories": {
       "get": {
-        "summary": "Retrieves a list of sales_by_ categories.",
+        "summary": "Retrieves a list of sales by categories.",
         "tags": [
           "Sales by Categories"
         ],
@@ -8037,7 +8037,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved sales_by_ categories",
+            "description": "Retrieved sales by categories",
             "content": {
               "application/json": {
                 "schema": {
@@ -8064,12 +8064,12 @@
         }
       },
       "post": {
-        "summary": "Creates a single sales_by_ category.",
+        "summary": "Creates a single sales by category.",
         "tags": [
           "Sales by Categories"
         ],
         "requestBody": {
-          "description": "New sales_by_ category",
+          "description": "New sales by category",
           "required": true,
           "content": {
             "application/json": {
@@ -8081,7 +8081,7 @@
         },
         "responses": {
           "201": {
-            "description": "Created sales_by_ category",
+            "description": "Created sales by category",
             "content": {
               "application/json": {
                 "schema": {
@@ -8130,7 +8130,7 @@
         }
       ],
       "get": {
-        "summary": "Retrieves a single sales_by_ category.",
+        "summary": "Retrieves a single sales by category.",
         "tags": [
           "Sales by Categories"
         ],
@@ -8157,7 +8157,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved sales_by_ category",
+            "description": "Retrieved sales by category",
             "content": {
               "application/json": {
                 "schema": {
@@ -8172,7 +8172,7 @@
         }
       },
       "patch": {
-        "summary": "Changes a single sales_by_ category.",
+        "summary": "Changes a single sales by category.",
         "tags": [
           "Sales by Categories"
         ],
@@ -8197,7 +8197,7 @@
         }
       },
       "delete": {
-        "summary": "Deletes a single sales_by_ category.",
+        "summary": "Deletes a single sales by category.",
         "tags": [
           "Sales by Categories"
         ],
@@ -8664,7 +8664,7 @@
     },
     "/Summary_of_Sales_by_Quarters": {
       "get": {
-        "summary": "Retrieves a list of summary_of_ sales_by_ quarters.",
+        "summary": "Retrieves a list of summary of sales by quarters.",
         "tags": [
           "Summary of Sales by Quarters"
         ],
@@ -8731,7 +8731,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved summary_of_ sales_by_ quarters",
+            "description": "Retrieved summary of sales by quarters",
             "content": {
               "application/json": {
                 "schema": {
@@ -8758,12 +8758,12 @@
         }
       },
       "post": {
-        "summary": "Creates a single summary_of_ sales_by_ quarter.",
+        "summary": "Creates a single summary of sales by quarter.",
         "tags": [
           "Summary of Sales by Quarters"
         ],
         "requestBody": {
-          "description": "New summary_of_ sales_by_ quarter",
+          "description": "New summary of sales by quarter",
           "required": true,
           "content": {
             "application/json": {
@@ -8775,7 +8775,7 @@
         },
         "responses": {
           "201": {
-            "description": "Created summary_of_ sales_by_ quarter",
+            "description": "Created summary of sales by quarter",
             "content": {
               "application/json": {
                 "schema": {
@@ -8804,7 +8804,7 @@
         }
       ],
       "get": {
-        "summary": "Retrieves a single summary_of_ sales_by_ quarter.",
+        "summary": "Retrieves a single summary of sales by quarter.",
         "tags": [
           "Summary of Sales by Quarters"
         ],
@@ -8830,7 +8830,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved summary_of_ sales_by_ quarter",
+            "description": "Retrieved summary of sales by quarter",
             "content": {
               "application/json": {
                 "schema": {
@@ -8845,7 +8845,7 @@
         }
       },
       "patch": {
-        "summary": "Changes a single summary_of_ sales_by_ quarter.",
+        "summary": "Changes a single summary of sales by quarter.",
         "tags": [
           "Summary of Sales by Quarters"
         ],
@@ -8870,7 +8870,7 @@
         }
       },
       "delete": {
-        "summary": "Deletes a single summary_of_ sales_by_ quarter.",
+        "summary": "Deletes a single summary of sales by quarter.",
         "tags": [
           "Summary of Sales by Quarters"
         ],
@@ -8886,7 +8886,7 @@
     },
     "/Summary_of_Sales_by_Years": {
       "get": {
-        "summary": "Retrieves a list of summary_of_ sales_by_ years.",
+        "summary": "Retrieves a list of summary of sales by years.",
         "tags": [
           "Summary of Sales by Years"
         ],
@@ -8953,7 +8953,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved summary_of_ sales_by_ years",
+            "description": "Retrieved summary of sales by years",
             "content": {
               "application/json": {
                 "schema": {
@@ -8980,12 +8980,12 @@
         }
       },
       "post": {
-        "summary": "Creates a single summary_of_ sales_by_ year.",
+        "summary": "Creates a single summary of sales by year.",
         "tags": [
           "Summary of Sales by Years"
         ],
         "requestBody": {
-          "description": "New summary_of_ sales_by_ year",
+          "description": "New summary of sales by year",
           "required": true,
           "content": {
             "application/json": {
@@ -8997,7 +8997,7 @@
         },
         "responses": {
           "201": {
-            "description": "Created summary_of_ sales_by_ year",
+            "description": "Created summary of sales by year",
             "content": {
               "application/json": {
                 "schema": {
@@ -9026,7 +9026,7 @@
         }
       ],
       "get": {
-        "summary": "Retrieves a single summary_of_ sales_by_ year.",
+        "summary": "Retrieves a single summary of sales by year.",
         "tags": [
           "Summary of Sales by Years"
         ],
@@ -9052,7 +9052,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved summary_of_ sales_by_ year",
+            "description": "Retrieved summary of sales by year",
             "content": {
               "application/json": {
                 "schema": {
@@ -9067,7 +9067,7 @@
         }
       },
       "patch": {
-        "summary": "Changes a single summary_of_ sales_by_ year.",
+        "summary": "Changes a single summary of sales by year.",
         "tags": [
           "Summary of Sales by Years"
         ],
@@ -9092,7 +9092,7 @@
         }
       },
       "delete": {
-        "summary": "Deletes a single summary_of_ sales_by_ year.",
+        "summary": "Deletes a single summary of sales by year.",
         "tags": [
           "Summary of Sales by Years"
         ],

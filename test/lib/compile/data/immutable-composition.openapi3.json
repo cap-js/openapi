@@ -402,7 +402,7 @@
         }
       ],
       "get": {
-        "summary": "Retrieves immutable_child of a parent.",
+        "summary": "Retrieves immutable child of a parent.",
         "tags": [
           "Parents"
         ],
@@ -427,7 +427,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved immutable_child",
+            "description": "Retrieved immutable child",
             "content": {
               "application/json": {
                 "schema": {
