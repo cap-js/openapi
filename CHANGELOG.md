@@ -21,6 +21,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Changed
 - Acronyms in names are now preserved and not split in description fields.
+- Tags now display with spaces instead of underscores, and camelCase tags are automatically converted to space-separated words (e.g., "camelCase" becomes "camel Case").
 
 ## Version 1.2.3 - 28.05.2025
 
