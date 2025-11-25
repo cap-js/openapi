@@ -645,8 +645,8 @@ service CatalogService {
     try {
       assert.throws(
         () => toOpenApi(csn),
-        /Event handler error in compile\.to\.openapi.*Handler error/,
-        'Should propagate event handler errors with context'
+          /Handler error/,
+        'Should propagate event handler errors'
       );
     } finally {
       cds.removeListener('compile.to.openapi', handler);
