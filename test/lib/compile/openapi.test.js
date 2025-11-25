@@ -1,5 +1,5 @@
 const { path } = require('@sap/cds/lib/utils/cds-utils');
-const toOpenApi = require('../../../lib/compile');
+const { compileToOpenAPI, events } = require('../../../lib/compile');
 const cds = require('@sap/cds')
 const assert = require('assert');
 const test = require('node:test');
@@ -14,7 +14,7 @@ const SCENARIO = Object.freeze({
 })
 
 function checkAnnotations(csn, annotations, scenario = SCENARIO.positive, property = '') {
-  const openApi = toOpenApi(csn);
+  const openApi = compileToOpenAPI(csn);
   const schemas = Object.entries(openApi.components.schemas).filter(([key]) => key.startsWith('sap.odm.test.A.E1'))
   // Test if the openAPI document was generated with some schemas.
   assert(openApi.components.schemas)
@@ -90,7 +90,7 @@ test.describe('OpenAPI export', () => {
     const csn = cds.compile.to.csn(`
       service A {entity E { key ID : UUID; };};`
     );
-    const openapi = toOpenApi(csn);
+    const openapi = compileToOpenAPI(csn);
     assertMatchObject(openapi, someOpenApi);
     // UUID elements are not required
     assert.strictEqual(openapi.components.schemas['A.E-create'].required, undefined);
@@ -101,7 +101,7 @@ test.describe('OpenAPI export', () => {
       namespace com.sap;
       service A {entity E { key ID : UUID; };};`
     );
-    const openapi = toOpenApi(csn);
+    const openapi = compileToOpenAPI(csn);
     assertMatchObject(openapi, someOpenApi);
   });
 
@@ -111,7 +111,7 @@ test.describe('OpenAPI export', () => {
       @protocol: ['odata', 'rest']
       service A {entity E { key ID : UUID; };};`
     );
-    const openapi = toOpenApi(csn);
+    const openapi = compileToOpenAPI(csn);
     const filesFound = new Set();
     for (const [content, metadata] of openapi) {
       assertMatchObject(content, someOpenApi);
@@ -148,7 +148,7 @@ service CatalogService {
 }
     `);
 
-    const openAPI = toOpenApi(csn);
+    const openAPI = compileToOpenAPI(csn);
     assert(openAPI);
     assert.strictEqual(openAPI.tags.length, 1);
   });
@@ -158,15 +158,15 @@ service CatalogService {
       service A {entity E { key ID : UUID; };};
       service B {entity F { key ID : UUID; };};`
     )
-    assert.throws(() => toOpenApi(csn, { service: 'foo' }), /no service/si)
+    assert.throws(() => compileToOpenAPI(csn, { service: 'foo' }), /no service/si)
 
-    let openapi = toOpenApi(csn, { service: 'A' });
+    let openapi = compileToOpenAPI(csn, { service: 'A' });
     assertMatchObject(openapi, someOpenApi);
 
-    openapi = toOpenApi(csn, { service: 'B' });
+    openapi = compileToOpenAPI(csn, { service: 'B' });
     assertMatchObject(openapi, someOpenApi);
 
-    openapi = toOpenApi(csn, { service: 'all' });
+    openapi = compileToOpenAPI(csn, { service: 'all' });
     const filesFound = new Set();
     for (const [content, metadata] of openapi) {
       assertMatchObject(content, someOpenApi);
@@ -181,15 +181,15 @@ service CatalogService {
       service A {entity E { key ID : UUID; };};
       service B {entity F { key ID : UUID; };};`
     )
-    assert.throws(() => toOpenApi(csn, { service: 'foo' }), /no service/si)
+    assert.throws(() => compileToOpenAPI(csn, { service: 'foo' }), /no service/si)
 
-    let openapi = toOpenApi(csn, { service: 'com.sap.A' });
+    let openapi = compileToOpenAPI(csn, { service: 'com.sap.A' });
     assertMatchObject(openapi, someOpenApi);
 
-    openapi = toOpenApi(csn, { service: 'com.sap.B' });
+    openapi = compileToOpenAPI(csn, { service: 'com.sap.B' });
     assertMatchObject(openapi, someOpenApi);
 
-    openapi = toOpenApi(csn, { service: 'all' });
+    openapi = compileToOpenAPI(csn, { service: 'all' });
     const filesFound = new Set();
     for (const [content, metadata] of openapi) {
       assertMatchObject(content, someOpenApi);
@@ -206,7 +206,7 @@ service CatalogService {
       @protocol: ['odata', 'rest']
       service B {entity F { key ID : UUID; };};`
     );
-    const openapi = toOpenApi(csn, { service: 'all' });
+    const openapi = compileToOpenAPI(csn, { service: 'all' });
     const filesFound = new Set();
     for (const [content, metadata] of openapi) {
       assertMatchObject(content, someOpenApi);
@@ -220,15 +220,15 @@ service CatalogService {
       @path:'/a' service A {entity E { key ID : UUID; };};
       service B {entity F { key ID : UUID; };};`
     );
-    let openapi = toOpenApi(csn, { service: 'A' });
+    let openapi = compileToOpenAPI(csn, { service: 'A' });
     assert.deepStrictEqual(openapi.servers, [{ url: '/a' }]);
     assert.strictEqual(openapi.info.description, "Use @Core.LongDescription: '...' or @Core.Description: '...' on your CDS service to provide a meaningful description.")
 
-    openapi = toOpenApi(csn, { service: 'A', 'openapi:url': 'http://foo.bar:8080' });
+    openapi = compileToOpenAPI(csn, { service: 'A', 'openapi:url': 'http://foo.bar:8080' });
     assert.deepStrictEqual(openapi.servers, [{ url: 'http://foo.bar:8080' }]);
 
 
-    openapi = toOpenApi(csn, { service: 'A', 'openapi:url': 'http://foo.bar:8080//${service-path}/foo' });
+    openapi = compileToOpenAPI(csn, { service: 'A', 'openapi:url': 'http://foo.bar:8080//${service-path}/foo' });
     assert.deepStrictEqual(openapi.servers, [{ url: 'http://foo.bar:8080/a/foo' }]);
 
   });
@@ -237,10 +237,10 @@ service CatalogService {
     const csn = cds.compile.to.csn(`
       service A {entity E { key ID : UUID; };};`
     );
-    let openapi = toOpenApi(csn);
+    let openapi = compileToOpenAPI(csn);
     assert(!/yuml.*diagram/i.test(openapi.info.description));
 
-    openapi = toOpenApi(csn, { 'openapi:diagram': true });
+    openapi = compileToOpenAPI(csn, { 'openapi:diagram': true });
     assert(/yuml.*diagram/i.test(openapi.info.description));
   });
 
@@ -249,7 +249,7 @@ service CatalogService {
       service A {entity E { key ID : UUID; };};`
     );
     const serverObj = "[{\n \"url\": \"https://{customerId}.saas-app.com:{port}/v2\",\n \"variables\": {\n \"customerId\": \"demo\",\n \"description\": \"Customer ID assigned by the service provider\"\n }\n}]"
-    const openapi = toOpenApi(csn, { 'openapi:servers': serverObj })
+    const openapi = compileToOpenAPI(csn, { 'openapi:servers': serverObj })
     assert(openapi.servers);
   });
 
@@ -257,7 +257,7 @@ service CatalogService {
     const csn = cds.compile.to.csn(`
       service A {entity E { key ID : UUID; };};`
     );
-    const openapi = toOpenApi(csn, { 'odata-version': '4.0' });
+    const openapi = compileToOpenAPI(csn, { 'odata-version': '4.0' });
     assert(openapi.servers[0].url.includes('odata'));
   });
 
@@ -266,7 +266,7 @@ service CatalogService {
       service A {entity E { key ID : UUID; };};`
     );
     const serverObj = "[{\n \"url\": \"https://{customer1Id}.saas-app.com:{port}/v2\",\n \"variables\": {\n \"customer1Id\": \"demo\",\n \"description\": \"Customer1 ID assigned by the service provider\"\n }\n}, {\n \"url\": \"https://{customer2Id}.saas-app.com:{port}/v2\",\n \"variables\": {\n \"customer2Id\": \"demo\",\n \"description\": \"Customer2 ID assigned by the service provider\"\n }\n}]"
-    const openapi = toOpenApi(csn, { 'openapi:servers': serverObj });
+    const openapi = compileToOpenAPI(csn, { 'openapi:servers': serverObj });
     assert(openapi.servers);
     assert(openapi.servers[0].url.includes('https://{customer1Id}.saas-app.com:{port}/v2'))
   });
@@ -278,7 +278,7 @@ service CatalogService {
     );
     const serverObj = "[{\n \"url\": \"https://{customerId}.saas-app.com:{port}/v2\",\n \"variables\":\": \"Customer ID assigned by the service provider\"\n }\n}]"
     try {
-      toOpenApi(csn, { 'openapi:servers': serverObj });
+      compileToOpenAPI(csn, { 'openapi:servers': serverObj });
       assert.fail('Should have thrown');
     }
     catch (e) {
@@ -290,7 +290,7 @@ service CatalogService {
     const csn = cds.compile.to.csn(`
       service A {entity E { key ID : UUID; };};`
     );
-    const openapi = toOpenApi(csn, { 'openapi:config-file': path.resolve(__dirname, "data/configFile.json") });
+    const openapi = compileToOpenAPI(csn, { 'openapi:config-file': path.resolve(__dirname, "data/configFile.json") });
     assert(openapi.servers);
     assert.deepStrictEqual(openapi.servers, [{ url: 'http://foo.bar:8080' }, { url: "http://foo.bar:8080/a/foo" }]);
     assert(/yuml.*diagram/i.test(openapi.info.description));
@@ -307,7 +307,7 @@ service CatalogService {
       'odata-version': '4.0',
       'openapi:diagram': "false"
     }
-    const openapi = toOpenApi(csn, options);
+    const openapi = compileToOpenAPI(csn, options);
     assert(openapi.info.title.includes('http://example.com:8080'))
     assert(!/yuml.*diagram/i.test(openapi.info.description));
     assert(openapi['x-odata-version'].includes('4.0'));
@@ -324,7 +324,7 @@ service CatalogService {
       }
     `)
 
-    const openAPI = toOpenApi(csn)
+    const openAPI = compileToOpenAPI(csn)
     assert(openAPI)
     assertMatchObject(openAPI.components.schemas["sap.odm.test.A.E1"], { "x-sap-root-entity": true })
     assert.strictEqual(openAPI.components.schemas["sap.odm.test.A.E1-create"]["x-sap-root-entity"], undefined)
@@ -453,7 +453,7 @@ service CatalogService {
           }
         }
       `)
-      const openAPI = toOpenApi(csn);
+      const openAPI = compileToOpenAPI(csn);
       assert(openAPI);
       const materialSchema = openAPI.components.schemas["A.Material"];
       assert(materialSchema);
@@ -514,7 +514,7 @@ service CatalogService {
           oid: String(128);
         }
           }`);
-    const openAPI = toOpenApi(csn);
+    const openAPI = compileToOpenAPI(csn);
     assert(openAPI.externalDocs);
     assert.strictEqual(openAPI.externalDocs.description, 'API Guide');
     assert.strictEqual(openAPI.externalDocs.url, 'https://help.sap.com/docs/product/123.html');
@@ -559,7 +559,7 @@ service CatalogService {
         action A1(param: String) returns String;
 
           }`);
-    const openAPI = toOpenApi(csn);
+    const openAPI = compileToOpenAPI(csn);
     assert(openAPI);
     assert.strictEqual(openAPI['x-sap-compliance-level'], 'sap:base:v1');
     assert.strictEqual(openAPI['x-sap-ext-overview'].name, 'Communication Scenario');
@@ -573,7 +573,7 @@ service CatalogService {
     assert.strictEqual(openAPI.paths["/F1"].get["x-sap-deprecated-operation"].notValidKey, undefined);
   });
 
-  test('emits cds.compile.to.openapi event', async () => {
+  test('emits *:cds.compile.to.openapi events', async () => {
     const csn = cds.compile.to.csn(`
       service CatalogService {
         entity Books {
@@ -582,23 +582,35 @@ service CatalogService {
         }
       }`);
 
-    let eventData;
-    const handler = (data) => {
-      eventData = data;
+    let beforeData;
+    const beforeHandler = (data) => {
+      beforeData = data;
+    }
+
+    let afterData;
+    const afterHandler = (data) => {
+      afterData = data;
     };
 
-    cds.on('compile.to.openapi', handler);
+    cds.on(events.before, beforeHandler);
+    cds.on(events.after, afterHandler);
 
     try {
-      const result = toOpenApi(csn);
+      const result = compileToOpenAPI(csn);
 
-      assert(eventData, 'Event was not emitted');
-      assert.strictEqual(eventData.csn, csn, 'Event should include original CSN');
-      assert.strictEqual(eventData.result, result, 'Event should include compilation result');
-      assert(eventData.options, 'Event should include options');
-      assert.strictEqual(typeof eventData.options, 'object', 'Options should be an object');
+      assert(beforeData, 'before: Event was not emitted');
+      assert.strictEqual(beforeData.csn, csn, 'Event should include original CSN');
+      assert(beforeData.options, 'Event should include options');
+      assert.strictEqual(typeof beforeData.options, 'object', 'Options should be an object');
+
+      assert(afterData, 'after: Event was not emitted');
+      assert.strictEqual(afterData.csn, csn, 'Event should include original CSN');
+      assert.strictEqual(afterData.result, result, 'Event should include compilation result');
+      assert(afterData.options, 'Event should include options');
+      assert.strictEqual(typeof beforeData.options, 'object', 'Options should be an object');
     } finally {
-      cds.removeListener('compile.to.openapi', handler);
+      cds.removeListener(events.before, beforeHandler);
+      cds.removeListener(events.after, afterHandler);
     }
   });
 
@@ -611,19 +623,26 @@ service CatalogService {
         }
       }`);
 
-    const handler = ({ result }) => {
-      result['x-custom-property'] = 'modified-by-handler';
+    const beforeHandler = ({ csn }) => {
+      csn['x-before-custom-property'] = 'modified-by-handler';
+    };
+    const afterHandler = ({ result }) => {
+      result['x-after-custom-property'] = 'modified-by-handler';
     };
 
-    cds.on('compile.to.openapi', handler);
+    cds.on(events.before, beforeHandler);
+    cds.on(events.after, afterHandler);
 
     try {
-      const result = toOpenApi(csn);
+      const result = compileToOpenAPI(csn);
 
-      assert.strictEqual(result['x-custom-property'], 'modified-by-handler',
+      assert.strictEqual(csn['x-before-custom-property'], 'modified-by-handler',
+        'Event handler should be able to modify the result');
+      assert.strictEqual(result['x-after-custom-property'], 'modified-by-handler',
         'Event handler should be able to modify the result');
     } finally {
-      cds.removeListener('compile.to.openapi', handler);
+      cds.removeListener(events.before, beforeHandler);
+      cds.removeListener(events.after, afterHandler);
     }
   });
 
@@ -640,16 +659,28 @@ service CatalogService {
       throw new Error('Handler error');
     };
 
-    cds.on('compile.to.openapi', handler);
+    cds.on(events.before, handler);
 
     try {
       assert.throws(
-        () => toOpenApi(csn),
+        () => compileToOpenAPI(csn),
           /Handler error/,
         'Should propagate event handler errors'
       );
     } finally {
-      cds.removeListener('compile.to.openapi', handler);
+      cds.removeListener(events.before, handler);
+    }
+
+    cds.on(events.after, handler);
+
+    try {
+      assert.throws(
+        () => compileToOpenAPI(csn),
+          /Handler error/,
+        'Should propagate event handler errors'
+      );
+    } finally {
+      cds.removeListener(events.after, handler);
     }
   });
 });
