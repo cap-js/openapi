@@ -572,4 +572,84 @@ service CatalogService {
     assert.strictEqual(openAPI.paths["/F1"].get["x-sap-deprecated-operation"].successorOperationId, 'successorOperation');
     assert.strictEqual(openAPI.paths["/F1"].get["x-sap-deprecated-operation"].notValidKey, undefined);
   });
+
+  test('emits cds.compile.to.openapi event', async () => {
+    const csn = cds.compile.to.csn(`
+      service CatalogService {
+        entity Books {
+          key ID : Integer;
+          title  : String;
+        }
+      }`);
+
+    let eventData;
+    const handler = (data) => {
+      eventData = data;
+    };
+
+    cds.on('compile.to.openapi', handler);
+
+    try {
+      const result = toOpenApi(csn);
+
+      assert(eventData, 'Event was not emitted');
+      assert.strictEqual(eventData.csn, csn, 'Event should include original CSN');
+      assert.strictEqual(eventData.result, result, 'Event should include compilation result');
+      assert(eventData.options, 'Event should include options');
+      assert.strictEqual(typeof eventData.options, 'object', 'Options should be an object');
+    } finally {
+      cds.removeListener('compile.to.openapi', handler);
+    }
+  });
+
+  test('allows modifying result in event handler', async () => {
+    const csn = cds.compile.to.csn(`
+      service CatalogService {
+        entity Books {
+          key ID : Integer;
+          title  : String;
+        }
+      }`);
+
+    const handler = ({ result }) => {
+      result['x-custom-property'] = 'modified-by-handler';
+    };
+
+    cds.on('compile.to.openapi', handler);
+
+    try {
+      const result = toOpenApi(csn);
+
+      assert.strictEqual(result['x-custom-property'], 'modified-by-handler',
+        'Event handler should be able to modify the result');
+    } finally {
+      cds.removeListener('compile.to.openapi', handler);
+    }
+  });
+
+  test('propagates errors from event handlers', async () => {
+    const csn = cds.compile.to.csn(`
+      service CatalogService {
+        entity Books {
+          key ID : Integer;
+          title  : String;
+        }
+      }`);
+
+    const handler = () => {
+      throw new Error('Handler error');
+    };
+
+    cds.on('compile.to.openapi', handler);
+
+    try {
+      assert.throws(
+        () => toOpenApi(csn),
+          /Handler error/,
+        'Should propagate event handler errors'
+      );
+    } finally {
+      cds.removeListener('compile.to.openapi', handler);
+    }
+  });
 });
