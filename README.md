@@ -1,6 +1,6 @@
 [![REUSE status](https://api.reuse.software/badge/github.com/cap-js/openapi)](https://api.reuse.software/info/github.com/cap-js/openapi)
 
-# OpenAPI 
+# OpenAPI
 
 ## About this project
 
@@ -8,10 +8,16 @@ The `@cap-js/openapi` is a package that provides support for OpenAPI document co
 
 ### Table of Contents
 
-- [Requirements and Setup](#requirements-and-setup)
-- [Contributing](#contributing)
-- [Code of Conduct](#code-of-conduct)
-- [Licensing](#licensing)
+- [OpenAPI](#openapi)
+  - [About this project](#about-this-project)
+    - [Table of Contents](#table-of-contents)
+  - [Requirements and Setup](#requirements-and-setup)
+    - [Installation](#installation)
+    - [Usage](#usage)
+      - [Customizing OpenAPI Output](#customizing-openapi-output)
+  - [Contributing](#contributing)
+  - [Code of Conduct](#code-of-conduct)
+  - [Licensing](#licensing)
 
 ## Requirements and Setup
 
@@ -32,6 +38,38 @@ const { compile } = require('@cap-js/openapi')
 const csn = await cds.load(cds.env.folders.srv)
 const openapiDocument = compile(csn)
 ```
+
+#### Customizing OpenAPI Output
+
+You can hook into the compilation process using the `compile.to.openapi` event to modify the generated OpenAPI document:
+
+```js
+cds.on('compile.to.openapi', ({ csn, options, result }) => {
+  // Add custom vendor extensions
+  result['x-api-id'] = 'my-api-id'
+
+  // Enhance the info section
+  result.info.contact = {
+    name: 'API Support',
+    email: 'support@example.com'
+  }
+  result.info.license = {
+    name: 'Apache 2.0',
+    url: 'https://www.apache.org/licenses/LICENSE-2.0.html'
+  }
+
+  // Add additional servers for different environments
+  result.servers.push({
+    url: 'https://api-dev.example.com',
+    description: 'Development server'
+  })
+})
+```
+
+The event handler receives an object with:
+- `csn` - The input CSN model
+- `options` - The compilation options used
+- `result` - The generated OpenAPI document (can be modified by reference)
 
 ## Contributing
 

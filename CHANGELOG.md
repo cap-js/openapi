@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Added
 - Util to regenerate OpenAPI test snapshots
+- Calling `cds compile -2 openapi` now emits `cds.compile.to.openapi` with an object parameter, containing the source model, the compilation options, and the compilation result.
 
 ### Changed
 - Operations: `@Core.Description` maps to `summary`, `@Core.LongDescription` maps to `description`
