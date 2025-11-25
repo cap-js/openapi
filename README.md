@@ -33,6 +33,38 @@ const csn = await cds.load(cds.env.folders.srv)
 const openapiDocument = compile(csn)
 ```
 
+#### Customizing OpenAPI Output
+
+You can hook into the compilation process using the `cds.compile.to.openapi` event to modify the generated OpenAPI document:
+
+```js
+cds.on('cds.compile.to.openapi', ({ csn, options, result }) => {
+  // Add custom vendor extensions
+  result['x-api-id'] = 'my-api-id'
+  
+  // Enhance the info section
+  result.info.contact = {
+    name: 'API Support',
+    email: 'support@example.com'
+  }
+  result.info.license = {
+    name: 'Apache 2.0',
+    url: 'https://www.apache.org/licenses/LICENSE-2.0.html'
+  }
+  
+  // Add additional servers for different environments
+  result.servers.push({
+    url: 'https://api-dev.example.com',
+    description: 'Development server'
+  })
+})
+```
+
+The event handler receives an object with:
+- `csn` - The input CSN model
+- `options` - The compilation options used
+- `result` - The generated OpenAPI document (can be modified by reference)
+
 ## Contributing
 
 This project is open to feature requests/suggestions, bug reports etc. via [GitHub issues](https://github.com/cap-js/openapi/issues). Contribution and feedback are encouraged and always welcome. For more information about how to contribute, the project structure, as well as additional contribution information, see our [Contribution Guidelines](CONTRIBUTING.md).
