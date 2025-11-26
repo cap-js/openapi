@@ -18,7 +18,7 @@
       "name": "People"
     },
     {
-      "name": "PersonDetails"
+      "name": "Person Details"
     },
     {
       "name": "Suppliers"
@@ -331,7 +331,7 @@
         "summary": "Retrieves person detail of a person.",
         "tags": [
           "People",
-          "PersonDetails"
+          "Person Details"
         ],
         "parameters": [
           {
@@ -394,7 +394,7 @@
       "get": {
         "summary": "Retrieves a list of person details.",
         "tags": [
-          "PersonDetails"
+          "Person Details"
         ],
         "parameters": [
           {
@@ -522,7 +522,7 @@
       "post": {
         "summary": "Creates a single person detail.",
         "tags": [
-          "PersonDetails"
+          "Person Details"
         ],
         "requestBody": {
           "description": "New person detail",
@@ -568,7 +568,7 @@
       "get": {
         "summary": "Retrieves a single person detail.",
         "tags": [
-          "PersonDetails"
+          "Person Details"
         ],
         "parameters": [
           {
@@ -629,7 +629,7 @@
       "patch": {
         "summary": "Changes a single person detail.",
         "tags": [
-          "PersonDetails"
+          "Person Details"
         ],
         "requestBody": {
           "description": "New property values",
@@ -654,7 +654,7 @@
       "delete": {
         "summary": "Deletes a single person detail.",
         "tags": [
-          "PersonDetails"
+          "Person Details"
         ],
         "responses": {
           "204": {
@@ -682,7 +682,7 @@
       "get": {
         "summary": "Retrieves person of a person detail.",
         "tags": [
-          "PersonDetails"
+          "Person Details"
         ],
         "parameters": [
           {

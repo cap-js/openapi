@@ -15,22 +15,22 @@
   ],
   "tags": [
     {
-      "name": "Alphabetical_list_of_products"
+      "name": "Alphabetical list of products"
     },
     {
       "name": "Categories"
     },
     {
-      "name": "Category_Sales_for_1997"
+      "name": "Category Sales for 1997"
     },
     {
-      "name": "Current_Product_Lists"
+      "name": "Current Product Lists"
     },
     {
-      "name": "Customer_and_Suppliers_by_Cities"
+      "name": "Customer and Suppliers by Cities"
     },
     {
-      "name": "CustomerDemographics"
+      "name": "Customer Demographics"
     },
     {
       "name": "Customers"
@@ -42,49 +42,49 @@
       "name": "Invoices"
     },
     {
-      "name": "Order_Details"
+      "name": "Order Details"
     },
     {
-      "name": "Order_Details_Extendeds"
+      "name": "Order Details Extendeds"
     },
     {
-      "name": "Order_Subtotals"
+      "name": "Order Subtotals"
     },
     {
       "name": "Orders"
     },
     {
-      "name": "Orders_Qries"
+      "name": "Orders Qries"
     },
     {
-      "name": "Product_Sales_for_1997"
+      "name": "Product Sales for 1997"
     },
     {
       "name": "Products"
     },
     {
-      "name": "Products_Above_Average_Prices"
+      "name": "Products Above Average Prices"
     },
     {
-      "name": "Products_by_Categories"
+      "name": "Products by Categories"
     },
     {
       "name": "Regions"
     },
     {
-      "name": "Sales_by_Categories"
+      "name": "Sales by Categories"
     },
     {
-      "name": "Sales_Totals_by_Amounts"
+      "name": "Sales Totals by Amounts"
     },
     {
       "name": "Shippers"
     },
     {
-      "name": "Summary_of_Sales_by_Quarters"
+      "name": "Summary of Sales by Quarters"
     },
     {
-      "name": "Summary_of_Sales_by_Years"
+      "name": "Summary of Sales by Years"
     },
     {
       "name": "Suppliers"
@@ -135,7 +135,7 @@
       "get": {
         "summary": "Retrieves a list of alphabetical_list_of_products.",
         "tags": [
-          "Alphabetical_list_of_products"
+          "Alphabetical list of products"
         ],
         "parameters": [
           {
@@ -253,7 +253,7 @@
       "post": {
         "summary": "Creates a single alphabetical_list_of_product.",
         "tags": [
-          "Alphabetical_list_of_products"
+          "Alphabetical list of products"
         ],
         "requestBody": {
           "description": "New alphabetical_list_of_product",
@@ -328,7 +328,7 @@
       "get": {
         "summary": "Retrieves a single alphabetical_list_of_product.",
         "tags": [
-          "Alphabetical_list_of_products"
+          "Alphabetical list of products"
         ],
         "parameters": [
           {
@@ -377,7 +377,7 @@
       "patch": {
         "summary": "Changes a single alphabetical_list_of_product.",
         "tags": [
-          "Alphabetical_list_of_products"
+          "Alphabetical list of products"
         ],
         "requestBody": {
           "description": "New property values",
@@ -402,7 +402,7 @@
       "delete": {
         "summary": "Deletes a single alphabetical_list_of_product.",
         "tags": [
-          "Alphabetical_list_of_products"
+          "Alphabetical list of products"
         ],
         "responses": {
           "204": {
@@ -860,7 +860,7 @@
       "get": {
         "summary": "Retrieves a list of category_ sales_for_1997.",
         "tags": [
-          "Category_Sales_for_1997"
+          "Category Sales for 1997"
         ],
         "parameters": [
           {
@@ -951,7 +951,7 @@
       "post": {
         "summary": "Creates a single category_ sales_for_1997.",
         "tags": [
-          "Category_Sales_for_1997"
+          "Category Sales for 1997"
         ],
         "requestBody": {
           "description": "New category_ sales_for_1997",
@@ -997,7 +997,7 @@
       "get": {
         "summary": "Retrieves a single category_ sales_for_1997.",
         "tags": [
-          "Category_Sales_for_1997"
+          "Category Sales for 1997"
         ],
         "parameters": [
           {
@@ -1037,7 +1037,7 @@
       "patch": {
         "summary": "Changes a single category_ sales_for_1997.",
         "tags": [
-          "Category_Sales_for_1997"
+          "Category Sales for 1997"
         ],
         "requestBody": {
           "description": "New property values",
@@ -1062,7 +1062,7 @@
       "delete": {
         "summary": "Deletes a single category_ sales_for_1997.",
         "tags": [
-          "Category_Sales_for_1997"
+          "Category Sales for 1997"
         ],
         "responses": {
           "204": {
@@ -1078,7 +1078,7 @@
       "get": {
         "summary": "Retrieves a list of current_ product_ lists.",
         "tags": [
-          "Current_Product_Lists"
+          "Current Product Lists"
         ],
         "parameters": [
           {
@@ -1169,7 +1169,7 @@
       "post": {
         "summary": "Creates a single current_ product_ list.",
         "tags": [
-          "Current_Product_Lists"
+          "Current Product Lists"
         ],
         "requestBody": {
           "description": "New current_ product_ list",
@@ -1225,7 +1225,7 @@
       "get": {
         "summary": "Retrieves a single current_ product_ list.",
         "tags": [
-          "Current_Product_Lists"
+          "Current Product Lists"
         ],
         "parameters": [
           {
@@ -1265,7 +1265,7 @@
       "patch": {
         "summary": "Changes a single current_ product_ list.",
         "tags": [
-          "Current_Product_Lists"
+          "Current Product Lists"
         ],
         "requestBody": {
           "description": "New property values",
@@ -1290,7 +1290,7 @@
       "delete": {
         "summary": "Deletes a single current_ product_ list.",
         "tags": [
-          "Current_Product_Lists"
+          "Current Product Lists"
         ],
         "responses": {
           "204": {
@@ -1306,7 +1306,7 @@
       "get": {
         "summary": "Retrieves a list of customer demographics.",
         "tags": [
-          "CustomerDemographics"
+          "Customer Demographics"
         ],
         "parameters": [
           {
@@ -1414,7 +1414,7 @@
       "post": {
         "summary": "Creates a single customer demographic.",
         "tags": [
-          "CustomerDemographics"
+          "Customer Demographics"
         ],
         "requestBody": {
           "description": "New customer demographic",
@@ -1460,7 +1460,7 @@
       "get": {
         "summary": "Retrieves a single customer demographic.",
         "tags": [
-          "CustomerDemographics"
+          "Customer Demographics"
         ],
         "parameters": [
           {
@@ -1517,7 +1517,7 @@
       "patch": {
         "summary": "Changes a single customer demographic.",
         "tags": [
-          "CustomerDemographics"
+          "Customer Demographics"
         ],
         "requestBody": {
           "description": "New property values",
@@ -1542,7 +1542,7 @@
       "delete": {
         "summary": "Deletes a single customer demographic.",
         "tags": [
-          "CustomerDemographics"
+          "Customer Demographics"
         ],
         "responses": {
           "204": {
@@ -1570,7 +1570,7 @@
       "get": {
         "summary": "Retrieves a list of customers of a customer demographic.",
         "tags": [
-          "CustomerDemographics",
+          "Customer Demographics",
           "Customers"
         ],
         "parameters": [
@@ -1707,7 +1707,7 @@
       "post": {
         "summary": "Creates a single customer of a customer demographic.",
         "tags": [
-          "CustomerDemographics",
+          "Customer Demographics",
           "Customers"
         ],
         "requestBody": {
@@ -1742,7 +1742,7 @@
       "get": {
         "summary": "Retrieves a list of customer_and_ suppliers_by_ cities.",
         "tags": [
-          "Customer_and_Suppliers_by_Cities"
+          "Customer and Suppliers by Cities"
         ],
         "parameters": [
           {
@@ -1839,7 +1839,7 @@
       "post": {
         "summary": "Creates a single customer_and_ suppliers_by_ city.",
         "tags": [
-          "Customer_and_Suppliers_by_Cities"
+          "Customer and Suppliers by Cities"
         ],
         "requestBody": {
           "description": "New customer_and_ suppliers_by_ city",
@@ -1895,7 +1895,7 @@
       "get": {
         "summary": "Retrieves a single customer_and_ suppliers_by_ city.",
         "tags": [
-          "Customer_and_Suppliers_by_Cities"
+          "Customer and Suppliers by Cities"
         ],
         "parameters": [
           {
@@ -1937,7 +1937,7 @@
       "patch": {
         "summary": "Changes a single customer_and_ suppliers_by_ city.",
         "tags": [
-          "Customer_and_Suppliers_by_Cities"
+          "Customer and Suppliers by Cities"
         ],
         "requestBody": {
           "description": "New property values",
@@ -1962,7 +1962,7 @@
       "delete": {
         "summary": "Deletes a single customer_and_ suppliers_by_ city.",
         "tags": [
-          "Customer_and_Suppliers_by_Cities"
+          "Customer and Suppliers by Cities"
         ],
         "responses": {
           "204": {
@@ -2281,7 +2281,7 @@
         "summary": "Retrieves a list of customer demographics of a customer.",
         "tags": [
           "Customers",
-          "CustomerDemographics"
+          "Customer Demographics"
         ],
         "parameters": [
           {
@@ -2390,7 +2390,7 @@
         "summary": "Creates a single customer demographic of a customer.",
         "tags": [
           "Customers",
-          "CustomerDemographics"
+          "Customer Demographics"
         ],
         "requestBody": {
           "description": "New customer demographic",
@@ -4004,7 +4004,7 @@
       "get": {
         "summary": "Retrieves a list of order_ details.",
         "tags": [
-          "Order_Details"
+          "Order Details"
         ],
         "parameters": [
           {
@@ -4122,7 +4122,7 @@
       "post": {
         "summary": "Creates a single order_ detail.",
         "tags": [
-          "Order_Details"
+          "Order Details"
         ],
         "requestBody": {
           "description": "New order_ detail",
@@ -4178,7 +4178,7 @@
       "get": {
         "summary": "Retrieves a single order_ detail.",
         "tags": [
-          "Order_Details"
+          "Order Details"
         ],
         "parameters": [
           {
@@ -4239,7 +4239,7 @@
       "patch": {
         "summary": "Changes a single order_ detail.",
         "tags": [
-          "Order_Details"
+          "Order Details"
         ],
         "requestBody": {
           "description": "New property values",
@@ -4264,7 +4264,7 @@
       "delete": {
         "summary": "Deletes a single order_ detail.",
         "tags": [
-          "Order_Details"
+          "Order Details"
         ],
         "responses": {
           "204": {
@@ -4302,7 +4302,7 @@
       "get": {
         "summary": "Retrieves order of a order_ detail.",
         "tags": [
-          "Order_Details",
+          "Order Details",
           "Orders"
         ],
         "parameters": [
@@ -4399,7 +4399,7 @@
       "get": {
         "summary": "Retrieves product of a order_ detail.",
         "tags": [
-          "Order_Details",
+          "Order Details",
           "Products"
         ],
         "parameters": [
@@ -4469,7 +4469,7 @@
       "get": {
         "summary": "Retrieves a list of order_ details_ extendeds.",
         "tags": [
-          "Order_Details_Extendeds"
+          "Order Details Extendeds"
         ],
         "parameters": [
           {
@@ -4575,7 +4575,7 @@
       "post": {
         "summary": "Creates a single order_ details_ extended.",
         "tags": [
-          "Order_Details_Extendeds"
+          "Order Details Extendeds"
         ],
         "requestBody": {
           "description": "New order_ details_ extended",
@@ -4690,7 +4690,7 @@
       "get": {
         "summary": "Retrieves a single order_ details_ extended.",
         "tags": [
-          "Order_Details_Extendeds"
+          "Order Details Extendeds"
         ],
         "parameters": [
           {
@@ -4735,7 +4735,7 @@
       "patch": {
         "summary": "Changes a single order_ details_ extended.",
         "tags": [
-          "Order_Details_Extendeds"
+          "Order Details Extendeds"
         ],
         "requestBody": {
           "description": "New property values",
@@ -4760,7 +4760,7 @@
       "delete": {
         "summary": "Deletes a single order_ details_ extended.",
         "tags": [
-          "Order_Details_Extendeds"
+          "Order Details Extendeds"
         ],
         "responses": {
           "204": {
@@ -4776,7 +4776,7 @@
       "get": {
         "summary": "Retrieves a list of order_ subtotals.",
         "tags": [
-          "Order_Subtotals"
+          "Order Subtotals"
         ],
         "parameters": [
           {
@@ -4867,7 +4867,7 @@
       "post": {
         "summary": "Creates a single order_ subtotal.",
         "tags": [
-          "Order_Subtotals"
+          "Order Subtotals"
         ],
         "requestBody": {
           "description": "New order_ subtotal",
@@ -4913,7 +4913,7 @@
       "get": {
         "summary": "Retrieves a single order_ subtotal.",
         "tags": [
-          "Order_Subtotals"
+          "Order Subtotals"
         ],
         "parameters": [
           {
@@ -4953,7 +4953,7 @@
       "patch": {
         "summary": "Changes a single order_ subtotal.",
         "tags": [
-          "Order_Subtotals"
+          "Order Subtotals"
         ],
         "requestBody": {
           "description": "New property values",
@@ -4978,7 +4978,7 @@
       "delete": {
         "summary": "Deletes a single order_ subtotal.",
         "tags": [
-          "Order_Subtotals"
+          "Order Subtotals"
         ],
         "responses": {
           "204": {
@@ -5486,7 +5486,7 @@
         "summary": "Retrieves a list of order_ details of a order.",
         "tags": [
           "Orders",
-          "Order_Details"
+          "Order Details"
         ],
         "parameters": [
           {
@@ -5605,7 +5605,7 @@
         "summary": "Creates a single order_ detail of a order.",
         "tags": [
           "Orders",
-          "Order_Details"
+          "Order Details"
         ],
         "requestBody": {
           "description": "New order_ detail",
@@ -5712,7 +5712,7 @@
       "get": {
         "summary": "Retrieves a list of orders_ qries.",
         "tags": [
-          "Orders_Qries"
+          "Orders Qries"
         ],
         "parameters": [
           {
@@ -5857,7 +5857,7 @@
       "post": {
         "summary": "Creates a single orders_ qry.",
         "tags": [
-          "Orders_Qries"
+          "Orders Qries"
         ],
         "requestBody": {
           "description": "New orders_ qry",
@@ -5913,7 +5913,7 @@
       "get": {
         "summary": "Retrieves a single orders_ qry.",
         "tags": [
-          "Orders_Qries"
+          "Orders Qries"
         ],
         "parameters": [
           {
@@ -5971,7 +5971,7 @@
       "patch": {
         "summary": "Changes a single orders_ qry.",
         "tags": [
-          "Orders_Qries"
+          "Orders Qries"
         ],
         "requestBody": {
           "description": "New property values",
@@ -5996,7 +5996,7 @@
       "delete": {
         "summary": "Deletes a single orders_ qry.",
         "tags": [
-          "Orders_Qries"
+          "Orders Qries"
         ],
         "responses": {
           "204": {
@@ -6012,7 +6012,7 @@
       "get": {
         "summary": "Retrieves a list of product_ sales_for_1997.",
         "tags": [
-          "Product_Sales_for_1997"
+          "Product Sales for 1997"
         ],
         "parameters": [
           {
@@ -6106,7 +6106,7 @@
       "post": {
         "summary": "Creates a single product_ sales_for_1997.",
         "tags": [
-          "Product_Sales_for_1997"
+          "Product Sales for 1997"
         ],
         "requestBody": {
           "description": "New product_ sales_for_1997",
@@ -6162,7 +6162,7 @@
       "get": {
         "summary": "Retrieves a single product_ sales_for_1997.",
         "tags": [
-          "Product_Sales_for_1997"
+          "Product Sales for 1997"
         ],
         "parameters": [
           {
@@ -6203,7 +6203,7 @@
       "patch": {
         "summary": "Changes a single product_ sales_for_1997.",
         "tags": [
-          "Product_Sales_for_1997"
+          "Product Sales for 1997"
         ],
         "requestBody": {
           "description": "New property values",
@@ -6228,7 +6228,7 @@
       "delete": {
         "summary": "Deletes a single product_ sales_for_1997.",
         "tags": [
-          "Product_Sales_for_1997"
+          "Product Sales for 1997"
         ],
         "responses": {
           "204": {
@@ -6619,7 +6619,7 @@
         "summary": "Retrieves a list of order_ details of a product.",
         "tags": [
           "Products",
-          "Order_Details"
+          "Order Details"
         ],
         "parameters": [
           {
@@ -6738,7 +6738,7 @@
         "summary": "Creates a single order_ detail of a product.",
         "tags": [
           "Products",
-          "Order_Details"
+          "Order Details"
         ],
         "requestBody": {
           "description": "New order_ detail",
@@ -6854,7 +6854,7 @@
       "get": {
         "summary": "Retrieves a list of products_ above_ average_ prices.",
         "tags": [
-          "Products_Above_Average_Prices"
+          "Products Above Average Prices"
         ],
         "parameters": [
           {
@@ -6945,7 +6945,7 @@
       "post": {
         "summary": "Creates a single products_ above_ average_ price.",
         "tags": [
-          "Products_Above_Average_Prices"
+          "Products Above Average Prices"
         ],
         "requestBody": {
           "description": "New products_ above_ average_ price",
@@ -6991,7 +6991,7 @@
       "get": {
         "summary": "Retrieves a single products_ above_ average_ price.",
         "tags": [
-          "Products_Above_Average_Prices"
+          "Products Above Average Prices"
         ],
         "parameters": [
           {
@@ -7031,7 +7031,7 @@
       "patch": {
         "summary": "Changes a single products_ above_ average_ price.",
         "tags": [
-          "Products_Above_Average_Prices"
+          "Products Above Average Prices"
         ],
         "requestBody": {
           "description": "New property values",
@@ -7056,7 +7056,7 @@
       "delete": {
         "summary": "Deletes a single products_ above_ average_ price.",
         "tags": [
-          "Products_Above_Average_Prices"
+          "Products Above Average Prices"
         ],
         "responses": {
           "204": {
@@ -7072,7 +7072,7 @@
       "get": {
         "summary": "Retrieves a list of products_by_ categories.",
         "tags": [
-          "Products_by_Categories"
+          "Products by Categories"
         ],
         "parameters": [
           {
@@ -7172,7 +7172,7 @@
       "post": {
         "summary": "Creates a single products_by_ category.",
         "tags": [
-          "Products_by_Categories"
+          "Products by Categories"
         ],
         "requestBody": {
           "description": "New products_by_ category",
@@ -7237,7 +7237,7 @@
       "get": {
         "summary": "Retrieves a single products_by_ category.",
         "tags": [
-          "Products_by_Categories"
+          "Products by Categories"
         ],
         "parameters": [
           {
@@ -7280,7 +7280,7 @@
       "patch": {
         "summary": "Changes a single products_by_ category.",
         "tags": [
-          "Products_by_Categories"
+          "Products by Categories"
         ],
         "requestBody": {
           "description": "New property values",
@@ -7305,7 +7305,7 @@
       "delete": {
         "summary": "Deletes a single products_by_ category.",
         "tags": [
-          "Products_by_Categories"
+          "Products by Categories"
         ],
         "responses": {
           "204": {
@@ -7733,7 +7733,7 @@
       "get": {
         "summary": "Retrieves a list of sales_ totals_by_ amounts.",
         "tags": [
-          "Sales_Totals_by_Amounts"
+          "Sales Totals by Amounts"
         ],
         "parameters": [
           {
@@ -7830,7 +7830,7 @@
       "post": {
         "summary": "Creates a single sales_ totals_by_ amount.",
         "tags": [
-          "Sales_Totals_by_Amounts"
+          "Sales Totals by Amounts"
         ],
         "requestBody": {
           "description": "New sales_ totals_by_ amount",
@@ -7886,7 +7886,7 @@
       "get": {
         "summary": "Retrieves a single sales_ totals_by_ amount.",
         "tags": [
-          "Sales_Totals_by_Amounts"
+          "Sales Totals by Amounts"
         ],
         "parameters": [
           {
@@ -7928,7 +7928,7 @@
       "patch": {
         "summary": "Changes a single sales_ totals_by_ amount.",
         "tags": [
-          "Sales_Totals_by_Amounts"
+          "Sales Totals by Amounts"
         ],
         "requestBody": {
           "description": "New property values",
@@ -7953,7 +7953,7 @@
       "delete": {
         "summary": "Deletes a single sales_ totals_by_ amount.",
         "tags": [
-          "Sales_Totals_by_Amounts"
+          "Sales Totals by Amounts"
         ],
         "responses": {
           "204": {
@@ -7969,7 +7969,7 @@
       "get": {
         "summary": "Retrieves a list of sales_by_ categories.",
         "tags": [
-          "Sales_by_Categories"
+          "Sales by Categories"
         ],
         "parameters": [
           {
@@ -8066,7 +8066,7 @@
       "post": {
         "summary": "Creates a single sales_by_ category.",
         "tags": [
-          "Sales_by_Categories"
+          "Sales by Categories"
         ],
         "requestBody": {
           "description": "New sales_by_ category",
@@ -8132,7 +8132,7 @@
       "get": {
         "summary": "Retrieves a single sales_by_ category.",
         "tags": [
-          "Sales_by_Categories"
+          "Sales by Categories"
         ],
         "parameters": [
           {
@@ -8174,7 +8174,7 @@
       "patch": {
         "summary": "Changes a single sales_by_ category.",
         "tags": [
-          "Sales_by_Categories"
+          "Sales by Categories"
         ],
         "requestBody": {
           "description": "New property values",
@@ -8199,7 +8199,7 @@
       "delete": {
         "summary": "Deletes a single sales_by_ category.",
         "tags": [
-          "Sales_by_Categories"
+          "Sales by Categories"
         ],
         "responses": {
           "204": {
@@ -8666,7 +8666,7 @@
       "get": {
         "summary": "Retrieves a list of summary_of_ sales_by_ quarters.",
         "tags": [
-          "Summary_of_Sales_by_Quarters"
+          "Summary of Sales by Quarters"
         ],
         "parameters": [
           {
@@ -8760,7 +8760,7 @@
       "post": {
         "summary": "Creates a single summary_of_ sales_by_ quarter.",
         "tags": [
-          "Summary_of_Sales_by_Quarters"
+          "Summary of Sales by Quarters"
         ],
         "requestBody": {
           "description": "New summary_of_ sales_by_ quarter",
@@ -8806,7 +8806,7 @@
       "get": {
         "summary": "Retrieves a single summary_of_ sales_by_ quarter.",
         "tags": [
-          "Summary_of_Sales_by_Quarters"
+          "Summary of Sales by Quarters"
         ],
         "parameters": [
           {
@@ -8847,7 +8847,7 @@
       "patch": {
         "summary": "Changes a single summary_of_ sales_by_ quarter.",
         "tags": [
-          "Summary_of_Sales_by_Quarters"
+          "Summary of Sales by Quarters"
         ],
         "requestBody": {
           "description": "New property values",
@@ -8872,7 +8872,7 @@
       "delete": {
         "summary": "Deletes a single summary_of_ sales_by_ quarter.",
         "tags": [
-          "Summary_of_Sales_by_Quarters"
+          "Summary of Sales by Quarters"
         ],
         "responses": {
           "204": {
@@ -8888,7 +8888,7 @@
       "get": {
         "summary": "Retrieves a list of summary_of_ sales_by_ years.",
         "tags": [
-          "Summary_of_Sales_by_Years"
+          "Summary of Sales by Years"
         ],
         "parameters": [
           {
@@ -8982,7 +8982,7 @@
       "post": {
         "summary": "Creates a single summary_of_ sales_by_ year.",
         "tags": [
-          "Summary_of_Sales_by_Years"
+          "Summary of Sales by Years"
         ],
         "requestBody": {
           "description": "New summary_of_ sales_by_ year",
@@ -9028,7 +9028,7 @@
       "get": {
         "summary": "Retrieves a single summary_of_ sales_by_ year.",
         "tags": [
-          "Summary_of_Sales_by_Years"
+          "Summary of Sales by Years"
         ],
         "parameters": [
           {
@@ -9069,7 +9069,7 @@
       "patch": {
         "summary": "Changes a single summary_of_ sales_by_ year.",
         "tags": [
-          "Summary_of_Sales_by_Years"
+          "Summary of Sales by Years"
         ],
         "requestBody": {
           "description": "New property values",
@@ -9094,7 +9094,7 @@
       "delete": {
         "summary": "Deletes a single summary_of_ sales_by_ year.",
         "tags": [
-          "Summary_of_Sales_by_Years"
+          "Summary of Sales by Years"
         ],
         "responses": {
           "204": {
