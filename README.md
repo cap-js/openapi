@@ -41,10 +41,10 @@ const openapiDocument = compile(csn)
 
 #### Customizing OpenAPI Output
 
-You can hook into the compilation process using the `compile.to.openapi` event to modify the generated OpenAPI document:
+You can hook into the compilation process using the `after:compile.to.openapi` event to modify the generated OpenAPI document:
 
 ```js
-cds.on('compile.to.openapi', ({ csn, options, result }) => {
+cds.on('after:compile.to.openapi', ({ csn, options, result }) => {
   // Add custom vendor extensions
   result['x-api-id'] = 'my-api-id'
 
@@ -70,6 +70,18 @@ The event handler receives an object with:
 - `csn` - The input CSN model
 - `options` - The compilation options used
 - `result` - The generated OpenAPI document (can be modified by reference)
+
+In the same vein, you can also subscribe to `before:compile.to.openapi`, to modify the incoming CSN before it is converted:
+
+```js
+cds.on('before:compile.to.openapi', ({ csn, options }) => {
+  // exclude MySecretEntity from output
+  delete csn.definitions.MySecretEntity
+})
+```
+
+The handler for the `before:` event should never be async to avoid race conditions between the handler and the conversion process!
+
 
 ## Contributing
 
