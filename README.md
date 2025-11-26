@@ -41,7 +41,7 @@ const openapiDocument = compile(csn)
 
 #### Customizing OpenAPI Output
 
-You can hook into the compilation process using the `after:compile.to.openapi` event to modify the generated OpenAPI document:
+You can synchronously hook into the compilation process using the `after:compile.to.openapi` event to modify the generated OpenAPI document:
 
 ```js
 cds.on('after:compile.to.openapi', ({ csn, options, result }) => {
@@ -80,7 +80,7 @@ cds.on('before:compile.to.openapi', ({ csn, options }) => {
 })
 ```
 
-The handler for the `before:` event should never be async to avoid race conditions between the handler and the conversion process!
+The handler for events should never be async to avoid race conditions between the handler and the conversion process!
 
 
 ## Contributing
