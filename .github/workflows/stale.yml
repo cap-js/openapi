@@ -26,6 +26,7 @@ jobs:
       with:
         repo-token: ${{ secrets.GITHUB_TOKEN }}
         days-before-issue-stale: 30
+        days-before-issue-close: 30
         stale-issue-message: 'This issue has not been updated in a while. If it is still relevant, please comment on it to keep it open. The issue will be closed soon if it remains inactive.'
         close-issue-message: 'This issue has been closed automatically due to inactivity.'
         stale-pr-message: 'This PR has not been updated in a while. If it is still relevant, please comment on it to keep it open. The PR will be closed soon if it remains inactive.'
