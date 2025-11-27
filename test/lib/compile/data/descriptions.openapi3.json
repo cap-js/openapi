@@ -1182,7 +1182,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved entities_ext",
+            "description": "Retrieved entities ext",
             "content": {
               "application/json": {
                 "schema": {
@@ -1227,7 +1227,7 @@
         },
         "responses": {
           "201": {
-            "description": "Created entities_ext",
+            "description": "Created entities ext",
             "content": {
               "application/json": {
                 "schema": {
@@ -1300,7 +1300,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved entities_ext",
+            "description": "Retrieved entities ext",
             "content": {
               "application/json": {
                 "schema": {
@@ -2680,7 +2680,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved single_ext",
+            "description": "Retrieved single ext",
             "content": {
               "application/json": {
                 "schema": {
