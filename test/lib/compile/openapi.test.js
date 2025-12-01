@@ -1,10 +1,11 @@
 const { path } = require('@sap/cds/lib/utils/cds-utils');
-const { compileToOpenAPI: toOpenApi, events } = require('../../../lib/compile');
+const { compileToOpenAPI: toOpenApi } = require('../../../lib/compile');
 const cds = require('@sap/cds')
 const assert = require('assert');
 const test = require('node:test');
 const { assertMatchObject } = require('../../util')
 
+const events = toOpenApi.events
 const someOpenApi = { openapi: '3.0.2', info: {}, servers: [{}], tags: [{}], paths: {}, components: {} }
 const SCENARIO = Object.freeze({
   positive: 'positive',
