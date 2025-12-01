@@ -1,6 +1,5 @@
-const { compileToOpenAPI, events } = require('./lib/compile');
+const { compileToOpenAPI } = require('./lib/compile');
 
 module.exports = {
-    compile: compileToOpenAPI,
-    events
+    compile: compileToOpenAPI
 }
