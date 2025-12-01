@@ -71,10 +71,10 @@ The event handler receives an object with:
 - `options` - The compilation options used
 - `result` - The generated OpenAPI document (can be modified by reference)
 
-In the same vein, you can also subscribe to `before:compile.to.openapi`, to modify the incoming CSN before it is converted:
+In the same vein, you can also subscribe to `compile.to.openapi`, to modify the incoming CSN before it is converted:
 
 ```js
-cds.on('before:compile.to.openapi', ({ csn, options }) => {
+cds.on('compile.to.openapi', ({ csn, options }) => {
   // exclude MySecretEntity from output
   delete csn.definitions.MySecretEntity
 })

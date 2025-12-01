@@ -598,7 +598,7 @@ service CatalogService {
     try {
       const result = toOpenApi(csn);
 
-      assert(beforeData, 'before: Event was not emitted');
+      assert(beforeData, 'before-event was not emitted');
       assert.strictEqual(beforeData.csn, csn, 'Event should include original CSN');
       assert(beforeData.options, 'Event should include options');
       assert.strictEqual(typeof beforeData.options, 'object', 'Options should be an object');
