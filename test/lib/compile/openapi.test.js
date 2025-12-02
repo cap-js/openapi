@@ -1,10 +1,11 @@
 const { path } = require('@sap/cds/lib/utils/cds-utils');
-const toOpenApi = require('../../../lib/compile');
+const { compileToOpenAPI: toOpenApi } = require('../../../lib/compile');
 const cds = require('@sap/cds')
 const assert = require('assert');
 const test = require('node:test');
 const { assertMatchObject } = require('../../util')
 
+const events = toOpenApi.events
 const someOpenApi = { openapi: '3.0.2', info: {}, servers: [{}], tags: [{}], paths: {}, components: {} }
 const SCENARIO = Object.freeze({
   positive: 'positive',
@@ -573,7 +574,7 @@ service CatalogService {
     assert.strictEqual(openAPI.paths["/F1"].get["x-sap-deprecated-operation"].notValidKey, undefined);
   });
 
-  test('emits cds.compile.to.openapi event', async () => {
+  test('emits *:cds.compile.to.openapi events', async () => {
     const csn = cds.compile.to.csn(`
       service CatalogService {
         entity Books {
@@ -582,23 +583,35 @@ service CatalogService {
         }
       }`);
 
-    let eventData;
-    const handler = (data) => {
-      eventData = data;
+    let beforeData;
+    const beforeHandler = (data) => {
+      beforeData = data;
+    }
+
+    let afterData;
+    const afterHandler = (data) => {
+      afterData = data;
     };
 
-    cds.on('compile.to.openapi', handler);
+    cds.on(events.before, beforeHandler);
+    cds.on(events.after, afterHandler);
 
     try {
       const result = toOpenApi(csn);
 
-      assert(eventData, 'Event was not emitted');
-      assert.strictEqual(eventData.csn, csn, 'Event should include original CSN');
-      assert.strictEqual(eventData.result, result, 'Event should include compilation result');
-      assert(eventData.options, 'Event should include options');
-      assert.strictEqual(typeof eventData.options, 'object', 'Options should be an object');
+      assert(beforeData, 'before-event was not emitted');
+      assert.strictEqual(beforeData.csn, csn, 'Event should include original CSN');
+      assert(beforeData.options, 'Event should include options');
+      assert.strictEqual(typeof beforeData.options, 'object', 'Options should be an object');
+
+      assert(afterData, 'after: Event was not emitted');
+      assert.strictEqual(afterData.csn, csn, 'Event should include original CSN');
+      assert.strictEqual(afterData.result, result, 'Event should include compilation result');
+      assert(afterData.options, 'Event should include options');
+      assert.strictEqual(typeof beforeData.options, 'object', 'Options should be an object');
     } finally {
-      cds.removeListener('compile.to.openapi', handler);
+      cds.removeListener(events.before, beforeHandler);
+      cds.removeListener(events.after, afterHandler);
     }
   });
 
@@ -611,19 +624,26 @@ service CatalogService {
         }
       }`);
 
-    const handler = ({ result }) => {
-      result['x-custom-property'] = 'modified-by-handler';
+    const beforeHandler = ({ csn }) => {
+      csn['x-before-custom-property'] = 'modified-by-handler';
+    };
+    const afterHandler = ({ result }) => {
+      result['x-after-custom-property'] = 'modified-by-handler';
     };
 
-    cds.on('compile.to.openapi', handler);
+    cds.on(events.before, beforeHandler);
+    cds.on(events.after, afterHandler);
 
     try {
       const result = toOpenApi(csn);
 
-      assert.strictEqual(result['x-custom-property'], 'modified-by-handler',
+      assert.strictEqual(csn['x-before-custom-property'], 'modified-by-handler',
+        'Event handler should be able to modify the result');
+      assert.strictEqual(result['x-after-custom-property'], 'modified-by-handler',
         'Event handler should be able to modify the result');
     } finally {
-      cds.removeListener('compile.to.openapi', handler);
+      cds.removeListener(events.before, beforeHandler);
+      cds.removeListener(events.after, afterHandler);
     }
   });
 
@@ -640,7 +660,7 @@ service CatalogService {
       throw new Error('Handler error');
     };
 
-    cds.on('compile.to.openapi', handler);
+    cds.on(events.before, handler);
 
     try {
       assert.throws(
@@ -649,7 +669,19 @@ service CatalogService {
         'Should propagate event handler errors'
       );
     } finally {
-      cds.removeListener('compile.to.openapi', handler);
+      cds.removeListener(events.before, handler);
+    }
+
+    cds.on(events.after, handler);
+
+    try {
+      assert.throws(
+        () => toOpenApi(csn),
+          /Handler error/,
+        'Should propagate event handler errors'
+      );
+    } finally {
+      cds.removeListener(events.after, handler);
     }
   });
 });

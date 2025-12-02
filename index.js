@@ -1,3 +1,5 @@
+const { compileToOpenAPI } = require('./lib/compile');
+
 module.exports = {
-    compile: require('./lib/compile')
+    compile: compileToOpenAPI
 }
