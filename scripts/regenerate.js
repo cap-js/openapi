@@ -38,7 +38,7 @@ fs.readdirSync(dataDir)
             const openapi = lib.csdl2openapi(csdl, options);
             // Only write the file if it's a known test case (i.e., has an existing snapshot).
             if (fs.existsSync(outputFile)) {
-                fs.writeFileSync(outputFile, `${JSON.stringify(openapi, null, 2)  }\n`);
+                fs.writeFileSync(outputFile, `${JSON.stringify(openapi, null, 2)}\n`);
                 console.log(`  -> Successfully generated ${path.basename(outputFile)}`);
             }
         } catch (error) {
