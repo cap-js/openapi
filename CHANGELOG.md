@@ -7,6 +7,15 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ## [Unreleased]
 
 ### Added
+### Changed
+### Deprecated
+### Removed
+### Fixed
+### Security
+
+## [1.3.0] - 2025-12-16
+
+### Added
 - Util to regenerate OpenAPI test snapshots
 - Calling `cds compile -2 openapi` now emits events: `compile.to.openapi` with an object parameter, containing the source model and the compilation options before the compilation takes place. `after:compile.to.openapi` carries the same parameter with an additional `result` property, containing the output of the compilation process.
 
