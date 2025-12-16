@@ -19,6 +19,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ### Fixed
 - Reading json from project root
 - Correctly handle `@Core.Immutable` properties in PATCH requests.
+- Actions without parameters now include `requestBody` with `Content-Type: application/json` in OpenAPI spec to prevent 415 errors
 
 ### Changed
 - Acronyms in names are now preserved and not split in description fields.

@@ -800,6 +800,27 @@ describe("Edge cases", () => {
     );
   });
 
+  test("action without parameters", () => {
+    const csdl = {
+      $EntityContainer: "this.Container",
+      this: {
+        NoParameters: [{ $Kind: "Action", $ReturnType: {} }],
+        Container: { act: { $Action: "this.NoParameters" } },
+      },
+    };
+    const actual = lib.csdl2openapi(csdl, {});
+    assert.ok(actual.paths["/act"], "Path /act should exist");
+    assert.ok(actual.paths["/act"].post, "POST operation should exist");
+    assert.ok(actual.paths["/act"].post.requestBody, "requestBody should exist for action without parameters");
+    assert.strictEqual(actual.paths["/act"].post.requestBody.required, false, "requestBody should not be required");
+    assert.ok(actual.paths["/act"].post.requestBody.content["application/json"], "application/json content-type should be present");
+    assert.deepStrictEqual(
+      actual.paths["/act"].post.requestBody.content["application/json"].schema,
+      { type: "object" },
+      "Schema should be an empty object"
+    );
+  });
+
   test("function with complex and optional collection parameter", () => {
     const csdl = {
       $Reference: {
