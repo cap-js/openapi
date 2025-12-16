@@ -28,7 +28,7 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
 
-      - run: npm i
+      - run: npm ci
       - run: npm run lint
       - run: npm test
         env:
