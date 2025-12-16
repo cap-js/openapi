@@ -23,16 +23,14 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 - Operations: `@Core.Description` maps to `summary`, `@Core.LongDescription` maps to `description`
 - Parameters and schema properties: use `@Core.LongDescription` with fallback to `@Core.Description`
 - Service info: use `@Core.LongDescription` with fallback to `@Core.Description`
-
+- Acronyms in names are now preserved and not split in description fields.
+- Tags now display with spaces instead of underscores, and camelCase tags are automatically converted to space-separated words (e.g., "camelCase" becomes "camel Case").
 
 ### Fixed
 - Reading json from project root
 - Correctly handle `@Core.Immutable` properties in PATCH requests.
 - Actions without parameters now include `requestBody` with `Content-Type: application/json` in OpenAPI spec to prevent 415 errors
 
-### Changed
-- Acronyms in names are now preserved and not split in description fields.
-- Tags now display with spaces instead of underscores, and camelCase tags are automatically converted to space-separated words (e.g., "camelCase" becomes "camel Case").
 
 ## Version 1.2.3 - 28.05.2025
 
