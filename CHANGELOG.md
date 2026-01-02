@@ -32,6 +32,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 - Actions without parameters now include `requestBody` with `Content-Type: application/json` in OpenAPI spec to prevent 415 errors
 
 
+## Version 1.2.4 - tbd
+
+### Fixed
+
+- Upgraded qs dependency to 6.14.1 to fix security issue (missing check for array bounds)
+
 ## Version 1.2.3 - 28.05.2025
 
 ### Added
