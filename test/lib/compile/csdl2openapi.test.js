@@ -2170,6 +2170,16 @@ see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-prot
     );
   });
 
+  test("non-expandable properties excluded from schema", () => {
+    const csdl = require('./data/non-expandable.json');
+    const actual = lib.csdl2openapi(csdl, {});
+    const pagesSchema = actual.components.schemas['CatalogService.Pages'];
+    
+    assert.strictEqual(pagesSchema.properties.hasOwnProperty('parent'), false, 'parent navigation property should be excluded from schema');
+    assert.strictEqual(pagesSchema.properties.hasOwnProperty('parent_ID'), true, 'parent_ID foreign key should be included in schema');
+    assert.strictEqual(pagesSchema.properties.hasOwnProperty('number'), true, 'number property should be included in schema');
+  });
+
   test("Default Namespace", () => {
     const csdl = {
       $Version: "4.01",
@@ -2795,8 +2805,7 @@ describe("CAP / CS01", () => {
               {
                 in: "query",
                 name: "$orderby",
-                description:
-                  "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
+                description: "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
                 explode: false,
                 schema: {
                   type: "array",
