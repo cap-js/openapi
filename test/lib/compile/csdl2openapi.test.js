@@ -2175,9 +2175,9 @@ see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-prot
     const actual = lib.csdl2openapi(csdl, {});
     const pagesSchema = actual.components.schemas['CatalogService.Pages'];
     
-    assert.strictEqual(Object.prototype.hasOwnProperty.call(pagesSchema.properties, 'parent'), false, 'parent navigation property should be excluded from schema');
-    assert.strictEqual(Object.prototype.hasOwnProperty.call(pagesSchema.properties, 'parent_ID'), true, 'parent_ID foreign key should be included in schema');
-    assert.strictEqual(Object.prototype.hasOwnProperty.call(pagesSchema.properties, 'number'), true, 'number property should be included in schema');
+    assert.strictEqual(Object.hasOwn(pagesSchema.properties, 'parent'), false, 'parent navigation property should be excluded from schema');
+    assert.strictEqual(Object.hasOwn(pagesSchema.properties, 'parent_ID'), true, 'parent_ID foreign key should be included in schema');
+    assert.strictEqual(Object.hasOwn(pagesSchema.properties, 'number'), true, 'number property should be included in schema');
   });
 
   test("Default Namespace", () => {
