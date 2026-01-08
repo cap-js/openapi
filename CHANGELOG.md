@@ -15,10 +15,6 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ## [1.3.1] - 2026-01-08
 
-### Added
-### Changed
-### Deprecated
-### Removed
 ### Fixed
 - Properties marked with `@Capabilities.ExpandRestrictions.NonExpandableProperties` are now excluded from OpenAPI schemas
 
