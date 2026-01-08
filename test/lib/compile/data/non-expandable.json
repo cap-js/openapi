@@ -1,0 +1,70 @@
+{
+  "$Version": "4.0",
+  "$Reference": {
+    "https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Capabilities.V1.json": {
+      "$Include": [
+        {
+          "$Namespace": "Org.OData.Capabilities.V1",
+          "$Alias": "Capabilities"
+        }
+      ]
+    }
+  },
+  "$EntityContainer": "CatalogService.EntityContainer",
+  "CatalogService": {
+    "Books": {
+      "$Kind": "EntityType",
+      "$Key": ["ID"],
+      "ID": {
+        "$Type": "Edm.Int32",
+        "$Nullable": false
+      },
+      "pages": {
+        "$Kind": "NavigationProperty",
+        "$Type": "CatalogService.Pages",
+        "$Collection": true,
+        "$ContainsTarget": true
+      }
+    },
+    "Pages": {
+      "$Kind": "EntityType",
+      "$Key": ["parent_ID", "number"],
+      "@Capabilities.ExpandRestrictions": {
+        "NonExpandableProperties": ["parent"]
+      },
+      "number": {
+        "$Type": "Edm.Int32",
+        "$Nullable": false
+      },
+      "content": {
+        "$Type": "Edm.String",
+        "$MaxLength": 1111
+      },
+      "parent_ID": {
+        "$Type": "Edm.Int32",
+        "$Nullable": false
+      },
+      "parent": {
+        "$Kind": "NavigationProperty",
+        "$Type": "CatalogService.Books"
+      }
+    },
+    "EntityContainer": {
+      "$Kind": "EntityContainer",
+      "Books": {
+        "$Collection": true,
+        "$Type": "CatalogService.Books",
+        "$NavigationPropertyBinding": {
+          "pages": "Pages"
+        }
+      },
+      "Pages": {
+        "$Collection": true,
+        "$Type": "CatalogService.Pages",
+        "$NavigationPropertyBinding": {
+          "parent": "Books"
+        }
+      }
+    }
+  }
+}
