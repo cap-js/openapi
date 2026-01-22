@@ -10,9 +10,9 @@
         "$Collection": true,
         "$Type": "AdminService.Books"
       },
-      "Books.texts": {
+      "Books_texts": {
         "$Collection": true,
-        "$Type": "AdminService.Books.texts"
+        "$Type": "AdminService.Books_texts"
       }
     },
     "Books": {
@@ -22,7 +22,7 @@
         "$Type": "Edm.Int32"
       }
     },
-    "Books.texts": {
+    "Books_texts": {
       "$Kind": "EntityType",
       "$Key": ["locale", "ID"],
       "@cds.autoexposed": true,
