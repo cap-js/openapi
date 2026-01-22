@@ -46,6 +46,9 @@ const result10 = require("./data/immutable-composition.openapi3.json");
 const example11 = require("./data/description-fallback.json");
 const result11 = require("./data/description-fallback.openapi3.json");
 
+const example12 = require("./data/autoexposed-texts.json");
+const result12 = require("./data/autoexposed-texts.openapi3.json");
+
 describe("Examples", () => {
   test("csdl-16.1", () => {
     const openapi = lib.csdl2openapi(example1, { diagram: true });
@@ -94,6 +97,11 @@ describe("Examples", () => {
   test("description-fallback", () => {
     const openapi = lib.csdl2openapi(example11, { diagram: true });
     check(openapi, result11);
+  });
+
+  test("autoexposed-texts", () => {
+    const openapi = lib.csdl2openapi(example12);
+    check(openapi, result12);
   });
 });
 
