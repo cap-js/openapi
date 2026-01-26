@@ -11,6 +11,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ### Deprecated
 ### Removed
 ### Fixed
+- Autoexposed `.texts` entities are now excluded from OpenAPI document
+
 ### Security
 
 ## [1.3.1] - 2026-01-08

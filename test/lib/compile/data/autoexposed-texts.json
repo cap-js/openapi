@@ -1,0 +1,37 @@
+{
+  "$Version": "4.01",
+  "$EntityContainer": "AdminService.EntityContainer",
+  "$Reference": {},
+  "AdminService": {
+    "$Kind": "Schema",
+    "EntityContainer": {
+      "$Kind": "EntityContainer",
+      "Books": {
+        "$Collection": true,
+        "$Type": "AdminService.Books"
+      },
+      "Books_texts": {
+        "$Collection": true,
+        "$Type": "AdminService.Books_texts"
+      }
+    },
+    "Books": {
+      "$Kind": "EntityType",
+      "$Key": ["ID"],
+      "ID": {
+        "$Type": "Edm.Int32"
+      }
+    },
+    "Books_texts": {
+      "$Kind": "EntityType",
+      "$Key": ["locale", "ID"],
+      "@cds.autoexposed": true,
+      "locale": {
+        "$MaxLength": 14
+      },
+      "ID": {
+        "$Type": "Edm.Int32"
+      }
+    }
+  }
+}
