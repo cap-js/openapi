@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Added
 ### Changed
+- Removed special characters from placeholders for fields like short text, description, etc.
 ### Deprecated
 ### Removed
 ### Fixed
