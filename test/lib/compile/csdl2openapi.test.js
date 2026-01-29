@@ -454,7 +454,9 @@ describe("Edge cases", () => {
 
     const expected_sources_get_param = {
       description:
-        "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
+        "Order items by property values, see [Sorting]" +
+        "(http://docs.oasis-open.org/odata/odata/v4.01/" +
+        "odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
       explode: false,
       in: "query",
       name: "$orderby",
@@ -518,7 +520,8 @@ describe("Edge cases", () => {
           $Kind: "TypeDefinition",
           $UnderlyingType: "Edm.Stream",
           "@JSON.Schema":
-            '{"type":"object","additionalProperties":false,"patternProperties":{"^[\\\\w\\\\.\\\\-\\\\/]+$":{"type":"string"}}}',
+            '{"type":"object","additionalProperties":false,' +
+            '"patternProperties":{"^[\\\\w\\\\.\\\\-\\\\/]+$":{"type":"string"}}}',
         },
         typeDefinitionNew: {
           $Kind: "TypeDefinition",
@@ -592,7 +595,8 @@ describe("Edge cases", () => {
           $Kind: "TypeDefinition",
           $UnderlyingType: "Edm.Stream",
           "@Org.OData.JSON.V1.Schema":
-            '{"type":"object","additionalProperties":false,"patternProperties":{"^[\\\\w\\\\.\\\\-\\\\/]+$":{"type":"string"}}}',
+            '{"type":"object","additionalProperties":false,' +
+            '"patternProperties":{"^[\\\\w\\\\.\\\\-\\\\/]+$":{"type":"string"}}}',
         },
         typeDefinitionNew: {
           $Kind: "TypeDefinition",
@@ -819,9 +823,12 @@ describe("Edge cases", () => {
     const actual = lib.csdl2openapi(csdl, {});
     assert.ok(actual.paths["/act"], "Path /act should exist");
     assert.ok(actual.paths["/act"].post, "POST operation should exist");
-    assert.ok(actual.paths["/act"].post.requestBody, "requestBody should exist for action without parameters");
-    assert.strictEqual(actual.paths["/act"].post.requestBody.required, false, "requestBody should not be required");
-    assert.ok(actual.paths["/act"].post.requestBody.content["application/json"], "application/json content-type should be present");
+    assert.ok(actual.paths["/act"].post.requestBody,
+      "requestBody should exist for action without parameters");
+    assert.strictEqual(actual.paths["/act"].post.requestBody.required, false,
+      "requestBody should not be required");
+    assert.ok(actual.paths["/act"].post.requestBody.content["application/json"],
+      "application/json content-type should be present");
     assert.deepStrictEqual(
       actual.paths["/act"].post.requestBody.content["application/json"].schema,
       { type: "object" },
@@ -888,6 +895,7 @@ describe("Edge cases", () => {
                 schema: { type: "string" },
                 example: "{}",
                 description:
+                  // eslint-disable-next-line max-len
                   "This is URL-encoded JSON of type this.Complex, see [Complex and Collection Literals](https://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part2-url-conventions.html#sec_ComplexandCollectionLiterals)",
               },
             ],
@@ -908,6 +916,7 @@ describe("Edge cases", () => {
             schema: { type: "string" },
             example: "{}",
             description:
+              // eslint-disable-next-line max-len
               "param description  \nThis is URL-encoded JSON of type this.Complex, see [Complex and Collection Literals](https://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part2-url-conventions.html#sec_ComplexandCollectionLiterals)",
           },
           {
@@ -917,6 +926,7 @@ describe("Edge cases", () => {
             schema: { type: "string" },
             example: "[]",
             description:
+              // eslint-disable-next-line max-len
               "This is a URL-encoded JSON array with items of type Edm.String, see [Complex and Collection Literals](https://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part2-url-conventions.html#sec_ComplexandCollectionLiterals)",
           },
         ],
@@ -990,6 +1000,7 @@ describe("Edge cases", () => {
                 in: "query",
                 required: true,
                 description:
+                  // eslint-disable-next-line max-len
                   "Dates to be skipped  \nThis is a URL-encoded JSON array with items of type Edm.Date, see [Complex and Collection Literals](https://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part2-url-conventions.html#sec_ComplexandCollectionLiterals)",
                 schema: { type: "string" },
                 example: "[]",
@@ -1217,6 +1228,7 @@ describe("Edge cases", () => {
                 name: "$filter",
                 schema: { type: "string" },
                 description:
+                  // eslint-disable-next-line max-len
                   "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
               },
               { $ref: "#/components/parameters/count" },
@@ -1399,6 +1411,7 @@ describe("Edge cases", () => {
                 name: "$filter",
                 schema: { type: "string" },
                 description:
+                  // eslint-disable-next-line max-len
                   "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
               },
               { $ref: "#/components/parameters/count" },
@@ -1406,7 +1419,9 @@ describe("Edge cases", () => {
                 in: "query",
                 name: "$orderby",
                 description:
-                  "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
+                  "Order items by property values, see [Sorting]" +
+                  "(http://docs.oasis-open.org/odata/odata/v4.01/" +
+                  "odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
                 explode: false,
                 schema: {
                   type: "array",
@@ -1428,7 +1443,9 @@ describe("Edge cases", () => {
                 in: "query",
                 name: "$select",
                 description:
-                  "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+                  "Select properties to be returned, see [Select]" +
+                  "(http://docs.oasis-open.org/odata/odata/v4.01/" +
+                  "odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
                 explode: false,
                 schema: {
                   type: "array",
@@ -1592,6 +1609,7 @@ see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-prot
                 name: "$filter",
                 schema: { type: "string" },
                 description:
+                  // eslint-disable-next-line max-len
                   "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
               },
               { $ref: "#/components/parameters/count" },
@@ -1599,7 +1617,9 @@ see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-prot
                 in: "query",
                 name: "$orderby",
                 description:
-                  "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
+                  "Order items by property values, see [Sorting]" +
+                  "(http://docs.oasis-open.org/odata/odata/v4.01/" +
+                  "odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
                 explode: false,
                 schema: {
                   type: "array",
@@ -1619,7 +1639,9 @@ see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-prot
                 in: "query",
                 name: "$select",
                 description:
-                  "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+                  "Select properties to be returned, see [Select]" +
+                  "(http://docs.oasis-open.org/odata/odata/v4.01/" +
+                  "odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
                 explode: false,
                 schema: {
                   type: "array",
@@ -1775,6 +1797,7 @@ see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-prot
                 name: "$filter",
                 schema: { type: "string" },
                 description:
+                  // eslint-disable-next-line max-len
                   "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
               },
               { $ref: "#/components/parameters/count" },
@@ -1782,7 +1805,9 @@ see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-prot
                 in: "query",
                 name: "$orderby",
                 description:
-                  "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
+                  "Order items by property values, see [Sorting]" +
+                  "(http://docs.oasis-open.org/odata/odata/v4.01/" +
+                  "odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
                 explode: false,
                 schema: {
                   type: "array",
@@ -1804,7 +1829,9 @@ see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-prot
                 in: "query",
                 name: "$select",
                 description:
-                  "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+                  "Select properties to be returned, see [Select]" +
+                  "(http://docs.oasis-open.org/odata/odata/v4.01/" +
+                  "odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
                 explode: false,
                 schema: {
                   type: "array",
@@ -1991,6 +2018,7 @@ see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-prot
                 in: "query",
                 name: "$select",
                 description:
+                  // eslint-disable-next-line max-len
                   "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
                 explode: false,
                 schema: {
@@ -2182,10 +2210,13 @@ see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-prot
     const csdl = require('./data/non-expandable.json');
     const actual = lib.csdl2openapi(csdl, {});
     const pagesSchema = actual.components.schemas['CatalogService.Pages'];
-    
-    assert.strictEqual(Object.hasOwn(pagesSchema.properties, 'parent'), false, 'parent navigation property should be excluded from schema');
-    assert.strictEqual(Object.hasOwn(pagesSchema.properties, 'parent_ID'), true, 'parent_ID foreign key should be included in schema');
-    assert.strictEqual(Object.hasOwn(pagesSchema.properties, 'number'), true, 'number property should be included in schema');
+
+    assert.strictEqual(Object.hasOwn(pagesSchema.properties, 'parent'), false,
+      'parent navigation property should be excluded from schema');
+    assert.strictEqual(Object.hasOwn(pagesSchema.properties, 'parent_ID'), true,
+      'parent_ID foreign key should be included in schema');
+    assert.strictEqual(Object.hasOwn(pagesSchema.properties, 'number'), true,
+      'number property should be included in schema');
   });
 
   test("Default Namespace", () => {
@@ -2337,12 +2368,15 @@ see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-prot
     assert.deepStrictEqual(
       actual.info.description.split("\n"),
       [
-        "Use @Core.LongDescription: '...' or @Core.Description: '...' on your CDS service to provide a meaningful description.",
+        "Use @Core.LongDescription: '...' or @Core.Description: '...' " +
+        "on your CDS service to provide a meaningful description.",
         "",
         "## Entity Data Model",
+        // eslint-disable-next-line max-len
         "![ER Diagram](https://yuml.me/diagram/class/[root{bg:lightslategray}],[root]->[other],[other{bg:lightslategray}],[act{bg:lawngreen}]->[root],[act{bg:lawngreen}]in->[root],[others%20{bg:lawngreen}]++-*>[other],[roots%20{bg:lawngreen}]++-*>[root])",
         "",
         "### Legend",
+        // eslint-disable-next-line max-len
         "![Legend](https://yuml.me/diagram/plain;dir:TB;scale:60/class/[External.Type{bg:whitesmoke}],[ComplexType],[EntityType{bg:lightslategray}],[EntitySet/Singleton/Operation{bg:lawngreen}])",
       ],
       "diagram"
@@ -2550,7 +2584,8 @@ see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-prot
             },
             {
               "@odata.type":
-                "https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Authorization.V1.xml#Auth.ApiKey",
+                "https://oasis-tcs.github.io/odata-vocabularies/vocabularies/" +
+                "Org.OData.Authorization.V1.xml#Auth.ApiKey",
               Name: "api_key",
               Description: "Authentication via API key",
               KeyName: "x-api-key",
@@ -2807,13 +2842,17 @@ describe("CAP / CS01", () => {
                 name: "$filter",
                 schema: { type: "string" },
                 description:
+                  // eslint-disable-next-line max-len
                   "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)\n\nRequired filter properties:\n- two",
               },
               { $ref: "#/components/parameters/count" },
               {
                 in: "query",
                 name: "$orderby",
-                description: "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
+                description:
+                  "Order items by property values, see [Sorting]" +
+                  "(http://docs.oasis-open.org/odata/odata/v4.01/" +
+                  "odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
                 explode: false,
                 schema: {
                   type: "array",
@@ -2828,6 +2867,7 @@ describe("CAP / CS01", () => {
                 in: "query",
                 name: "$select",
                 description:
+                  // eslint-disable-next-line max-len
                   "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
                 explode: false,
                 schema: {

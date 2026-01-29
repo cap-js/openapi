@@ -70,7 +70,13 @@ function checkAnnotations(csn, annotations, scenario = SCENARIO.positive, proper
   }
 
   // all other components of the OpenAPI document except the schemas.
-  const openApiNoSchemas = JSON.stringify({ ...openApi, components: { parameters: { ...openApi.components.parameters }, responses: { ...openApi.components.responses } } })
+  const openApiNoSchemas = JSON.stringify({
+    ...openApi,
+    components: {
+      parameters: { ...openApi.components.parameters },
+      responses: { ...openApi.components.responses }
+    }
+  })
   for (const [annKey] of annotations) {
     assert(!openApiNoSchemas.includes(annKey))
   }
@@ -213,7 +219,10 @@ service CatalogService {
       assertMatchObject(content, someOpenApi);
       filesFound.add(metadata.file);
     }
-    assert.deepStrictEqual(filesFound, new Set(['com.sap.A.odata', 'com.sap.A.rest', 'com.sap.B.odata', 'com.sap.B.rest']));
+    assert.deepStrictEqual(
+      filesFound,
+      new Set(['com.sap.A.odata', 'com.sap.A.rest', 'com.sap.B.odata', 'com.sap.B.rest'])
+    );
   });
 
   test('options: url', () => {
@@ -223,7 +232,11 @@ service CatalogService {
     );
     let openapi = toOpenApi(csn, { service: 'A' });
     assert.deepStrictEqual(openapi.servers, [{ url: '/a' }]);
-    assert.strictEqual(openapi.info.description, "Use @Core.LongDescription: '...' or @Core.Description: '...' on your CDS service to provide a meaningful description.")
+    assert.strictEqual(
+      openapi.info.description,
+      "Use @Core.LongDescription: '...' or @Core.Description: '...' " +
+      "on your CDS service to provide a meaningful description."
+    )
 
     openapi = toOpenApi(csn, { service: 'A', 'openapi:url': 'http://foo.bar:8080' });
     assert.deepStrictEqual(openapi.servers, [{ url: 'http://foo.bar:8080' }]);
@@ -249,7 +262,9 @@ service CatalogService {
     const csn = cds.compile.to.csn(`
       service A {entity E { key ID : UUID; };};`
     );
-    const serverObj = "[{\n \"url\": \"https://{customerId}.saas-app.com:{port}/v2\",\n \"variables\": {\n \"customerId\": \"demo\",\n \"description\": \"Customer ID assigned by the service provider\"\n }\n}]"
+    const serverObj = "[{\n \"url\": \"https://{customerId}.saas-app.com:{port}/v2\",\n " +
+      "\"variables\": {\n \"customerId\": \"demo\",\n " +
+      "\"description\": \"Customer ID assigned by the service provider\"\n }\n}]"
     const openapi = toOpenApi(csn, { 'openapi:servers': serverObj })
     assert(openapi.servers);
   });
@@ -266,6 +281,7 @@ service CatalogService {
     const csn = cds.compile.to.csn(`
       service A {entity E { key ID : UUID; };};`
     );
+    // eslint-disable-next-line max-len
     const serverObj = "[{\n \"url\": \"https://{customer1Id}.saas-app.com:{port}/v2\",\n \"variables\": {\n \"customer1Id\": \"demo\",\n \"description\": \"Customer1 ID assigned by the service provider\"\n }\n}, {\n \"url\": \"https://{customer2Id}.saas-app.com:{port}/v2\",\n \"variables\": {\n \"customer2Id\": \"demo\",\n \"description\": \"Customer2 ID assigned by the service provider\"\n }\n}]"
     const openapi = toOpenApi(csn, { 'openapi:servers': serverObj });
     assert(openapi.servers);
@@ -277,7 +293,8 @@ service CatalogService {
     const csn = cds.compile.to.csn(`
       service A {entity E { key ID : UUID; };};`
     );
-    const serverObj = "[{\n \"url\": \"https://{customerId}.saas-app.com:{port}/v2\",\n \"variables\":\": \"Customer ID assigned by the service provider\"\n }\n}]"
+    const serverObj = "[{\n \"url\": \"https://{customerId}.saas-app.com:{port}/v2\",\n " +
+      "\"variables\":\":\" \"Customer ID assigned by the service provider\"\n }\n}]"
     try {
       toOpenApi(csn, { 'openapi:servers': serverObj });
       assert.fail('Should have thrown');
@@ -458,8 +475,10 @@ service CatalogService {
       assert(openAPI);
       const materialSchema = openAPI.components.schemas["A.Material"];
       assert(materialSchema);
-      assert.strictEqual(materialSchema["x-entity-relationship-entity-type"], 'sap.vdm.sont:Material');
-      assert.deepStrictEqual(materialSchema["x-entity-relationship-entity-ids"], [{ "propertyTypes": ["sap.vdm.gfn:MaterialId"] }]);
+      assert.strictEqual(materialSchema["x-entity-relationship-entity-type"],
+        'sap.vdm.sont:Material');
+      assert.deepStrictEqual(materialSchema["x-entity-relationship-entity-ids"],
+        [{ "propertyTypes": ["sap.vdm.gfn:MaterialId"] }]);
       assert.strictEqual(materialSchema["x-sap-odm-entity-name"], 'Product');
       assert.strictEqual(materialSchema["x-sap-odm-oid"], 'oid');
 
@@ -564,17 +583,27 @@ service CatalogService {
     assert(openAPI);
     assert.strictEqual(openAPI['x-sap-compliance-level'], 'sap:base:v1');
     assert.strictEqual(openAPI['x-sap-ext-overview'].name, 'Communication Scenario');
-    assert.strictEqual(openAPI['x-sap-ext-overview'].values.text, 'Planning Calendar API Integration');
+    assert.strictEqual(openAPI['x-sap-ext-overview'].values.text,
+      'Planning Calendar API Integration');
     assert.strictEqual(openAPI['x-sap-ext-overview'].values.format, 'plain');
-    assert.strictEqual(openAPI.components.schemas["sap.OpenAPI.test.A.E1"]["x-sap-dpp-is-potentially-sensitive"], 'true');
-    assert.strictEqual(openAPI.paths["/F1"].get["x-sap-operation-intent"], 'read-collection for function');
-    assert.strictEqual(openAPI.paths["/A1"].post["x-sap-operation-intent"], 'read-collection for action');
-    assert.strictEqual(openAPI.paths["/F1"].get["x-sap-deprecated-operation"].deprecationDate, '2022-12-31');
-    assert.strictEqual(openAPI.paths["/F1"].get["x-sap-deprecated-operation"].successorOperationId, 'successorOperation');
+    assert.strictEqual(
+      openAPI.components.schemas["sap.OpenAPI.test.A.E1"]["x-sap-dpp-is-potentially-sensitive"],
+      'true'
+    );
+    assert.strictEqual(openAPI.paths["/F1"].get["x-sap-operation-intent"],
+      'read-collection for function');
+    assert.strictEqual(openAPI.paths["/A1"].post["x-sap-operation-intent"],
+      'read-collection for action');
+    assert.strictEqual(openAPI.paths["/F1"].get["x-sap-deprecated-operation"].deprecationDate,
+      '2022-12-31');
+    assert.strictEqual(
+      openAPI.paths["/F1"].get["x-sap-deprecated-operation"].successorOperationId,
+      'successorOperation'
+    );
     assert.strictEqual(openAPI.paths["/F1"].get["x-sap-deprecated-operation"].notValidKey, undefined);
   });
 
-  test('emits *:cds.compile.to.openapi events', async () => {
+  test('emits *:cds.compile.to.openapi events', () => {
     const csn = cds.compile.to.csn(`
       service CatalogService {
         entity Books {
@@ -615,7 +644,7 @@ service CatalogService {
     }
   });
 
-  test('allows modifying result in event handler', async () => {
+  test('allows modifying result in event handler', () => {
     const csn = cds.compile.to.csn(`
       service CatalogService {
         entity Books {
@@ -647,7 +676,7 @@ service CatalogService {
     }
   });
 
-  test('propagates errors from event handlers', async () => {
+  test('propagates errors from event handlers', () => {
     const csn = cds.compile.to.csn(`
       service CatalogService {
         entity Books {

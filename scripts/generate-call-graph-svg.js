@@ -100,7 +100,8 @@ function generateCallGraph(program) {
 function findContainingFunction(node) {
     let current = node.parent;
     while (current) {
-        if (ts.isFunctionDeclaration(current) || ts.isMethodDeclaration(current) || ts.isFunctionExpression(current) || ts.isArrowFunction(current)) {
+        if (ts.isFunctionDeclaration(current) || ts.isMethodDeclaration(current) ||
+            ts.isFunctionExpression(current) || ts.isArrowFunction(current)) {
             return current;
         }
         current = current.parent;
@@ -113,7 +114,7 @@ function getFunctionName(declaration, checker) {
     if (symbol) {
         return symbol.getName();
     }
-    
+
     if (declaration.name && ts.isIdentifier(declaration.name)) {
         return declaration.name.text;
     }
@@ -132,7 +133,7 @@ function getFunctionName(declaration, checker) {
 function convertCallGraphToMermaid(callGraph, filterPrefix) {
   let mermaidString = 'graph TD\n';
   const nodes = new Set();
-  
+
   const createNodeId = (fileName, functionName) => {
     const safeFileName = path.basename(fileName).replace(/[.-]/g, '_');
     const safeFunctionName = functionName.replace(/[^a-zA-Z0-9_]/g, '_');
@@ -156,7 +157,7 @@ function convertCallGraphToMermaid(callGraph, filterPrefix) {
         mermaidString += `  ${calleeId}["${call.callee}"]\n`;
         nodes.add(calleeId);
       }
-      
+
       const link = `  ${callerId} --> ${calleeId}\n`;
       if (!mermaidString.includes(link)) {
         mermaidString += link;
@@ -181,7 +182,7 @@ function generateSvgFromMermaid(mermaidDiagram, outputPath) {
       }
       resolve(stdout);
     });
-    
+
     if (child.stdin) {
       child.stdin.write(mermaidDiagram);
       child.stdin.end();
