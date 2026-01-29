@@ -112,7 +112,7 @@ describe("Edge cases", () => {
       openapi: "3.0.2",
       info: {
         title:
-          "Use @title: '...' on your CDS service to provide a meaningful title.",
+          "Use the title annotation on your CDS service to provide a meaningful title.",
         description: "",
         version: "",
       },
@@ -120,7 +120,7 @@ describe("Edge cases", () => {
       "x-odata-version": "4.01",
       "x-sap-api-type": "ODATAV4",
       "x-sap-shortText":
-        "Use @Core.Description: '...' on your CDS service to provide a meaningful short text.",
+        "Use the Core.Description annotation on your CDS service to provide a meaningful short text.",
       components: { schemas: {} },
     };
     const openapi = lib.csdl2openapi(csdl, {});
@@ -156,7 +156,7 @@ describe("Edge cases", () => {
       openapi: "3.0.2",
       info: {
         title:
-          "Use @title: '...' on your CDS service to provide a meaningful title.",
+          "Use the title annotation on your CDS service to provide a meaningful title.",
         description: "",
         version: "",
       },
@@ -164,7 +164,7 @@ describe("Edge cases", () => {
       "x-odata-version": "4.01",
       "x-sap-api-type": "ODATAV4",
       "x-sap-shortText":
-        "Use @Core.Description: '...' on your CDS service to provide a meaningful short text.",
+        "Use the Core.Description annotation on your CDS service to provide a meaningful short text.",
       components: {
         schemas: {},
       },
@@ -201,14 +201,14 @@ describe("Edge cases", () => {
       openapi: "3.0.2",
       info: {
         title:
-          "Use @title: '...' on your CDS service to provide a meaningful title.",
+          "Use the title annotation on your CDS service to provide a meaningful title.",
         description: "",
         version: "",
       },
       "x-odata-version": "4.01",
       "x-sap-api-type": "ODATAV4",
       "x-sap-shortText":
-        "Use @Core.Description: '...' on your CDS service to provide a meaningful short text.",
+        "Use the Core.Description annotation on your CDS service to provide a meaningful short text.",
       paths: {},
       components: {
         schemas: {},
@@ -2182,7 +2182,7 @@ see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-prot
     const csdl = require('./data/non-expandable.json');
     const actual = lib.csdl2openapi(csdl, {});
     const pagesSchema = actual.components.schemas['CatalogService.Pages'];
-    
+
     assert.strictEqual(Object.hasOwn(pagesSchema.properties, 'parent'), false, 'parent navigation property should be excluded from schema');
     assert.strictEqual(Object.hasOwn(pagesSchema.properties, 'parent_ID'), true, 'parent_ID foreign key should be included in schema');
     assert.strictEqual(Object.hasOwn(pagesSchema.properties, 'number'), true, 'number property should be included in schema');
@@ -2337,7 +2337,7 @@ see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-prot
     assert.deepStrictEqual(
       actual.info.description.split("\n"),
       [
-        "Use @Core.LongDescription: '...' or @Core.Description: '...' on your CDS service to provide a meaningful description.",
+        "Use the Core.LongDescription or Core.Description annotation on your CDS service to provide a meaningful description.",
         "",
         "## Entity Data Model",
         "![ER Diagram](https://yuml.me/diagram/class/[root{bg:lightslategray}],[root]->[other],[other{bg:lightslategray}],[act{bg:lawngreen}]->[root],[act{bg:lawngreen}]in->[root],[others%20{bg:lawngreen}]++-*>[other],[roots%20{bg:lawngreen}]++-*>[root])",
