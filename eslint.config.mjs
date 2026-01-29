@@ -13,7 +13,7 @@ export default [
         rules: {
             'no-unused-vars': ['warn', { argsIgnorePattern: 'lazy' }],
             'no-extra-semi': 'warn',
-            'max-len': ['warn', { 'code': 120 }],
+            'max-len': ['off'],
             'complexity': ['warn', 15],
             'max-params': ['warn', 4],
             'no-param-reassign': 'warn',
