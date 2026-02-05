@@ -1,19 +1,71 @@
-
 {
-  "openapi": "3.0.3",
+  "openapi": "3.0.2",
   "info": {
-    "title": "CatalogService",
-    "version": "1.0"
+    "title": "Use the title annotation on your CDS service to provide a meaningful title.",
+    "description": "Use the Core.LongDescription or Core.Description annotation on your CDS service to provide a meaningful description.\n\n## Entity Data Model\n![ER Diagram](https://yuml.me/diagram/class/[Books{bg:lightslategray}],[Books]++-*>[Pages],[Pages{bg:lightslategray}],[Pages]->[Books],[Pages%20{bg:lawngreen}]++-*>[Pages],[Books%20{bg:lawngreen}]++-*>[Books])\n\n### Legend\n![Legend](https://yuml.me/diagram/plain;dir:TB;scale:60/class/[External.Type{bg:whitesmoke}],[ComplexType],[EntityType{bg:lightslategray}],[EntitySet/Singleton/Operation{bg:lawngreen}])",
+    "version": ""
   },
+  "x-sap-api-type": "ODATAV4",
+  "x-odata-version": "4.01",
+  "x-sap-shortText": "Use the Core.Description annotation on your CDS service to provide a meaningful short text.",
+  "servers": [
+    {
+      "url": "https://localhost/service-root"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Books"
+    },
+    {
+      "name": "Pages"
+    }
+  ],
   "paths": {
+    "/$batch": {
+      "post": {
+        "summary": "Sends a group of requests",
+        "description": "Group multiple requests into a single request payload, see [Batch Requests](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_BatchRequests).\n\n*Please note that \"Try it out\" is not supported for this request.*",
+        "tags": [
+          "Batch Requests"
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "Batch request",
+          "content": {
+            "multipart/mixed;boundary=request-separator": {
+              "schema": {
+                "type": "string"
+              },
+              "example": "--request-separator\nContent-Type: application/http\nContent-Transfer-Encoding: binary\n\nGET Books HTTP/1.1\nAccept: application/json\n\n\n--request-separator--"
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Batch response",
+            "content": {
+              "multipart/mixed": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "--response-separator\nContent-Type: application/http\n\nHTTP/1.1 200 OK\nContent-Type: application/json\n\n{...}\n--response-separator--"
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
     "/Books": {
       "get": {
-        "summary": "Read all instances of Books",
-        "operationId": "Books_get",
+        "summary": "Retrieves a list of books.",
+        "tags": [
+          "Books"
+        ],
         "parameters": [
-          {
-            "$ref": "#/components/parameters/sap-language"
-          },
           {
             "$ref": "#/components/parameters/top"
           },
@@ -21,34 +73,81 @@
             "$ref": "#/components/parameters/skip"
           },
           {
-            "$ref": "#/components/parameters/count"
-          },
-          {
-            "$ref": "#/components/parameters/filter"
-          },
-          {
-            "$ref": "#/components/parameters/orderby"
-          },
-          {
             "$ref": "#/components/parameters/search"
           },
           {
-            "$ref": "#/components/parameters/select"
+            "name": "$filter",
+            "description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
           },
           {
-            "$ref": "#/components/parameters/expand"
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "ID",
+                  "ID desc"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$select",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "ID"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "description": "The value of $expand query option is a comma-separated list of navigation property names, stream property names, or $value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "*",
+                  "pages"
+                ]
+              }
+            }
           }
         ],
         "responses": {
           "200": {
-            "description": "Retrieved instances of Books",
+            "description": "Retrieved books",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
+                  "title": "Collection of Books",
                   "properties": {
-                    "@odata.context": {
-                      "type": "string"
+                    "@count": {
+                      "$ref": "#/components/schemas/count"
                     },
                     "value": {
                       "type": "array",
@@ -61,32 +160,30 @@
               }
             }
           },
-          "default": {
-            "$ref": "#/components/responses/Error"
+          "4XX": {
+            "$ref": "#/components/responses/error"
           }
         }
       },
       "post": {
-        "summary": "Create a new instance of Books",
-        "operationId": "Books_post",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/sap-language"
-          }
+        "summary": "Creates a single book.",
+        "tags": [
+          "Books"
         ],
         "requestBody": {
-          "description": "New instance of Books",
+          "description": "New book",
+          "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CatalogService.Books"
+                "$ref": "#/components/schemas/CatalogService.Books-create"
               }
             }
           }
         },
         "responses": {
           "201": {
-            "description": "Created instance of Books",
+            "description": "Created book",
             "content": {
               "application/json": {
                 "schema": {
@@ -95,39 +192,68 @@
               }
             }
           },
-          "default": {
-            "$ref": "#/components/responses/Error"
+          "4XX": {
+            "$ref": "#/components/responses/error"
           }
         }
       }
     },
     "/Books({ID})": {
+      "parameters": [
+        {
+          "description": "key: ID",
+          "in": "path",
+          "name": "ID",
+          "required": true,
+          "schema": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      ],
       "get": {
-        "summary": "Read an instance of Books",
-        "operationId": "Books_get_by_key",
+        "summary": "Retrieves a single book.",
+        "tags": [
+          "Books"
+        ],
         "parameters": [
           {
-            "$ref": "#/components/parameters/sap-language"
-          },
-          {
-            "name": "ID",
-            "in": "path",
-            "required": true,
+            "name": "$select",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "in": "query",
+            "explode": false,
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "ID"
+                ]
+              }
             }
           },
           {
-            "$ref": "#/components/parameters/select"
-          },
-          {
-            "$ref": "#/components/parameters/expand"
+            "name": "$expand",
+            "description": "The value of $expand query option is a comma-separated list of navigation property names, stream property names, or $value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "*",
+                  "pages"
+                ]
+              }
+            }
           }
         ],
         "responses": {
           "200": {
-            "description": "Retrieved instance of Books",
+            "description": "Retrieved book",
             "content": {
               "application/json": {
                 "schema": {
@@ -136,101 +262,71 @@
               }
             }
           },
-          "default": {
-            "$ref": "#/components/responses/Error"
+          "4XX": {
+            "$ref": "#/components/responses/error"
           }
         }
       },
       "patch": {
-        "summary": "Update an instance of Books",
-        "operationId": "Books_patch",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/sap-language"
-          },
-          {
-            "name": "ID",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
+        "summary": "Changes a single book.",
+        "tags": [
+          "Books"
         ],
         "requestBody": {
-          "description": "Updated instance of Books",
+          "description": "New property values",
+          "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CatalogService.Books"
+                "$ref": "#/components/schemas/CatalogService.Books-update"
               }
             }
           }
         },
         "responses": {
-          "200": {
-            "description": "Updated instance of Books",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/CatalogService.Books"
-                }
-              }
-            }
-          },
           "204": {
-            "description": "Updated instance of Books"
+            "description": "Success"
           },
-          "default": {
-            "$ref": "#/components/responses/Error"
+          "4XX": {
+            "$ref": "#/components/responses/error"
           }
         }
       },
       "delete": {
-        "summary": "Delete an instance of Books",
-        "operationId": "Books_delete",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/sap-language"
-          },
-          {
-            "name": "ID",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
+        "summary": "Deletes a single book.",
+        "tags": [
+          "Books"
         ],
         "responses": {
           "204": {
-            "description": "Deleted instance of Books"
+            "description": "Success"
           },
-          "default": {
-            "$ref": "#/components/responses/Error"
+          "4XX": {
+            "$ref": "#/components/responses/error"
           }
         }
       }
     },
     "/Books({ID})/pages": {
+      "parameters": [
+        {
+          "description": "key: ID",
+          "in": "path",
+          "name": "ID",
+          "required": true,
+          "schema": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      ],
       "get": {
-        "summary": "Read all instances of pages",
-        "operationId": "Books_pages_get",
+        "summary": "Retrieves a list of pages of a book.",
+        "tags": [
+          "Books",
+          "Pages"
+        ],
         "parameters": [
-          {
-            "$ref": "#/components/parameters/sap-language"
-          },
-          {
-            "name": "ID",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          },
           {
             "$ref": "#/components/parameters/top"
           },
@@ -238,34 +334,87 @@
             "$ref": "#/components/parameters/skip"
           },
           {
-            "$ref": "#/components/parameters/count"
-          },
-          {
-            "$ref": "#/components/parameters/filter"
-          },
-          {
-            "$ref": "#/components/parameters/orderby"
-          },
-          {
             "$ref": "#/components/parameters/search"
           },
           {
-            "$ref": "#/components/parameters/select"
+            "name": "$filter",
+            "description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
           },
           {
-            "$ref": "#/components/parameters/expand"
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "number",
+                  "number desc",
+                  "content",
+                  "content desc",
+                  "parent_ID",
+                  "parent_ID desc"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$select",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "number",
+                  "content",
+                  "parent_ID"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "description": "The value of $expand query option is a comma-separated list of navigation property names, stream property names, or $value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "*",
+                  "parent"
+                ]
+              }
+            }
           }
         ],
         "responses": {
           "200": {
-            "description": "Retrieved instances of pages",
+            "description": "Retrieved pages",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
+                  "title": "Collection of Pages",
                   "properties": {
-                    "@odata.context": {
-                      "type": "string"
+                    "@count": {
+                      "$ref": "#/components/schemas/count"
                     },
                     "value": {
                       "type": "array",
@@ -278,41 +427,31 @@
               }
             }
           },
-          "default": {
-            "$ref": "#/components/responses/Error"
+          "4XX": {
+            "$ref": "#/components/responses/error"
           }
         }
       },
       "post": {
-        "summary": "Create a new instance of pages",
-        "operationId": "Books_pages_post",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/sap-language"
-          },
-          {
-            "name": "ID",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
+        "summary": "Creates a single page of a book.",
+        "tags": [
+          "Books",
+          "Pages"
         ],
         "requestBody": {
-          "description": "New instance of pages",
+          "description": "New page",
+          "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CatalogService.Pages"
+                "$ref": "#/components/schemas/CatalogService.Pages-create"
               }
             }
           }
         },
         "responses": {
           "201": {
-            "description": "Created instance of pages",
+            "description": "Created page",
             "content": {
               "application/json": {
                 "schema": {
@@ -321,57 +460,91 @@
               }
             }
           },
-          "default": {
-            "$ref": "#/components/responses/Error"
+          "4XX": {
+            "$ref": "#/components/responses/error"
           }
         }
       }
     },
-    "/Books({ID})/pages(parent_ID={parent_ID},number={number})": {
+    "/Books({ID})/pages(parent_ID={parent_ID_1},number={number_1})": {
+      "parameters": [
+        {
+          "description": "key: ID",
+          "in": "path",
+          "name": "ID",
+          "required": true,
+          "schema": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        {
+          "description": "key: parent_ID",
+          "in": "path",
+          "name": "parent_ID_1",
+          "required": true,
+          "schema": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        {
+          "description": "key: number",
+          "in": "path",
+          "name": "number_1",
+          "required": true,
+          "schema": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      ],
       "get": {
-        "summary": "Read an instance of pages",
-        "operationId": "Books_pages_get_by_key",
+        "summary": "Retrieves a single page of a book.",
+        "tags": [
+          "Books",
+          "Pages"
+        ],
         "parameters": [
           {
-            "$ref": "#/components/parameters/sap-language"
-          },
-          {
-            "name": "ID",
-            "in": "path",
-            "required": true,
+            "name": "$select",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "in": "query",
+            "explode": false,
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "number",
+                  "content",
+                  "parent_ID"
+                ]
+              }
             }
           },
           {
-            "name": "parent_ID",
-            "in": "path",
-            "required": true,
+            "name": "$expand",
+            "description": "The value of $expand query option is a comma-separated list of navigation property names, stream property names, or $value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "in": "query",
+            "explode": false,
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "*",
+                  "parent"
+                ]
+              }
             }
-          },
-          {
-            "name": "number",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "$ref": "#/components/parameters/select"
-          },
-          {
-            "$ref": "#/components/parameters/expand"
           }
         ],
         "responses": {
           "200": {
-            "description": "Retrieved instance of pages",
+            "description": "Retrieved page",
             "content": {
               "application/json": {
                 "schema": {
@@ -380,128 +553,148 @@
               }
             }
           },
-          "default": {
-            "$ref": "#/components/responses/Error"
+          "4XX": {
+            "$ref": "#/components/responses/error"
           }
         }
       },
       "patch": {
-        "summary": "Update an instance of pages",
-        "operationId": "Books_pages_patch",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/sap-language"
-          },
-          {
-            "name": "ID",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "parent_ID",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "number",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
+        "summary": "Changes a single page of a book.",
+        "tags": [
+          "Books"
         ],
         "requestBody": {
-          "description": "Updated instance of pages",
+          "description": "New property values",
+          "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CatalogService.Pages"
+                "$ref": "#/components/schemas/CatalogService.Pages-update"
               }
             }
           }
         },
         "responses": {
-          "200": {
-            "description": "Updated instance of pages",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/CatalogService.Pages"
-                }
-              }
-            }
-          },
           "204": {
-            "description": "Updated instance of pages"
+            "description": "Success"
           },
-          "default": {
-            "$ref": "#/components/responses/Error"
+          "4XX": {
+            "$ref": "#/components/responses/error"
           }
         }
       },
       "delete": {
-        "summary": "Delete an instance of pages",
-        "operationId": "Books_pages_delete",
+        "summary": "Deletes a single page of a book.",
+        "tags": [
+          "Books"
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/Books({ID})/pages(parent_ID={parent_ID_1},number={number_1})/parent": {
+      "parameters": [
+        {
+          "description": "key: ID",
+          "in": "path",
+          "name": "ID",
+          "required": true,
+          "schema": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        {
+          "description": "key: parent_ID",
+          "in": "path",
+          "name": "parent_ID_1",
+          "required": true,
+          "schema": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        {
+          "description": "key: number",
+          "in": "path",
+          "name": "number_1",
+          "required": true,
+          "schema": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      ],
+      "get": {
+        "summary": "Retrieves parent of a book.",
+        "tags": [
+          "Books"
+        ],
         "parameters": [
           {
-            "$ref": "#/components/parameters/sap-language"
-          },
-          {
-            "name": "ID",
-            "in": "path",
-            "required": true,
+            "name": "$select",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "in": "query",
+            "explode": false,
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "ID"
+                ]
+              }
             }
           },
           {
-            "name": "parent_ID",
-            "in": "path",
-            "required": true,
+            "name": "$expand",
+            "description": "The value of $expand query option is a comma-separated list of navigation property names, stream property names, or $value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "in": "query",
+            "explode": false,
             "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "number",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "*",
+                  "pages"
+                ]
+              }
             }
           }
         ],
         "responses": {
-          "204": {
-            "description": "Deleted instance of pages"
+          "200": {
+            "description": "Retrieved parent",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CatalogService.Books"
+                }
+              }
+            }
           },
-          "default": {
-            "$ref": "#/components/responses/Error"
+          "4XX": {
+            "$ref": "#/components/responses/error"
           }
         }
       }
     },
     "/Pages": {
       "get": {
-        "summary": "Read all instances of Pages",
-        "operationId": "Pages_get",
+        "summary": "Retrieves a list of pages.",
+        "tags": [
+          "Pages"
+        ],
         "parameters": [
-          {
-            "$ref": "#/components/parameters/sap-language"
-          },
           {
             "$ref": "#/components/parameters/top"
           },
@@ -509,34 +702,87 @@
             "$ref": "#/components/parameters/skip"
           },
           {
-            "$ref": "#/components/parameters/count"
-          },
-          {
-            "$ref": "#/components/parameters/filter"
-          },
-          {
-            "$ref": "#/components/parameters/orderby"
-          },
-          {
             "$ref": "#/components/parameters/search"
           },
           {
-            "$ref": "#/components/parameters/select"
+            "name": "$filter",
+            "description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
           },
           {
-            "$ref": "#/components/parameters/expand"
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "number",
+                  "number desc",
+                  "content",
+                  "content desc",
+                  "parent_ID",
+                  "parent_ID desc"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$select",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "number",
+                  "content",
+                  "parent_ID"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "description": "The value of $expand query option is a comma-separated list of navigation property names, stream property names, or $value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "*",
+                  "parent"
+                ]
+              }
+            }
           }
         ],
         "responses": {
           "200": {
-            "description": "Retrieved instances of Pages",
+            "description": "Retrieved pages",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
+                  "title": "Collection of Pages",
                   "properties": {
-                    "@odata.context": {
-                      "type": "string"
+                    "@count": {
+                      "$ref": "#/components/schemas/count"
                     },
                     "value": {
                       "type": "array",
@@ -549,32 +795,30 @@
               }
             }
           },
-          "default": {
-            "$ref": "#/components/responses/Error"
+          "4XX": {
+            "$ref": "#/components/responses/error"
           }
         }
       },
       "post": {
-        "summary": "Create a new instance of Pages",
-        "operationId": "Pages_post",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/sap-language"
-          }
+        "summary": "Creates a single page.",
+        "tags": [
+          "Pages"
         ],
         "requestBody": {
-          "description": "New instance of Pages",
+          "description": "New page",
+          "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CatalogService.Pages"
+                "$ref": "#/components/schemas/CatalogService.Pages-create"
               }
             }
           }
         },
         "responses": {
           "201": {
-            "description": "Created instance of Pages",
+            "description": "Created page",
             "content": {
               "application/json": {
                 "schema": {
@@ -583,48 +827,80 @@
               }
             }
           },
-          "default": {
-            "$ref": "#/components/responses/Error"
+          "4XX": {
+            "$ref": "#/components/responses/error"
           }
         }
       }
     },
     "/Pages(parent_ID={parent_ID},number={number})": {
+      "parameters": [
+        {
+          "description": "key: parent_ID",
+          "in": "path",
+          "name": "parent_ID",
+          "required": true,
+          "schema": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        {
+          "description": "key: number",
+          "in": "path",
+          "name": "number",
+          "required": true,
+          "schema": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      ],
       "get": {
-        "summary": "Read an instance of Pages",
-        "operationId": "Pages_get_by_key",
+        "summary": "Retrieves a single page.",
+        "tags": [
+          "Pages"
+        ],
         "parameters": [
           {
-            "$ref": "#/components/parameters/sap-language"
-          },
-          {
-            "name": "parent_ID",
-            "in": "path",
-            "required": true,
+            "name": "$select",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "in": "query",
+            "explode": false,
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "number",
+                  "content",
+                  "parent_ID"
+                ]
+              }
             }
           },
           {
-            "name": "number",
-            "in": "path",
-            "required": true,
+            "name": "$expand",
+            "description": "The value of $expand query option is a comma-separated list of navigation property names, stream property names, or $value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "in": "query",
+            "explode": false,
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "*",
+                  "parent"
+                ]
+              }
             }
-          },
-          {
-            "$ref": "#/components/parameters/select"
-          },
-          {
-            "$ref": "#/components/parameters/expand"
           }
         ],
         "responses": {
           "200": {
-            "description": "Retrieved instance of Pages",
+            "description": "Retrieved page",
             "content": {
               "application/json": {
                 "schema": {
@@ -633,98 +909,128 @@
               }
             }
           },
-          "default": {
-            "$ref": "#/components/responses/Error"
+          "4XX": {
+            "$ref": "#/components/responses/error"
           }
         }
       },
       "patch": {
-        "summary": "Update an instance of Pages",
-        "operationId": "Pages_patch",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/sap-language"
-          },
-          {
-            "name": "parent_ID",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "number",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
+        "summary": "Changes a single page.",
+        "tags": [
+          "Pages"
         ],
         "requestBody": {
-          "description": "Updated instance of Pages",
+          "description": "New property values",
+          "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CatalogService.Pages"
+                "$ref": "#/components/schemas/CatalogService.Pages-update"
               }
             }
           }
         },
         "responses": {
-          "200": {
-            "description": "Updated instance of Pages",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/CatalogService.Pages"
-                }
-              }
-            }
-          },
           "204": {
-            "description": "Updated instance of Pages"
+            "description": "Success"
           },
-          "default": {
-            "$ref": "#/components/responses/Error"
+          "4XX": {
+            "$ref": "#/components/responses/error"
           }
         }
       },
       "delete": {
-        "summary": "Delete an instance of Pages",
-        "operationId": "Pages_delete",
+        "summary": "Deletes a single page.",
+        "tags": [
+          "Pages"
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/Pages(parent_ID={parent_ID},number={number})/parent": {
+      "parameters": [
+        {
+          "description": "key: parent_ID",
+          "in": "path",
+          "name": "parent_ID",
+          "required": true,
+          "schema": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        {
+          "description": "key: number",
+          "in": "path",
+          "name": "number",
+          "required": true,
+          "schema": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      ],
+      "get": {
+        "summary": "Retrieves parent of a page.",
+        "tags": [
+          "Pages",
+          "Books"
+        ],
         "parameters": [
           {
-            "$ref": "#/components/parameters/sap-language"
-          },
-          {
-            "name": "parent_ID",
-            "in": "path",
-            "required": true,
+            "name": "$select",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "in": "query",
+            "explode": false,
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "ID"
+                ]
+              }
             }
           },
           {
-            "name": "number",
-            "in": "path",
-            "required": true,
+            "name": "$expand",
+            "description": "The value of $expand query option is a comma-separated list of navigation property names, stream property names, or $value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "in": "query",
+            "explode": false,
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "*",
+                  "pages"
+                ]
+              }
             }
           }
         ],
         "responses": {
-          "204": {
-            "description": "Deleted instance of Pages"
+          "200": {
+            "description": "Retrieved parent",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CatalogService.Books"
+                }
+              }
+            }
           },
-          "default": {
-            "$ref": "#/components/responses/Error"
+          "4XX": {
+            "$ref": "#/components/responses/error"
           }
         }
       }
@@ -733,17 +1039,36 @@
   "components": {
     "schemas": {
       "CatalogService.Books": {
+        "title": "Books",
         "type": "object",
         "properties": {
           "ID": {
             "type": "integer",
-            "format": "int32",
-            "nullable": false
+            "format": "int32"
           },
           "pages": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/CatalogService.Pages"
+            }
+          },
+          "pages@count": {
+            "$ref": "#/components/schemas/count"
+          }
+        }
+      },
+      "CatalogService.Books-create": {
+        "title": "Books (for create)",
+        "type": "object",
+        "properties": {
+          "ID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pages": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CatalogService.Pages-create"
             }
           }
         },
@@ -751,13 +1076,25 @@
           "ID"
         ]
       },
+      "CatalogService.Books-update": {
+        "title": "Books (for update)",
+        "type": "object",
+        "properties": {
+          "pages": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CatalogService.Pages-create"
+            }
+          }
+        }
+      },
       "CatalogService.Pages": {
+        "title": "Pages",
         "type": "object",
         "properties": {
           "number": {
             "type": "integer",
-            "format": "int32",
-            "nullable": false
+            "format": "int32"
           },
           "content": {
             "type": "string",
@@ -765,35 +1102,83 @@
           },
           "parent_ID": {
             "type": "integer",
-            "format": "int32",
-            "nullable": false
+            "format": "int32"
+          }
+        }
+      },
+      "CatalogService.Pages-create": {
+        "title": "Pages (for create)",
+        "type": "object",
+        "properties": {
+          "number": {
+            "type": "integer",
+            "format": "int32"
           },
+          "content": {
+            "type": "string",
+            "maxLength": 1111
+          },
+          "parent_ID": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
         "required": [
+          "parent_ID",
           "number"
         ]
       },
+      "CatalogService.Pages-update": {
+        "title": "Pages (for update)",
+        "type": "object",
+        "properties": {
+          "content": {
+            "type": "string",
+            "maxLength": 1111
+          }
+        }
+      },
+      "count": {
+        "anyOf": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "string"
+          }
+        ],
+        "description": "The number of entities in the collection. Available when using the [$count](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptioncount) query option."
+      },
       "error": {
         "type": "object",
+        "required": [
+          "error"
+        ],
         "properties": {
           "error": {
             "type": "object",
+            "required": [
+              "code",
+              "message"
+            ],
             "properties": {
               "code": {
-                "type": "string",
-                "description": "The error code."
+                "type": "string"
               },
               "message": {
-                "type": "string",
-                "description": "The error message."
+                "type": "string"
               },
               "target": {
-                "type": "string",
-                "description": "The target of the error."
+                "type": "string"
               },
               "details": {
                 "type": "array",
                 "items": {
                   "type": "object",
+                  "required": [
+                    "code",
+                    "message"
+                  ],
                   "properties": {
                     "code": {
                       "type": "string"
@@ -804,34 +1189,13 @@
                     "target": {
                       "type": "string"
                     }
-                  },
-                  "required": [
-                    "code",
-                    "message"
-                  ]
-                },
-                "description": "Details of the error."
+                  }
+                }
               },
               "innererror": {
                 "type": "object",
-                "description": "The inner error."
+                "description": "The structure of this object is service-specific"
               }
-            },
-            "required": [
-              "code",
-              "message"
-            ]
-          }
-        }
-      }
-    },
-    "responses": {
-      "Error": {
-        "description": "Error",
-        "content": {
-          "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/error"
             }
           }
         }
@@ -845,7 +1209,8 @@
         "schema": {
           "type": "integer",
           "minimum": 0
-        }
+        },
+        "example": 50
       },
       "skip": {
         "name": "$skip",
@@ -859,25 +1224,9 @@
       "count": {
         "name": "$count",
         "in": "query",
-        "description": "Include count of items, see [Paging - Count](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptioncount)",
+        "description": "Include count of items, see [Count](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptioncount)",
         "schema": {
           "type": "boolean"
-        }
-      },
-      "filter": {
-        "name": "$filter",
-        "in": "query",
-        "description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
-        "schema": {
-          "type": "string"
-        }
-      },
-      "orderby": {
-        "name": "$orderby",
-        "in": "query",
-        "description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
-        "schema": {
-          "type": "string"
         }
       },
       "search": {
@@ -887,29 +1236,17 @@
         "schema": {
           "type": "string"
         }
-      },
-      "select": {
-        "name": "$select",
-        "in": "query",
-        "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
-        "schema": {
-          "type": "string"
-        }
-      },
-      "expand": {
-        "name": "$expand",
-        "in": "query",
-        "description": "Expand related entities, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
-        "schema": {
-          "type": "string"
-        }
-      },
-      "sap-language": {
-        "name": "sap-language",
-        "in": "header",
-        "description": "Language for localized data",
-        "schema": {
-          "type": "string"
+      }
+    },
+    "responses": {
+      "error": {
+        "description": "Error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/error"
+            }
+          }
         }
       }
     }
