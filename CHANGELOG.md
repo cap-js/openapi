@@ -8,9 +8,17 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Added
 ### Changed
-- Removed special characters from placeholders for fields like short text, description, etc.
 ### Deprecated
 ### Removed
+### Fixed
+### Security
+
+## [2.0.0] - tbd
+
+### Changed
+- **BREAKING**: Bound action paths now use simplified names by default (e.g., `.../Discount` instead of `.../ODataDemo.Discount`). To restore previous behavior, use `--openapi:fqActionPaths` or `{ 'openapi:fqActionPaths': true }`.
+- Removed special characters from placeholders for fields like short text, description, etc.
+
 ### Fixed
 - Autoexposed `.texts` entities are now excluded from OpenAPI document
 - Generate navigation paths to CRUD-disabled entities

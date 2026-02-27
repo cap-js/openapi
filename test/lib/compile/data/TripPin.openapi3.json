@@ -789,7 +789,7 @@
         }
       }
     },
-    "/Me/Microsoft.OData.SampleService.Models.TripPin.GetFavoriteAirline": {
+    "/Me/GetFavoriteAirline": {
       "get": {
         "summary": "Invokes function GetFavoriteAirline",
         "tags": [
@@ -813,7 +813,7 @@
         }
       }
     },
-    "/Me/Microsoft.OData.SampleService.Models.TripPin.GetFriendsTrips": {
+    "/Me/GetFriendsTrips": {
       "get": {
         "summary": "Invokes function GetFriendsTrips",
         "tags": [
@@ -860,41 +860,6 @@
         }
       }
     },
-    "/Me/Microsoft.OData.SampleService.Models.TripPin.ShareTrip": {
-      "post": {
-        "summary": "Invokes action ShareTrip",
-        "tags": [
-          "Me"
-        ],
-        "responses": {
-          "204": {
-            "description": "Success"
-          },
-          "4XX": {
-            "$ref": "#/components/responses/error"
-          }
-        },
-        "requestBody": {
-          "description": "Action parameters",
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "userName": {
-                    "type": "string"
-                  },
-                  "tripId": {
-                    "type": "integer",
-                    "format": "int32"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/Me/Photo": {
       "get": {
         "summary": "Retrieves photo of me.",
@@ -934,6 +899,41 @@
           },
           "4XX": {
             "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/Me/ShareTrip": {
+      "post": {
+        "summary": "Invokes action ShareTrip",
+        "tags": [
+          "Me"
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "requestBody": {
+          "description": "Action parameters",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "userName": {
+                    "type": "string"
+                  },
+                  "tripId": {
+                    "type": "integer",
+                    "format": "int32"
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -2030,7 +2030,7 @@
         }
       }
     },
-    "/People('{UserName}')/Microsoft.OData.SampleService.Models.TripPin.GetFavoriteAirline": {
+    "/People('{UserName}')/GetFavoriteAirline": {
       "get": {
         "summary": "Invokes function GetFavoriteAirline",
         "tags": [
@@ -2064,7 +2064,7 @@
         }
       }
     },
-    "/People('{UserName}')/Microsoft.OData.SampleService.Models.TripPin.GetFriendsTrips": {
+    "/People('{UserName}')/GetFriendsTrips": {
       "get": {
         "summary": "Invokes function GetFriendsTrips",
         "tags": [
@@ -2120,52 +2120,6 @@
         }
       }
     },
-    "/People('{UserName}')/Microsoft.OData.SampleService.Models.TripPin.ShareTrip": {
-      "post": {
-        "summary": "Invokes action ShareTrip",
-        "tags": [
-          "People"
-        ],
-        "responses": {
-          "204": {
-            "description": "Success"
-          },
-          "4XX": {
-            "$ref": "#/components/responses/error"
-          }
-        },
-        "parameters": [
-          {
-            "description": "key: UserName",
-            "in": "path",
-            "name": "UserName",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "description": "Action parameters",
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "userName": {
-                    "type": "string"
-                  },
-                  "tripId": {
-                    "type": "integer",
-                    "format": "int32"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/People('{UserName}')/Photo": {
       "parameters": [
         {
@@ -2216,6 +2170,52 @@
           },
           "4XX": {
             "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/People('{UserName}')/ShareTrip": {
+      "post": {
+        "summary": "Invokes action ShareTrip",
+        "tags": [
+          "People"
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "parameters": [
+          {
+            "description": "key: UserName",
+            "in": "path",
+            "name": "UserName",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Action parameters",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "userName": {
+                    "type": "string"
+                  },
+                  "tripId": {
+                    "type": "integer",
+                    "format": "int32"
+                  }
+                }
+              }
+            }
           }
         }
       }

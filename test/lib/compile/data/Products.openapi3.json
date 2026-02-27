@@ -1591,6 +1591,71 @@
         }
       }
     },
+    "/Products({ID})/Discount": {
+      "post": {
+        "summary": "Invokes action Discount",
+        "tags": [
+          "Products"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "anyOf": [
+                        {
+                          "type": "number",
+                          "format": "double"
+                        },
+                        {
+                          "type": "string"
+                        }
+                      ],
+                      "example": 3.14
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "parameters": [
+          {
+            "description": "key: ID",
+            "in": "path",
+            "name": "ID",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Action parameters",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "discountPercentage": {
+                    "type": "integer",
+                    "format": "int32"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/Products({ID})/ProductDetail": {
       "parameters": [
         {
@@ -1659,71 +1724,6 @@
           },
           "4XX": {
             "$ref": "#/components/responses/error"
-          }
-        }
-      }
-    },
-    "/Products({ID})/ProductService.Discount": {
-      "post": {
-        "summary": "Invokes action Discount",
-        "tags": [
-          "Products"
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "value": {
-                      "anyOf": [
-                        {
-                          "type": "number",
-                          "format": "double"
-                        },
-                        {
-                          "type": "string"
-                        }
-                      ],
-                      "example": 3.14
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "4XX": {
-            "$ref": "#/components/responses/error"
-          }
-        },
-        "parameters": [
-          {
-            "description": "key: ID",
-            "in": "path",
-            "name": "ID",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "requestBody": {
-          "description": "Action parameters",
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "discountPercentage": {
-                    "type": "integer",
-                    "format": "int32"
-                  }
-                }
-              }
-            }
           }
         }
       }

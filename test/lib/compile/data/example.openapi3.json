@@ -2316,7 +2316,7 @@
         }
       }
     },
-    "/Products({ID})/ODataDemo.Discount": {
+    "/Products({ID})/Discount": {
       "post": {
         "summary": "Invokes action Discount",
         "tags": [
