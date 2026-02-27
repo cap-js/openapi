@@ -13,6 +13,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ### Removed
 ### Fixed
 - Autoexposed `.texts` entities are now excluded from OpenAPI document
+- Generate navigation paths to CRUD-disabled entities
 
 ### Security
 
