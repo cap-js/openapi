@@ -2124,7 +2124,7 @@
         }
       }
     },
-    "/Products/M1.BestSelling": {
+    "/Products/BestSelling": {
       "get": {
         "summary": "Return the best-selling product in the given collection",
         "tags": [
@@ -2148,7 +2148,7 @@
         }
       }
     },
-    "/Products/M1.Replenish": {
+    "/Products/Replenish": {
       "post": {
         "summary": "Replenish stock for products in the given collection",
         "tags": [

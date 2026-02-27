@@ -535,6 +535,74 @@
         "description": "Delete Entity - LongDescription"
       }
     },
+    "/entities('{id}')/action": {
+      "post": {
+        "summary": "Action Bound Overload Ext - Description",
+        "tags": [
+          "entities"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "string",
+                      "nullable": true,
+                      "description": "Action Bound Overload Return Type - LongDescription"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "418": {
+            "description": "Out of coffee on bound action call",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                }
+              }
+            }
+          }
+        },
+        "description": "Action Bound Overload - LongDescription",
+        "parameters": [
+          {
+            "description": "Property - LongDescription",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "maxLength": 70,
+              "default": "0000"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Action parameters",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nonbinding": {
+                    "type": "string",
+                    "nullable": true,
+                    "description": "Action Bound Overload Non-Binding Parameter - LongDescription"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/entities('{id}')/contained": {
       "parameters": [
         {
@@ -813,6 +881,69 @@
         "description": "Delete Contained - LongDescription"
       }
     },
+    "/entities('{id}')/function": {
+      "get": {
+        "summary": "Function Bound Overload Ext - Description",
+        "tags": [
+          "entities"
+        ],
+        "parameters": [
+          {
+            "description": "Property - LongDescription",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "maxLength": 70,
+              "default": "0000"
+            }
+          },
+          {
+            "description": "Function Bound Overload Nonbinding Parameter - LongDescription  \nString value needs to be enclosed in single quotes",
+            "required": true,
+            "in": "query",
+            "name": "nonbinding",
+            "schema": {
+              "type": "string",
+              "nullable": true,
+              "pattern": "^(null|'([^']|'')*')$",
+              "default": "null"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "string",
+                      "nullable": true,
+                      "description": "Function Bound Overload Return Type - LongDescription"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "418": {
+            "description": "Out of coffee on bound function call",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                }
+              }
+            }
+          }
+        },
+        "description": "Function Bound Overload - LongDescription"
+      }
+    },
     "/entities('{id}')/related": {
       "parameters": [
         {
@@ -968,137 +1099,6 @@
           }
         },
         "description": "Create Related - LongDescription"
-      }
-    },
-    "/entities('{id}')/self.action": {
-      "post": {
-        "summary": "Action Bound Overload Ext - Description",
-        "tags": [
-          "entities"
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "value": {
-                      "type": "string",
-                      "nullable": true,
-                      "description": "Action Bound Overload Return Type - LongDescription"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "418": {
-            "description": "Out of coffee on bound action call",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error"
-                }
-              }
-            }
-          }
-        },
-        "description": "Action Bound Overload - LongDescription",
-        "parameters": [
-          {
-            "description": "Property - LongDescription",
-            "in": "path",
-            "name": "id",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "maxLength": 70,
-              "default": "0000"
-            }
-          }
-        ],
-        "requestBody": {
-          "description": "Action parameters",
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "nonbinding": {
-                    "type": "string",
-                    "nullable": true,
-                    "description": "Action Bound Overload Non-Binding Parameter - LongDescription"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/entities('{id}')/self.function": {
-      "get": {
-        "summary": "Function Bound Overload Ext - Description",
-        "tags": [
-          "entities"
-        ],
-        "parameters": [
-          {
-            "description": "Property - LongDescription",
-            "in": "path",
-            "name": "id",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "maxLength": 70,
-              "default": "0000"
-            }
-          },
-          {
-            "description": "Function Bound Overload Nonbinding Parameter - LongDescription  \nString value needs to be enclosed in single quotes",
-            "required": true,
-            "in": "query",
-            "name": "nonbinding",
-            "schema": {
-              "type": "string",
-              "nullable": true,
-              "pattern": "^(null|'([^']|'')*')$",
-              "default": "null"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "value": {
-                      "type": "string",
-                      "nullable": true,
-                      "description": "Function Bound Overload Return Type - LongDescription"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "418": {
-            "description": "Out of coffee on bound function call",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error"
-                }
-              }
-            }
-          }
-        },
-        "description": "Function Bound Overload - LongDescription"
       }
     },
     "/entities_ext": {
@@ -1357,6 +1357,74 @@
         "description": "Delete Entity Ext - LongDescription"
       }
     },
+    "/entities_ext('{id}')/action": {
+      "post": {
+        "summary": "Action Bound Overload Ext - Description",
+        "tags": [
+          "entities ext"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "string",
+                      "nullable": true,
+                      "description": "Action Bound Overload Return Type - LongDescription"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "418": {
+            "description": "Out of coffee on bound action call",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                }
+              }
+            }
+          }
+        },
+        "description": "Action Bound Overload - LongDescription",
+        "parameters": [
+          {
+            "description": "Property - LongDescription",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "maxLength": 70,
+              "default": "0000"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Action parameters",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nonbinding": {
+                    "type": "string",
+                    "nullable": true,
+                    "description": "Action Bound Overload Non-Binding Parameter - LongDescription"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/entities_ext('{id}')/contained": {
       "parameters": [
         {
@@ -1600,6 +1668,69 @@
         "description": "Delete Contained Ext - LongDescription"
       }
     },
+    "/entities_ext('{id}')/function": {
+      "get": {
+        "summary": "Function Bound Overload Ext - Description",
+        "tags": [
+          "entities ext"
+        ],
+        "parameters": [
+          {
+            "description": "Property - LongDescription",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "maxLength": 70,
+              "default": "0000"
+            }
+          },
+          {
+            "description": "Function Bound Overload Nonbinding Parameter - LongDescription  \nString value needs to be enclosed in single quotes",
+            "required": true,
+            "in": "query",
+            "name": "nonbinding",
+            "schema": {
+              "type": "string",
+              "nullable": true,
+              "pattern": "^(null|'([^']|'')*')$",
+              "default": "null"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "string",
+                      "nullable": true,
+                      "description": "Function Bound Overload Return Type - LongDescription"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "418": {
+            "description": "Out of coffee on bound function call",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                }
+              }
+            }
+          }
+        },
+        "description": "Function Bound Overload - LongDescription"
+      }
+    },
     "/entities_ext('{id}')/related": {
       "parameters": [
         {
@@ -1755,137 +1886,6 @@
           }
         },
         "description": "Create Related Ext - LongDescription"
-      }
-    },
-    "/entities_ext('{id}')/self.action": {
-      "post": {
-        "summary": "Action Bound Overload Ext - Description",
-        "tags": [
-          "entities ext"
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "value": {
-                      "type": "string",
-                      "nullable": true,
-                      "description": "Action Bound Overload Return Type - LongDescription"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "418": {
-            "description": "Out of coffee on bound action call",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error"
-                }
-              }
-            }
-          }
-        },
-        "description": "Action Bound Overload - LongDescription",
-        "parameters": [
-          {
-            "description": "Property - LongDescription",
-            "in": "path",
-            "name": "id",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "maxLength": 70,
-              "default": "0000"
-            }
-          }
-        ],
-        "requestBody": {
-          "description": "Action parameters",
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "nonbinding": {
-                    "type": "string",
-                    "nullable": true,
-                    "description": "Action Bound Overload Non-Binding Parameter - LongDescription"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/entities_ext('{id}')/self.function": {
-      "get": {
-        "summary": "Function Bound Overload Ext - Description",
-        "tags": [
-          "entities ext"
-        ],
-        "parameters": [
-          {
-            "description": "Property - LongDescription",
-            "in": "path",
-            "name": "id",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "maxLength": 70,
-              "default": "0000"
-            }
-          },
-          {
-            "description": "Function Bound Overload Nonbinding Parameter - LongDescription  \nString value needs to be enclosed in single quotes",
-            "required": true,
-            "in": "query",
-            "name": "nonbinding",
-            "schema": {
-              "type": "string",
-              "nullable": true,
-              "pattern": "^(null|'([^']|'')*')$",
-              "default": "null"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "value": {
-                      "type": "string",
-                      "nullable": true,
-                      "description": "Function Bound Overload Return Type - LongDescription"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "418": {
-            "description": "Out of coffee on bound function call",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error"
-                }
-              }
-            }
-          }
-        },
-        "description": "Function Bound Overload - LongDescription"
       }
     },
     "/functionimport": {
@@ -2166,6 +2166,61 @@
         "description": "Delete Singleton - LongDescription"
       }
     },
+    "/single/action": {
+      "post": {
+        "summary": "Action Bound Overload Ext - Description",
+        "tags": [
+          "single"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "string",
+                      "nullable": true,
+                      "description": "Action Bound Overload Return Type - LongDescription"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "418": {
+            "description": "Out of coffee on bound action call",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                }
+              }
+            }
+          }
+        },
+        "description": "Action Bound Overload - LongDescription",
+        "requestBody": {
+          "description": "Action parameters",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nonbinding": {
+                    "type": "string",
+                    "nullable": true,
+                    "description": "Action Bound Overload Non-Binding Parameter - LongDescription"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/single/contained": {
       "get": {
         "summary": "Singleton Query Contained - Description",
@@ -2385,6 +2440,58 @@
         "description": "Singleton Delete Contained - LongDescription"
       }
     },
+    "/single/function": {
+      "get": {
+        "summary": "Function Bound Overload Ext - Description",
+        "tags": [
+          "single"
+        ],
+        "parameters": [
+          {
+            "description": "Function Bound Overload Nonbinding Parameter - LongDescription  \nString value needs to be enclosed in single quotes",
+            "required": true,
+            "in": "query",
+            "name": "nonbinding",
+            "schema": {
+              "type": "string",
+              "nullable": true,
+              "pattern": "^(null|'([^']|'')*')$",
+              "default": "null"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "string",
+                      "nullable": true,
+                      "description": "Function Bound Overload Return Type - LongDescription"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "418": {
+            "description": "Out of coffee on bound function call",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                }
+              }
+            }
+          }
+        },
+        "description": "Function Bound Overload - LongDescription"
+      }
+    },
     "/single/related": {
       "get": {
         "summary": "Singleton Query Related - Description",
@@ -2529,113 +2636,6 @@
         "description": "Singleton Create Related - LongDescription"
       }
     },
-    "/single/self.action": {
-      "post": {
-        "summary": "Action Bound Overload Ext - Description",
-        "tags": [
-          "single"
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "value": {
-                      "type": "string",
-                      "nullable": true,
-                      "description": "Action Bound Overload Return Type - LongDescription"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "418": {
-            "description": "Out of coffee on bound action call",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error"
-                }
-              }
-            }
-          }
-        },
-        "description": "Action Bound Overload - LongDescription",
-        "requestBody": {
-          "description": "Action parameters",
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "nonbinding": {
-                    "type": "string",
-                    "nullable": true,
-                    "description": "Action Bound Overload Non-Binding Parameter - LongDescription"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/single/self.function": {
-      "get": {
-        "summary": "Function Bound Overload Ext - Description",
-        "tags": [
-          "single"
-        ],
-        "parameters": [
-          {
-            "description": "Function Bound Overload Nonbinding Parameter - LongDescription  \nString value needs to be enclosed in single quotes",
-            "required": true,
-            "in": "query",
-            "name": "nonbinding",
-            "schema": {
-              "type": "string",
-              "nullable": true,
-              "pattern": "^(null|'([^']|'')*')$",
-              "default": "null"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "value": {
-                      "type": "string",
-                      "nullable": true,
-                      "description": "Function Bound Overload Return Type - LongDescription"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "418": {
-            "description": "Out of coffee on bound function call",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error"
-                }
-              }
-            }
-          }
-        },
-        "description": "Function Bound Overload - LongDescription"
-      }
-    },
     "/single_ext": {
       "get": {
         "summary": "Read Singleton Ext - Description",
@@ -2720,6 +2720,61 @@
           }
         },
         "description": "Update Singleton Ext - LongDescription"
+      }
+    },
+    "/single_ext/action": {
+      "post": {
+        "summary": "Action Bound Overload Ext - Description",
+        "tags": [
+          "single ext"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "string",
+                      "nullable": true,
+                      "description": "Action Bound Overload Return Type - LongDescription"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "418": {
+            "description": "Out of coffee on bound action call",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                }
+              }
+            }
+          }
+        },
+        "description": "Action Bound Overload - LongDescription",
+        "requestBody": {
+          "description": "Action parameters",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nonbinding": {
+                    "type": "string",
+                    "nullable": true,
+                    "description": "Action Bound Overload Non-Binding Parameter - LongDescription"
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/single_ext/contained": {
@@ -2941,6 +2996,58 @@
         "description": "Singleton Delete Contained Ext - LongDescription"
       }
     },
+    "/single_ext/function": {
+      "get": {
+        "summary": "Function Bound Overload Ext - Description",
+        "tags": [
+          "single ext"
+        ],
+        "parameters": [
+          {
+            "description": "Function Bound Overload Nonbinding Parameter - LongDescription  \nString value needs to be enclosed in single quotes",
+            "required": true,
+            "in": "query",
+            "name": "nonbinding",
+            "schema": {
+              "type": "string",
+              "nullable": true,
+              "pattern": "^(null|'([^']|'')*')$",
+              "default": "null"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "string",
+                      "nullable": true,
+                      "description": "Function Bound Overload Return Type - LongDescription"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "418": {
+            "description": "Out of coffee on bound function call",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                }
+              }
+            }
+          }
+        },
+        "description": "Function Bound Overload - LongDescription"
+      }
+    },
     "/single_ext/related": {
       "get": {
         "summary": "Singleton Query Related Ext - Description",
@@ -3083,113 +3190,6 @@
           }
         },
         "description": "Singleton Create Related Ext - LongDescription"
-      }
-    },
-    "/single_ext/self.action": {
-      "post": {
-        "summary": "Action Bound Overload Ext - Description",
-        "tags": [
-          "single ext"
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "value": {
-                      "type": "string",
-                      "nullable": true,
-                      "description": "Action Bound Overload Return Type - LongDescription"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "418": {
-            "description": "Out of coffee on bound action call",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error"
-                }
-              }
-            }
-          }
-        },
-        "description": "Action Bound Overload - LongDescription",
-        "requestBody": {
-          "description": "Action parameters",
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "nonbinding": {
-                    "type": "string",
-                    "nullable": true,
-                    "description": "Action Bound Overload Non-Binding Parameter - LongDescription"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/single_ext/self.function": {
-      "get": {
-        "summary": "Function Bound Overload Ext - Description",
-        "tags": [
-          "single ext"
-        ],
-        "parameters": [
-          {
-            "description": "Function Bound Overload Nonbinding Parameter - LongDescription  \nString value needs to be enclosed in single quotes",
-            "required": true,
-            "in": "query",
-            "name": "nonbinding",
-            "schema": {
-              "type": "string",
-              "nullable": true,
-              "pattern": "^(null|'([^']|'')*')$",
-              "default": "null"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "value": {
-                      "type": "string",
-                      "nullable": true,
-                      "description": "Function Bound Overload Return Type - LongDescription"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "418": {
-            "description": "Out of coffee on bound function call",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error"
-                }
-              }
-            }
-          }
-        },
-        "description": "Function Bound Overload - LongDescription"
       }
     }
   },

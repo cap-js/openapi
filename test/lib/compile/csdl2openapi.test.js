@@ -100,7 +100,7 @@ describe("Examples", () => {
   });
 
   test("autoexposed-texts", () => {
-    const openapi = lib.csdl2openapi(example12);
+    const openapi = lib.csdl2openapi(example12, { diagram: true });
     check(openapi, result12);
   });
 });
@@ -2699,6 +2699,107 @@ see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-prot
         },
       },
       "MaxLength"
+    );
+  });
+});
+
+describe("Bound action path naming", () => {
+  const baseCsdl = {
+    $Version: "4.01",
+    $Reference: {
+      dummy: {
+        $Include: [
+          { $Namespace: "Org.OData.Capabilities.V1", $Alias: "Capabilities" },
+        ],
+      },
+    },
+    $EntityContainer: "TestService.Container",
+    TestService: {
+      Product: {
+        $Kind: "EntityType",
+        $Key: ["ID"],
+        ID: { $Type: "Edm.Int32" },
+        Name: { $Type: "Edm.String" },
+      },
+      Discount: [
+        {
+          $Kind: "Action",
+          $IsBound: true,
+          $Parameter: [
+            { $Name: "in", $Type: "TestService.Product" },
+            { $Name: "percent", $Type: "Edm.Decimal" },
+          ],
+          $ReturnType: { $Type: "Edm.Decimal" },
+        },
+      ],
+      Container: {
+        "@Capabilities.KeyAsSegmentSupported": true,
+        Products: {
+          $Type: "TestService.Product",
+          $Collection: true,
+        },
+      },
+    },
+  };
+
+  test("Simplified action names by default (no namespace prefix)", () => {
+    const csdl = JSON.parse(JSON.stringify(baseCsdl));
+    const actual = lib.csdl2openapi(csdl);
+    
+    assert.ok(
+      actual.paths["/Products/{ID}/Discount"],
+      "Path should use simplified name without namespace prefix"
+    );
+    assert.strictEqual(
+      actual.paths["/Products/{ID}/TestService.Discount"],
+      undefined,
+      "Path with namespace prefix should not exist"
+    );
+    assert.strictEqual(
+      actual.paths["/Products/{ID}/Discount"].post.summary,
+      "Invokes action Discount",
+      "Action summary should be present"
+    );
+  });
+
+  test("Fully qualified action names with fqActionPaths option", () => {
+    const csdl = JSON.parse(JSON.stringify(baseCsdl));
+    const actual = lib.csdl2openapi(csdl, { fqActionPaths: true });
+
+    assert.ok(
+      actual.paths["/Products/{ID}/TestService.Discount"],
+      "Path should use fully qualified name with namespace prefix"
+    );
+    assert.strictEqual(
+      actual.paths["/Products/{ID}/Discount"],
+      undefined,
+      "Path with simplified name should not exist"
+    );
+    assert.strictEqual(
+      actual.paths["/Products/{ID}/TestService.Discount"].post.summary,
+      "Invokes action Discount",
+      "Action summary should be present"
+    );
+  });
+
+  test("Simplified names even with @Core.DefaultNamespace annotation", () => {
+    const csdl = JSON.parse(JSON.stringify(baseCsdl));
+    csdl.$Reference.dummy.$Include.push({
+      $Namespace: "Org.OData.Core.V1",
+      $Alias: "Core",
+    });
+    csdl.TestService["@Core.DefaultNamespace"] = true;
+
+    const actual = lib.csdl2openapi(csdl);
+
+    assert.ok(
+      actual.paths["/Products/{ID}/Discount"],
+      "Path should use simplified name when DefaultNamespace is true"
+    );
+    assert.strictEqual(
+      actual.paths["/Products/{ID}/TestService.Discount"],
+      undefined,
+      "Path with namespace prefix should not exist even with DefaultNamespace"
     );
   });
 });
