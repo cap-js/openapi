@@ -423,6 +423,63 @@ describe("Edge cases", () => {
     //TODO: check components.schemas
   });
 
+  test("navigation to entity with all CRUD disabled", () => {
+    const csdl = {
+      $Version: "4.01",
+      $Reference: {
+        dummy: {
+          $Include: [
+            { $Namespace: "Org.OData.Capabilities.V1", $Alias: "Capabilities" },
+          ],
+        },
+      },
+      $EntityContainer: "this.Container",
+      this: {
+        App: {
+          $Kind: "EntityType",
+          $Key: ["id"],
+          id: { $Type: "Edm.Guid" },
+          toExtRefs: {
+            $Kind: "NavigationProperty",
+            $Collection: true,
+            $Type: "this.ExtRef",
+          },
+        },
+        ExtRef: {
+          $Kind: "EntityType",
+          $Key: ["id"],
+          id: { $Type: "Edm.Guid" },
+        },
+        Container: {
+          Apps: { $Type: "this.App", $Collection: true },
+          ExtRefs: {
+            $Type: "this.ExtRef",
+            $Collection: true,
+            "@Capabilities.ReadRestrictions": { Readable: false },
+            "@Capabilities.InsertRestrictions": { Insertable: false },
+            "@Capabilities.UpdateRestrictions": { Updatable: false },
+            "@Capabilities.DeleteRestrictions": { Deletable: false },
+          },
+        },
+      },
+    };
+    const expected = {
+      paths: {
+        "/Apps": { get: {}, post: {} },
+        "/Apps({id})": { get: {}, patch: {}, delete: {} },
+        "/Apps({id})/toExtRefs": { get: {} },
+        "/$batch": { post: {} },
+      },
+    };
+    const actual = lib.csdl2openapi(csdl, {});
+    assert.deepStrictEqual(paths(actual), paths(expected), "Paths");
+    assert.deepStrictEqual(
+      operations(actual),
+      operations(expected),
+      "Operations"
+    );
+  });
+
   test("circular reference on collect primitive paths", () => {
     const csdl = {
       $EntityContainer: "this.Container",
