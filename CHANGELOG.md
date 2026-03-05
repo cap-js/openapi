@@ -16,8 +16,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ## [1.4.0] - tbd
 
 ### Added
-- Opt-in option `shortActionPaths` to use simplified bound action paths (e.g., `.../Discount` instead of `.../ODataDemo.Discount`). Enable via CLI flag `--openapi:shortActionPaths` or project-wide via `{ "cds": { "openapi": { "shortActionPaths": true } } }` in `package.json`.
-- Options from `cds.env.openapi` in `package.json` are now applied as project-level defaults, overridable by CLI flags or programmatic options.
+- Opt-in option `shortActionPaths` to use simplified bound action paths (e.g., `.../Discount` instead of `.../ODataDemo.Discount`). Enable via `{ "cds": { "openapi": { "shortActionPaths": true } } }` in `package.json`.
 
 ### Changed
 - Removed special characters from placeholders for fields like short text, description, etc.
