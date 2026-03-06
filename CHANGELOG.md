@@ -8,9 +8,19 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Added
 ### Changed
-- Removed special characters from placeholders for fields like short text, description, etc.
 ### Deprecated
 ### Removed
+### Fixed
+### Security
+
+## [1.4.0] - tbd
+
+### Added
+- Opt-in option `shortActionPaths` to use simplified bound action paths (e.g., `.../Discount` instead of `.../ODataDemo.Discount`). Enable via `{ "cds": { "openapi": { "shortActionPaths": true } } }` in `package.json`.
+
+### Changed
+- Removed special characters from placeholders for fields like short text, description, etc.
+
 ### Fixed
 - Autoexposed `.texts` entities are now excluded from OpenAPI document
 - Generate navigation paths to CRUD-disabled entities
