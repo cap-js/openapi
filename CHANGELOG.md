@@ -13,7 +13,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ### Fixed
 ### Security
 
-## [1.4.0] - tbd
+## [1.4.0] - 2026-03-18
 
 ### Added
 - Opt-in option `shortActionPaths` to use simplified bound action paths (e.g., `.../Discount` instead of `.../ODataDemo.Discount`). Enable via `{ "cds": { "openapi": { "shortActionPaths": true } } }` in `package.json`.
