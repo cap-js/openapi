@@ -11,6 +11,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ### Deprecated
 ### Removed
 ### Fixed
+- Restore bound actions/functions on containment navigation paths (regression since v1.2.0)
 ### Security
 
 ## [1.4.0] - 2026-03-18

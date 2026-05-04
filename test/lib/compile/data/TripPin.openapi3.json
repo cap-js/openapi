@@ -1216,6 +1216,53 @@
         }
       }
     },
+    "/Me/Trips({TripId_1})/Microsoft.OData.SampleService.Models.TripPin.GetInvolvedPeople": {
+      "get": {
+        "summary": "Invokes function GetInvolvedPeople",
+        "tags": [
+          "Me"
+        ],
+        "parameters": [
+          {
+            "description": "key: TripId",
+            "in": "path",
+            "name": "TripId_1",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Collection of Person",
+                  "properties": {
+                    "@count": {
+                      "$ref": "#/components/schemas/count"
+                    },
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Microsoft.OData.SampleService.Models.TripPin.Person"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
     "/Me/Trips({TripId_1})/Photos": {
       "parameters": [
         {
@@ -2511,6 +2558,62 @@
         "responses": {
           "204": {
             "description": "Success"
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/People('{UserName}')/Trips({TripId_1})/Microsoft.OData.SampleService.Models.TripPin.GetInvolvedPeople": {
+      "get": {
+        "summary": "Invokes function GetInvolvedPeople",
+        "tags": [
+          "People"
+        ],
+        "parameters": [
+          {
+            "description": "key: UserName",
+            "in": "path",
+            "name": "UserName",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "key: TripId",
+            "in": "path",
+            "name": "TripId_1",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Collection of Person",
+                  "properties": {
+                    "@count": {
+                      "$ref": "#/components/schemas/count"
+                    },
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Microsoft.OData.SampleService.Models.TripPin.Person"
+                      }
+                    }
+                  }
+                }
+              }
+            }
           },
           "4XX": {
             "$ref": "#/components/responses/error"
