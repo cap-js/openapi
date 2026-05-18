@@ -13,6 +13,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ### Fixed
 ### Security
 
+## [1.4.2] - 2026-05-18
+
+### Security
+- Replaced unauthorized release 1.4.1 — this version is identical to 1.4.0
+
 ## [1.4.0] - 2026-03-18
 
 ### Added
