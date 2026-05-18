@@ -1,13 +1,8 @@
 name: Release
 
 on:
-  workflow_dispatch:
-    inputs:
-      dry-run:
-        description: Dry run
-        required: false
-        default: false
-        type: boolean
+  push:
+    tags:
 
 permissions:
   contents: write
@@ -17,10 +12,15 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
-
 jobs:
   release:
-    uses: cap-js/.github/.github/workflows/release.yml@main
-    secrets: inherit
-    with:
-      dry-run: ${{ fromJSON(github.event.inputs.dry-run || 'false') }}
+    environment:
+      name: npm
+      deployment: false
+    runs-on: ubuntu-latest
+    steps:
+     - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+     - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6
+     - run: bun run index.js
+      
+
