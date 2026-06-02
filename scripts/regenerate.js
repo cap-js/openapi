@@ -13,7 +13,8 @@ const specialOptions = {
         host: 'services.odata.org',
         basePath: '/V4/(S(cnbm44wtbc1v5bgrlek5lpcc))/TripPinServiceRW',
         diagram: true
-    }
+    },
+    'autoexposed-texts': {}
 };
 
 // Default options for all other test cases.
