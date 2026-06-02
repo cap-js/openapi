@@ -16,7 +16,6 @@ export default [
             'max-len': ['off'],
             'complexity': ['warn', 15],
             'max-params': ['warn', 4],
-            'no-param-reassign': 'warn',
             'prefer-const': 'warn',
             'no-var': 'error',
             'object-shorthand': 'warn',
@@ -31,13 +30,13 @@ export default [
             'yoda': ['warn', 'never', { exceptRange: true }], // Natural comparison order, except ranges
             'no-implicit-coercion': 'off', // Allow !!value, +str, etc.
             'no-nested-ternary': 'off', // Allow with proper newlines
-            
+
             // Error Prevention - inspired by Phoenix35/eslint-config
             'no-throw-literal': 'error',
             'no-eval': 'error',
             'no-implied-eval': 'error',
             'no-new-func': 'error',
-            
+
             // Code Quality
             'no-lonely-if': 'warn',
             'no-useless-return': 'warn',
