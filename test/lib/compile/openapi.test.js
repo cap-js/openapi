@@ -574,7 +574,7 @@ service CatalogService {
     assert.strictEqual(openAPI.paths["/F1"].get["x-sap-deprecated-operation"].notValidKey, undefined);
   });
 
-  test('emits *:cds.compile.to.openapi events', async () => {
+  test('emits *:cds.compile.to.openapi events', () => {
     const csn = cds.compile.to.csn(`
       service CatalogService {
         entity Books {
@@ -615,7 +615,7 @@ service CatalogService {
     }
   });
 
-  test('allows modifying result in event handler', async () => {
+  test('allows modifying result in event handler', () => {
     const csn = cds.compile.to.csn(`
       service CatalogService {
         entity Books {
@@ -647,7 +647,7 @@ service CatalogService {
     }
   });
 
-  test('propagates errors from event handlers', async () => {
+  test('propagates errors from event handlers', () => {
     const csn = cds.compile.to.csn(`
       service CatalogService {
         entity Books {
