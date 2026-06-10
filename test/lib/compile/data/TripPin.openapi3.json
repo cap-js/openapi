@@ -3231,6 +3231,66 @@
         }
       }
     },
+    "/Photos({Id})/$value": {
+      "parameters": [
+        {
+          "description": "key: Id",
+          "in": "path",
+          "name": "Id",
+          "required": true,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "format": "int64"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "example": "42"
+          }
+        }
+      ],
+      "get": {
+        "summary": "Retrieves the media stream of a single photo.",
+        "tags": [
+          "Photos"
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved photo",
+            "content": {
+              "image/jpeg": {}
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "put": {
+        "summary": "Changes the media stream of a single photo.",
+        "tags": [
+          "Photos"
+        ],
+        "requestBody": {
+          "description": "New media stream for photo",
+          "required": true,
+          "content": {
+            "image/jpeg": {}
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
     "/ResetDataSource": {
       "post": {
         "summary": "Invokes action ResetDataSource",
