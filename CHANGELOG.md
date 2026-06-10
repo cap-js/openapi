@@ -7,6 +7,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ## [Unreleased]
 
 ### Added
+- Generate `PUT` request for `media data`
 ### Changed
 ### Deprecated
 ### Removed
