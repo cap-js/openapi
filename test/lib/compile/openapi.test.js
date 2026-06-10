@@ -684,4 +684,22 @@ service CatalogService {
       cds.removeListener(events.after, handler);
     }
   });
+
+  test('@mandatory on function parameters with nullable types compiles without error', () => {
+    const csn = cds.compile.to.csn(`
+      service ReproService {
+        function getMapping(
+          @mandatory paramA: String,
+          @mandatory paramB: String not null
+        ) returns String;
+      }
+    `);
+    const openAPI = toOpenApi(csn);
+    const params = openAPI.paths['/getMapping'].get.parameters;
+    assert.strictEqual(params.length, 2);
+    assert.strictEqual(params[0].name, 'paramA');
+    assert.strictEqual(params[0].required, true);
+    assert.strictEqual(params[1].name, 'paramB');
+    assert.strictEqual(params[1].required, true);
+  });
 });
