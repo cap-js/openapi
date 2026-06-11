@@ -3016,6 +3016,37 @@ describe("Media stream paths", () => {
       ["application/pdf"]
     );
   });
+
+  it("falls back to */* when @Core.MediaType is a path expression on Edm.Stream property", () => {
+    const csdl = {
+      $Version: "4.0",
+      $EntityContainer: "this.Container",
+      $Reference: {
+        dummy: { $Include: [{ $Namespace: "Org.OData.Core.V1", $Alias: "Core" }] },
+      },
+      this: {
+        doc: {
+          $Kind: "EntityType",
+          $Key: ["ID"],
+          ID: { $Type: "Edm.Guid" },
+          content: { $Type: "Edm.Stream", "@Core.MediaType": { $Path: "mimeType" } },
+          mimeType: { default: "application/octet-stream" },
+        },
+        Container: {
+          $Kind: "EntityContainer",
+          docs: { $Collection: true, $Type: "this.doc", $ContainsTarget: true },
+        },
+      },
+    };
+    const openapi = lib.csdl2openapi(csdl, {});
+    const propPath = "/docs({ID})/content";
+    assert.ok(openapi.paths[propPath], `Expected path ${propPath}`);
+    assert.deepStrictEqual(
+      Object.keys(openapi.paths[propPath].get.responses[200].content),
+      ["*/*"],
+      "Path expression MediaType falls back to */*"
+    );
+  });
 });
 
 describe("CAP / CS01", () => {
