@@ -1295,7 +1295,12 @@
           "200": {
             "description": "Retrieved product",
             "content": {
-              "*/*": {}
+              "*/*": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
             }
           },
           "4XX": {
@@ -1312,7 +1317,12 @@
           "description": "New media stream for product",
           "required": true,
           "content": {
-            "*/*": {}
+            "*/*": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            }
           }
         },
         "responses": {

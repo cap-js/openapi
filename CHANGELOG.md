@@ -7,7 +7,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ## [Unreleased]
 
 ### Added
-- Generate `PUT` request for `media data`
+- Generate media stream paths (GET and PUT) for media entities and `Edm.Stream` properties
 ### Changed
 ### Deprecated
 ### Removed

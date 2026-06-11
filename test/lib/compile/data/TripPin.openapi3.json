@@ -3261,7 +3261,12 @@
           "200": {
             "description": "Retrieved photo",
             "content": {
-              "image/jpeg": {}
+              "image/jpeg": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
             }
           },
           "4XX": {
@@ -3278,7 +3283,12 @@
           "description": "New media stream for photo",
           "required": true,
           "content": {
-            "image/jpeg": {}
+            "image/jpeg": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            }
           }
         },
         "responses": {
