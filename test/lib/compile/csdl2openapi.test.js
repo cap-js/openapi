@@ -2987,6 +2987,35 @@ describe("Media stream paths", () => {
       "Default content type is */*"
     );
   });
+
+  it("uses @Core.MediaType annotation on Edm.Stream property", () => {
+    const csdl = {
+      $Version: "4.0",
+      $EntityContainer: "this.Container",
+      $Reference: {
+        dummy: { $Include: [{ $Namespace: "Org.OData.Core.V1", $Alias: "Core" }] },
+      },
+      this: {
+        doc: {
+          $Kind: "EntityType",
+          $Key: ["ID"],
+          ID: { $Type: "Edm.Guid" },
+          content: { $Type: "Edm.Stream", "@Core.MediaType": "application/pdf" },
+        },
+        Container: {
+          $Kind: "EntityContainer",
+          docs: { $Collection: true, $Type: "this.doc", $ContainsTarget: true },
+        },
+      },
+    };
+    const openapi = lib.csdl2openapi(csdl, {});
+    const propPath = "/docs({ID})/content";
+    assert.ok(openapi.paths[propPath], `Expected path ${propPath}`);
+    assert.deepStrictEqual(
+      Object.keys(openapi.paths[propPath].get.responses[200].content),
+      ["application/pdf"]
+    );
+  });
 });
 
 describe("CAP / CS01", () => {
