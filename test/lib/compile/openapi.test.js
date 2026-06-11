@@ -695,7 +695,8 @@ service CatalogService {
       }
     `);
     const openAPI = toOpenApi(csn);
-    const params = openAPI.paths['/getMapping'].get.parameters;
+    const pathKey = Object.keys(openAPI.paths).find(p => p.includes('getMapping'));
+    const params = openAPI.paths[pathKey].get.parameters;
     assert.strictEqual(params.length, 2);
     assert.strictEqual(params[0].name, 'paramA');
     assert.strictEqual(params[0].required, true);
