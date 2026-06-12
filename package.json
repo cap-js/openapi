@@ -35,9 +35,10 @@
     "@sap/cds": ">=7.6"
   },
   "devDependencies": {
+    "@mermaid-js/mermaid-cli": "^11.12.0",
     "@types/node": "^25.0.3",
-    "eslint": "^9.33.0",
-    "typescript": "^5.9.2",
-    "@mermaid-js/mermaid-cli": "^11.12.0"
+    "eslint": "^10.4.1",
+    "globals": "^17.6.0",
+    "typescript": "^6.0.3"
   }
 }
