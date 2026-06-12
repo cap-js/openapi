@@ -14,6 +14,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ### Fixed
 - Restore bound actions/functions on containment navigation paths (regression since v1.2.0)
 - Function parameters annotated with `@mandatory` no longer lead to "Unexpected mandatory after optional parameter" error
+- `GET`, `PATCH`, and `DELETE` endpoints are now exposed as navigation paths for `*_text` entities
 ### Security
 
 ## [1.4.2] - 2026-05-18
