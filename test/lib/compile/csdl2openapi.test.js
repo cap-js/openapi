@@ -2900,6 +2900,155 @@ it("Error Logging when name and title are missing", () => {
   console.log("Error handling executed successfully");
 });
 
+describe("Media stream paths", () => {
+  it("generates /$value GET and PUT for media entity ($HasStream)", () => {
+    const csdl = {
+      $Version: "4.0",
+      $EntityContainer: "this.Container",
+      this: {
+        doc: {
+          $Kind: "EntityType",
+          $HasStream: true,
+          $Key: ["ID"],
+          ID: { $Type: "Edm.Guid" },
+          name: {},
+        },
+        Container: {
+          $Kind: "EntityContainer",
+          docs: { $Collection: true, $Type: "this.doc", $ContainsTarget: true },
+        },
+      },
+    };
+    const openapi = lib.csdl2openapi(csdl, {});
+    const valuePath = "/docs({ID})/$value";
+    assert.ok(openapi.paths[valuePath], `Expected path ${valuePath}`);
+    assert.ok(openapi.paths[valuePath].get, "Expected GET on $value");
+    assert.ok(openapi.paths[valuePath].put, "Expected PUT on $value");
+    assert.deepStrictEqual(
+      Object.keys(openapi.paths[valuePath].get.responses[200].content),
+      ["*/*"],
+      "Default content type is */*"
+    );
+  });
+
+  it("uses @Core.AcceptableMediaTypes for content type in /$value", () => {
+    const csdl = {
+      $Version: "4.0",
+      $EntityContainer: "this.Container",
+      $Reference: {
+        dummy: { $Include: [{ $Namespace: "Org.OData.Core.V1", $Alias: "Core" }] },
+      },
+      this: {
+        doc: {
+          $Kind: "EntityType",
+          $HasStream: true,
+          "@Core.AcceptableMediaTypes": ["application/pdf", "image/png"],
+          $Key: ["ID"],
+          ID: { $Type: "Edm.Guid" },
+        },
+        Container: {
+          $Kind: "EntityContainer",
+          docs: { $Collection: true, $Type: "this.doc", $ContainsTarget: true },
+        },
+      },
+    };
+    const openapi = lib.csdl2openapi(csdl, {});
+    const valuePath = "/docs({ID})/$value";
+    assert.ok(openapi.paths[valuePath], `Expected path ${valuePath}`);
+    const contentKeys = Object.keys(openapi.paths[valuePath].get.responses[200].content);
+    assert.deepStrictEqual(contentKeys, ["application/pdf", "image/png"]);
+  });
+
+  it("generates GET and PUT for Edm.Stream property", () => {
+    const csdl = {
+      $Version: "4.0",
+      $EntityContainer: "this.Container",
+      this: {
+        doc: {
+          $Kind: "EntityType",
+          $Key: ["ID"],
+          ID: { $Type: "Edm.Guid" },
+          content: { $Type: "Edm.Stream" },
+        },
+        Container: {
+          $Kind: "EntityContainer",
+          docs: { $Collection: true, $Type: "this.doc", $ContainsTarget: true },
+        },
+      },
+    };
+    const openapi = lib.csdl2openapi(csdl, {});
+    const propPath = "/docs({ID})/content";
+    assert.ok(openapi.paths[propPath], `Expected path ${propPath}`);
+    assert.ok(openapi.paths[propPath].get, "Expected GET on stream property");
+    assert.ok(openapi.paths[propPath].put, "Expected PUT on stream property");
+    assert.deepStrictEqual(
+      Object.keys(openapi.paths[propPath].put.requestBody.content),
+      ["*/*"],
+      "Default content type is */*"
+    );
+  });
+
+  it("uses @Core.MediaType annotation on Edm.Stream property", () => {
+    const csdl = {
+      $Version: "4.0",
+      $EntityContainer: "this.Container",
+      $Reference: {
+        dummy: { $Include: [{ $Namespace: "Org.OData.Core.V1", $Alias: "Core" }] },
+      },
+      this: {
+        doc: {
+          $Kind: "EntityType",
+          $Key: ["ID"],
+          ID: { $Type: "Edm.Guid" },
+          content: { $Type: "Edm.Stream", "@Core.MediaType": "application/pdf" },
+        },
+        Container: {
+          $Kind: "EntityContainer",
+          docs: { $Collection: true, $Type: "this.doc", $ContainsTarget: true },
+        },
+      },
+    };
+    const openapi = lib.csdl2openapi(csdl, {});
+    const propPath = "/docs({ID})/content";
+    assert.ok(openapi.paths[propPath], `Expected path ${propPath}`);
+    assert.deepStrictEqual(
+      Object.keys(openapi.paths[propPath].get.responses[200].content),
+      ["application/pdf"]
+    );
+  });
+
+  it("falls back to */* when @Core.MediaType is a path expression on Edm.Stream property", () => {
+    const csdl = {
+      $Version: "4.0",
+      $EntityContainer: "this.Container",
+      $Reference: {
+        dummy: { $Include: [{ $Namespace: "Org.OData.Core.V1", $Alias: "Core" }] },
+      },
+      this: {
+        doc: {
+          $Kind: "EntityType",
+          $Key: ["ID"],
+          ID: { $Type: "Edm.Guid" },
+          content: { $Type: "Edm.Stream", "@Core.MediaType": { $Path: "mimeType" } },
+          mimeType: { default: "application/octet-stream" },
+        },
+        Container: {
+          $Kind: "EntityContainer",
+          docs: { $Collection: true, $Type: "this.doc", $ContainsTarget: true },
+        },
+      },
+    };
+    const openapi = lib.csdl2openapi(csdl, {});
+    const propPath = "/docs({ID})/content";
+    assert.ok(openapi.paths[propPath], `Expected path ${propPath}`);
+    assert.deepStrictEqual(
+      Object.keys(openapi.paths[propPath].get.responses[200].content),
+      ["*/*"],
+      "Path expression MediaType falls back to */*"
+    );
+  });
+});
+
 describe("CAP / CS01", () => {
   it("FilterRestrictions, NavigationRestrictions, and SortRestrictions", () => {
     const csdl = {
