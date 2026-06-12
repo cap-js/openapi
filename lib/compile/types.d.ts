@@ -54,6 +54,7 @@ export type Schema = (SingleSchema | MultiSchema)
 export type TargetRestrictions = {
     Countable?: boolean
     Expandable?: boolean
+    $Type?: string
 }
 
 // despite how CSDL is defined in the standard,

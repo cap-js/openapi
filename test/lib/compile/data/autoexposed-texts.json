@@ -8,7 +8,10 @@
       "$Kind": "EntityContainer",
       "Books": {
         "$Collection": true,
-        "$Type": "AdminService.Books"
+        "$Type": "AdminService.Books",
+        "$NavigationPropertyBinding": {
+          "texts": "Books_texts"
+        }
       },
       "Books_texts": {
         "$Collection": true,
@@ -20,6 +23,12 @@
       "$Key": ["ID"],
       "ID": {
         "$Type": "Edm.Int32"
+      },
+      "texts": {
+        "$Kind": "NavigationProperty",
+        "$Type": "AdminService.Books_texts",
+        "$Collection": true,
+        "$OnDelete": "Cascade"
       }
     },
     "Books_texts": {
