@@ -7,6 +7,15 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ## [Unreleased]
 
 ### Added
+### Changed
+### Deprecated
+### Removed
+### Fixed
+### Security
+
+## [1.5.0] - 2026-06-13
+
+### Added
 - Generate media stream paths (GET and PUT) for media entities and `Edm.Stream` properties
 ### Changed
 ### Deprecated
