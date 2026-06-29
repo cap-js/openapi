@@ -24,7 +24,8 @@ function assertMatchObject(actual, expected, message) {
     }
     return;
   }
-  assert.strictEqual(actual, expected, message);
+  if (message !== undefined) assert.strictEqual(actual, expected, new Error(message));
+  else assert.strictEqual(actual, expected);
 }
 
 module.exports = {
