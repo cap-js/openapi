@@ -23,7 +23,9 @@ type BooleanSchema = {
 
 type ArraySchema = {
     type: 'array',
-    items: Schema
+    items: Schema,
+    minItems?: number,
+    maxItems?: number
 }
 
 type ObjectSchema = {

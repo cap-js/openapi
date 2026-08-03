@@ -90,6 +90,15 @@
                 "$Type": "Edm.Decimal",
                 "$Scale": 5
             },
+            "MinMaxItems": {
+                "$Collection": true,
+                "@Validation.MinItems": 1,
+                "@Validation.MaxItems": 5
+            },
+            "MinItems": {
+                "$Collection": true,
+                "@Validation.MinItems": 2
+            },
             "Example": {
                 "$Nullable": true,
                 "@Core.Example": {
