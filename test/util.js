@@ -4,8 +4,8 @@ const assert = require('assert');
  * Recursively checks that all properties in expected exist and match in actual
  * actual may have more properties in addition to what expected specifies.
  * Those properties are ignored.
- * @param {object} actual
- * @param {object} expected
+ * @param {*} actual
+ * @param {*} expected
  * @param {string | undefined} [message]
  */
 function assertMatchObject(actual, expected, message) {
@@ -24,7 +24,7 @@ function assertMatchObject(actual, expected, message) {
     }
     return;
   }
-  assert.strictEqual(actual, expected, message);
+  assert.strictEqual(actual, expected, message ?? '');
 }
 
 module.exports = {
