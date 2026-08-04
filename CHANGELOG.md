@@ -7,10 +7,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ## [Unreleased]
 
 ### Added
+- Support `@Validation.MinItems` and `@Validation.MaxItems` annotations on collection-typed properties and action parameters to emit `minItems`/`maxItems` in the generated OpenAPI schema
 ### Changed
 ### Deprecated
 ### Removed
 ### Fixed
+- `@assert.range` (and `@Validation.Minimum`/`@Validation.Maximum`) on properties and action parameters of type `Edm.Int32`, `Edm.Int16`, `Edm.SByte`, and `Edm.Byte` now correctly produces `minimum`/`maximum` in the generated OpenAPI schema
 ### Security
 
 ## [1.5.0] - 2026-06-13
