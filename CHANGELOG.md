@@ -7,6 +7,15 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ## [Unreleased]
 
 ### Added
+### Changed
+### Deprecated
+### Removed
+### Fixed
+### Security
+
+## [1.6.0] - 2026-08-04
+
+### Added
 - Support `@Validation.MinItems` and `@Validation.MaxItems` annotations on collection-typed properties and action parameters to emit `minItems`/`maxItems` in the generated OpenAPI schema
 ### Changed
 ### Deprecated
