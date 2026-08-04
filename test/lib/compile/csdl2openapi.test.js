@@ -2892,6 +2892,107 @@ it("AllowedValues on various Edm types", () => {
   assert.deepStrictEqual(messages, [], "messages");
 });
 
+it("Minimum and Maximum on plain integer and float types (non-anyOf schemas)", () => {
+  const csdl = {
+    $Reference: {
+      dummy: {
+        $Include: [
+          { $Namespace: "Org.OData.Validation.V1", $Alias: "Validation" },
+        ],
+      },
+    },
+    $EntityContainer: "svc.Container",
+    svc: {
+      Container: { sing: { $Type: "svc.entity" } },
+      entity: {
+        $Kind: "EntityType",
+        int32: { $Type: "Edm.Int32" },
+        int16: { $Type: "Edm.Int16" },
+        sbyte: { $Type: "Edm.SByte" },
+        byte: { $Type: "Edm.Byte" },
+        single: { $Type: "Edm.Single" },
+        int32ExclusiveMin: { $Type: "Edm.Int32" },
+        int32ExclusiveMax: { $Type: "Edm.Int32" },
+      },
+      $Annotations: {
+        "svc.entity/int32": {
+          "@Validation.Minimum": 1,
+          "@Validation.Maximum": 500,
+        },
+        "svc.entity/int16": {
+          "@Validation.Minimum": 0,
+          "@Validation.Maximum": 100,
+        },
+        "svc.entity/sbyte": {
+          "@Validation.Minimum": -128,
+          "@Validation.Maximum": 127,
+        },
+        "svc.entity/byte": {
+          "@Validation.Minimum": 0,
+          "@Validation.Maximum": 255,
+        },
+        "svc.entity/single": {
+          "@Validation.Minimum": 0,
+          "@Validation.Maximum": 1,
+        },
+        "svc.entity/int32ExclusiveMin": {
+          "@Validation.Minimum@Validation.Exclusive": true,
+          "@Validation.Minimum": 0,
+        },
+        "svc.entity/int32ExclusiveMax": {
+          "@Validation.Maximum@Validation.Exclusive": true,
+          "@Validation.Maximum": 100,
+        },
+      },
+    },
+  };
+
+  const openapi = lib.csdl2openapi(csdl, {});
+  const props = openapi.components.schemas["svc.entity"].properties;
+
+  assert.deepStrictEqual(
+    props.int32,
+    { type: "integer", format: "int32", minimum: 1, maximum: 500 },
+    "int32 minimum and maximum"
+  );
+  assert.deepStrictEqual(
+    props.int16,
+    { type: "integer", format: "int16", minimum: 0, maximum: 100 },
+    "int16 minimum and maximum"
+  );
+  assert.deepStrictEqual(
+    props.sbyte,
+    { type: "integer", format: "int8", minimum: -128, maximum: 127 },
+    "sbyte minimum and maximum"
+  );
+  assert.deepStrictEqual(
+    props.byte,
+    { type: "integer", format: "uint8", minimum: 0, maximum: 255 },
+    "byte minimum and maximum"
+  );
+  assert.deepStrictEqual(
+    props.single,
+    {
+      anyOf: [
+        { type: "number", format: "float", minimum: 0, maximum: 1 },
+        { type: "string" },
+      ],
+      example: 3.14,
+    },
+    "single anyOf[0] minimum and maximum"
+  );
+  assert.strictEqual(
+    props.int32ExclusiveMin.exclusiveMinimum,
+    true,
+    "int32 exclusiveMinimum"
+  );
+  assert.strictEqual(
+    props.int32ExclusiveMax.exclusiveMaximum,
+    true,
+    "int32 exclusiveMaximum"
+  );
+});
+
 it("Error Logging when name and title are missing", () => {
   const csdl = { name: undefined, title: undefined };
   const actual = lib.csdl2openapi(csdl, {});
