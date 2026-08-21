@@ -11,6 +11,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ### Deprecated
 ### Removed
 ### Fixed
+- set `odata` as the service protocol if no protocol is set to match the default behavior of `@sap/cds`
 ### Security
 
 ## [1.6.0] - 2026-08-04
