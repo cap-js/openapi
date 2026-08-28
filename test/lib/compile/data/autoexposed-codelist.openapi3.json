@@ -15,10 +15,10 @@
   ],
   "tags": [
     {
-      "name": "Orders"
+      "name": "Currencies"
     },
     {
-      "name": "Scan States"
+      "name": "Orders"
     }
   ],
   "paths": {
@@ -50,6 +50,153 @@
                   "type": "string"
                 },
                 "example": "--response-separator\nContent-Type: application/http\n\nHTTP/1.1 200 OK\nContent-Type: application/json\n\n{...}\n--response-separator--"
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/Currencies": {
+      "get": {
+        "summary": "Retrieves a list of currencies.",
+        "tags": [
+          "Currencies"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "name": "$filter",
+            "description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "code",
+                  "code desc",
+                  "name",
+                  "name desc"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$select",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "code",
+                  "name"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved currencies",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Collection of Currencies",
+                  "properties": {
+                    "@count": {
+                      "$ref": "#/components/schemas/count"
+                    },
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/MyService.Currencies"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/Currencies('{code}')": {
+      "parameters": [
+        {
+          "description": "key: code",
+          "in": "path",
+          "name": "code",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "maxLength": 3
+          }
+        }
+      ],
+      "get": {
+        "summary": "Retrieves a single currency.",
+        "tags": [
+          "Currencies"
+        ],
+        "parameters": [
+          {
+            "name": "$select",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "code",
+                  "name"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved currency",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MyService.Currencies"
+                }
               }
             }
           },
@@ -131,7 +278,7 @@
                 "type": "string",
                 "enum": [
                   "*",
-                  "status"
+                  "currency"
                 ]
               }
             }
@@ -245,7 +392,7 @@
                 "type": "string",
                 "enum": [
                   "*",
-                  "status"
+                  "currency"
                 ]
               }
             }
@@ -307,7 +454,7 @@
         }
       }
     },
-    "/Orders({ID})/status": {
+    "/Orders({ID})/currency": {
       "parameters": [
         {
           "description": "key: ID",
@@ -321,10 +468,10 @@
         }
       ],
       "get": {
-        "summary": "Retrieves status of a order.",
+        "summary": "Retrieves currency of a order.",
         "tags": [
           "Orders",
-          "Scan States"
+          "Currencies"
         ],
         "parameters": [
           {
@@ -339,7 +486,7 @@
                 "type": "string",
                 "enum": [
                   "code",
-                  "descr"
+                  "name"
                 ]
               }
             }
@@ -347,158 +494,11 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved status",
+            "description": "Retrieved currency",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/MyService.ScanStates"
-                }
-              }
-            }
-          },
-          "4XX": {
-            "$ref": "#/components/responses/error"
-          }
-        }
-      }
-    },
-    "/ScanStates": {
-      "get": {
-        "summary": "Retrieves a list of scan states.",
-        "tags": [
-          "Scan States"
-        ],
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/top"
-          },
-          {
-            "$ref": "#/components/parameters/skip"
-          },
-          {
-            "$ref": "#/components/parameters/search"
-          },
-          {
-            "name": "$filter",
-            "description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "$ref": "#/components/parameters/count"
-          },
-          {
-            "name": "$orderby",
-            "description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
-            "in": "query",
-            "explode": false,
-            "schema": {
-              "type": "array",
-              "uniqueItems": true,
-              "items": {
-                "type": "string",
-                "enum": [
-                  "code",
-                  "code desc",
-                  "descr",
-                  "descr desc"
-                ]
-              }
-            }
-          },
-          {
-            "name": "$select",
-            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
-            "in": "query",
-            "explode": false,
-            "schema": {
-              "type": "array",
-              "uniqueItems": true,
-              "items": {
-                "type": "string",
-                "enum": [
-                  "code",
-                  "descr"
-                ]
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Retrieved scan states",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "title": "Collection of ScanStates",
-                  "properties": {
-                    "@count": {
-                      "$ref": "#/components/schemas/count"
-                    },
-                    "value": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/MyService.ScanStates"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "4XX": {
-            "$ref": "#/components/responses/error"
-          }
-        }
-      }
-    },
-    "/ScanStates('{code}')": {
-      "parameters": [
-        {
-          "description": "key: code",
-          "in": "path",
-          "name": "code",
-          "required": true,
-          "schema": {
-            "type": "string",
-            "maxLength": 255
-          }
-        }
-      ],
-      "get": {
-        "summary": "Retrieves a single scan state.",
-        "tags": [
-          "Scan States"
-        ],
-        "parameters": [
-          {
-            "name": "$select",
-            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
-            "in": "query",
-            "explode": false,
-            "schema": {
-              "type": "array",
-              "uniqueItems": true,
-              "items": {
-                "type": "string",
-                "enum": [
-                  "code",
-                  "descr"
-                ]
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Retrieved scan state",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/MyService.ScanStates"
+                  "$ref": "#/components/schemas/MyService.Currencies"
                 }
               }
             }
@@ -512,6 +512,21 @@
   },
   "components": {
     "schemas": {
+      "MyService.Currencies": {
+        "title": "Currencies",
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "maxLength": 3
+          },
+          "name": {
+            "type": "string",
+            "maxLength": 255,
+            "nullable": true
+          }
+        }
+      },
       "MyService.Orders": {
         "title": "Orders",
         "type": "object",
@@ -520,10 +535,10 @@
             "type": "integer",
             "format": "int32"
           },
-          "status": {
+          "currency": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/MyService.ScanStates"
+                "$ref": "#/components/schemas/MyService.Currencies"
               }
             ],
             "nullable": true
@@ -546,21 +561,6 @@
       "MyService.Orders-update": {
         "title": "Orders (for update)",
         "type": "object"
-      },
-      "MyService.ScanStates": {
-        "title": "ScanStates",
-        "type": "object",
-        "properties": {
-          "code": {
-            "type": "string",
-            "maxLength": 255
-          },
-          "descr": {
-            "type": "string",
-            "maxLength": 1000,
-            "nullable": true
-          }
-        }
       },
       "count": {
         "anyOf": [
