@@ -277,6 +277,21 @@ service CatalogService {
     assert(!openapi.servers[0].url.includes('rest'));
   });
 
+  test('defaultProtocol overrides OData for a service without @protocol', () => {
+    const csn = cds.compile.to.csn(`
+      @path: 'catalog'
+      service CatalogService {
+        entity Books {
+          key ID : Integer;
+          title   : String;
+        }
+      }`
+    );
+    const openapi = toOpenApi(csn, { 'openapi:defaultProtocol': 'rest' });
+    assert(openapi.servers[0].url.includes('rest/catalog'));
+    assert(!openapi.servers[0].url.includes('odata'));
+  });
+
   test('options: Multiple servers', () => {
     const csn = cds.compile.to.csn(`
       service A {entity E { key ID : UUID; };};`
