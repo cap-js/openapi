@@ -13,6 +13,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ### Deprecated
 ### Removed
 ### Fixed
+- Entities that are transitively autoexposed and should still be considered readonly, do not generate documentation for write endpoints anymore
 ### Security
 
 ## [1.6.0] - 2026-08-04
