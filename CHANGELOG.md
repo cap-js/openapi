@@ -12,6 +12,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ### Removed
 ### Fixed
 - Entities that are transitively autoexposed and should still be considered readonly, do not generate documentation for write endpoints anymore
+- Back-reference navigation properties on child entities in compositions (the generated `parent` nav pointing back up) are no longer emitted in the OpenAPI read schema
 ### Security
 
 ## [1.6.0] - 2026-08-04
