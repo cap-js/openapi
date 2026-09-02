@@ -9,7 +9,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ### Added
 - Added `defaultProtocol` configuration option as fallback if no config is provided.
 ### Changed
-- set `odata` as the service protocol if no protocol is set to match the default behavior of `@sap/cds`. To restore older behavior by providing `cds.env.openapi.defaultProtocol = "rest"`, e.g. via `cds` section in the package.json
+- set `odata` as the service protocol if no protocol is set to match the default behavior of `@sap/cds`. Provide `cds.env.openapi.defaultProtocol = "rest"` to restore old behavior.
 ### Deprecated
 ### Removed
 ### Fixed
