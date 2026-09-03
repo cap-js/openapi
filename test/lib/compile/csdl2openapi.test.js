@@ -2709,6 +2709,77 @@ see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-prot
       "MaxLength"
     );
   });
+
+  it("preserves i18n placeholders in tag names without splitting camelCase", () => {
+    const csdl = {
+      $Version: "4.01",
+      $Reference: {
+        dummy: {
+          $Include: [{ $Namespace: "com.sap.vocabularies.Common.v1", $Alias: "Common" }],
+        },
+      },
+      $EntityContainer: "TestService.Container",
+      TestService: {
+        Container: {
+          $Kind: "EntityContainer",
+          Tasks: { $Collection: true, $Type: "TestService.Tasks" },
+        },
+        Tasks: {
+          $Kind: "EntityType",
+          $Key: ["ID"],
+          ID: { $Type: "Edm.Guid" },
+        },
+        $Annotations: {
+          "TestService.Tasks": { "@Common.Label": "{i18n>TasksPlural}" },
+        },
+      },
+    };
+    const openapi = lib.csdl2openapi(csdl, {});
+    assert.strictEqual(
+      openapi.tags[0].name,
+      "{i18n>TasksPlural}",
+      "i18n placeholder must not be split by camelCase normalisation"
+    );
+    const getOp = openapi.paths["/Tasks"]?.get;
+    assert.ok(getOp, "GET /Tasks operation must exist");
+    assert.strictEqual(
+      getOp.tags[0],
+      "{i18n>TasksPlural}",
+      "operation-level tag must also preserve the placeholder"
+    );
+  });
+
+  it("still splits plain camelCase label into words", () => {
+    const csdl = {
+      $Version: "4.01",
+      $Reference: {
+        dummy: {
+          $Include: [{ $Namespace: "com.sap.vocabularies.Common.v1", $Alias: "Common" }],
+        },
+      },
+      $EntityContainer: "TestService.Container",
+      TestService: {
+        Container: {
+          $Kind: "EntityContainer",
+          Tasks: { $Collection: true, $Type: "TestService.Tasks" },
+        },
+        Tasks: {
+          $Kind: "EntityType",
+          $Key: ["ID"],
+          ID: { $Type: "Edm.Guid" },
+        },
+        $Annotations: {
+          "TestService.Tasks": { "@Common.Label": "TasksPlural" },
+        },
+      },
+    };
+    const openapi = lib.csdl2openapi(csdl, {});
+    assert.strictEqual(
+      openapi.tags[0].name,
+      "Tasks Plural",
+      "plain camelCase label must still be split into words"
+    );
+  });
 });
 
 describe("Bound action path naming", () => {
