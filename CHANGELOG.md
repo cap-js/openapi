@@ -7,6 +7,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ## [Unreleased]
 
 ### Added
+- Emit `$skiptoken` query parameter for GET collection endpoints, enabling server-driven paging to be visible in the generated OpenAPI document
 ### Changed
 ### Deprecated
 ### Removed
