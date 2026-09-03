@@ -79,6 +79,9 @@
             "$ref": "#/components/parameters/skip"
           },
           {
+            "$ref": "#/components/parameters/skiptoken"
+          },
+          {
             "$ref": "#/components/parameters/search"
           },
           {
@@ -322,6 +325,69 @@
         }
       }
     },
+    "/Advertisements({ID})/$value": {
+      "parameters": [
+        {
+          "description": "key: ID",
+          "in": "path",
+          "name": "ID",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          }
+        }
+      ],
+      "get": {
+        "summary": "Retrieves the media stream of a single advertisement.",
+        "tags": [
+          "Advertisements"
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved advertisement",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "put": {
+        "summary": "Changes the media stream of a single advertisement.",
+        "tags": [
+          "Advertisements"
+        ],
+        "requestBody": {
+          "description": "New media stream for advertisement",
+          "required": true,
+          "content": {
+            "*/*": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
     "/Advertisements({ID})/FeaturedProduct": {
       "parameters": [
         {
@@ -415,6 +481,9 @@
           },
           {
             "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/skiptoken"
           },
           {
             "$ref": "#/components/parameters/search"
@@ -682,6 +751,9 @@
             "$ref": "#/components/parameters/skip"
           },
           {
+            "$ref": "#/components/parameters/skiptoken"
+          },
+          {
             "$ref": "#/components/parameters/search"
           },
           {
@@ -840,6 +912,9 @@
           },
           {
             "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/skiptoken"
           },
           {
             "$ref": "#/components/parameters/search"
@@ -1173,6 +1248,9 @@
             "$ref": "#/components/parameters/skip"
           },
           {
+            "$ref": "#/components/parameters/skiptoken"
+          },
+          {
             "$ref": "#/components/parameters/search"
           },
           {
@@ -1460,6 +1538,9 @@
           },
           {
             "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/skiptoken"
           },
           {
             "$ref": "#/components/parameters/search"
@@ -2357,6 +2438,14 @@
         "schema": {
           "type": "integer",
           "minimum": 0
+        }
+      },
+      "skiptoken": {
+        "name": "$skiptoken",
+        "in": "query",
+        "description": "Paging - Skip token, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)",
+        "schema": {
+          "type": "string"
         }
       },
       "count": {
