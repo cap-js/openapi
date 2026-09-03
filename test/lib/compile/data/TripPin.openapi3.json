@@ -82,6 +82,9 @@
             "$ref": "#/components/parameters/skip"
           },
           {
+            "$ref": "#/components/parameters/skiptoken"
+          },
+          {
             "$ref": "#/components/parameters/search"
           },
           {
@@ -297,6 +300,9 @@
           },
           {
             "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/skiptoken"
           },
           {
             "$ref": "#/components/parameters/search"
@@ -637,6 +643,9 @@
             "$ref": "#/components/parameters/skip"
           },
           {
+            "$ref": "#/components/parameters/skiptoken"
+          },
+          {
             "$ref": "#/components/parameters/search"
           },
           {
@@ -950,6 +959,9 @@
           },
           {
             "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/skiptoken"
           },
           {
             "$ref": "#/components/parameters/search"
@@ -1289,6 +1301,9 @@
             "$ref": "#/components/parameters/skip"
           },
           {
+            "$ref": "#/components/parameters/skiptoken"
+          },
+          {
             "$ref": "#/components/parameters/search"
           },
           {
@@ -1392,6 +1407,9 @@
           },
           {
             "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/skiptoken"
           },
           {
             "$ref": "#/components/parameters/search"
@@ -1632,6 +1650,9 @@
           },
           {
             "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/skiptoken"
           },
           {
             "$ref": "#/components/parameters/search"
@@ -1924,6 +1945,9 @@
           },
           {
             "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/skiptoken"
           },
           {
             "$ref": "#/components/parameters/search"
@@ -2292,6 +2316,9 @@
             "$ref": "#/components/parameters/skip"
           },
           {
+            "$ref": "#/components/parameters/skiptoken"
+          },
+          {
             "$ref": "#/components/parameters/search"
           },
           {
@@ -2656,6 +2683,9 @@
             "$ref": "#/components/parameters/skip"
           },
           {
+            "$ref": "#/components/parameters/skiptoken"
+          },
+          {
             "$ref": "#/components/parameters/search"
           },
           {
@@ -2768,6 +2798,9 @@
           },
           {
             "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/skiptoken"
           },
           {
             "$ref": "#/components/parameters/search"
@@ -3017,6 +3050,9 @@
           },
           {
             "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/skiptoken"
           },
           {
             "$ref": "#/components/parameters/search"
@@ -4533,6 +4569,14 @@
         "schema": {
           "type": "integer",
           "minimum": 0
+        }
+      },
+      "skiptoken": {
+        "name": "$skiptoken",
+        "in": "query",
+        "description": "Paging - Skip token, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)",
+        "schema": {
+          "type": "string"
         }
       },
       "count": {

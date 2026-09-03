@@ -76,6 +76,9 @@
             "$ref": "#/components/parameters/skip"
           },
           {
+            "$ref": "#/components/parameters/skiptoken"
+          },
+          {
             "$ref": "#/components/parameters/search"
           },
           {
@@ -402,6 +405,9 @@
           },
           {
             "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/skiptoken"
           },
           {
             "$ref": "#/components/parameters/search"
@@ -737,6 +743,68 @@
         }
       }
     },
+    "/PersonDetails({PersonID})/Photo": {
+      "parameters": [
+        {
+          "description": "key: PersonID",
+          "in": "path",
+          "name": "PersonID",
+          "required": true,
+          "schema": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      ],
+      "get": {
+        "summary": "Retrieves photo of a single person detail.",
+        "tags": [
+          "Person Details"
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved photo",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "put": {
+        "summary": "Changes photo of a single person detail.",
+        "tags": [
+          "Person Details"
+        ],
+        "requestBody": {
+          "description": "New value for photo",
+          "required": true,
+          "content": {
+            "*/*": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
     "/Suppliers": {
       "get": {
         "summary": "Retrieves a list of suppliers.",
@@ -749,6 +817,9 @@
           },
           {
             "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/skiptoken"
           },
           {
             "$ref": "#/components/parameters/search"
@@ -1033,6 +1104,9 @@
           },
           {
             "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/skiptoken"
           },
           {
             "$ref": "#/components/parameters/search"
@@ -1785,6 +1859,14 @@
         "schema": {
           "type": "integer",
           "minimum": 0
+        }
+      },
+      "skiptoken": {
+        "name": "$skiptoken",
+        "in": "query",
+        "description": "Paging - Skip token, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)",
+        "schema": {
+          "type": "string"
         }
       },
       "count": {

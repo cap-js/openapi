@@ -70,6 +70,9 @@
             "$ref": "#/components/parameters/skip"
           },
           {
+            "$ref": "#/components/parameters/skiptoken"
+          },
+          {
             "$ref": "#/components/parameters/search"
           },
           {
@@ -335,6 +338,9 @@
             "$ref": "#/components/parameters/skip"
           },
           {
+            "$ref": "#/components/parameters/skiptoken"
+          },
+          {
             "$ref": "#/components/parameters/search"
           },
           {
@@ -484,7 +490,11 @@
           "All Set",
           "Two Read Only Set"
         ],
-        "parameters": [],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/skiptoken"
+          }
+        ],
         "responses": {
           "200": {
             "description": "Retrieved read only many",
@@ -642,6 +652,9 @@
             "$ref": "#/components/parameters/skip"
           },
           {
+            "$ref": "#/components/parameters/skiptoken"
+          },
+          {
             "$ref": "#/components/parameters/search"
           },
           {
@@ -769,7 +782,11 @@
           "All Singleton",
           "Two Read Only Set"
         ],
-        "parameters": [],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/skiptoken"
+          }
+        ],
         "responses": {
           "200": {
             "description": "Retrieved read only many",
@@ -833,6 +850,9 @@
           },
           {
             "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/skiptoken"
           },
           {
             "$ref": "#/components/parameters/search"
@@ -1087,6 +1107,9 @@
           },
           {
             "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/skiptoken"
           },
           {
             "$ref": "#/components/parameters/search"
@@ -1354,6 +1377,9 @@
             "$ref": "#/components/parameters/skip"
           },
           {
+            "$ref": "#/components/parameters/skiptoken"
+          },
+          {
             "$ref": "#/components/parameters/search"
           },
           {
@@ -1439,7 +1465,11 @@
         "tags": [
           "Read List Only Set"
         ],
-        "parameters": [],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/skiptoken"
+          }
+        ],
         "responses": {
           "200": {
             "description": "Retrieved read list only set",
@@ -1505,6 +1535,9 @@
           },
           {
             "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/skiptoken"
           },
           {
             "$ref": "#/components/parameters/search"
@@ -1642,6 +1675,9 @@
             "$ref": "#/components/parameters/skip"
           },
           {
+            "$ref": "#/components/parameters/skiptoken"
+          },
+          {
             "$ref": "#/components/parameters/search"
           },
           {
@@ -1728,7 +1764,11 @@
           "Read Only Singleton",
           "Two Read Only Set"
         ],
-        "parameters": [],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/skiptoken"
+          }
+        ],
         "responses": {
           "200": {
             "description": "Retrieved read only many",
@@ -1792,6 +1832,9 @@
           },
           {
             "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/skiptoken"
           },
           {
             "$ref": "#/components/parameters/search"
@@ -2076,7 +2119,11 @@
         "tags": [
           "Two Read Only Set"
         ],
-        "parameters": [],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/skiptoken"
+          }
+        ],
         "responses": {
           "200": {
             "description": "Retrieved two read only set",
@@ -2592,6 +2639,14 @@
         "schema": {
           "type": "integer",
           "minimum": 0
+        }
+      },
+      "skiptoken": {
+        "name": "$skiptoken",
+        "in": "query",
+        "description": "Paging - Skip token, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)",
+        "schema": {
+          "type": "string"
         }
       },
       "count": {
