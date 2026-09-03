@@ -16,9 +16,6 @@
   "tags": [
     {
       "name": "Orders"
-    },
-    {
-      "name": "Scan States"
     }
   ],
   "paths": {
@@ -131,7 +128,7 @@
                 "type": "string",
                 "enum": [
                   "*",
-                  "status"
+                  "items"
                 ]
               }
             }
@@ -245,7 +242,7 @@
                 "type": "string",
                 "enum": [
                   "*",
-                  "status"
+                  "items"
                 ]
               }
             }
@@ -307,7 +304,7 @@
         }
       }
     },
-    "/Orders({ID})/status": {
+    "/Orders({ID})/items": {
       "parameters": [
         {
           "description": "key: ID",
@@ -321,52 +318,10 @@
         }
       ],
       "get": {
-        "summary": "Retrieves status of a order.",
+        "summary": "Retrieves a list of items of a order.",
         "tags": [
           "Orders",
-          "Scan States"
-        ],
-        "parameters": [
-          {
-            "name": "$select",
-            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
-            "in": "query",
-            "explode": false,
-            "schema": {
-              "type": "array",
-              "uniqueItems": true,
-              "items": {
-                "type": "string",
-                "enum": [
-                  "code",
-                  "descr"
-                ]
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Retrieved status",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/MyService.ScanStates"
-                }
-              }
-            }
-          },
-          "4XX": {
-            "$ref": "#/components/responses/error"
-          }
-        }
-      }
-    },
-    "/ScanStates": {
-      "get": {
-        "summary": "Retrieves a list of scan states.",
-        "tags": [
-          "Scan States"
+          "Order Items"
         ],
         "parameters": [
           {
@@ -400,10 +355,10 @@
               "items": {
                 "type": "string",
                 "enum": [
-                  "code",
-                  "code desc",
-                  "descr",
-                  "descr desc"
+                  "ID",
+                  "ID desc",
+                  "quantity",
+                  "quantity desc"
                 ]
               }
             }
@@ -419,8 +374,8 @@
               "items": {
                 "type": "string",
                 "enum": [
-                  "code",
-                  "descr"
+                  "ID",
+                  "quantity"
                 ]
               }
             }
@@ -428,12 +383,12 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved scan states",
+            "description": "Retrieved items",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "title": "Collection of ScanStates",
+                  "title": "Collection of OrderItems",
                   "properties": {
                     "@count": {
                       "$ref": "#/components/schemas/count"
@@ -441,7 +396,7 @@
                     "value": {
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/MyService.ScanStates"
+                        "$ref": "#/components/schemas/MyService.OrderItems"
                       }
                     }
                   }
@@ -453,25 +408,69 @@
             "$ref": "#/components/responses/error"
           }
         }
+      },
+      "post": {
+        "summary": "Creates a single item of a order.",
+        "tags": [
+          "Orders",
+          "Order Items"
+        ],
+        "requestBody": {
+          "description": "New item",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MyService.OrderItems-create"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created item",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MyService.OrderItems"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
       }
     },
-    "/ScanStates('{code}')": {
+    "/Orders({ID})/items({ID_1})": {
       "parameters": [
         {
-          "description": "key: code",
+          "description": "key: ID",
           "in": "path",
-          "name": "code",
+          "name": "ID",
           "required": true,
           "schema": {
-            "type": "string",
-            "maxLength": 255
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        {
+          "description": "key: ID",
+          "in": "path",
+          "name": "ID_1",
+          "required": true,
+          "schema": {
+            "type": "integer",
+            "format": "int32"
           }
         }
       ],
       "get": {
-        "summary": "Retrieves a single scan state.",
+        "summary": "Retrieves a single item of a order.",
         "tags": [
-          "Scan States"
+          "Orders",
+          "Order Items"
         ],
         "parameters": [
           {
@@ -485,8 +484,8 @@
               "items": {
                 "type": "string",
                 "enum": [
-                  "code",
-                  "descr"
+                  "ID",
+                  "quantity"
                 ]
               }
             }
@@ -494,14 +493,53 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved scan state",
+            "description": "Retrieved item",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/MyService.ScanStates"
+                  "$ref": "#/components/schemas/MyService.OrderItems"
                 }
               }
             }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Changes a single item of a order.",
+        "tags": [
+          "Orders"
+        ],
+        "requestBody": {
+          "description": "New property values",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MyService.OrderItems-update"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Deletes a single item of a order.",
+        "tags": [
+          "Orders"
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
           },
           "4XX": {
             "$ref": "#/components/responses/error"
@@ -512,6 +550,50 @@
   },
   "components": {
     "schemas": {
+      "MyService.OrderItems": {
+        "title": "OrderItems",
+        "type": "object",
+        "properties": {
+          "ID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "quantity": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        }
+      },
+      "MyService.OrderItems-create": {
+        "title": "OrderItems (for create)",
+        "type": "object",
+        "properties": {
+          "ID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "quantity": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        },
+        "required": [
+          "ID"
+        ]
+      },
+      "MyService.OrderItems-update": {
+        "title": "OrderItems (for update)",
+        "type": "object",
+        "properties": {
+          "quantity": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        }
+      },
       "MyService.Orders": {
         "title": "Orders",
         "type": "object",
@@ -520,13 +602,14 @@
             "type": "integer",
             "format": "int32"
           },
-          "status": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/MyService.ScanStates"
-              }
-            ],
-            "nullable": true
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MyService.OrderItems"
+            }
+          },
+          "items@count": {
+            "$ref": "#/components/schemas/count"
           }
         }
       },
@@ -537,6 +620,12 @@
           "ID": {
             "type": "integer",
             "format": "int32"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MyService.OrderItems-create"
+            }
           }
         },
         "required": [
@@ -545,20 +634,13 @@
       },
       "MyService.Orders-update": {
         "title": "Orders (for update)",
-        "type": "object"
-      },
-      "MyService.ScanStates": {
-        "title": "ScanStates",
         "type": "object",
         "properties": {
-          "code": {
-            "type": "string",
-            "maxLength": 255
-          },
-          "descr": {
-            "type": "string",
-            "maxLength": 1000,
-            "nullable": true
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MyService.OrderItems-create"
+            }
           }
         }
       },

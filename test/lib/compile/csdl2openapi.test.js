@@ -52,6 +52,12 @@ const result12 = require("./data/autoexposed-texts.openapi3.json");
 const example13 = require("./data/autoexposed-direct.json");
 const result13 = require("./data/autoexposed-direct.openapi3.json");
 
+const example14 = require("./data/autoexposed-composition.json");
+const result14 = require("./data/autoexposed-composition.openapi3.json");
+
+const example15 = require("./data/autoexposed-codelist.json");
+const result15 = require("./data/autoexposed-codelist.openapi3.json");
+
 describe("Examples", () => {
   test("csdl-16.1", () => {
     const openapi = lib.csdl2openapi(example1, { diagram: true });
@@ -108,8 +114,18 @@ describe("Examples", () => {
   });
 
   test("autoexposed-direct", () => {
-    const openapi = lib.csdl2openapi(example13, { url: "https://localhost/service-root" });
+    const openapi = lib.csdl2openapi(example13);
     check(openapi, result13);
+  });
+
+  test("autoexposed-composition", () => {
+    const openapi = lib.csdl2openapi(example14);
+    check(openapi, result14);
+  });
+
+  test("autoexposed-codelist", () => {
+    const openapi = lib.csdl2openapi(example15);
+    check(openapi, result15);
   });
 });
 
