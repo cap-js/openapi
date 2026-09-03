@@ -194,6 +194,19 @@
                                     "Value": "example"
                                 }
                             ]
+                        },
+                        {
+                            "Name": "custom-insert-typed",
+                            "Description": "Custom Header with explicit boolean type and default",
+                            "Required": false,
+                            "@openapi.type": "boolean",
+                            "@openapi.default": true
+                        },
+                        {
+                            "Name": "custom-insert-integer",
+                            "Description": "Custom Header with explicit integer type",
+                            "Required": false,
+                            "@openapi.type": "integer"
                         }
                     ],
                     "CustomQueryOptions": [
