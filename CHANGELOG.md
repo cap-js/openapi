@@ -7,6 +7,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ## [Unreleased]
 
 ### Added
+- Support `@openapi.type` and `@openapi.default` annotations on `CustomParameter` records (`CustomHeaders`/`CustomQueryOptions`) to emit the correct schema type and default value instead of always defaulting to `schema.type: "string"`
 ### Changed
 ### Deprecated
 ### Removed
