@@ -1,0 +1,60 @@
+{
+    "$Version": "4.01",
+    "$Reference": {
+        "https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.json": {
+            "$Include": [
+                {
+                    "$Namespace": "Org.OData.Core.V1",
+                    "$Alias": "Core",
+                    "@Core.DefaultNamespace": true
+                }
+            ]
+        },
+        "https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Capabilities.V1.json": {
+            "$Include": [
+                {
+                    "$Namespace": "Org.OData.Capabilities.V1",
+                    "$Alias": "Capabilities"
+                }
+            ]
+        }
+    },
+    "$EntityContainer": "UsageService.Container",
+    "UsageService": {
+        "$Alias": "self",
+        "UsageRecords": {
+            "$Kind": "EntityType",
+            "$Key": ["ID"],
+            "ID": { "$Type": "Edm.Guid" },
+            "description": { "$Nullable": true },
+            "customReferences": {
+                "$Kind": "NavigationProperty",
+                "$Collection": true,
+                "$Type": "self.UsageRecordCustomReferences",
+                "$ContainsTarget": true,
+                "$Partner": "usageRecord"
+            }
+        },
+        "UsageRecordCustomReferences": {
+            "$Kind": "EntityType",
+            "$Key": ["ID"],
+            "ID": { "$Type": "Edm.Guid" },
+            "type": { "$Nullable": true },
+            "value": { "$Nullable": true },
+            "usageRecord": {
+                "$Kind": "NavigationProperty",
+                "$Type": "self.UsageRecords",
+                "$Nullable": false,
+                "$Partner": "customReferences"
+            }
+        },
+        "Container": {
+            "$Kind": "EntityContainer",
+            "@Core.Description": "Usage Record Service",
+            "UsageRecords": {
+                "$Collection": true,
+                "$Type": "self.UsageRecords"
+            }
+        }
+    }
+}
