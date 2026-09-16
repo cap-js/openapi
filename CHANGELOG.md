@@ -14,6 +14,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ### Removed
 ### Fixed
 - Entities that are transitively autoexposed and should still be considered readonly, do not generate documentation for write endpoints anymore
+- OpenAPI compilation is now pure: the input CSN is no longer mutated during compilation
 ### Security
 
 ## [1.6.0] - 2026-08-04
