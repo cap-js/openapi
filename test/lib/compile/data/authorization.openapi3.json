@@ -2,7 +2,7 @@
   "openapi": "3.0.2",
   "info": {
     "title": "Service for namespace auth.example",
-    "description": "This service is located at [https://localhost/service-root/](https://localhost/service-root/)\n\n## Entity Data Model\n![ER Diagram](https://yuml.me/diagram/class/[Person{bg:lightslategray}],[People%20{bg:lawngreen}]++-*>[Person])\n\n### Legend\n![Legend](https://yuml.me/diagram/plain;dir:TB;scale:60/class/[External.Type{bg:whitesmoke}],[ComplexType],[EntityType{bg:lightslategray}],[EntitySet/Singleton/Operation{bg:lawngreen}])",
+    "description": "This service is located at [https://localhost/service-root/](https://localhost/service-root/)\n\n### Entity Data Model\n[![ER Diagram](https://app.yuml.me/diagram/v1/class/plain/%5BPerson%7Bbg%3Alightslategray%7D%5D%2C%5BPeople%E2%80%8C%7Bbg%3Alawngreen%7D%5D%2B%2B-*%3E%5BPerson%5D.svg)](https://app.yuml.me/diagram/v1/class/plain/%5BPerson%7Bbg%3Alightslategray%7D%5D%2C%5BPeople%E2%80%8C%7Bbg%3Alawngreen%7D%5D%2B%2B-*%3E%5BPerson%5D.svg)\n\n#### Legend\n<a href=\"https://app.yuml.me/diagram/v1/class/plain/%40direction%20LR%0A%5BExternal.Type%7Bbg%3Awhitesmoke%7D%5D-%5BComplexType%5D-%5BEntityType%7Bbg%3Alightslategray%7D%5D-%5BEntitySet%2FSingleton%2FOperation%7Bbg%3Alawngreen%7D%5D.svg\"><img src=\"https://app.yuml.me/diagram/v1/class/plain/%40direction%20LR%0A%5BExternal.Type%7Bbg%3Awhitesmoke%7D%5D-%5BComplexType%5D-%5BEntityType%7Bbg%3Alightslategray%7D%5D-%5BEntitySet%2FSingleton%2FOperation%7Bbg%3Alawngreen%7D%5D.svg\" width=\"450\"></a>",
     "version": ""
   },
   "x-sap-api-type": "ODATAV4",

@@ -2404,11 +2404,11 @@ see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-prot
       [
         "Use the Core.LongDescription or Core.Description annotation on your CDS service to provide a meaningful description.",
         "",
-        "## Entity Data Model",
-        "![ER Diagram](https://yuml.me/diagram/class/[root{bg:lightslategray}],[root]->[other],[other{bg:lightslategray}],[act{bg:lawngreen}]->[root],[act{bg:lawngreen}]in->[root],[others%20{bg:lawngreen}]++-*>[other],[roots%20{bg:lawngreen}]++-*>[root])",
+        "### Entity Data Model",
+        "[![ER Diagram](https://app.yuml.me/diagram/v1/class/plain/%5Broot%7Bbg%3Alightslategray%7D%5D%2C%5Broot%5D-%3E%5Bother%5D%2C%5Bother%7Bbg%3Alightslategray%7D%5D%2C%5Bact%7Bbg%3Alawngreen%7D%5D-%3E%5Broot%5D%2C%5Bact%7Bbg%3Alawngreen%7D%5Din-%3E%5Broot%5D%2C%5Bothers%E2%80%8C%7Bbg%3Alawngreen%7D%5D%2B%2B-*%3E%5Bother%5D%2C%5Broots%E2%80%8C%7Bbg%3Alawngreen%7D%5D%2B%2B-*%3E%5Broot%5D.svg)](https://app.yuml.me/diagram/v1/class/plain/%5Broot%7Bbg%3Alightslategray%7D%5D%2C%5Broot%5D-%3E%5Bother%5D%2C%5Bother%7Bbg%3Alightslategray%7D%5D%2C%5Bact%7Bbg%3Alawngreen%7D%5D-%3E%5Broot%5D%2C%5Bact%7Bbg%3Alawngreen%7D%5Din-%3E%5Broot%5D%2C%5Bothers%E2%80%8C%7Bbg%3Alawngreen%7D%5D%2B%2B-*%3E%5Bother%5D%2C%5Broots%E2%80%8C%7Bbg%3Alawngreen%7D%5D%2B%2B-*%3E%5Broot%5D.svg)",
         "",
-        "### Legend",
-        "![Legend](https://yuml.me/diagram/plain;dir:TB;scale:60/class/[External.Type{bg:whitesmoke}],[ComplexType],[EntityType{bg:lightslategray}],[EntitySet/Singleton/Operation{bg:lawngreen}])",
+        "#### Legend",
+        "<a href=\"https://app.yuml.me/diagram/v1/class/plain/%40direction%20LR%0A%5BExternal.Type%7Bbg%3Awhitesmoke%7D%5D-%5BComplexType%5D-%5BEntityType%7Bbg%3Alightslategray%7D%5D-%5BEntitySet%2FSingleton%2FOperation%7Bbg%3Alawngreen%7D%5D.svg\"><img src=\"https://app.yuml.me/diagram/v1/class/plain/%40direction%20LR%0A%5BExternal.Type%7Bbg%3Awhitesmoke%7D%5D-%5BComplexType%5D-%5BEntityType%7Bbg%3Alightslategray%7D%5D-%5BEntitySet%2FSingleton%2FOperation%7Bbg%3Alawngreen%7D%5D.svg\" width=\"450\"></a>",
       ],
       "diagram"
     );
