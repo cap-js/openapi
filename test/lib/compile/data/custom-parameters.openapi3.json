@@ -284,6 +284,25 @@
             }
           },
           {
+            "name": "custom-insert-typed",
+            "in": "header",
+            "required": false,
+            "description": "Custom Header with explicit boolean type and default",
+            "schema": {
+              "type": "boolean",
+              "default": true
+            }
+          },
+          {
+            "name": "custom-insert-integer",
+            "in": "header",
+            "required": false,
+            "description": "Custom Header with explicit integer type",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
             "name": "customInsert",
             "in": "query",
             "required": false,
