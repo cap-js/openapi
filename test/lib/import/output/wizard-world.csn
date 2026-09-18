@@ -1,0 +1,527 @@
+{
+  "definitions": {
+    "WizardWorldApi": {
+      "kind": "service",
+      "@Capabilities.BatchSupported": false,
+      "@Capabilities.KeyAsSegmentSupported": true,
+      "@Core.Description": "WizardWorldApi",
+      "@Core.SchemaVersion": "1.0.1"
+    },
+    "WizardWorldApi.Elixirs": {
+      "kind": "function",
+      "params": {
+        "Name": {
+          "type": "cds.String",
+          "@openapi.in": "query"
+        },
+        "Difficulty": {
+          "type": "WizardWorldApi_types.ElixirDifficulty",
+          "@openapi.in": "query"
+        },
+        "Ingredient": {
+          "type": "cds.String",
+          "@openapi.in": "query"
+        },
+        "InventorFullName": {
+          "type": "cds.String",
+          "@openapi.in": "query"
+        },
+        "Manufacturer": {
+          "type": "cds.String",
+          "@openapi.in": "query"
+        }
+      },
+      "@Common.Label": "Elixirs",
+      "@openapi.path": "/Elixirs",
+      "returns": {
+        "items": {
+          "type": "WizardWorldApi_types.ElixirDto"
+        }
+      }
+    },
+    "WizardWorldApi.Elixirs_": {
+      "kind": "function",
+      "params": {
+        "id": {
+          "type": "cds.UUID",
+          "@openapi.in": "path"
+        }
+      },
+      "@Common.Label": "Elixirs",
+      "@openapi.path": "/Elixirs/{id}",
+      "returns": {
+        "type": "WizardWorldApi_types.ElixirDto"
+      }
+    },
+    "WizardWorldApi.Feedback_post": {
+      "kind": "action",
+      "params": {
+        "body": {
+          "type": "WizardWorldApi_types.SendFeedbackCommand",
+          "@openapi.in": "body"
+        }
+      },
+      "@Common.Label": "Feedback",
+      "@openapi.path": "/Feedback",
+      "returns": {
+        "type": "WizardWorldApi_types.Unit"
+      }
+    },
+    "WizardWorldApi.Houses": {
+      "kind": "function",
+      "params": {
+        "query": {
+          "type": "WizardWorldApi_types.GetHousesQuery",
+          "@openapi.in": "query"
+        }
+      },
+      "@Common.Label": "Houses",
+      "@openapi.path": "/Houses",
+      "returns": {
+        "items": {
+          "type": "WizardWorldApi_types.HouseDto"
+        }
+      }
+    },
+    "WizardWorldApi.Houses_": {
+      "kind": "function",
+      "params": {
+        "id": {
+          "type": "cds.UUID",
+          "@openapi.in": "path"
+        }
+      },
+      "@Common.Label": "Houses",
+      "@openapi.path": "/Houses/{id}",
+      "returns": {
+        "type": "WizardWorldApi_types.HouseDto"
+      }
+    },
+    "WizardWorldApi.Ingredients": {
+      "kind": "function",
+      "params": {
+        "Name": {
+          "type": "cds.String",
+          "@openapi.in": "query"
+        }
+      },
+      "@Common.Label": "Ingredients",
+      "@openapi.path": "/Ingredients",
+      "returns": {
+        "items": {
+          "type": "WizardWorldApi_types.IngredientDto"
+        }
+      }
+    },
+    "WizardWorldApi.Ingredients_": {
+      "kind": "function",
+      "params": {
+        "id": {
+          "type": "cds.UUID",
+          "@openapi.in": "path"
+        }
+      },
+      "@Common.Label": "Ingredients",
+      "@openapi.path": "/Ingredients/{id}",
+      "returns": {
+        "type": "WizardWorldApi_types.IngredientDto"
+      }
+    },
+    "WizardWorldApi.Spells": {
+      "kind": "function",
+      "params": {
+        "Name": {
+          "type": "cds.String",
+          "@openapi.in": "query"
+        },
+        "Type": {
+          "type": "WizardWorldApi_types.SpellType",
+          "@openapi.in": "query"
+        },
+        "Incantation": {
+          "type": "cds.String",
+          "@openapi.in": "query"
+        }
+      },
+      "@Common.Label": "Spells",
+      "@openapi.path": "/Spells",
+      "returns": {
+        "items": {
+          "type": "WizardWorldApi_types.SpellDto"
+        }
+      }
+    },
+    "WizardWorldApi.Spells_": {
+      "kind": "function",
+      "params": {
+        "id": {
+          "type": "cds.UUID",
+          "@openapi.in": "path"
+        }
+      },
+      "@Common.Label": "Spells",
+      "@openapi.path": "/Spells/{id}",
+      "returns": {
+        "type": "WizardWorldApi_types.SpellDto"
+      }
+    },
+    "WizardWorldApi.Wizards": {
+      "kind": "function",
+      "params": {
+        "FirstName": {
+          "type": "cds.String",
+          "@openapi.in": "query"
+        },
+        "LastName": {
+          "type": "cds.String",
+          "@openapi.in": "query"
+        }
+      },
+      "@Common.Label": "Wizards",
+      "@openapi.path": "/Wizards",
+      "returns": {
+        "items": {
+          "type": "WizardWorldApi_types.WizardDto"
+        }
+      }
+    },
+    "WizardWorldApi.Wizards_": {
+      "kind": "function",
+      "params": {
+        "id": {
+          "type": "cds.UUID",
+          "@openapi.in": "path"
+        }
+      },
+      "@Common.Label": "Wizards",
+      "@openapi.path": "/Wizards/{id}",
+      "returns": {
+        "type": "WizardWorldApi_types.WizardDto"
+      }
+    },
+    "WizardWorldApi_types.ElixirDifficulty": {
+      "type": "cds.String",
+      "@assert.range": true,
+      "enum": {
+        "Unknown": {},
+        "Advanced": {},
+        "Moderate": {},
+        "Beginner": {},
+        "OrdinaryWizardingLevel": {},
+        "OneOfAKind": {}
+      },
+      "kind": "type"
+    },
+    "WizardWorldApi_types.ElixirDto": {
+      "elements": {
+        "id": {
+          "type": "cds.UUID"
+        },
+        "name": {
+          "type": "cds.String"
+        },
+        "effect": {
+          "type": "cds.String"
+        },
+        "sideEffects": {
+          "type": "cds.String"
+        },
+        "characteristics": {
+          "type": "cds.String"
+        },
+        "time": {
+          "type": "cds.String"
+        },
+        "difficulty": {
+          "type": "WizardWorldApi_types.ElixirDifficulty"
+        },
+        "ingredients": {
+          "items": {
+            "type": "WizardWorldApi_types.IngredientDto"
+          }
+        },
+        "inventors": {
+          "items": {
+            "type": "WizardWorldApi_types.ElixirInventorDto"
+          }
+        },
+        "manufacturer": {
+          "type": "cds.String"
+        }
+      },
+      "kind": "type"
+    },
+    "WizardWorldApi_types.ElixirInventorDto": {
+      "elements": {
+        "id": {
+          "type": "cds.UUID"
+        },
+        "firstName": {
+          "type": "cds.String"
+        },
+        "lastName": {
+          "type": "cds.String"
+        }
+      },
+      "kind": "type"
+    },
+    "WizardWorldApi_types.FeedbackType": {
+      "type": "cds.String",
+      "@assert.range": true,
+      "enum": {
+        "General": {},
+        "Bug": {},
+        "DataError": {},
+        "Suggestion": {}
+      },
+      "kind": "type"
+    },
+    "WizardWorldApi_types.GetHousesQuery": {
+      "elements": {},
+      "kind": "type"
+    },
+    "WizardWorldApi_types.HouseDto": {
+      "elements": {
+        "id": {
+          "type": "cds.UUID"
+        },
+        "name": {
+          "type": "cds.String"
+        },
+        "houseColours": {
+          "type": "cds.String"
+        },
+        "founder": {
+          "type": "cds.String"
+        },
+        "animal": {
+          "type": "cds.String"
+        },
+        "element": {
+          "type": "cds.String"
+        },
+        "ghost": {
+          "type": "cds.String"
+        },
+        "commonRoom": {
+          "type": "cds.String"
+        },
+        "heads": {
+          "items": {
+            "type": "WizardWorldApi_types.HouseHeadDto"
+          }
+        },
+        "traits": {
+          "items": {
+            "type": "WizardWorldApi_types.TraitDto"
+          }
+        }
+      },
+      "kind": "type"
+    },
+    "WizardWorldApi_types.HouseHeadDto": {
+      "elements": {
+        "id": {
+          "type": "cds.UUID"
+        },
+        "firstName": {
+          "type": "cds.String"
+        },
+        "lastName": {
+          "type": "cds.String"
+        }
+      },
+      "kind": "type"
+    },
+    "WizardWorldApi_types.IngredientDto": {
+      "elements": {
+        "id": {
+          "type": "cds.UUID"
+        },
+        "name": {
+          "type": "cds.String"
+        }
+      },
+      "kind": "type"
+    },
+    "WizardWorldApi_types.SendFeedbackCommand": {
+      "elements": {
+        "feedbackType": {
+          "type": "WizardWorldApi_types.FeedbackType"
+        },
+        "feedback": {
+          "type": "cds.String"
+        },
+        "entityId": {
+          "type": "cds.UUID"
+        }
+      },
+      "kind": "type"
+    },
+    "WizardWorldApi_types.SpellDto": {
+      "elements": {
+        "id": {
+          "type": "cds.UUID"
+        },
+        "name": {
+          "type": "cds.String"
+        },
+        "incantation": {
+          "type": "cds.String"
+        },
+        "effect": {
+          "type": "cds.String"
+        },
+        "canBeVerbal": {
+          "type": "cds.Boolean"
+        },
+        "type": {
+          "type": "WizardWorldApi_types.SpellType"
+        },
+        "light": {
+          "type": "WizardWorldApi_types.SpellLight"
+        },
+        "creator": {
+          "type": "cds.String"
+        }
+      },
+      "kind": "type"
+    },
+    "WizardWorldApi_types.SpellLight": {
+      "type": "cds.String",
+      "@assert.range": true,
+      "enum": {
+        "None": {},
+        "Blue": {},
+        "IcyBlue": {},
+        "Red": {},
+        "Gold": {},
+        "Purple": {},
+        "Transparent": {},
+        "White": {},
+        "Green": {},
+        "Orange": {},
+        "Yellow": {},
+        "BrightBlue": {},
+        "Pink": {},
+        "Violet": {},
+        "BlueishWhite": {},
+        "Silver": {},
+        "Scarlet": {},
+        "Fire": {},
+        "FieryScarlet": {},
+        "Grey": {},
+        "DarkRed": {},
+        "Turquoise": {},
+        "PsychedelicTransparentWave": {},
+        "BrightYellow": {},
+        "BlackSmoke": {}
+      },
+      "kind": "type"
+    },
+    "WizardWorldApi_types.SpellType": {
+      "type": "cds.String",
+      "@assert.range": true,
+      "enum": {
+        "None": {},
+        "Charm": {},
+        "Conjuration": {},
+        "Spell": {},
+        "Transfiguration": {},
+        "HealingSpell": {},
+        "DarkCharm": {},
+        "Jinx": {},
+        "Curse": {},
+        "MagicalTransportation": {},
+        "Hex": {},
+        "CounterSpell": {},
+        "DarkArts": {},
+        "CounterJinx": {},
+        "CounterCharm": {},
+        "Untransfiguration": {},
+        "BindingMagicalContract": {},
+        "Vanishment": {}
+      },
+      "kind": "type"
+    },
+    "WizardWorldApi_types.TraitDto": {
+      "elements": {
+        "id": {
+          "type": "cds.UUID"
+        },
+        "name": {
+          "type": "WizardWorldApi_types.TraitName"
+        }
+      },
+      "kind": "type"
+    },
+    "WizardWorldApi_types.TraitName": {
+      "type": "cds.String",
+      "@assert.range": true,
+      "enum": {
+        "None": {},
+        "Courage": {},
+        "Bravery": {},
+        "Determination": {},
+        "Daring": {},
+        "Nerve": {},
+        "Chivalary": {},
+        "Hardworking": {},
+        "Patience": {},
+        "Fairness": {},
+        "Just": {},
+        "Loyalty": {},
+        "Modesty": {},
+        "Wit": {},
+        "Learning": {},
+        "Wisdom": {},
+        "Acceptance": {},
+        "Inteligence": {},
+        "Creativity": {},
+        "Resourcefulness": {},
+        "Pride": {},
+        "Cunning": {},
+        "Ambition": {},
+        "Selfpreservation": {}
+      },
+      "kind": "type"
+    },
+    "WizardWorldApi_types.Unit": {
+      "elements": {},
+      "kind": "type"
+    },
+    "WizardWorldApi_types.WizardDto": {
+      "elements": {
+        "elixirs": {
+          "items": {
+            "type": "WizardWorldApi_types.WizardElixirDto"
+          }
+        },
+        "id": {
+          "type": "cds.UUID"
+        },
+        "firstName": {
+          "type": "cds.String"
+        },
+        "lastName": {
+          "type": "cds.String"
+        }
+      },
+      "kind": "type"
+    },
+    "WizardWorldApi_types.WizardElixirDto": {
+      "elements": {
+        "id": {
+          "type": "cds.UUID"
+        },
+        "name": {
+          "type": "cds.String"
+        }
+      },
+      "kind": "type"
+    }
+  },
+  "meta": {
+    "creator": "cds-import-openapi"
+  }
+}

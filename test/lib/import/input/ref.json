@@ -1,0 +1,1436 @@
+{
+    "openapi": "3.0.2",
+    "info": {
+      "title": "Service for namespace com.sap.test.MyService",
+      "description": "This service is located at [/rest/my/](/rest/my/)",
+      "version": ""
+    },
+    "x-sap-api-type": "ODATAV4",
+    "x-odata-version": "4.01",
+    "x-sap-shortText": "Service for namespace com.sap.test.MyService",
+    "servers": [
+      {
+        "url": "/rest/my"
+      }
+    ],
+    "tags": [
+      {
+        "name": "BaseEntityMyName"
+      },
+      {
+        "name": "BaseEntityTheirName"
+      },
+      {
+        "name": "BaseEntityYourName"
+      }
+    ],
+    "paths": {
+      "/$batch": {
+        "post": {
+          "summary": "Sends a group of requests",
+          "description": "Group multiple requests into a single request payload, see [Batch Requests](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_BatchRequests).\n\n*Please note that \"Try it out\" is not supported for this request.*",
+          "tags": [
+            "Batch Requests"
+          ],
+          "requestBody": {
+            "required": true,
+            "description": "Batch request",
+            "content": {
+              "multipart/mixed;boundary=request-separator": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "--request-separator\nContent-Type: application/http\nContent-Transfer-Encoding: binary\n\nGET BaseEntityMyName HTTP/1.1\nAccept: application/json\n\n\n--request-separator--"
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Batch response",
+              "content": {
+                "multipart/mixed": {
+                  "schema": {
+                    "type": "string"
+                  },
+                  "example": "--response-separator\nContent-Type: application/http\n\nHTTP/1.1 200 OK\nContent-Type: application/json\n\n{...}\n--response-separator--"
+                }
+              }
+            },
+            "4XX": {
+              "$ref": "#/components/responses/error"
+            }
+          }
+        }
+      },
+      "/BaseEntityMyName": {
+        "get": {
+          "summary": "Retrieves a list of base entity my name.",
+          "tags": [
+            "BaseEntityMyName"
+          ],
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/top"
+            },
+            {
+              "$ref": "#/components/parameters/skip"
+            },
+            {
+              "$ref": "#/components/parameters/search"
+            },
+            {
+              "name": "$filter",
+              "description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
+              "in": "query",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "$ref": "#/components/parameters/count"
+            },
+            {
+              "name": "$orderby",
+              "description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
+              "in": "query",
+              "explode": false,
+              "schema": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id",
+                    "id desc",
+                    "refComponent_id",
+                    "refComponent_id desc"
+                  ]
+                }
+              }
+            },
+            {
+              "name": "$select",
+              "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+              "in": "query",
+              "explode": false,
+              "schema": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id",
+                    "refComponent_id"
+                  ]
+                }
+              }
+            },
+            {
+              "name": "$expand",
+              "description": "The value of $expand query option is a comma-separated list of navigation property names, stream property names, or $value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+              "in": "query",
+              "explode": false,
+              "schema": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "*",
+                    "refComponent"
+                  ]
+                }
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Retrieved base entity my name",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "title": "Collection of BaseEntityMyName",
+                    "properties": {
+                      "@count": {
+                        "$ref": "#/components/schemas/count"
+                      },
+                      "value": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/com.sap.test.MyService.BaseEntityMyName"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "4XX": {
+              "$ref": "#/components/responses/error"
+            }
+          }
+        },
+        "post": {
+          "summary": "Creates a single base entity my name.",
+          "tags": [
+            "BaseEntityMyName"
+          ],
+          "requestBody": {
+            "description": "New base entity my name",
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/com.sap.test.MyService.BaseEntityMyName-create"
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "Created base entity my name",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/com.sap.test.MyService.BaseEntityMyName"
+                  }
+                }
+              }
+            },
+            "4XX": {
+              "$ref": "#/components/responses/error"
+            }
+          }
+        }
+      },
+      "/BaseEntityMyName({id})": {
+        "parameters": [
+          {
+            "description": "key: id",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "example": "01234567-89ab-cdef-0123-456789abcdef"
+            }
+          }
+        ],
+        "get": {
+          "summary": "Retrieves a single base entity my name.",
+          "tags": [
+            "BaseEntityMyName"
+          ],
+          "parameters": [
+            {
+              "name": "$select",
+              "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+              "in": "query",
+              "explode": false,
+              "schema": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id",
+                    "refComponent_id"
+                  ]
+                }
+              }
+            },
+            {
+              "name": "$expand",
+              "description": "The value of $expand query option is a comma-separated list of navigation property names, stream property names, or $value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+              "in": "query",
+              "explode": false,
+              "schema": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "*",
+                    "refComponent"
+                  ]
+                }
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Retrieved base entity my name",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/com.sap.test.MyService.BaseEntityMyName"
+                  }
+                }
+              }
+            },
+            "4XX": {
+              "$ref": "#/components/responses/error"
+            }
+          }
+        },
+        "patch": {
+          "summary": "Changes a single base entity my name.",
+          "tags": [
+            "BaseEntityMyName"
+          ],
+          "requestBody": {
+            "description": "New property values",
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/com.sap.test.MyService.BaseEntityMyName-update"
+                }
+              }
+            }
+          },
+          "responses": {
+            "204": {
+              "description": "Success"
+            },
+            "4XX": {
+              "$ref": "#/components/responses/error"
+            }
+          }
+        },
+        "delete": {
+          "summary": "Deletes a single base entity my name.",
+          "tags": [
+            "BaseEntityMyName"
+          ],
+          "responses": {
+            "204": {
+              "description": "Success"
+            },
+            "4XX": {
+              "$ref": "#/components/responses/error"
+            }
+          }
+        }
+      },
+      "/BaseEntityMyName({id})/refComponent": {
+        "parameters": [
+          {
+            "description": "key: id",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "example": "01234567-89ab-cdef-0123-456789abcdef"
+            }
+          }
+        ],
+        "get": {
+          "summary": "Retrieves ref component of a base entity my name.",
+          "tags": [
+            "BaseEntityMyName",
+            "BaseEntityYourName"
+          ],
+          "parameters": [
+            {
+              "name": "$select",
+              "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+              "in": "query",
+              "explode": false,
+              "schema": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id",
+                    "refComponent1_id",
+                    "refComponent2_id"
+                  ]
+                }
+              }
+            },
+            {
+              "name": "$expand",
+              "description": "The value of $expand query option is a comma-separated list of navigation property names, stream property names, or $value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+              "in": "query",
+              "explode": false,
+              "schema": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "*",
+                    "refComponent1",
+                    "refComponent2"
+                  ]
+                }
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Retrieved ref component",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/com.sap.test.MyService.BaseEntityYourName"
+                  }
+                }
+              }
+            },
+            "4XX": {
+              "$ref": "#/components/responses/error"
+            }
+          }
+        }
+      },
+      "/BaseEntityTheirName": {
+        "get": {
+          "summary": "Retrieves a list of base entity their name.",
+          "tags": [
+            "BaseEntityTheirName"
+          ],
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/top"
+            },
+            {
+              "$ref": "#/components/parameters/skip"
+            },
+            {
+              "$ref": "#/components/parameters/search"
+            },
+            {
+              "name": "$filter",
+              "description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
+              "in": "query",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "$ref": "#/components/parameters/count"
+            },
+            {
+              "name": "$orderby",
+              "description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
+              "in": "query",
+              "explode": false,
+              "schema": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id",
+                    "id desc",
+                    "refComponent1_id",
+                    "refComponent1_id desc"
+                  ]
+                }
+              }
+            },
+            {
+              "name": "$select",
+              "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+              "in": "query",
+              "explode": false,
+              "schema": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id",
+                    "refComponent1_id"
+                  ]
+                }
+              }
+            },
+            {
+              "name": "$expand",
+              "description": "The value of $expand query option is a comma-separated list of navigation property names, stream property names, or $value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+              "in": "query",
+              "explode": false,
+              "schema": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "*",
+                    "refComponent1"
+                  ]
+                }
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Retrieved base entity their name",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "title": "Collection of BaseEntityTheirName",
+                    "properties": {
+                      "@count": {
+                        "$ref": "#/components/schemas/count"
+                      },
+                      "value": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/com.sap.test.MyService.BaseEntityTheirName"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "4XX": {
+              "$ref": "#/components/responses/error"
+            }
+          }
+        },
+        "post": {
+          "summary": "Creates a single base entity their name.",
+          "tags": [
+            "BaseEntityTheirName"
+          ],
+          "requestBody": {
+            "description": "New base entity their name",
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/com.sap.test.MyService.BaseEntityTheirName-create"
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "Created base entity their name",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/com.sap.test.MyService.BaseEntityTheirName"
+                  }
+                }
+              }
+            },
+            "4XX": {
+              "$ref": "#/components/responses/error"
+            }
+          }
+        }
+      },
+      "/BaseEntityTheirName({id})": {
+        "parameters": [
+          {
+            "description": "key: id",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "example": "01234567-89ab-cdef-0123-456789abcdef"
+            }
+          }
+        ],
+        "get": {
+          "summary": "Retrieves a single base entity their name.",
+          "tags": [
+            "BaseEntityTheirName"
+          ],
+          "parameters": [
+            {
+              "name": "$select",
+              "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+              "in": "query",
+              "explode": false,
+              "schema": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id",
+                    "refComponent1_id"
+                  ]
+                }
+              }
+            },
+            {
+              "name": "$expand",
+              "description": "The value of $expand query option is a comma-separated list of navigation property names, stream property names, or $value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+              "in": "query",
+              "explode": false,
+              "schema": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "*",
+                    "refComponent1"
+                  ]
+                }
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Retrieved base entity their name",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/com.sap.test.MyService.BaseEntityTheirName"
+                  }
+                }
+              }
+            },
+            "4XX": {
+              "$ref": "#/components/responses/error"
+            }
+          }
+        },
+        "patch": {
+          "summary": "Changes a single base entity their name.",
+          "tags": [
+            "BaseEntityTheirName"
+          ],
+          "requestBody": {
+            "description": "New property values",
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/com.sap.test.MyService.BaseEntityTheirName-update"
+                }
+              }
+            }
+          },
+          "responses": {
+            "204": {
+              "description": "Success"
+            },
+            "4XX": {
+              "$ref": "#/components/responses/error"
+            }
+          }
+        },
+        "delete": {
+          "summary": "Deletes a single base entity their name.",
+          "tags": [
+            "BaseEntityTheirName"
+          ],
+          "responses": {
+            "204": {
+              "description": "Success"
+            },
+            "4XX": {
+              "$ref": "#/components/responses/error"
+            }
+          }
+        }
+      },
+      "/BaseEntityTheirName({id})/refComponent1": {
+        "parameters": [
+          {
+            "description": "key: id",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "example": "01234567-89ab-cdef-0123-456789abcdef"
+            }
+          }
+        ],
+        "get": {
+          "summary": "Retrieves ref component1 of a base entity their name.",
+          "tags": [
+            "BaseEntityTheirName",
+            "BaseEntityMyName"
+          ],
+          "parameters": [
+            {
+              "name": "$select",
+              "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+              "in": "query",
+              "explode": false,
+              "schema": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id",
+                    "refComponent_id"
+                  ]
+                }
+              }
+            },
+            {
+              "name": "$expand",
+              "description": "The value of $expand query option is a comma-separated list of navigation property names, stream property names, or $value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+              "in": "query",
+              "explode": false,
+              "schema": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "*",
+                    "refComponent"
+                  ]
+                }
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Retrieved ref component1",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/com.sap.test.MyService.BaseEntityMyName"
+                  }
+                }
+              }
+            },
+            "4XX": {
+              "$ref": "#/components/responses/error"
+            }
+          }
+        }
+      },
+      "/BaseEntityYourName": {
+        "get": {
+          "summary": "Retrieves a list of base entity your name.",
+          "tags": [
+            "BaseEntityYourName"
+          ],
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/top"
+            },
+            {
+              "$ref": "#/components/parameters/skip"
+            },
+            {
+              "$ref": "#/components/parameters/search"
+            },
+            {
+              "name": "$filter",
+              "description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
+              "in": "query",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "$ref": "#/components/parameters/count"
+            },
+            {
+              "name": "$orderby",
+              "description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
+              "in": "query",
+              "explode": false,
+              "schema": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id",
+                    "id desc",
+                    "refComponent1_id",
+                    "refComponent1_id desc",
+                    "refComponent2_id",
+                    "refComponent2_id desc"
+                  ]
+                }
+              }
+            },
+            {
+              "name": "$select",
+              "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+              "in": "query",
+              "explode": false,
+              "schema": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id",
+                    "refComponent1_id",
+                    "refComponent2_id"
+                  ]
+                }
+              }
+            },
+            {
+              "name": "$expand",
+              "description": "The value of $expand query option is a comma-separated list of navigation property names, stream property names, or $value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+              "in": "query",
+              "explode": false,
+              "schema": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "*",
+                    "refComponent1",
+                    "refComponent2"
+                  ]
+                }
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Retrieved base entity your name",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "title": "Collection of BaseEntityYourName",
+                    "properties": {
+                      "@count": {
+                        "$ref": "#/components/schemas/count"
+                      },
+                      "value": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/com.sap.test.MyService.BaseEntityYourName"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "4XX": {
+              "$ref": "#/components/responses/error"
+            }
+          }
+        },
+        "post": {
+          "summary": "Creates a single base entity your name.",
+          "tags": [
+            "BaseEntityYourName"
+          ],
+          "requestBody": {
+            "description": "New base entity your name",
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/com.sap.test.MyService.BaseEntityYourName-create"
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "Created base entity your name",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/com.sap.test.MyService.BaseEntityYourName"
+                  }
+                }
+              }
+            },
+            "4XX": {
+              "$ref": "#/components/responses/error"
+            }
+          }
+        }
+      },
+      "/BaseEntityYourName({id})": {
+        "parameters": [
+          {
+            "description": "key: id",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "example": "01234567-89ab-cdef-0123-456789abcdef"
+            }
+          }
+        ],
+        "get": {
+          "summary": "Retrieves a single base entity your name.",
+          "tags": [
+            "BaseEntityYourName"
+          ],
+          "parameters": [
+            {
+              "name": "$select",
+              "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+              "in": "query",
+              "explode": false,
+              "schema": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id",
+                    "refComponent1_id",
+                    "refComponent2_id"
+                  ]
+                }
+              }
+            },
+            {
+              "name": "$expand",
+              "description": "The value of $expand query option is a comma-separated list of navigation property names, stream property names, or $value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+              "in": "query",
+              "explode": false,
+              "schema": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "*",
+                    "refComponent1",
+                    "refComponent2"
+                  ]
+                }
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Retrieved base entity your name",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/com.sap.test.MyService.BaseEntityYourName"
+                  }
+                }
+              }
+            },
+            "4XX": {
+              "$ref": "#/components/responses/error"
+            }
+          }
+        },
+        "patch": {
+          "summary": "Changes a single base entity your name.",
+          "tags": [
+            "BaseEntityYourName"
+          ],
+          "requestBody": {
+            "description": "New property values",
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/com.sap.test.MyService.BaseEntityYourName-update"
+                }
+              }
+            }
+          },
+          "responses": {
+            "204": {
+              "description": "Success"
+            },
+            "4XX": {
+              "$ref": "#/components/responses/error"
+            }
+          }
+        },
+        "delete": {
+          "summary": "Deletes a single base entity your name.",
+          "tags": [
+            "BaseEntityYourName"
+          ],
+          "responses": {
+            "204": {
+              "description": "Success"
+            },
+            "4XX": {
+              "$ref": "#/components/responses/error"
+            }
+          }
+        }
+      },
+      "/BaseEntityYourName({id})/refComponent1": {
+        "parameters": [
+          {
+            "description": "key: id",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "example": "01234567-89ab-cdef-0123-456789abcdef"
+            }
+          }
+        ],
+        "get": {
+          "summary": "Retrieves ref component1 of a base entity your name.",
+          "tags": [
+            "BaseEntityYourName",
+            "BaseEntityTheirName"
+          ],
+          "parameters": [
+            {
+              "name": "$select",
+              "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+              "in": "query",
+              "explode": false,
+              "schema": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id",
+                    "refComponent1_id"
+                  ]
+                }
+              }
+            },
+            {
+              "name": "$expand",
+              "description": "The value of $expand query option is a comma-separated list of navigation property names, stream property names, or $value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+              "in": "query",
+              "explode": false,
+              "schema": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "*",
+                    "refComponent1"
+                  ]
+                }
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Retrieved ref component1",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/com.sap.test.MyService.BaseEntityTheirName"
+                  }
+                }
+              }
+            },
+            "4XX": {
+              "$ref": "#/components/responses/error"
+            }
+          }
+        }
+      },
+      "/BaseEntityYourName({id})/refComponent2": {
+        "parameters": [
+          {
+            "description": "key: id",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "example": "01234567-89ab-cdef-0123-456789abcdef"
+            }
+          }
+        ],
+        "get": {
+          "summary": "Retrieves ref component2 of a base entity your name.",
+          "tags": [
+            "BaseEntityYourName",
+            "BaseEntityTheirName"
+          ],
+          "parameters": [
+            {
+              "name": "$select",
+              "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+              "in": "query",
+              "explode": false,
+              "schema": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id",
+                    "refComponent1_id"
+                  ]
+                }
+              }
+            },
+            {
+              "name": "$expand",
+              "description": "The value of $expand query option is a comma-separated list of navigation property names, stream property names, or $value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+              "in": "query",
+              "explode": false,
+              "schema": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "*",
+                    "refComponent1"
+                  ]
+                }
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Retrieved ref component2",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/com.sap.test.MyService.BaseEntityTheirName"
+                  }
+                }
+              }
+            },
+            "4XX": {
+              "$ref": "#/components/responses/error"
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "com.sap.test.MyService.BaseEntityMyName": {
+          "title": "BaseEntityMyName",
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "format": "uuid",
+              "example": "01234567-89ab-cdef-0123-456789abcdef"
+            },
+            "refComponent": {
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/com.sap.test.MyService.BaseEntityYourName"
+                }
+              ],
+              "nullable": true
+            },
+            "refComponent_id": {
+              "type": "string",
+              "format": "uuid",
+              "example": "01234567-89ab-cdef-0123-456789abcdef",
+              "nullable": true
+            }
+          }
+        },
+        "com.sap.test.MyService.BaseEntityMyName-create": {
+          "title": "BaseEntityMyName (for create)",
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "format": "uuid",
+              "example": "01234567-89ab-cdef-0123-456789abcdef"
+            },
+            "refComponent_id": {
+              "type": "string",
+              "format": "uuid",
+              "example": "01234567-89ab-cdef-0123-456789abcdef",
+              "nullable": true
+            }
+          }
+        },
+        "com.sap.test.MyService.BaseEntityMyName-update": {
+          "title": "BaseEntityMyName (for update)",
+          "type": "object",
+          "properties": {
+            "refComponent_id": {
+              "type": "string",
+              "format": "uuid",
+              "example": "01234567-89ab-cdef-0123-456789abcdef",
+              "nullable": true
+            }
+          }
+        },
+        "com.sap.test.MyService.BaseEntityTheirName": {
+          "title": "BaseEntityTheirName",
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "format": "uuid",
+              "example": "01234567-89ab-cdef-0123-456789abcdef"
+            },
+            "refComponent1": {
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/com.sap.test.MyService.BaseEntityMyName"
+                }
+              ],
+              "nullable": true
+            },
+            "refComponent1_id": {
+              "type": "string",
+              "format": "uuid",
+              "example": "01234567-89ab-cdef-0123-456789abcdef",
+              "nullable": true
+            }
+          }
+        },
+        "com.sap.test.MyService.BaseEntityTheirName-create": {
+          "title": "BaseEntityTheirName (for create)",
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "format": "uuid",
+              "example": "01234567-89ab-cdef-0123-456789abcdef"
+            },
+            "refComponent1_id": {
+              "type": "string",
+              "format": "uuid",
+              "example": "01234567-89ab-cdef-0123-456789abcdef",
+              "nullable": true
+            }
+          }
+        },
+        "com.sap.test.MyService.BaseEntityTheirName-update": {
+          "title": "BaseEntityTheirName (for update)",
+          "type": "object",
+          "properties": {
+            "refComponent1_id": {
+              "type": "string",
+              "format": "uuid",
+              "example": "01234567-89ab-cdef-0123-456789abcdef",
+              "nullable": true
+            }
+          }
+        },
+        "com.sap.test.MyService.BaseEntityYourName": {
+          "title": "BaseEntityYourName",
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "format": "uuid",
+              "example": "01234567-89ab-cdef-0123-456789abcdef"
+            },
+            "refComponent1": {
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/com.sap.test.MyService.BaseEntityTheirName"
+                }
+              ],
+              "nullable": true
+            },
+            "refComponent1_id": {
+              "type": "string",
+              "format": "uuid",
+              "example": "01234567-89ab-cdef-0123-456789abcdef",
+              "nullable": true
+            },
+            "refComponent2": {
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/com.sap.test.MyService.BaseEntityTheirName"
+                }
+              ],
+              "nullable": true
+            },
+            "refComponent2_id": {
+              "type": "string",
+              "format": "uuid",
+              "example": "01234567-89ab-cdef-0123-456789abcdef",
+              "nullable": true
+            },
+            "refComponent3": {
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/com.sap.test.MyService.BaseEntityYourName"
+                }
+              ],
+              "nullable": true
+            }
+          }
+        },
+        "com.sap.test.MyService.BaseEntityYourName-create": {
+          "title": "BaseEntityYourName (for create)",
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "format": "uuid",
+              "example": "01234567-89ab-cdef-0123-456789abcdef"
+            },
+            "refComponent1_id": {
+              "type": "string",
+              "format": "uuid",
+              "example": "01234567-89ab-cdef-0123-456789abcdef",
+              "nullable": true
+            },
+            "refComponent2_id": {
+              "type": "string",
+              "format": "uuid",
+              "example": "01234567-89ab-cdef-0123-456789abcdef",
+              "nullable": true
+            }
+          }
+        },
+        "com.sap.test.MyService.BaseEntityYourName-update": {
+          "title": "BaseEntityYourName (for update)",
+          "type": "object",
+          "properties": {
+            "refComponent1_id": {
+              "type": "string",
+              "format": "uuid",
+              "example": "01234567-89ab-cdef-0123-456789abcdef",
+              "nullable": true
+            },
+            "refComponent2_id": {
+              "type": "string",
+              "format": "uuid",
+              "example": "01234567-89ab-cdef-0123-456789abcdef",
+              "nullable": true
+            }
+          }
+        },
+        "count": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "description": "The number of entities in the collection. Available when using the [$count](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptioncount) query option."
+        },
+        "error": {
+          "type": "object",
+          "required": [
+            "error"
+          ],
+          "properties": {
+            "error": {
+              "type": "object",
+              "required": [
+                "code",
+                "message"
+              ],
+              "properties": {
+                "code": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                },
+                "target": {
+                  "type": "string"
+                },
+                "details": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "code",
+                      "message"
+                    ],
+                    "properties": {
+                      "code": {
+                        "type": "string"
+                      },
+                      "message": {
+                        "type": "string"
+                      },
+                      "target": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "innererror": {
+                  "type": "object",
+                  "description": "The structure of this object is service-specific"
+                }
+              }
+            }
+          }
+        }
+      },
+      "parameters": {
+        "top": {
+          "name": "$top",
+          "in": "query",
+          "description": "Show only the first n items, see [Paging - Top](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptiontop)",
+          "schema": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "example": 50
+        },
+        "skip": {
+          "name": "$skip",
+          "in": "query",
+          "description": "Skip the first n items, see [Paging - Skip](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionskip)",
+          "schema": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "count": {
+          "name": "$count",
+          "in": "query",
+          "description": "Include count of items, see [Count](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptioncount)",
+          "schema": {
+            "type": "boolean"
+          }
+        },
+        "search": {
+          "name": "$search",
+          "in": "query",
+          "description": "Search items by search phrases, see [Searching](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionsearch)",
+          "schema": {
+            "type": "string"
+          }
+        }
+      },
+      "responses": {
+        "error": {
+          "description": "Error",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/error"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
