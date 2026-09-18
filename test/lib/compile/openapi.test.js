@@ -292,6 +292,19 @@ service CatalogService {
     assert(!openapi.servers[0].url.includes('odata'));
   });
 
+  test('does not mutate @protocol annotation after compilation', () => {
+    const csn = cds.compile.to.csn(`
+      namespace com.sap;
+      @protocol: ['odata', 'rest']
+      service A { entity E { key ID : UUID; }; }
+    `);
+    const originalProtocol = csn.definitions['com.sap.A']['@protocol'];
+    assert(Array.isArray(originalProtocol), '@protocol should be an array before compilation');
+    toOpenApi(csn);
+    assert(Array.isArray(csn.definitions['com.sap.A']['@protocol']),
+      '@protocol must not be mutated by toOpenApi');
+  });
+
   test('options: Multiple servers', () => {
     const csn = cds.compile.to.csn(`
       service A {entity E { key ID : UUID; };};`
