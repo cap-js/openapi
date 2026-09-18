@@ -1,0 +1,91 @@
+{
+  "definitions": {
+   "Swagger.Petstore": {
+    "kind": "service",
+    "@Capabilities.BatchSupported": false,
+    "@Capabilities.KeyAsSegmentSupported": true,
+    "@Core.Description": "Swagger Petstore",
+    "@Core.SchemaVersion": "1.0.0"
+   },
+   "Swagger.Petstore.pets": {
+    "kind": "function",
+    "params": {
+     "limit": {
+      "type": "cds.Integer",
+      "@description": "How many items to return at one time (max 100)",
+      "@openapi.in": "query",
+      "default": {
+       "val": "213"
+      }
+     }
+    },
+    "@Common.Label": "pets",
+    "@Core.Description": "List all pets",
+    "@openapi.path": "/pets",
+    "returns": {
+     "type": "Swagger.Petstore_types.Pets"
+    }
+   },
+   "Swagger.Petstore.pets_post": {
+    "kind": "action",
+    "params": {},
+    "@Common.Label": "pets",
+    "@Core.Description": "Create a pet",
+    "@openapi.path": "/pets"
+   },
+   "Swagger.Petstore.pets_": {
+    "kind": "function",
+    "params": {
+     "petId": {
+      "type": "cds.String",
+      "@description": "The id of the pet to retrieve",
+      "@openapi.in": "path"
+     }
+    },
+    "@Common.Label": "pets",
+    "@Core.Description": "Info for a specific pet",
+    "@openapi.path": "/pets/{petId}",
+    "returns": {
+     "type": "Swagger.Petstore_types.Pet"
+    }
+   },
+   "Swagger.Petstore_types.Pet": {
+    "elements": {
+     "id": {
+      "type": "cds.Integer64",
+      "@mandatory": true
+     },
+     "name": {
+      "type": "cds.String",
+      "@mandatory": true
+     },
+     "tag": {
+      "type": "cds.String"
+     }
+    },
+    "kind": "type"
+   },
+   "Swagger.Petstore_types.Pets": {
+    "items": {
+     "type": "Swagger.Petstore_types.Pet"
+    },
+    "kind": "type"
+   },
+   "Swagger.Petstore_types.Error": {
+    "elements": {
+     "code": {
+      "type": "cds.Integer",
+      "@mandatory": true
+     },
+     "message": {
+      "type": "cds.String",
+      "@mandatory": true
+     }
+    },
+    "kind": "type"
+   }
+  },
+  "meta": {
+   "creator": "cds-import-openapi"
+  }
+ }
