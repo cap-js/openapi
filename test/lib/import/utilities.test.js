@@ -1,7 +1,7 @@
 const { describe, it } = require('node:test')
 const assert = require('node:assert')
 
-const { cdsName, nameFromPath } = require('../../../lib/import/utilities')
+const { cdsName, nameFromPath, pathAndMethod } = require('../../../lib/import/utilities')
 
 describe('Utilities', () => {
     it('cdsName', () => {
@@ -36,5 +36,23 @@ describe('Utilities', () => {
 
         assert.equal(nameFromPath('/foo/{id}', 'get'), 'foo_', 'one segment and key segment')
         assert.equal(nameFromPath('/foo/{id}', 'post'), 'foo__post', 'one segment and key segment')
+    })
+})
+
+describe('pathAndMethod', () => {
+    it('function kind returns GET', () => {
+        const { path, method } = pathAndMethod({ kind: 'function', '@openapi.path': '/foo' })
+        assert.equal(method, 'GET')
+        assert.equal(path, '/foo')
+    })
+
+    it('action with explicit method returns it', () => {
+        const { method } = pathAndMethod({ '@openapi.method': 'PUT', '@openapi.path': '/foo' })
+        assert.equal(method, 'PUT')
+    })
+
+    it('action without explicit method defaults to POST', () => {
+        const { method } = pathAndMethod({ '@openapi.path': '/foo' })
+        assert.equal(method, 'POST')
     })
 })
