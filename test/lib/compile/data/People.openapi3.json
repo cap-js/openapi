@@ -2,7 +2,7 @@
   "openapi": "3.0.2",
   "info": {
     "title": "Use the title annotation on your CDS service to provide a meaningful title.",
-    "description": "Use the Core.LongDescription or Core.Description annotation on your CDS service to provide a meaningful description.\n\n## Entity Data Model\n![ER Diagram](https://yuml.me/diagram/class/[Supplier{bg:lightslategray}],[Supplier]++-0..1[Address],[Supplier]-*>[ProductService.Product{bg:whitesmoke}],[Address],[Person{bg:lightslategray}],[Person]^[Customer{bg:lightslategray}],[Person]^[Employee{bg:lightslategray}],[PersonDetail{bg:lightslategray}],[PersonDetail]++-0..1[Address],[PersonDetail]0..1-0..1[Person],[PersonDetails%20{bg:lawngreen}]++-*>[PersonDetail],[People%20{bg:lawngreen}]++-*>[Person],[Suppliers%20{bg:lawngreen}]++-*>[Supplier])\n\n### Legend\n![Legend](https://yuml.me/diagram/plain;dir:TB;scale:60/class/[External.Type{bg:whitesmoke}],[ComplexType],[EntityType{bg:lightslategray}],[EntitySet/Singleton/Operation{bg:lawngreen}])",
+    "description": "Use the Core.LongDescription or Core.Description annotation on your CDS service to provide a meaningful description.\n\n### Entity Data Model\n[![ER Diagram](https://app.yuml.me/diagram/v1/class/plain/%5BSupplier%7Bbg%3Alightslategray%7D%5D%2C%5BSupplier%5D%2B%2B-0..1%5BAddress%5D%2C%5BSupplier%5D-*%3E%5BProductService.Product%7Bbg%3Awhitesmoke%7D%5D%2C%5BAddress%5D%2C%5BPerson%7Bbg%3Alightslategray%7D%5D%2C%5BPerson%5D%5E%5BCustomer%7Bbg%3Alightslategray%7D%5D%2C%5BPerson%5D%5E%5BEmployee%7Bbg%3Alightslategray%7D%5D%2C%5BPersonDetail%7Bbg%3Alightslategray%7D%5D%2C%5BPersonDetail%5D%2B%2B-0..1%5BAddress%5D%2C%5BPersonDetail%5D0..1-0..1%5BPerson%5D%2C%5BPersonDetails%E2%80%8C%7Bbg%3Alawngreen%7D%5D%2B%2B-*%3E%5BPersonDetail%5D%2C%5BPeople%E2%80%8C%7Bbg%3Alawngreen%7D%5D%2B%2B-*%3E%5BPerson%5D%2C%5BSuppliers%E2%80%8C%7Bbg%3Alawngreen%7D%5D%2B%2B-*%3E%5BSupplier%5D.svg)](https://app.yuml.me/diagram/v1/class/plain/%5BSupplier%7Bbg%3Alightslategray%7D%5D%2C%5BSupplier%5D%2B%2B-0..1%5BAddress%5D%2C%5BSupplier%5D-*%3E%5BProductService.Product%7Bbg%3Awhitesmoke%7D%5D%2C%5BAddress%5D%2C%5BPerson%7Bbg%3Alightslategray%7D%5D%2C%5BPerson%5D%5E%5BCustomer%7Bbg%3Alightslategray%7D%5D%2C%5BPerson%5D%5E%5BEmployee%7Bbg%3Alightslategray%7D%5D%2C%5BPersonDetail%7Bbg%3Alightslategray%7D%5D%2C%5BPersonDetail%5D%2B%2B-0..1%5BAddress%5D%2C%5BPersonDetail%5D0..1-0..1%5BPerson%5D%2C%5BPersonDetails%E2%80%8C%7Bbg%3Alawngreen%7D%5D%2B%2B-*%3E%5BPersonDetail%5D%2C%5BPeople%E2%80%8C%7Bbg%3Alawngreen%7D%5D%2B%2B-*%3E%5BPerson%5D%2C%5BSuppliers%E2%80%8C%7Bbg%3Alawngreen%7D%5D%2B%2B-*%3E%5BSupplier%5D.svg)\n\n#### Legend\n<a href=\"https://app.yuml.me/diagram/v1/class/plain/%40direction%20LR%0A%5BExternal.Type%7Bbg%3Awhitesmoke%7D%5D-%5BComplexType%5D-%5BEntityType%7Bbg%3Alightslategray%7D%5D-%5BEntitySet%2FSingleton%2FOperation%7Bbg%3Alawngreen%7D%5D.svg\"><img src=\"https://app.yuml.me/diagram/v1/class/plain/%40direction%20LR%0A%5BExternal.Type%7Bbg%3Awhitesmoke%7D%5D-%5BComplexType%5D-%5BEntityType%7Bbg%3Alightslategray%7D%5D-%5BEntitySet%2FSingleton%2FOperation%7Bbg%3Alawngreen%7D%5D.svg\" width=\"450\"></a>",
     "version": ""
   },
   "x-sap-api-type": "ODATAV4",
@@ -730,6 +730,68 @@
                 }
               }
             }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/PersonDetails({PersonID})/Photo": {
+      "parameters": [
+        {
+          "description": "key: PersonID",
+          "in": "path",
+          "name": "PersonID",
+          "required": true,
+          "schema": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      ],
+      "get": {
+        "summary": "Retrieves photo of a single person detail.",
+        "tags": [
+          "Person Details"
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved photo",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "put": {
+        "summary": "Changes photo of a single person detail.",
+        "tags": [
+          "Person Details"
+        ],
+        "requestBody": {
+          "description": "New value for photo",
+          "required": true,
+          "content": {
+            "*/*": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
           },
           "4XX": {
             "$ref": "#/components/responses/error"

@@ -2,7 +2,7 @@
   "openapi": "3.0.2",
   "info": {
     "title": "Use the title annotation on your CDS service to provide a meaningful title.",
-    "description": "Use the Core.LongDescription or Core.Description annotation on your CDS service to provide a meaningful description.\n\n## Entity Data Model\n![ER Diagram](https://yuml.me/diagram/class/[Product{bg:lightslategray}],[Product]*-*[Category],[Product]-0..1>[PeopleService.Supplier{bg:whitesmoke}],[Product]^[FeaturedProduct{bg:lightslategray}],[FeaturedProduct]0..1-0..1[Advertisement],[ProductDetail{bg:lightslategray}],[ProductDetail]0..1-0..1[Product],[Category{bg:lightslategray}],[Advertisement{bg:lightslategray}],[Advertisements%20{bg:lawngreen}]++-*>[Advertisement],[Categories%20{bg:lawngreen}]++-*>[Category],[ProductDetails%20{bg:lawngreen}]++-*>[ProductDetail],[Products%20{bg:lawngreen}]++-*>[Product])\n\n### Legend\n![Legend](https://yuml.me/diagram/plain;dir:TB;scale:60/class/[External.Type{bg:whitesmoke}],[ComplexType],[EntityType{bg:lightslategray}],[EntitySet/Singleton/Operation{bg:lawngreen}])",
+    "description": "Use the Core.LongDescription or Core.Description annotation on your CDS service to provide a meaningful description.\n\n### Entity Data Model\n[![ER Diagram](https://app.yuml.me/diagram/v1/class/plain/%5BProduct%7Bbg%3Alightslategray%7D%5D%2C%5BProduct%5D*-*%5BCategory%5D%2C%5BProduct%5D-0..1%3E%5BPeopleService.Supplier%7Bbg%3Awhitesmoke%7D%5D%2C%5BProduct%5D%5E%5BFeaturedProduct%7Bbg%3Alightslategray%7D%5D%2C%5BFeaturedProduct%5D0..1-0..1%5BAdvertisement%5D%2C%5BProductDetail%7Bbg%3Alightslategray%7D%5D%2C%5BProductDetail%5D0..1-0..1%5BProduct%5D%2C%5BCategory%7Bbg%3Alightslategray%7D%5D%2C%5BAdvertisement%7Bbg%3Alightslategray%7D%5D%2C%5BAdvertisements%E2%80%8C%7Bbg%3Alawngreen%7D%5D%2B%2B-*%3E%5BAdvertisement%5D%2C%5BCategories%E2%80%8C%7Bbg%3Alawngreen%7D%5D%2B%2B-*%3E%5BCategory%5D%2C%5BProductDetails%E2%80%8C%7Bbg%3Alawngreen%7D%5D%2B%2B-*%3E%5BProductDetail%5D%2C%5BProducts%E2%80%8C%7Bbg%3Alawngreen%7D%5D%2B%2B-*%3E%5BProduct%5D.svg)](https://app.yuml.me/diagram/v1/class/plain/%5BProduct%7Bbg%3Alightslategray%7D%5D%2C%5BProduct%5D*-*%5BCategory%5D%2C%5BProduct%5D-0..1%3E%5BPeopleService.Supplier%7Bbg%3Awhitesmoke%7D%5D%2C%5BProduct%5D%5E%5BFeaturedProduct%7Bbg%3Alightslategray%7D%5D%2C%5BFeaturedProduct%5D0..1-0..1%5BAdvertisement%5D%2C%5BProductDetail%7Bbg%3Alightslategray%7D%5D%2C%5BProductDetail%5D0..1-0..1%5BProduct%5D%2C%5BCategory%7Bbg%3Alightslategray%7D%5D%2C%5BAdvertisement%7Bbg%3Alightslategray%7D%5D%2C%5BAdvertisements%E2%80%8C%7Bbg%3Alawngreen%7D%5D%2B%2B-*%3E%5BAdvertisement%5D%2C%5BCategories%E2%80%8C%7Bbg%3Alawngreen%7D%5D%2B%2B-*%3E%5BCategory%5D%2C%5BProductDetails%E2%80%8C%7Bbg%3Alawngreen%7D%5D%2B%2B-*%3E%5BProductDetail%5D%2C%5BProducts%E2%80%8C%7Bbg%3Alawngreen%7D%5D%2B%2B-*%3E%5BProduct%5D.svg)\n\n#### Legend\n<a href=\"https://app.yuml.me/diagram/v1/class/plain/%40direction%20LR%0A%5BExternal.Type%7Bbg%3Awhitesmoke%7D%5D-%5BComplexType%5D-%5BEntityType%7Bbg%3Alightslategray%7D%5D-%5BEntitySet%2FSingleton%2FOperation%7Bbg%3Alawngreen%7D%5D.svg\"><img src=\"https://app.yuml.me/diagram/v1/class/plain/%40direction%20LR%0A%5BExternal.Type%7Bbg%3Awhitesmoke%7D%5D-%5BComplexType%5D-%5BEntityType%7Bbg%3Alightslategray%7D%5D-%5BEntitySet%2FSingleton%2FOperation%7Bbg%3Alawngreen%7D%5D.svg\" width=\"450\"></a>",
     "version": ""
   },
   "x-sap-api-type": "ODATAV4",
@@ -312,6 +312,69 @@
         "tags": [
           "Advertisements"
         ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/Advertisements({ID})/$value": {
+      "parameters": [
+        {
+          "description": "key: ID",
+          "in": "path",
+          "name": "ID",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          }
+        }
+      ],
+      "get": {
+        "summary": "Retrieves the media stream of a single advertisement.",
+        "tags": [
+          "Advertisements"
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved advertisement",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "put": {
+        "summary": "Changes the media stream of a single advertisement.",
+        "tags": [
+          "Advertisements"
+        ],
+        "requestBody": {
+          "description": "New media stream for advertisement",
+          "required": true,
+          "content": {
+            "*/*": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Success"
