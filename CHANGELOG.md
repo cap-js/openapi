@@ -14,6 +14,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ### Deprecated
 ### Removed
 ### Fixed
+- `@Common.Label` values containing i18n placeholders (e.g. `{i18n>TasksPlural}`) are no longer corrupted by camelCase word-splitting in tag names
 - Entities that are transitively autoexposed and should still be considered readonly, do not generate documentation for write endpoints anymore
 - Implicitly auto-exposed composition targets (annotated `@cds.autoexposed` by the CDS compiler) no longer generate top-level GET paths that CAP would reject with 405
 - OpenAPI compilation is now pure: the input CSN is no longer mutated during compilation
