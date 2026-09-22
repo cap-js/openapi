@@ -1,0 +1,47 @@
+{
+  "$Version": "4.01",
+  "$EntityContainer": "MyService.EntityContainer",
+  "$Reference": {},
+  "MyService": {
+    "$Kind": "Schema",
+    "EntityContainer": {
+      "$Kind": "EntityContainer",
+      "Orders": {
+        "$Collection": true,
+        "$Type": "MyService.Orders",
+        "$NavigationPropertyBinding": {
+          "items": "OrderItems"
+        }
+      },
+      "OrderItems": {
+        "$Collection": true,
+        "$Type": "MyService.OrderItems"
+      }
+    },
+    "Orders": {
+      "$Kind": "EntityType",
+      "$Key": ["ID"],
+      "ID": {
+        "$Type": "Edm.Int32"
+      },
+      "items": {
+        "$Kind": "NavigationProperty",
+        "$Type": "MyService.OrderItems",
+        "$Collection": true,
+        "$ContainsTarget": true
+      }
+    },
+    "OrderItems": {
+      "$Kind": "EntityType",
+      "$Key": ["ID"],
+      "@cds.autoexposed": true,
+      "ID": {
+        "$Type": "Edm.Int32"
+      },
+      "quantity": {
+        "$Type": "Edm.Int32",
+        "$Nullable": true
+      }
+    }
+  }
+}
