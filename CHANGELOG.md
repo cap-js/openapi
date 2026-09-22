@@ -8,11 +8,16 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Added
 - Emit `$skiptoken` query parameter for GET collection endpoints, enabling server-driven paging to be visible in the generated OpenAPI document
+- Added `defaultProtocol` configuration option as fallback if no config is provided.
 ### Changed
+- set `odata` as the service protocol if no protocol is set to match the default behavior of `@sap/cds`. Provide `cds.env.openapi.defaultProtocol = "rest"` to restore old behavior.
+- ER diagrams are now rendered using the yuml.me v1 API (`app.yuml.me`), avoiding the 'please migrate' image. The diagram and legend are displayed as clickable SVG images.
 ### Deprecated
 ### Removed
 ### Fixed
 - Entities that are transitively autoexposed and should still be considered readonly, do not generate documentation for write endpoints anymore
+- Implicitly auto-exposed composition targets (annotated `@cds.autoexposed` by the CDS compiler) no longer generate top-level GET paths that CAP would reject with 405
+- OpenAPI compilation is now pure: the input CSN is no longer mutated during compilation
 ### Security
 
 ## [1.6.0] - 2026-08-04
