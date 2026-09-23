@@ -1,0 +1,481 @@
+{
+  "definitions": {
+   "Swagger.Petstore": {
+    "kind": "service",
+    "@Capabilities.BatchSupported": false,
+    "@Capabilities.KeyAsSegmentSupported": true,
+    "@Core.Description": "Swagger Petstore",
+    "@Core.SchemaVersion": "1.0.6",
+    "@Core.LongDescription": "This is a sample server Petstore server.  You can find out more about Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).  For this sample, you can use the api key `special-key` to test the authorization filters."
+   },
+   "Swagger.Petstore.pet__uploadImage_post": {
+    "kind": "action",
+    "params": {
+     "petId": {
+      "@description": "ID of pet to update",
+      "type": "cds.Integer64",
+      "@openapi.in": "path"
+     },
+     "additionalMetadata": {
+      "@description": "Additional data to pass to server",
+      "type": "cds.String",
+      "default": {
+       "val": "32"
+      },
+      "@openapi.in": "formData"
+     },
+     "file": {
+      "@description": "file to upload",
+      "type": "cds.String",
+      "@openapi.in": "formData",
+      "default": {
+       "val": "Empty"
+      }
+     }
+    },
+    "@Common.Label": "pet",
+    "@Core.Description": "uploads an image",
+    "@openapi.path": "/pet/{petId}/uploadImage",
+    "returns": {
+     "type": "Swagger.Petstore_types.ApiResponse"
+    }
+   },
+   "Swagger.Petstore.pet_post": {
+    "kind": "action",
+    "params": {
+     "body": {
+      "type": "Swagger.Petstore_types.Pet",
+      "@openapi.in": "body"
+     }
+    },
+    "@Common.Label": "pet",
+    "@Core.Description": "Add a new pet to the store",
+    "@openapi.path": "/pet"
+   },
+   "Swagger.Petstore.pet_put": {
+    "kind": "action",
+    "params": {
+     "body": {
+      "type": "Swagger.Petstore_types.Pet",
+      "@openapi.in": "body"
+     }
+    },
+    "@Common.Label": "pet",
+    "@Core.Description": "Update an existing pet",
+    "@openapi.method": "PUT",
+    "@openapi.path": "/pet"
+   },
+   "Swagger.Petstore.pet_findByStatus": {
+    "kind": "function",
+    "params": {
+     "status": {
+      "@description": "Status values that need to be considered for filter",
+      "items": {
+       "type": "Swagger.Petstore.anonymous.type0"
+      },
+      "@openapi.in": "query",
+      "@openapi.required": true
+     }
+    },
+    "@Common.Label": "pet",
+    "@Core.Description": "Finds Pets by status",
+    "@Core.LongDescription": "Multiple status values can be provided with comma separated strings",
+    "@openapi.path": "/pet/findByStatus",
+    "returns": {
+     "items": {
+      "type": "Swagger.Petstore_types.Pet"
+     }
+    }
+   },
+   "Swagger.Petstore.pet_": {
+    "kind": "function",
+    "params": {
+     "petId": {
+      "@description": "ID of pet to return",
+      "type": "cds.Integer64",
+      "@openapi.in": "path"
+     }
+    },
+    "@Common.Label": "pet",
+    "@Core.Description": "Find pet by ID",
+    "@Core.LongDescription": "Returns a single pet",
+    "@openapi.path": "/pet/{petId}",
+    "returns": {
+     "type": "Swagger.Petstore_types.Pet"
+    }
+   },
+   "Swagger.Petstore.pet__post": {
+    "kind": "action",
+    "params": {
+     "petId": {
+      "@description": "ID of pet that needs to be updated",
+      "type": "cds.Integer64",
+      "@openapi.in": "path"
+     },
+     "name": {
+      "@description": "Updated name of the pet",
+      "type": "cds.String",
+      "@openapi.in": "formData"
+     },
+     "status": {
+      "@description": "Updated status of the pet",
+      "type": "cds.String",
+      "@openapi.in": "formData"
+     }
+    },
+    "@Common.Label": "pet",
+    "@Core.Description": "Updates a pet in the store with form data",
+    "@openapi.path": "/pet/{petId}"
+   },
+   "Swagger.Petstore.pet__delete": {
+    "kind": "action",
+    "params": {
+     "api_key": {
+      "type": "cds.String",
+      "@openapi.in": "header"
+     },
+     "petId": {
+      "@description": "Pet id to delete",
+      "type": "cds.Integer64",
+      "@openapi.in": "path"
+     }
+    },
+    "@Common.Label": "pet",
+    "@Core.Description": "Deletes a pet",
+    "@openapi.method": "DELETE",
+    "@openapi.path": "/pet/{petId}"
+   },
+   "Swagger.Petstore.store_order_post": {
+    "kind": "action",
+    "params": {
+     "body": {
+      "type": "Swagger.Petstore_types.Order",
+      "@openapi.in": "body"
+     }
+    },
+    "@Common.Label": "store",
+    "@Core.Description": "Place an order for a pet",
+    "@openapi.path": "/store/order",
+    "returns": {
+     "type": "Swagger.Petstore_types.Order"
+    }
+   },
+   "Swagger.Petstore.store_order_": {
+    "kind": "function",
+    "params": {
+     "orderId": {
+      "@description": "ID of pet that needs to be fetched",
+      "type": "cds.Integer64",
+      "@openapi.in": "path"
+     }
+    },
+    "@Common.Label": "store",
+    "@Core.Description": "Find purchase order by ID",
+    "@Core.LongDescription": "For valid response try integer IDs with value >= 1 and <= 10. Other values will generated exceptions",
+    "@openapi.path": "/store/order/{orderId}",
+    "returns": {
+     "type": "Swagger.Petstore_types.Order"
+    }
+   },
+   "Swagger.Petstore.store_order__delete": {
+    "kind": "action",
+    "params": {
+     "orderId": {
+      "@description": "ID of the order that needs to be deleted",
+      "type": "cds.Integer64",
+      "@openapi.in": "path"
+     }
+    },
+    "@Common.Label": "store",
+    "@Core.Description": "Delete purchase order by ID",
+    "@Core.LongDescription": "For valid response try integer IDs with positive integer value. Negative or non-integer values will generate API errors",
+    "@openapi.method": "DELETE",
+    "@openapi.path": "/store/order/{orderId}"
+   },
+   "Swagger.Petstore.store_inventory": {
+    "kind": "function",
+    "params": {},
+    "@Common.Label": "store",
+    "@Core.Description": "Returns pet inventories by status",
+    "@Core.LongDescription": "Returns a map of status codes to quantities",
+    "@openapi.path": "/store/inventory",
+    "returns": {
+     "elements": {}
+    }
+   },
+   "Swagger.Petstore.user_createWithArray_post": {
+    "kind": "action",
+    "params": {
+     "body": {
+      "items": {
+       "type": "Swagger.Petstore_types.User"
+      },
+      "@openapi.in": "body"
+     }
+    },
+    "@Common.Label": "user",
+    "@Core.Description": "Creates list of users with given input array",
+    "@openapi.path": "/user/createWithArray"
+   },
+   "Swagger.Petstore.user_createWithList_post": {
+    "kind": "action",
+    "params": {
+     "body": {
+      "items": {
+       "type": "Swagger.Petstore_types.User"
+      },
+      "@openapi.in": "body"
+     }
+    },
+    "@Common.Label": "user",
+    "@Core.Description": "Creates list of users with given input array",
+    "@openapi.path": "/user/createWithList"
+   },
+   "Swagger.Petstore.user_": {
+    "kind": "function",
+    "params": {
+     "username": {
+      "@description": "The name that needs to be fetched. Use user1 for testing. ",
+      "type": "cds.String",
+      "@openapi.in": "path"
+     }
+    },
+    "@Common.Label": "user",
+    "@Core.Description": "Get user by user name",
+    "@openapi.path": "/user/{username}",
+    "returns": {
+     "type": "Swagger.Petstore_types.User"
+    }
+   },
+   "Swagger.Petstore.user__put": {
+    "kind": "action",
+    "params": {
+     "username": {
+      "@description": "name that need to be updated",
+      "type": "cds.String",
+      "@openapi.in": "path"
+     },
+     "body": {
+      "type": "Swagger.Petstore_types.User",
+      "@openapi.in": "body"
+     }
+    },
+    "@Common.Label": "user",
+    "@Core.Description": "Updated user",
+    "@Core.LongDescription": "This can only be done by the logged in user.",
+    "@openapi.method": "PUT",
+    "@openapi.path": "/user/{username}"
+   },
+   "Swagger.Petstore.user__delete": {
+    "kind": "action",
+    "params": {
+     "username": {
+      "@description": "The name that needs to be deleted",
+      "type": "cds.String",
+      "@openapi.in": "path"
+     }
+    },
+    "@Common.Label": "user",
+    "@Core.Description": "Delete user",
+    "@Core.LongDescription": "This can only be done by the logged in user.",
+    "@openapi.method": "DELETE",
+    "@openapi.path": "/user/{username}"
+   },
+   "Swagger.Petstore.user_login": {
+    "kind": "function",
+    "params": {
+     "username": {
+      "@description": "The user name for login",
+      "type": "cds.String",
+      "@openapi.in": "query",
+      "@openapi.required": true
+     },
+     "password": {
+      "@description": "The password for login in clear text",
+      "type": "cds.String",
+      "@openapi.in": "query",
+      "@openapi.required": true
+     }
+    },
+    "@Common.Label": "user",
+    "@Core.Description": "Logs user into the system",
+    "@openapi.path": "/user/login",
+    "returns": {
+     "type": "cds.String"
+    }
+   },
+   "Swagger.Petstore.user_logout": {
+    "kind": "function",
+    "params": {},
+    "@Common.Label": "user",
+    "@Core.Description": "Logs out current logged in user session",
+    "@openapi.path": "/user/logout",
+    "returns": {
+     "type": "cds.Boolean"
+    }
+   },
+   "Swagger.Petstore.user_post": {
+    "kind": "action",
+    "params": {
+     "body": {
+      "type": "Swagger.Petstore_types.User",
+      "@openapi.in": "body"
+     }
+    },
+    "@Common.Label": "user",
+    "@Core.Description": "Create user",
+    "@Core.LongDescription": "This can only be done by the logged in user.",
+    "@openapi.path": "/user"
+   },
+   "Swagger.Petstore_types.ApiResponse": {
+    "elements": {
+     "code": {
+      "type": "cds.Integer"
+     },
+     "type": {
+      "type": "cds.String"
+     },
+     "message": {
+      "type": "cds.String"
+     }
+    },
+    "kind": "type"
+   },
+   "Swagger.Petstore_types.Category": {
+    "elements": {
+     "id": {
+      "type": "cds.Integer64"
+     },
+     "name": {
+      "type": "cds.String"
+     }
+    },
+    "kind": "type"
+   },
+   "Swagger.Petstore_types.Pet": {
+    "elements": {
+     "id": {
+      "type": "cds.Integer64"
+     },
+     "category": {
+      "type": "Swagger.Petstore_types.Category"
+     },
+     "name": {
+      "type": "cds.String",
+      "@Core.Example.$Type": "Core.PrimitiveExampleValue",
+      "@Core.Example.Value": "doggie",
+      "@mandatory": true
+     },
+     "photoUrls": {
+      "items": {
+       "type": "cds.String"
+      },
+      "@mandatory": true
+     },
+     "tags": {
+      "items": {
+       "type": "Swagger.Petstore_types.Tag"
+      }
+     },
+     "status": {
+      "@description": "pet status in the store",
+      "type": "cds.String",
+      "@assert.range": true,
+      "enum": {
+       "available": {},
+       "pending": {},
+       "sold": {}
+      }
+     }
+    },
+    "kind": "type"
+   },
+   "Swagger.Petstore_types.Tag": {
+    "elements": {
+     "id": {
+      "type": "cds.Integer64"
+     },
+     "name": {
+      "type": "cds.String"
+     }
+    },
+    "kind": "type"
+   },
+   "Swagger.Petstore_types.Order": {
+    "elements": {
+     "id": {
+      "type": "cds.Integer64"
+     },
+     "petId": {
+      "type": "cds.Integer64"
+     },
+     "quantity": {
+      "type": "cds.Integer"
+     },
+     "shipDate": {
+      "type": "cds.Timestamp"
+     },
+     "status": {
+      "@description": "Order Status",
+      "type": "cds.String",
+      "@assert.range": true,
+      "enum": {
+       "placed": {},
+       "approved": {},
+       "delivered": {}
+      }
+     },
+     "complete": {
+      "type": "cds.Boolean"
+     }
+    },
+    "kind": "type"
+   },
+   "Swagger.Petstore_types.User": {
+    "elements": {
+     "id": {
+      "type": "cds.Integer64"
+     },
+     "username": {
+      "type": "cds.String"
+     },
+     "firstName": {
+      "type": "cds.String"
+     },
+     "lastName": {
+      "type": "cds.String"
+     },
+     "email": {
+      "type": "cds.String"
+     },
+     "password": {
+      "type": "cds.String"
+     },
+     "phone": {
+      "type": "cds.String"
+     },
+     "userStatus": {
+      "@description": "User Status",
+      "type": "cds.Integer"
+     }
+    },
+    "kind": "type"
+   },
+   "Swagger.Petstore.anonymous.type0": {
+    "type": "cds.String",
+    "@assert.range": true,
+    "enum": {
+     "available": {},
+     "pending": {},
+     "sold": {}
+    },
+    "default": {
+     "val": "available"
+    },
+    "kind": "type"
+   }
+  },
+  "meta": {
+   "creator": "cds-import-openapi"
+  }
+ }

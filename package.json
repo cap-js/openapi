@@ -18,8 +18,21 @@
   "main": "index.js",
   "files": [
     "lib/",
+    "index.js",
+    "cds-plugin.js",
     "LICENSE"
   ],
+  "cds": {
+    "plugins": [
+      "@cap-js/openapi"
+    ],
+    "schema": {
+      "importFrom": {
+        "const": "openapi",
+        "description": "OpenAPI specification"
+      }
+    }
+  },
   "scripts": {
     "test": "node --test",
     "lint": "npx eslint .",
