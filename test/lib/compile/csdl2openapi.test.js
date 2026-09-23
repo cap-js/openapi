@@ -55,6 +55,12 @@ const result13 = require("./data/autoexposed-direct.openapi3.json");
 const exampleBackRef = require("./data/back-reference.json");
 const resultBackRef = require("./data/back-reference.openapi3.json");
 
+const example14 = require("./data/autoexposed-composition.json");
+const result14 = require("./data/autoexposed-composition.openapi3.json");
+
+const example15 = require("./data/autoexposed-codelist.json");
+const result15 = require("./data/autoexposed-codelist.openapi3.json");
+
 describe("Examples", () => {
   test("csdl-16.1", () => {
     const openapi = lib.csdl2openapi(example1, { diagram: true });
@@ -111,13 +117,23 @@ describe("Examples", () => {
   });
 
   test("autoexposed-direct", () => {
-    const openapi = lib.csdl2openapi(example13, { url: "https://localhost/service-root" });
+    const openapi = lib.csdl2openapi(example13);
     check(openapi, result13);
   });
 
   test("back-reference", () => {
     const openapi = lib.csdl2openapi(exampleBackRef, { diagram: false });
     check(openapi, resultBackRef);
+  });
+
+  test("autoexposed-composition", () => {
+    const openapi = lib.csdl2openapi(example14);
+    check(openapi, result14);
+  });
+
+  test("autoexposed-codelist", () => {
+    const openapi = lib.csdl2openapi(example15);
+    check(openapi, result15);
   });
 });
 
@@ -2715,6 +2731,141 @@ see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-prot
         },
       },
       "MaxLength"
+    );
+  });
+
+  it("preserves i18n placeholders in tag names without splitting camelCase", () => {
+    const csdl = {
+      $Version: "4.01",
+      $Reference: {
+        dummy: {
+          $Include: [{ $Namespace: "com.sap.vocabularies.Common.v1", $Alias: "Common" }],
+        },
+      },
+      $EntityContainer: "TestService.Container",
+      TestService: {
+        Container: {
+          $Kind: "EntityContainer",
+          Tasks: { $Collection: true, $Type: "TestService.Tasks" },
+        },
+        Tasks: {
+          $Kind: "EntityType",
+          $Key: ["ID"],
+          ID: { $Type: "Edm.Guid" },
+        },
+        $Annotations: {
+          "TestService.Tasks": { "@Common.Label": "{i18n>TasksPlural}" },
+        },
+      },
+    };
+    const openapi = lib.csdl2openapi(csdl, {});
+    assert.strictEqual(
+      openapi.tags[0].name,
+      "{i18n>TasksPlural}",
+      "i18n placeholder must not be split by camelCase normalisation"
+    );
+    const getOp = openapi.paths["/Tasks"]?.get;
+    assert.ok(getOp, "GET /Tasks operation must exist");
+    assert.strictEqual(
+      getOp.tags[0],
+      "{i18n>TasksPlural}",
+      "operation-level tag must also preserve the placeholder"
+    );
+  });
+
+  it("still splits plain camelCase label into words", () => {
+    const csdl = {
+      $Version: "4.01",
+      $Reference: {
+        dummy: {
+          $Include: [{ $Namespace: "com.sap.vocabularies.Common.v1", $Alias: "Common" }],
+        },
+      },
+      $EntityContainer: "TestService.Container",
+      TestService: {
+        Container: {
+          $Kind: "EntityContainer",
+          Tasks: { $Collection: true, $Type: "TestService.Tasks" },
+        },
+        Tasks: {
+          $Kind: "EntityType",
+          $Key: ["ID"],
+          ID: { $Type: "Edm.Guid" },
+        },
+        $Annotations: {
+          "TestService.Tasks": { "@Common.Label": "TasksPlural" },
+        },
+      },
+    };
+    const openapi = lib.csdl2openapi(csdl, {});
+    assert.strictEqual(
+      openapi.tags[0].name,
+      "Tasks Plural",
+      "plain camelCase label must still be split into words"
+    );
+  });
+
+  it("preserves i18n placeholder embedded in a mixed label without splitting camelCase", () => {
+    const csdl = {
+      $Version: "4.01",
+      $Reference: {
+        dummy: {
+          $Include: [{ $Namespace: "com.sap.vocabularies.Common.v1", $Alias: "Common" }],
+        },
+      },
+      $EntityContainer: "TestService.Container",
+      TestService: {
+        Container: {
+          $Kind: "EntityContainer",
+          Tasks: { $Collection: true, $Type: "TestService.Tasks" },
+        },
+        Tasks: {
+          $Kind: "EntityType",
+          $Key: ["ID"],
+          ID: { $Type: "Edm.Guid" },
+        },
+        $Annotations: {
+          "TestService.Tasks": { "@Common.Label": "MyService {i18n>TasksLabel}" },
+        },
+      },
+    };
+    const openapi = lib.csdl2openapi(csdl, {});
+    assert.strictEqual(
+      openapi.tags[0].name,
+      "MyService {i18n>TasksLabel}",
+      "mixed label with i18n placeholder must not be split"
+    );
+  });
+
+  it("preserves multiple i18n placeholders in a label without splitting camelCase", () => {
+    const csdl = {
+      $Version: "4.01",
+      $Reference: {
+        dummy: {
+          $Include: [{ $Namespace: "com.sap.vocabularies.Common.v1", $Alias: "Common" }],
+        },
+      },
+      $EntityContainer: "TestService.Container",
+      TestService: {
+        Container: {
+          $Kind: "EntityContainer",
+          Tasks: { $Collection: true, $Type: "TestService.Tasks" },
+        },
+        Tasks: {
+          $Kind: "EntityType",
+          $Key: ["ID"],
+          ID: { $Type: "Edm.Guid" },
+        },
+        $Annotations: {
+          "TestService.Tasks": { "@Common.Label": "{i18n>FirstLabel} and {i18n>SecondLabel}" },
+        },
+      },
+    };
+    const openapi = lib.csdl2openapi(csdl, {});
+    assert.strictEqual(
+      openapi.tags[0].name,
+      "{i18n>FirstLabel} and {i18n>SecondLabel}",
+      "label with multiple i18n placeholders must not be split"
     );
   });
 });
