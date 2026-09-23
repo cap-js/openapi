@@ -52,6 +52,9 @@ const result12 = require("./data/autoexposed-texts.openapi3.json");
 const example13 = require("./data/autoexposed-direct.json");
 const result13 = require("./data/autoexposed-direct.openapi3.json");
 
+const exampleBackRef = require("./data/back-reference.json");
+const resultBackRef = require("./data/back-reference.openapi3.json");
+
 const example14 = require("./data/autoexposed-composition.json");
 const result14 = require("./data/autoexposed-composition.openapi3.json");
 
@@ -116,6 +119,11 @@ describe("Examples", () => {
   test("autoexposed-direct", () => {
     const openapi = lib.csdl2openapi(example13);
     check(openapi, result13);
+  });
+
+  test("back-reference", () => {
+    const openapi = lib.csdl2openapi(exampleBackRef, { diagram: false });
+    check(openapi, resultBackRef);
   });
 
   test("autoexposed-composition", () => {
