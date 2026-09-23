@@ -19,6 +19,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 - Back-reference navigation properties on child entities in compositions (the generated `parent` nav pointing back up) are no longer emitted in the OpenAPI read schema
 - Implicitly auto-exposed composition targets (annotated `@cds.autoexposed` by the CDS compiler) no longer generate top-level GET paths that CAP would reject with 405
 - OpenAPI compilation is now pure: the input CSN is no longer mutated during compilation
+- Services annotated with `@protocol: 'rest'` no longer include a `/$batch` path in the generated OpenAPI document
 ### Security
 
 ## [1.6.0] - 2026-08-04
