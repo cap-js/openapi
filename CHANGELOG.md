@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Added
 - Added `defaultProtocol` configuration option as fallback if no config is provided.
+- Collection responses now include the optional `@odata.nextLink` / `@nextLink` property in their schema, documenting server-driven paging as per the OData specification.
 ### Changed
 - set `odata` as the service protocol if no protocol is set to match the default behavior of `@sap/cds`. Provide `cds.env.openapi.defaultProtocol = "rest"` to restore old behavior.
 - ER diagrams are now rendered using the yuml.me v1 API (`app.yuml.me`), avoiding the 'please migrate' image. The diagram and legend are displayed as clickable SVG images.
