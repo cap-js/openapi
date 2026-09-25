@@ -175,6 +175,11 @@
                       "items": {
                         "$ref": "#/components/schemas/ODataDemo.Advertisement"
                       }
+                    },
+                    "@nextLink": {
+                      "type": "string",
+                      "format": "uri",
+                      "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
                     }
                   }
                 }
@@ -573,6 +578,11 @@
                       "items": {
                         "$ref": "#/components/schemas/ODataDemo.Category"
                       }
+                    },
+                    "@nextLink": {
+                      "type": "string",
+                      "format": "uri",
+                      "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
                     }
                   }
                 }
@@ -855,6 +865,11 @@
                       "items": {
                         "$ref": "#/components/schemas/ODataDemo.Product"
                       }
+                    },
+                    "@nextLink": {
+                      "type": "string",
+                      "format": "uri",
+                      "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
                     }
                   }
                 }
@@ -1058,6 +1073,11 @@
                       "items": {
                         "$ref": "#/components/schemas/ODataDemo.PersonDetail"
                       }
+                    },
+                    "@nextLink": {
+                      "type": "string",
+                      "format": "uri",
+                      "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
                     }
                   }
                 }
@@ -1448,6 +1468,11 @@
                       "items": {
                         "$ref": "#/components/schemas/ODataDemo.Person"
                       }
+                    },
+                    "@nextLink": {
+                      "type": "string",
+                      "format": "uri",
+                      "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
                     }
                   }
                 }
@@ -1776,6 +1801,11 @@
                       "items": {
                         "$ref": "#/components/schemas/ODataDemo.ProductDetail"
                       }
+                    },
+                    "@nextLink": {
+                      "type": "string",
+                      "format": "uri",
+                      "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
                     }
                   }
                 }
@@ -2124,6 +2154,11 @@
                       "items": {
                         "$ref": "#/components/schemas/ODataDemo.Product"
                       }
+                    },
+                    "@nextLink": {
+                      "type": "string",
+                      "format": "uri",
+                      "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
                     }
                   }
                 }
@@ -2396,6 +2431,11 @@
                       "items": {
                         "$ref": "#/components/schemas/ODataDemo.Category"
                       }
+                    },
+                    "@nextLink": {
+                      "type": "string",
+                      "format": "uri",
+                      "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
                     }
                   }
                 }
@@ -2768,6 +2808,11 @@
                       "items": {
                         "$ref": "#/components/schemas/ODataDemo.Supplier"
                       }
+                    },
+                    "@nextLink": {
+                      "type": "string",
+                      "format": "uri",
+                      "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
                     }
                   }
                 }
@@ -3053,6 +3098,11 @@
                       "items": {
                         "$ref": "#/components/schemas/ODataDemo.Product"
                       }
+                    },
+                    "@nextLink": {
+                      "type": "string",
+                      "format": "uri",
+                      "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
                     }
                   }
                 }
