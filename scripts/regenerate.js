@@ -14,7 +14,11 @@ const specialOptions = {
         basePath: '/V4/(S(cnbm44wtbc1v5bgrlek5lpcc))/TripPinServiceRW',
         diagram: true
     },
-    'autoexposed-texts': {}
+    'autoexposed-texts': {},
+    'autoexposed-direct': {},
+    'autoexposed-composition': {},
+    'autoexposed-codelist': {},
+    'back-reference': { diagram: false },
 };
 
 // Default options for all other test cases.
