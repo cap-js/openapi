@@ -21,6 +21,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 - Implicitly auto-exposed composition targets (annotated `@cds.autoexposed` by the CDS compiler) no longer generate top-level GET paths that CAP would reject with 405
 - OpenAPI compilation is now pure: the input CSN is no longer mutated during compilation
 - Services annotated with `@protocol: 'rest'` no longer include a `/$batch` path in the generated OpenAPI document
+- Services annotated with `@protocol: 'rest'` no longer include OData query options (`$filter`, `$top`, `$skip`, `$search`, `$count`, `$orderby`, `$select`, `$expand`) in collection GET operations, as CAP's REST adapter does not support them
 ### Security
 
 ## [1.6.0] - 2026-08-04
