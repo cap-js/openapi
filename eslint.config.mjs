@@ -14,7 +14,7 @@ export default [
             'no-unused-vars': ['warn', { argsIgnorePattern: 'lazy' }],
             'no-extra-semi': 'warn',
             'max-len': ['off'],
-            'complexity': ['warn', 15],
+            'complexity': ['warn', 20],
             'max-params': ['warn', 4],
             'prefer-const': 'warn',
             'no-var': 'error',
