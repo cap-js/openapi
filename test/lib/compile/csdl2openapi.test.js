@@ -1185,6 +1185,11 @@ describe("Edge cases", () => {
                             maxLength: 20,
                           },
                         },
+                        "@odata.nextLink": {
+                          type: "string",
+                          format: "uri",
+                          description: "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)",
+                        },
                       },
                     },
                   },
@@ -1260,6 +1265,11 @@ describe("Edge cases", () => {
           //TODO:delta
         },
       },
+      "@nextLink": {
+        type: "string",
+        format: "uri",
+        description: "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)",
+      },
       "@odata.deltaLink": {
         example:
           "/service-root/Set?$deltatoken=opaque server-generated token for fetching the delta",
@@ -1279,6 +1289,32 @@ describe("Edge cases", () => {
       expectedGetResponseProperties,
       "get list with delta"
     );
+  });
+
+  test("nextLink in collection response", () => {
+    const csdl = {
+      $EntityContainer: "this.Container",
+      this: {
+        ET: { $Kind: "EntityType", $Key: ["key"], key: {} },
+        Container: { Set: { $Type: "this.ET", $Collection: true } },
+      },
+    };
+    const v401 = lib.csdl2openapi(csdl, {});
+    const v401Props = v401.paths["/Set"].get.responses[200].content["application/json"].schema.properties;
+    assert.ok("@nextLink" in v401Props, "v4.01 should have @nextLink");
+    assert.deepStrictEqual(v401Props["@nextLink"], {
+      type: "string",
+      format: "uri",
+      description: "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)",
+    });
+    assert.ok(!("@odata.nextLink" in v401Props), "v4.01 must not emit @odata.nextLink");
+    assert.ok(!("@nextLink" in (v401.paths["/Set('{key}')"].get.responses[200].content["application/json"].schema.properties ?? {})),
+      "by-key response must not have @nextLink");
+
+    const v40 = lib.csdl2openapi(csdl, { odataVersion: "4.0" });
+    const v40Props = v40.paths["/Set"].get.responses[200].content["application/json"].schema.properties;
+    assert.ok("@odata.nextLink" in v40Props, "v4.0 should have @odata.nextLink");
+    assert.ok(!("@nextLink" in v40Props), "v4.0 must not emit @nextLink");
   });
 
   test("entity set and singleton with non-existing type", () => {
@@ -1327,6 +1363,11 @@ describe("Edge cases", () => {
                           items: {
                             $ref: "#/components/schemas/undefined.type_does_not_exist",
                           },
+                        },
+                        "@nextLink": {
+                          type: "string",
+                          format: "uri",
+                          description: "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)",
                         },
                       },
                     },
@@ -1565,6 +1606,11 @@ see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-prot
                             $ref: "#/components/schemas/this.derived",
                           },
                         },
+                        "@nextLink": {
+                          type: "string",
+                          format: "uri",
+                          description: "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)",
+                        },
                       },
                     },
                   },
@@ -1756,6 +1802,11 @@ see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-prot
                             $ref: "#/components/schemas/this.source",
                           },
                         },
+                        "@nextLink": {
+                          type: "string",
+                          format: "uri",
+                          description: "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)",
+                        },
                       },
                     },
                   },
@@ -1922,6 +1973,11 @@ see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-prot
                           items: {
                             $ref: "#/components/schemas/this.Category",
                           },
+                        },
+                        "@nextLink": {
+                          type: "string",
+                          format: "uri",
+                          description: "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)",
                         },
                       },
                     },
@@ -2127,6 +2183,11 @@ see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-prot
                           items: {
                             $ref: "#/components/schemas/this.thing",
                           },
+                        },
+                        "@nextLink": {
+                          type: "string",
+                          format: "uri",
+                          description: "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)",
                         },
                       },
                     },
@@ -3450,6 +3511,11 @@ see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-prot
                           items: {
                             $ref: "#/components/schemas/this.thing",
                           },
+                        },
+                        "@nextLink": {
+                          type: "string",
+                          format: "uri",
+                          description: "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)",
                         },
                       },
                     },
