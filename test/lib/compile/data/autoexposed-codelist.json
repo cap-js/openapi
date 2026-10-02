@@ -1,0 +1,47 @@
+{
+  "$Version": "4.01",
+  "$EntityContainer": "MyService.EntityContainer",
+  "$Reference": {},
+  "MyService": {
+    "$Kind": "Schema",
+    "EntityContainer": {
+      "$Kind": "EntityContainer",
+      "Orders": {
+        "$Collection": true,
+        "$Type": "MyService.Orders",
+        "$NavigationPropertyBinding": {
+          "currency": "Currencies"
+        }
+      },
+      "Currencies": {
+        "$Collection": true,
+        "$Type": "MyService.Currencies"
+      }
+    },
+    "Orders": {
+      "$Kind": "EntityType",
+      "$Key": ["ID"],
+      "ID": {
+        "$Type": "Edm.Int32"
+      },
+      "currency": {
+        "$Kind": "NavigationProperty",
+        "$Type": "MyService.Currencies",
+        "$Nullable": true
+      }
+    },
+    "Currencies": {
+      "$Kind": "EntityType",
+      "$Key": ["code"],
+      "@cds.autoexpose": true,
+      "@cds.autoexposed": true,
+      "code": {
+        "$MaxLength": 3
+      },
+      "name": {
+        "$Nullable": true,
+        "$MaxLength": 255
+      }
+    }
+  }
+}

@@ -160,6 +160,11 @@
                       "items": {
                         "$ref": "#/components/schemas/PeopleService.Person"
                       }
+                    },
+                    "@nextLink": {
+                      "type": "string",
+                      "format": "uri",
+                      "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
                     }
                   }
                 }
@@ -508,6 +513,11 @@
                       "items": {
                         "$ref": "#/components/schemas/PeopleService.PersonDetail"
                       }
+                    },
+                    "@nextLink": {
+                      "type": "string",
+                      "format": "uri",
+                      "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
                     }
                   }
                 }
@@ -914,6 +924,11 @@
                       "items": {
                         "$ref": "#/components/schemas/PeopleService.Supplier"
                       }
+                    },
+                    "@nextLink": {
+                      "type": "string",
+                      "format": "uri",
+                      "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
                     }
                   }
                 }
@@ -1128,6 +1143,11 @@
                       "items": {
                         "$ref": "./Products.openapi3.json#/components/schemas/ProductService.Product"
                       }
+                    },
+                    "@nextLink": {
+                      "type": "string",
+                      "format": "uri",
+                      "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
                     }
                   }
                 }

@@ -15,7 +15,7 @@
   ],
   "tags": [
     {
-      "name": "Books"
+      "name": "Orders"
     }
   ],
   "paths": {
@@ -34,7 +34,7 @@
               "schema": {
                 "type": "string"
               },
-              "example": "--request-separator\nContent-Type: application/http\nContent-Transfer-Encoding: binary\n\nGET Books HTTP/1.1\nAccept: application/json\n\n\n--request-separator--"
+              "example": "--request-separator\nContent-Type: application/http\nContent-Transfer-Encoding: binary\n\nGET Orders HTTP/1.1\nAccept: application/json\n\n\n--request-separator--"
             }
           }
         },
@@ -56,11 +56,11 @@
         }
       }
     },
-    "/Books": {
+    "/Orders": {
       "get": {
-        "summary": "Retrieves a list of books.",
+        "summary": "Retrieves a list of orders.",
         "tags": [
-          "Books"
+          "Orders"
         ],
         "parameters": [
           {
@@ -128,7 +128,7 @@
                 "type": "string",
                 "enum": [
                   "*",
-                  "texts"
+                  "items"
                 ]
               }
             }
@@ -136,12 +136,12 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved books",
+            "description": "Retrieved orders",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "title": "Collection of Books",
+                  "title": "Collection of Orders",
                   "properties": {
                     "@count": {
                       "$ref": "#/components/schemas/count"
@@ -149,7 +149,7 @@
                     "value": {
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/AdminService.Books"
+                        "$ref": "#/components/schemas/MyService.Orders"
                       }
                     },
                     "@nextLink": {
@@ -168,28 +168,28 @@
         }
       },
       "post": {
-        "summary": "Creates a single book.",
+        "summary": "Creates a single order.",
         "tags": [
-          "Books"
+          "Orders"
         ],
         "requestBody": {
-          "description": "New book",
+          "description": "New order",
           "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/AdminService.Books-create"
+                "$ref": "#/components/schemas/MyService.Orders-create"
               }
             }
           }
         },
         "responses": {
           "201": {
-            "description": "Created book",
+            "description": "Created order",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/AdminService.Books"
+                  "$ref": "#/components/schemas/MyService.Orders"
                 }
               }
             }
@@ -200,7 +200,7 @@
         }
       }
     },
-    "/Books({ID})": {
+    "/Orders({ID})": {
       "parameters": [
         {
           "description": "key: ID",
@@ -214,9 +214,9 @@
         }
       ],
       "get": {
-        "summary": "Retrieves a single book.",
+        "summary": "Retrieves a single order.",
         "tags": [
-          "Books"
+          "Orders"
         ],
         "parameters": [
           {
@@ -247,7 +247,7 @@
                 "type": "string",
                 "enum": [
                   "*",
-                  "texts"
+                  "items"
                 ]
               }
             }
@@ -255,11 +255,11 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved book",
+            "description": "Retrieved order",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/AdminService.Books"
+                  "$ref": "#/components/schemas/MyService.Orders"
                 }
               }
             }
@@ -270,9 +270,9 @@
         }
       },
       "patch": {
-        "summary": "Changes a single book.",
+        "summary": "Changes a single order.",
         "tags": [
-          "Books"
+          "Orders"
         ],
         "requestBody": {
           "description": "New property values",
@@ -280,7 +280,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/AdminService.Books-update"
+                "$ref": "#/components/schemas/MyService.Orders-update"
               }
             }
           }
@@ -295,9 +295,9 @@
         }
       },
       "delete": {
-        "summary": "Deletes a single book.",
+        "summary": "Deletes a single order.",
         "tags": [
-          "Books"
+          "Orders"
         ],
         "responses": {
           "204": {
@@ -309,7 +309,7 @@
         }
       }
     },
-    "/Books({ID})/texts": {
+    "/Orders({ID})/items": {
       "parameters": [
         {
           "description": "key: ID",
@@ -323,10 +323,10 @@
         }
       ],
       "get": {
-        "summary": "Retrieves a list of texts of a book.",
+        "summary": "Retrieves a list of items of a order.",
         "tags": [
-          "Books",
-          "Books texts"
+          "Orders",
+          "Order Items"
         ],
         "parameters": [
           {
@@ -360,10 +360,10 @@
               "items": {
                 "type": "string",
                 "enum": [
-                  "locale",
-                  "locale desc",
                   "ID",
-                  "ID desc"
+                  "ID desc",
+                  "quantity",
+                  "quantity desc"
                 ]
               }
             }
@@ -379,8 +379,8 @@
               "items": {
                 "type": "string",
                 "enum": [
-                  "locale",
-                  "ID"
+                  "ID",
+                  "quantity"
                 ]
               }
             }
@@ -388,12 +388,12 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved texts",
+            "description": "Retrieved items",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "title": "Collection of Books_texts",
+                  "title": "Collection of OrderItems",
                   "properties": {
                     "@count": {
                       "$ref": "#/components/schemas/count"
@@ -401,7 +401,7 @@
                     "value": {
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/AdminService.Books_texts"
+                        "$ref": "#/components/schemas/MyService.OrderItems"
                       }
                     },
                     "@nextLink": {
@@ -420,29 +420,29 @@
         }
       },
       "post": {
-        "summary": "Creates a single text of a book.",
+        "summary": "Creates a single item of a order.",
         "tags": [
-          "Books",
-          "Books texts"
+          "Orders",
+          "Order Items"
         ],
         "requestBody": {
-          "description": "New text",
+          "description": "New item",
           "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/AdminService.Books_texts-create"
+                "$ref": "#/components/schemas/MyService.OrderItems-create"
               }
             }
           }
         },
         "responses": {
           "201": {
-            "description": "Created text",
+            "description": "Created item",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/AdminService.Books_texts"
+                  "$ref": "#/components/schemas/MyService.OrderItems"
                 }
               }
             }
@@ -453,7 +453,7 @@
         }
       }
     },
-    "/Books({ID})/texts(locale='{locale_1}',ID={ID_1})": {
+    "/Orders({ID})/items({ID_1})": {
       "parameters": [
         {
           "description": "key: ID",
@@ -463,16 +463,6 @@
           "schema": {
             "type": "integer",
             "format": "int32"
-          }
-        },
-        {
-          "description": "key: locale",
-          "in": "path",
-          "name": "locale_1",
-          "required": true,
-          "schema": {
-            "type": "string",
-            "maxLength": 14
           }
         },
         {
@@ -487,10 +477,10 @@
         }
       ],
       "get": {
-        "summary": "Retrieves a single text of a book.",
+        "summary": "Retrieves a single item of a order.",
         "tags": [
-          "Books",
-          "Books texts"
+          "Orders",
+          "Order Items"
         ],
         "parameters": [
           {
@@ -504,8 +494,8 @@
               "items": {
                 "type": "string",
                 "enum": [
-                  "locale",
-                  "ID"
+                  "ID",
+                  "quantity"
                 ]
               }
             }
@@ -513,11 +503,11 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved text",
+            "description": "Retrieved item",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/AdminService.Books_texts"
+                  "$ref": "#/components/schemas/MyService.OrderItems"
                 }
               }
             }
@@ -528,9 +518,9 @@
         }
       },
       "patch": {
-        "summary": "Changes a single text of a book.",
+        "summary": "Changes a single item of a order.",
         "tags": [
-          "Books"
+          "Orders"
         ],
         "requestBody": {
           "description": "New property values",
@@ -538,7 +528,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/AdminService.Books_texts-update"
+                "$ref": "#/components/schemas/MyService.OrderItems-update"
               }
             }
           }
@@ -553,9 +543,9 @@
         }
       },
       "delete": {
-        "summary": "Deletes a single text of a book.",
+        "summary": "Deletes a single item of a order.",
         "tags": [
-          "Books"
+          "Orders"
         ],
         "responses": {
           "204": {
@@ -570,37 +560,81 @@
   },
   "components": {
     "schemas": {
-      "AdminService.Books": {
-        "title": "Books",
+      "MyService.OrderItems": {
+        "title": "OrderItems",
         "type": "object",
         "properties": {
           "ID": {
             "type": "integer",
             "format": "int32"
           },
-          "texts": {
+          "quantity": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        }
+      },
+      "MyService.OrderItems-create": {
+        "title": "OrderItems (for create)",
+        "type": "object",
+        "properties": {
+          "ID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "quantity": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        },
+        "required": [
+          "ID"
+        ]
+      },
+      "MyService.OrderItems-update": {
+        "title": "OrderItems (for update)",
+        "type": "object",
+        "properties": {
+          "quantity": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        }
+      },
+      "MyService.Orders": {
+        "title": "Orders",
+        "type": "object",
+        "properties": {
+          "ID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "items": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/AdminService.Books_texts"
+              "$ref": "#/components/schemas/MyService.OrderItems"
             }
           },
-          "texts@count": {
+          "items@count": {
             "$ref": "#/components/schemas/count"
           }
         }
       },
-      "AdminService.Books-create": {
-        "title": "Books (for create)",
+      "MyService.Orders-create": {
+        "title": "Orders (for create)",
         "type": "object",
         "properties": {
           "ID": {
             "type": "integer",
             "format": "int32"
           },
-          "texts": {
+          "items": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/AdminService.Books_texts-create"
+              "$ref": "#/components/schemas/MyService.OrderItems-create"
             }
           }
         },
@@ -608,53 +642,17 @@
           "ID"
         ]
       },
-      "AdminService.Books-update": {
-        "title": "Books (for update)",
+      "MyService.Orders-update": {
+        "title": "Orders (for update)",
         "type": "object",
         "properties": {
-          "texts": {
+          "items": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/AdminService.Books_texts-create"
+              "$ref": "#/components/schemas/MyService.OrderItems-create"
             }
           }
         }
-      },
-      "AdminService.Books_texts": {
-        "title": "Books_texts",
-        "type": "object",
-        "properties": {
-          "locale": {
-            "type": "string",
-            "maxLength": 14
-          },
-          "ID": {
-            "type": "integer",
-            "format": "int32"
-          }
-        }
-      },
-      "AdminService.Books_texts-create": {
-        "title": "Books_texts (for create)",
-        "type": "object",
-        "properties": {
-          "locale": {
-            "type": "string",
-            "maxLength": 14
-          },
-          "ID": {
-            "type": "integer",
-            "format": "int32"
-          }
-        },
-        "required": [
-          "locale",
-          "ID"
-        ]
-      },
-      "AdminService.Books_texts-update": {
-        "title": "Books_texts (for update)",
-        "type": "object"
       },
       "count": {
         "anyOf": [

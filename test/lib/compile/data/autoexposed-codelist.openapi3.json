@@ -15,7 +15,10 @@
   ],
   "tags": [
     {
-      "name": "Books"
+      "name": "Currencies"
+    },
+    {
+      "name": "Orders"
     }
   ],
   "paths": {
@@ -34,7 +37,7 @@
               "schema": {
                 "type": "string"
               },
-              "example": "--request-separator\nContent-Type: application/http\nContent-Transfer-Encoding: binary\n\nGET Books HTTP/1.1\nAccept: application/json\n\n\n--request-separator--"
+              "example": "--request-separator\nContent-Type: application/http\nContent-Transfer-Encoding: binary\n\nGET Orders HTTP/1.1\nAccept: application/json\n\n\n--request-separator--"
             }
           }
         },
@@ -56,11 +59,11 @@
         }
       }
     },
-    "/Books": {
+    "/Currencies": {
       "get": {
-        "summary": "Retrieves a list of books.",
+        "summary": "Retrieves a list of currencies.",
         "tags": [
-          "Books"
+          "Currencies"
         ],
         "parameters": [
           {
@@ -94,8 +97,10 @@
               "items": {
                 "type": "string",
                 "enum": [
-                  "ID",
-                  "ID desc"
+                  "code",
+                  "code desc",
+                  "name",
+                  "name desc"
                 ]
               }
             }
@@ -111,24 +116,8 @@
               "items": {
                 "type": "string",
                 "enum": [
-                  "ID"
-                ]
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "description": "The value of $expand query option is a comma-separated list of navigation property names, stream property names, or $value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
-            "in": "query",
-            "explode": false,
-            "schema": {
-              "type": "array",
-              "uniqueItems": true,
-              "items": {
-                "type": "string",
-                "enum": [
-                  "*",
-                  "texts"
+                  "code",
+                  "name"
                 ]
               }
             }
@@ -136,12 +125,12 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved books",
+            "description": "Retrieved currencies",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "title": "Collection of Books",
+                  "title": "Collection of Currencies",
                   "properties": {
                     "@count": {
                       "$ref": "#/components/schemas/count"
@@ -149,7 +138,7 @@
                     "value": {
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/AdminService.Books"
+                        "$ref": "#/components/schemas/MyService.Currencies"
                       }
                     },
                     "@nextLink": {
@@ -166,331 +155,25 @@
             "$ref": "#/components/responses/error"
           }
         }
-      },
-      "post": {
-        "summary": "Creates a single book.",
-        "tags": [
-          "Books"
-        ],
-        "requestBody": {
-          "description": "New book",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/AdminService.Books-create"
-              }
-            }
-          }
-        },
-        "responses": {
-          "201": {
-            "description": "Created book",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AdminService.Books"
-                }
-              }
-            }
-          },
-          "4XX": {
-            "$ref": "#/components/responses/error"
-          }
-        }
       }
     },
-    "/Books({ID})": {
+    "/Currencies('{code}')": {
       "parameters": [
         {
-          "description": "key: ID",
+          "description": "key: code",
           "in": "path",
-          "name": "ID",
-          "required": true,
-          "schema": {
-            "type": "integer",
-            "format": "int32"
-          }
-        }
-      ],
-      "get": {
-        "summary": "Retrieves a single book.",
-        "tags": [
-          "Books"
-        ],
-        "parameters": [
-          {
-            "name": "$select",
-            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
-            "in": "query",
-            "explode": false,
-            "schema": {
-              "type": "array",
-              "uniqueItems": true,
-              "items": {
-                "type": "string",
-                "enum": [
-                  "ID"
-                ]
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "description": "The value of $expand query option is a comma-separated list of navigation property names, stream property names, or $value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
-            "in": "query",
-            "explode": false,
-            "schema": {
-              "type": "array",
-              "uniqueItems": true,
-              "items": {
-                "type": "string",
-                "enum": [
-                  "*",
-                  "texts"
-                ]
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Retrieved book",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AdminService.Books"
-                }
-              }
-            }
-          },
-          "4XX": {
-            "$ref": "#/components/responses/error"
-          }
-        }
-      },
-      "patch": {
-        "summary": "Changes a single book.",
-        "tags": [
-          "Books"
-        ],
-        "requestBody": {
-          "description": "New property values",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/AdminService.Books-update"
-              }
-            }
-          }
-        },
-        "responses": {
-          "204": {
-            "description": "Success"
-          },
-          "4XX": {
-            "$ref": "#/components/responses/error"
-          }
-        }
-      },
-      "delete": {
-        "summary": "Deletes a single book.",
-        "tags": [
-          "Books"
-        ],
-        "responses": {
-          "204": {
-            "description": "Success"
-          },
-          "4XX": {
-            "$ref": "#/components/responses/error"
-          }
-        }
-      }
-    },
-    "/Books({ID})/texts": {
-      "parameters": [
-        {
-          "description": "key: ID",
-          "in": "path",
-          "name": "ID",
-          "required": true,
-          "schema": {
-            "type": "integer",
-            "format": "int32"
-          }
-        }
-      ],
-      "get": {
-        "summary": "Retrieves a list of texts of a book.",
-        "tags": [
-          "Books",
-          "Books texts"
-        ],
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/top"
-          },
-          {
-            "$ref": "#/components/parameters/skip"
-          },
-          {
-            "$ref": "#/components/parameters/search"
-          },
-          {
-            "name": "$filter",
-            "description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "$ref": "#/components/parameters/count"
-          },
-          {
-            "name": "$orderby",
-            "description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
-            "in": "query",
-            "explode": false,
-            "schema": {
-              "type": "array",
-              "uniqueItems": true,
-              "items": {
-                "type": "string",
-                "enum": [
-                  "locale",
-                  "locale desc",
-                  "ID",
-                  "ID desc"
-                ]
-              }
-            }
-          },
-          {
-            "name": "$select",
-            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
-            "in": "query",
-            "explode": false,
-            "schema": {
-              "type": "array",
-              "uniqueItems": true,
-              "items": {
-                "type": "string",
-                "enum": [
-                  "locale",
-                  "ID"
-                ]
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Retrieved texts",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "title": "Collection of Books_texts",
-                  "properties": {
-                    "@count": {
-                      "$ref": "#/components/schemas/count"
-                    },
-                    "value": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/AdminService.Books_texts"
-                      }
-                    },
-                    "@nextLink": {
-                      "type": "string",
-                      "format": "uri",
-                      "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "4XX": {
-            "$ref": "#/components/responses/error"
-          }
-        }
-      },
-      "post": {
-        "summary": "Creates a single text of a book.",
-        "tags": [
-          "Books",
-          "Books texts"
-        ],
-        "requestBody": {
-          "description": "New text",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/AdminService.Books_texts-create"
-              }
-            }
-          }
-        },
-        "responses": {
-          "201": {
-            "description": "Created text",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AdminService.Books_texts"
-                }
-              }
-            }
-          },
-          "4XX": {
-            "$ref": "#/components/responses/error"
-          }
-        }
-      }
-    },
-    "/Books({ID})/texts(locale='{locale_1}',ID={ID_1})": {
-      "parameters": [
-        {
-          "description": "key: ID",
-          "in": "path",
-          "name": "ID",
-          "required": true,
-          "schema": {
-            "type": "integer",
-            "format": "int32"
-          }
-        },
-        {
-          "description": "key: locale",
-          "in": "path",
-          "name": "locale_1",
+          "name": "code",
           "required": true,
           "schema": {
             "type": "string",
-            "maxLength": 14
-          }
-        },
-        {
-          "description": "key: ID",
-          "in": "path",
-          "name": "ID_1",
-          "required": true,
-          "schema": {
-            "type": "integer",
-            "format": "int32"
+            "maxLength": 3
           }
         }
       ],
       "get": {
-        "summary": "Retrieves a single text of a book.",
+        "summary": "Retrieves a single currency.",
         "tags": [
-          "Books",
-          "Books texts"
+          "Currencies"
         ],
         "parameters": [
           {
@@ -504,8 +187,8 @@
               "items": {
                 "type": "string",
                 "enum": [
-                  "locale",
-                  "ID"
+                  "code",
+                  "name"
                 ]
               }
             }
@@ -513,11 +196,225 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved text",
+            "description": "Retrieved currency",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/AdminService.Books_texts"
+                  "$ref": "#/components/schemas/MyService.Currencies"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/Orders": {
+      "get": {
+        "summary": "Retrieves a list of orders.",
+        "tags": [
+          "Orders"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "name": "$filter",
+            "description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "ID",
+                  "ID desc"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$select",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "ID"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "description": "The value of $expand query option is a comma-separated list of navigation property names, stream property names, or $value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "*",
+                  "currency"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved orders",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Collection of Orders",
+                  "properties": {
+                    "@count": {
+                      "$ref": "#/components/schemas/count"
+                    },
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/MyService.Orders"
+                      }
+                    },
+                    "@nextLink": {
+                      "type": "string",
+                      "format": "uri",
+                      "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "post": {
+        "summary": "Creates a single order.",
+        "tags": [
+          "Orders"
+        ],
+        "requestBody": {
+          "description": "New order",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MyService.Orders-create"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created order",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MyService.Orders"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/Orders({ID})": {
+      "parameters": [
+        {
+          "description": "key: ID",
+          "in": "path",
+          "name": "ID",
+          "required": true,
+          "schema": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      ],
+      "get": {
+        "summary": "Retrieves a single order.",
+        "tags": [
+          "Orders"
+        ],
+        "parameters": [
+          {
+            "name": "$select",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "ID"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "description": "The value of $expand query option is a comma-separated list of navigation property names, stream property names, or $value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "*",
+                  "currency"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved order",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MyService.Orders"
                 }
               }
             }
@@ -528,9 +425,9 @@
         }
       },
       "patch": {
-        "summary": "Changes a single text of a book.",
+        "summary": "Changes a single order.",
         "tags": [
-          "Books"
+          "Orders"
         ],
         "requestBody": {
           "description": "New property values",
@@ -538,7 +435,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/AdminService.Books_texts-update"
+                "$ref": "#/components/schemas/MyService.Orders-update"
               }
             }
           }
@@ -553,13 +450,68 @@
         }
       },
       "delete": {
-        "summary": "Deletes a single text of a book.",
+        "summary": "Deletes a single order.",
         "tags": [
-          "Books"
+          "Orders"
         ],
         "responses": {
           "204": {
             "description": "Success"
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/Orders({ID})/currency": {
+      "parameters": [
+        {
+          "description": "key: ID",
+          "in": "path",
+          "name": "ID",
+          "required": true,
+          "schema": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      ],
+      "get": {
+        "summary": "Retrieves currency of a order.",
+        "tags": [
+          "Orders",
+          "Currencies"
+        ],
+        "parameters": [
+          {
+            "name": "$select",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "code",
+                  "name"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved currency",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MyService.Currencies"
+                }
+              }
+            }
           },
           "4XX": {
             "$ref": "#/components/responses/error"
@@ -570,90 +522,54 @@
   },
   "components": {
     "schemas": {
-      "AdminService.Books": {
-        "title": "Books",
+      "MyService.Currencies": {
+        "title": "Currencies",
         "type": "object",
         "properties": {
-          "ID": {
-            "type": "integer",
-            "format": "int32"
+          "code": {
+            "type": "string",
+            "maxLength": 3
           },
-          "texts": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/AdminService.Books_texts"
-            }
-          },
-          "texts@count": {
-            "$ref": "#/components/schemas/count"
+          "name": {
+            "type": "string",
+            "maxLength": 255,
+            "nullable": true
           }
         }
       },
-      "AdminService.Books-create": {
-        "title": "Books (for create)",
+      "MyService.Orders": {
+        "title": "Orders",
         "type": "object",
         "properties": {
           "ID": {
             "type": "integer",
             "format": "int32"
           },
-          "texts": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/AdminService.Books_texts-create"
-            }
+          "currency": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/MyService.Currencies"
+              }
+            ],
+            "nullable": true
+          }
+        }
+      },
+      "MyService.Orders-create": {
+        "title": "Orders (for create)",
+        "type": "object",
+        "properties": {
+          "ID": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "required": [
           "ID"
         ]
       },
-      "AdminService.Books-update": {
-        "title": "Books (for update)",
-        "type": "object",
-        "properties": {
-          "texts": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/AdminService.Books_texts-create"
-            }
-          }
-        }
-      },
-      "AdminService.Books_texts": {
-        "title": "Books_texts",
-        "type": "object",
-        "properties": {
-          "locale": {
-            "type": "string",
-            "maxLength": 14
-          },
-          "ID": {
-            "type": "integer",
-            "format": "int32"
-          }
-        }
-      },
-      "AdminService.Books_texts-create": {
-        "title": "Books_texts (for create)",
-        "type": "object",
-        "properties": {
-          "locale": {
-            "type": "string",
-            "maxLength": 14
-          },
-          "ID": {
-            "type": "integer",
-            "format": "int32"
-          }
-        },
-        "required": [
-          "locale",
-          "ID"
-        ]
-      },
-      "AdminService.Books_texts-update": {
-        "title": "Books_texts (for update)",
+      "MyService.Orders-update": {
+        "title": "Orders (for update)",
         "type": "object"
       },
       "count": {

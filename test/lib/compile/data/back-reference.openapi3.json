@@ -2,12 +2,12 @@
   "openapi": "3.0.2",
   "info": {
     "title": "Use the title annotation on your CDS service to provide a meaningful title.",
-    "description": "Use the Core.LongDescription or Core.Description annotation on your CDS service to provide a meaningful description.",
+    "description": "Usage Record Service",
     "version": ""
   },
   "x-sap-api-type": "ODATAV4",
   "x-odata-version": "4.01",
-  "x-sap-shortText": "Use the Core.Description annotation on your CDS service to provide a meaningful short text.",
+  "x-sap-shortText": "Usage Record Service",
   "servers": [
     {
       "url": "https://localhost/service-root"
@@ -15,7 +15,7 @@
   ],
   "tags": [
     {
-      "name": "Books"
+      "name": "Usage Records"
     }
   ],
   "paths": {
@@ -34,7 +34,7 @@
               "schema": {
                 "type": "string"
               },
-              "example": "--request-separator\nContent-Type: application/http\nContent-Transfer-Encoding: binary\n\nGET Books HTTP/1.1\nAccept: application/json\n\n\n--request-separator--"
+              "example": "--request-separator\nContent-Type: application/http\nContent-Transfer-Encoding: binary\n\nGET UsageRecords HTTP/1.1\nAccept: application/json\n\n\n--request-separator--"
             }
           }
         },
@@ -56,11 +56,11 @@
         }
       }
     },
-    "/Books": {
+    "/UsageRecords": {
       "get": {
-        "summary": "Retrieves a list of books.",
+        "summary": "Retrieves a list of usage records.",
         "tags": [
-          "Books"
+          "Usage Records"
         ],
         "parameters": [
           {
@@ -95,7 +95,9 @@
                 "type": "string",
                 "enum": [
                   "ID",
-                  "ID desc"
+                  "ID desc",
+                  "description",
+                  "description desc"
                 ]
               }
             }
@@ -111,7 +113,8 @@
               "items": {
                 "type": "string",
                 "enum": [
-                  "ID"
+                  "ID",
+                  "description"
                 ]
               }
             }
@@ -128,7 +131,7 @@
                 "type": "string",
                 "enum": [
                   "*",
-                  "texts"
+                  "customReferences"
                 ]
               }
             }
@@ -136,12 +139,12 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved books",
+            "description": "Retrieved usage records",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "title": "Collection of Books",
+                  "title": "Collection of UsageRecords",
                   "properties": {
                     "@count": {
                       "$ref": "#/components/schemas/count"
@@ -149,7 +152,7 @@
                     "value": {
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/AdminService.Books"
+                        "$ref": "#/components/schemas/UsageService.UsageRecords"
                       }
                     },
                     "@nextLink": {
@@ -168,28 +171,28 @@
         }
       },
       "post": {
-        "summary": "Creates a single book.",
+        "summary": "Creates a single usage record.",
         "tags": [
-          "Books"
+          "Usage Records"
         ],
         "requestBody": {
-          "description": "New book",
+          "description": "New usage record",
           "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/AdminService.Books-create"
+                "$ref": "#/components/schemas/UsageService.UsageRecords-create"
               }
             }
           }
         },
         "responses": {
           "201": {
-            "description": "Created book",
+            "description": "Created usage record",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/AdminService.Books"
+                  "$ref": "#/components/schemas/UsageService.UsageRecords"
                 }
               }
             }
@@ -200,7 +203,7 @@
         }
       }
     },
-    "/Books({ID})": {
+    "/UsageRecords({ID})": {
       "parameters": [
         {
           "description": "key: ID",
@@ -208,15 +211,16 @@
           "name": "ID",
           "required": true,
           "schema": {
-            "type": "integer",
-            "format": "int32"
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
           }
         }
       ],
       "get": {
-        "summary": "Retrieves a single book.",
+        "summary": "Retrieves a single usage record.",
         "tags": [
-          "Books"
+          "Usage Records"
         ],
         "parameters": [
           {
@@ -230,7 +234,8 @@
               "items": {
                 "type": "string",
                 "enum": [
-                  "ID"
+                  "ID",
+                  "description"
                 ]
               }
             }
@@ -247,7 +252,7 @@
                 "type": "string",
                 "enum": [
                   "*",
-                  "texts"
+                  "customReferences"
                 ]
               }
             }
@@ -255,11 +260,11 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved book",
+            "description": "Retrieved usage record",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/AdminService.Books"
+                  "$ref": "#/components/schemas/UsageService.UsageRecords"
                 }
               }
             }
@@ -270,9 +275,9 @@
         }
       },
       "patch": {
-        "summary": "Changes a single book.",
+        "summary": "Changes a single usage record.",
         "tags": [
-          "Books"
+          "Usage Records"
         ],
         "requestBody": {
           "description": "New property values",
@@ -280,7 +285,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/AdminService.Books-update"
+                "$ref": "#/components/schemas/UsageService.UsageRecords-update"
               }
             }
           }
@@ -295,9 +300,9 @@
         }
       },
       "delete": {
-        "summary": "Deletes a single book.",
+        "summary": "Deletes a single usage record.",
         "tags": [
-          "Books"
+          "Usage Records"
         ],
         "responses": {
           "204": {
@@ -309,7 +314,7 @@
         }
       }
     },
-    "/Books({ID})/texts": {
+    "/UsageRecords({ID})/customReferences": {
       "parameters": [
         {
           "description": "key: ID",
@@ -317,16 +322,16 @@
           "name": "ID",
           "required": true,
           "schema": {
-            "type": "integer",
-            "format": "int32"
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
           }
         }
       ],
       "get": {
-        "summary": "Retrieves a list of texts of a book.",
+        "summary": "Retrieves a list of custom references of a usage record.",
         "tags": [
-          "Books",
-          "Books texts"
+          "Usage Records"
         ],
         "parameters": [
           {
@@ -360,10 +365,12 @@
               "items": {
                 "type": "string",
                 "enum": [
-                  "locale",
-                  "locale desc",
                   "ID",
-                  "ID desc"
+                  "ID desc",
+                  "type",
+                  "type desc",
+                  "value",
+                  "value desc"
                 ]
               }
             }
@@ -379,8 +386,26 @@
               "items": {
                 "type": "string",
                 "enum": [
-                  "locale",
-                  "ID"
+                  "ID",
+                  "type",
+                  "value"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "description": "The value of $expand query option is a comma-separated list of navigation property names, stream property names, or $value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "*",
+                  "usageRecord"
                 ]
               }
             }
@@ -388,12 +413,12 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved texts",
+            "description": "Retrieved custom references",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "title": "Collection of Books_texts",
+                  "title": "Collection of UsageRecordCustomReferences",
                   "properties": {
                     "@count": {
                       "$ref": "#/components/schemas/count"
@@ -401,7 +426,7 @@
                     "value": {
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/AdminService.Books_texts"
+                        "$ref": "#/components/schemas/UsageService.UsageRecordCustomReferences"
                       }
                     },
                     "@nextLink": {
@@ -420,29 +445,28 @@
         }
       },
       "post": {
-        "summary": "Creates a single text of a book.",
+        "summary": "Creates a single custom reference of a usage record.",
         "tags": [
-          "Books",
-          "Books texts"
+          "Usage Records"
         ],
         "requestBody": {
-          "description": "New text",
+          "description": "New custom reference",
           "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/AdminService.Books_texts-create"
+                "$ref": "#/components/schemas/UsageService.UsageRecordCustomReferences-create"
               }
             }
           }
         },
         "responses": {
           "201": {
-            "description": "Created text",
+            "description": "Created custom reference",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/AdminService.Books_texts"
+                  "$ref": "#/components/schemas/UsageService.UsageRecordCustomReferences"
                 }
               }
             }
@@ -453,7 +477,7 @@
         }
       }
     },
-    "/Books({ID})/texts(locale='{locale_1}',ID={ID_1})": {
+    "/UsageRecords({ID})/customReferences({ID_1})": {
       "parameters": [
         {
           "description": "key: ID",
@@ -461,18 +485,9 @@
           "name": "ID",
           "required": true,
           "schema": {
-            "type": "integer",
-            "format": "int32"
-          }
-        },
-        {
-          "description": "key: locale",
-          "in": "path",
-          "name": "locale_1",
-          "required": true,
-          "schema": {
             "type": "string",
-            "maxLength": 14
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
           }
         },
         {
@@ -481,16 +496,16 @@
           "name": "ID_1",
           "required": true,
           "schema": {
-            "type": "integer",
-            "format": "int32"
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
           }
         }
       ],
       "get": {
-        "summary": "Retrieves a single text of a book.",
+        "summary": "Retrieves a single custom reference of a usage record.",
         "tags": [
-          "Books",
-          "Books texts"
+          "Usage Records"
         ],
         "parameters": [
           {
@@ -504,8 +519,26 @@
               "items": {
                 "type": "string",
                 "enum": [
-                  "locale",
-                  "ID"
+                  "ID",
+                  "type",
+                  "value"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "description": "The value of $expand query option is a comma-separated list of navigation property names, stream property names, or $value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "*",
+                  "usageRecord"
                 ]
               }
             }
@@ -513,11 +546,11 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved text",
+            "description": "Retrieved custom reference",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/AdminService.Books_texts"
+                  "$ref": "#/components/schemas/UsageService.UsageRecordCustomReferences"
                 }
               }
             }
@@ -528,9 +561,9 @@
         }
       },
       "patch": {
-        "summary": "Changes a single text of a book.",
+        "summary": "Changes a single custom reference of a usage record.",
         "tags": [
-          "Books"
+          "Usage Records"
         ],
         "requestBody": {
           "description": "New property values",
@@ -538,7 +571,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/AdminService.Books_texts-update"
+                "$ref": "#/components/schemas/UsageService.UsageRecordCustomReferences-update"
               }
             }
           }
@@ -553,13 +586,96 @@
         }
       },
       "delete": {
-        "summary": "Deletes a single text of a book.",
+        "summary": "Deletes a single custom reference of a usage record.",
         "tags": [
-          "Books"
+          "Usage Records"
         ],
         "responses": {
           "204": {
             "description": "Success"
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/UsageRecords({ID})/customReferences({ID_1})/usageRecord": {
+      "parameters": [
+        {
+          "description": "key: ID",
+          "in": "path",
+          "name": "ID",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          }
+        },
+        {
+          "description": "key: ID",
+          "in": "path",
+          "name": "ID_1",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          }
+        }
+      ],
+      "get": {
+        "summary": "Retrieves usage record of a usage record.",
+        "tags": [
+          "Usage Records"
+        ],
+        "parameters": [
+          {
+            "name": "$select",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "ID",
+                  "description"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "description": "The value of $expand query option is a comma-separated list of navigation property names, stream property names, or $value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "*",
+                  "customReferences"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved usage record",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UsageService.UsageRecords"
+                }
+              }
+            }
           },
           "4XX": {
             "$ref": "#/components/responses/error"
@@ -570,37 +686,102 @@
   },
   "components": {
     "schemas": {
-      "AdminService.Books": {
-        "title": "Books",
+      "UsageService.UsageRecordCustomReferences": {
+        "title": "UsageRecordCustomReferences",
         "type": "object",
         "properties": {
           "ID": {
-            "type": "integer",
-            "format": "int32"
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
           },
-          "texts": {
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "value": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "UsageService.UsageRecordCustomReferences-create": {
+        "title": "UsageRecordCustomReferences (for create)",
+        "type": "object",
+        "properties": {
+          "ID": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          },
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "value": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "required": [
+          "ID"
+        ]
+      },
+      "UsageService.UsageRecordCustomReferences-update": {
+        "title": "UsageRecordCustomReferences (for update)",
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "value": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "UsageService.UsageRecords": {
+        "title": "UsageRecords",
+        "type": "object",
+        "properties": {
+          "ID": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "customReferences": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/AdminService.Books_texts"
+              "$ref": "#/components/schemas/UsageService.UsageRecordCustomReferences"
             }
           },
-          "texts@count": {
+          "customReferences@count": {
             "$ref": "#/components/schemas/count"
           }
         }
       },
-      "AdminService.Books-create": {
-        "title": "Books (for create)",
+      "UsageService.UsageRecords-create": {
+        "title": "UsageRecords (for create)",
         "type": "object",
         "properties": {
           "ID": {
-            "type": "integer",
-            "format": "int32"
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
           },
-          "texts": {
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "customReferences": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/AdminService.Books_texts-create"
+              "$ref": "#/components/schemas/UsageService.UsageRecordCustomReferences-create"
             }
           }
         },
@@ -608,53 +789,21 @@
           "ID"
         ]
       },
-      "AdminService.Books-update": {
-        "title": "Books (for update)",
+      "UsageService.UsageRecords-update": {
+        "title": "UsageRecords (for update)",
         "type": "object",
         "properties": {
-          "texts": {
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "customReferences": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/AdminService.Books_texts-create"
+              "$ref": "#/components/schemas/UsageService.UsageRecordCustomReferences-create"
             }
           }
         }
-      },
-      "AdminService.Books_texts": {
-        "title": "Books_texts",
-        "type": "object",
-        "properties": {
-          "locale": {
-            "type": "string",
-            "maxLength": 14
-          },
-          "ID": {
-            "type": "integer",
-            "format": "int32"
-          }
-        }
-      },
-      "AdminService.Books_texts-create": {
-        "title": "Books_texts (for create)",
-        "type": "object",
-        "properties": {
-          "locale": {
-            "type": "string",
-            "maxLength": 14
-          },
-          "ID": {
-            "type": "integer",
-            "format": "int32"
-          }
-        },
-        "required": [
-          "locale",
-          "ID"
-        ]
-      },
-      "AdminService.Books_texts-update": {
-        "title": "Books_texts (for update)",
-        "type": "object"
       },
       "count": {
         "anyOf": [
