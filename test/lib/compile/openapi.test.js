@@ -305,6 +305,36 @@ service CatalogService {
       '@protocol must not be mutated by toOpenApi');
   });
 
+  test('REST service does not include /$batch path', () => {
+    const csn = cds.compile.to.csn(`
+      @path: '/rest/v1/myRestAPI'
+      @protocol: 'rest'
+      service MyRestAPI {
+        entity Items { key ID : UUID; }
+      }`
+    );
+    const openapi = toOpenApi(csn);
+    assert.strictEqual(openapi.paths?.['/$batch'], undefined,
+      '/$batch must not be present in OpenAPI output for a REST service');
+  });
+
+  test('REST service collection GET does not include OData query options', () => {
+    const csn = cds.compile.to.csn(`
+      @path: '/rest/v1/myRestAPI'
+      @protocol: 'rest'
+      service MyRestAPI {
+        entity Items { key ID : UUID; name : String; }
+      }`
+    );
+    const openapi = toOpenApi(csn);
+    const getParams = openapi.paths?.['/Items']?.get?.parameters ?? [];
+    const odataQueryOptions = ['$filter', '$top', '$skip', '$search', '$count', '$orderby', '$select', '$expand'];
+    const found = getParams
+      .map(p => p.name ?? p.$ref)
+      .filter(n => odataQueryOptions.some(o => typeof n === 'string' && (n === o || n.endsWith(o))));
+    assert.deepStrictEqual(found, [], `OData query options must not appear on REST collection GET: ${found}`);
+  });
+
   test('options: Multiple servers', () => {
     const csn = cds.compile.to.csn(`
       service A {entity E { key ID : UUID; };};`
