@@ -1,0 +1,1112 @@
+{
+    "definitions": {
+     "Service.for.namespace.com.sap.test.MyService": {
+      "kind": "service",
+      "@Capabilities.BatchSupported": false,
+      "@Capabilities.KeyAsSegmentSupported": true,
+      "@Core.Description": "Service for namespace com.sap.test.MyService",
+      "@Core.LongDescription": "This service is located at [/rest/my/](/rest/my/)"
+     },
+     "Service.for.namespace.com.sap.test.MyService._batch_post": {
+      "kind": "action",
+      "params": {
+       "body": {
+        "@openapi.contentType": "multipart/mixed;boundary=request-separator",
+        "type": "cds.String",
+        "@openapi.in": "body"
+       }
+      },
+      "@Common.Label": "Batch Requests",
+      "@Core.Description": "Sends a group of requests",
+      "@Core.LongDescription": "Group multiple requests into a single request payload, see [Batch Requests](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_BatchRequests).\n\n*Please note that \"Try it out\" is not supported for this request.*",
+      "@openapi.path": "/$batch",
+      "returns": {
+       "@openapi.contentType": "multipart/mixed",
+       "type": "cds.String"
+      }
+     },
+     "Service.for.namespace.com.sap.test.MyService.BaseEntityMyName": {
+      "kind": "function",
+      "params": {
+       "_top": {
+        "type": "cds.Integer",
+        "@description": "Show only the first n items, see [Paging - Top](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptiontop)",
+        "@openapi.in": "query",
+        "@openapi.name": "$top"
+       },
+       "_skip": {
+        "type": "cds.Integer",
+        "@description": "Skip the first n items, see [Paging - Skip](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionskip)",
+        "@openapi.in": "query",
+        "@openapi.name": "$skip"
+       },
+       "_search": {
+        "type": "cds.String",
+        "@description": "Search items by search phrases, see [Searching](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionsearch)",
+        "@openapi.in": "query",
+        "@openapi.name": "$search"
+       },
+       "_filter": {
+        "type": "cds.String",
+        "@description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
+        "@openapi.in": "query",
+        "@openapi.name": "$filter"
+       },
+       "_count": {
+        "type": "cds.Boolean",
+        "@description": "Include count of items, see [Count](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptioncount)",
+        "@openapi.in": "query",
+        "@openapi.name": "$count"
+       },
+       "_orderby": {
+        "items": {
+         "type": "Service.for.namespace.com.sap.test.MyService.anonymous.type0"
+        },
+        "@description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
+        "@openapi.in": "query",
+        "@openapi.name": "$orderby"
+       },
+       "_select": {
+        "items": {
+         "type": "Service.for.namespace.com.sap.test.MyService.anonymous.type1"
+        },
+        "@description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+        "@openapi.in": "query",
+        "@openapi.name": "$select"
+       },
+       "_expand": {
+        "items": {
+         "type": "Service.for.namespace.com.sap.test.MyService.anonymous.type2"
+        },
+        "@description": "The value of $expand query option is a comma-separated list of navigation property names, stream property names, or $value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+        "@openapi.in": "query",
+        "@openapi.name": "$expand"
+       }
+      },
+      "@Common.Label": "BaseEntityMyName",
+      "@Core.Description": "Retrieves a list of base entity my name.",
+      "@openapi.path": "/BaseEntityMyName",
+      "returns": {
+       "@title": "Collection of BaseEntityMyName",
+       "elements": {
+        "_count": {
+         "type": "Service.for.namespace.com.sap.test.MyService_types.count",
+         "@openapi.name": "@count"
+        },
+        "value": {
+         "items": {
+          "type": "Service.for.namespace.com.sap.test.MyService_types.com_sap_test_MyService_BaseEntityMyName"
+         }
+        }
+       }
+      }
+     },
+     "Service.for.namespace.com.sap.test.MyService.BaseEntityMyName_post": {
+      "kind": "action",
+      "params": {
+       "body": {
+        "type": "Service.for.namespace.com.sap.test.MyService_types.com_sap_test_MyService_BaseEntityMyName_create",
+        "@openapi.in": "body"
+       }
+      },
+      "@Common.Label": "BaseEntityMyName",
+      "@Core.Description": "Creates a single base entity my name.",
+      "@openapi.path": "/BaseEntityMyName",
+      "returns": {
+       "type": "Service.for.namespace.com.sap.test.MyService_types.com_sap_test_MyService_BaseEntityMyName"
+      }
+     },
+     "Service.for.namespace.com.sap.test.MyService.BaseEntityMyName___": {
+      "kind": "function",
+      "params": {
+       "id": {
+        "type": "cds.UUID",
+        "@Core.Example.$Type": "Core.PrimitiveExampleValue",
+        "@Core.Example.Value": "01234567-89ab-cdef-0123-456789abcdef",
+        "@description": "key: id",
+        "@openapi.in": "path"
+       },
+       "_select": {
+        "items": {
+         "type": "Service.for.namespace.com.sap.test.MyService.anonymous.type3"
+        },
+        "@description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+        "@openapi.in": "query",
+        "@openapi.name": "$select"
+       },
+       "_expand": {
+        "items": {
+         "type": "Service.for.namespace.com.sap.test.MyService.anonymous.type4"
+        },
+        "@description": "The value of $expand query option is a comma-separated list of navigation property names, stream property names, or $value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+        "@openapi.in": "query",
+        "@openapi.name": "$expand"
+       }
+      },
+      "@Common.Label": "BaseEntityMyName",
+      "@Core.Description": "Retrieves a single base entity my name.",
+      "@openapi.path": "/BaseEntityMyName({id})",
+      "returns": {
+       "type": "Service.for.namespace.com.sap.test.MyService_types.com_sap_test_MyService_BaseEntityMyName"
+      }
+     },
+     "Service.for.namespace.com.sap.test.MyService.BaseEntityMyName____patch": {
+      "kind": "action",
+      "params": {
+       "id": {
+        "type": "cds.UUID",
+        "@Core.Example.$Type": "Core.PrimitiveExampleValue",
+        "@Core.Example.Value": "01234567-89ab-cdef-0123-456789abcdef",
+        "@description": "key: id",
+        "@openapi.in": "path"
+       },
+       "body": {
+        "type": "Service.for.namespace.com.sap.test.MyService_types.com_sap_test_MyService_BaseEntityMyName_update",
+        "@openapi.in": "body"
+       }
+      },
+      "@Common.Label": "BaseEntityMyName",
+      "@Core.Description": "Changes a single base entity my name.",
+      "@openapi.method": "PATCH",
+      "@openapi.path": "/BaseEntityMyName({id})"
+     },
+     "Service.for.namespace.com.sap.test.MyService.BaseEntityMyName____delete": {
+      "kind": "action",
+      "params": {
+       "id": {
+        "type": "cds.UUID",
+        "@Core.Example.$Type": "Core.PrimitiveExampleValue",
+        "@Core.Example.Value": "01234567-89ab-cdef-0123-456789abcdef",
+        "@description": "key: id",
+        "@openapi.in": "path"
+       }
+      },
+      "@Common.Label": "BaseEntityMyName",
+      "@Core.Description": "Deletes a single base entity my name.",
+      "@openapi.method": "DELETE",
+      "@openapi.path": "/BaseEntityMyName({id})"
+     },
+     "Service.for.namespace.com.sap.test.MyService.BaseEntityMyName____refComponent": {
+      "kind": "function",
+      "params": {
+       "id": {
+        "type": "cds.UUID",
+        "@Core.Example.$Type": "Core.PrimitiveExampleValue",
+        "@Core.Example.Value": "01234567-89ab-cdef-0123-456789abcdef",
+        "@description": "key: id",
+        "@openapi.in": "path"
+       },
+       "_select": {
+        "items": {
+         "type": "Service.for.namespace.com.sap.test.MyService.anonymous.type5"
+        },
+        "@description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+        "@openapi.in": "query",
+        "@openapi.name": "$select"
+       },
+       "_expand": {
+        "items": {
+         "type": "Service.for.namespace.com.sap.test.MyService.anonymous.type6"
+        },
+        "@description": "The value of $expand query option is a comma-separated list of navigation property names, stream property names, or $value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+        "@openapi.in": "query",
+        "@openapi.name": "$expand"
+       }
+      },
+      "@Common.Label": "BaseEntityMyName",
+      "@Core.Description": "Retrieves ref component of a base entity my name.",
+      "@openapi.path": "/BaseEntityMyName({id})/refComponent",
+      "returns": {
+       "type": "Service.for.namespace.com.sap.test.MyService_types.com_sap_test_MyService_BaseEntityYourName"
+      }
+     },
+     "Service.for.namespace.com.sap.test.MyService.BaseEntityTheirName": {
+      "kind": "function",
+      "params": {
+       "_top": {
+        "type": "cds.Integer",
+        "@description": "Show only the first n items, see [Paging - Top](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptiontop)",
+        "@openapi.in": "query",
+        "@openapi.name": "$top"
+       },
+       "_skip": {
+        "type": "cds.Integer",
+        "@description": "Skip the first n items, see [Paging - Skip](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionskip)",
+        "@openapi.in": "query",
+        "@openapi.name": "$skip"
+       },
+       "_search": {
+        "type": "cds.String",
+        "@description": "Search items by search phrases, see [Searching](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionsearch)",
+        "@openapi.in": "query",
+        "@openapi.name": "$search"
+       },
+       "_filter": {
+        "type": "cds.String",
+        "@description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
+        "@openapi.in": "query",
+        "@openapi.name": "$filter"
+       },
+       "_count": {
+        "type": "cds.Boolean",
+        "@description": "Include count of items, see [Count](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptioncount)",
+        "@openapi.in": "query",
+        "@openapi.name": "$count"
+       },
+       "_orderby": {
+        "items": {
+         "type": "Service.for.namespace.com.sap.test.MyService.anonymous.type7"
+        },
+        "@description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
+        "@openapi.in": "query",
+        "@openapi.name": "$orderby"
+       },
+       "_select": {
+        "items": {
+         "type": "Service.for.namespace.com.sap.test.MyService.anonymous.type8"
+        },
+        "@description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+        "@openapi.in": "query",
+        "@openapi.name": "$select"
+       },
+       "_expand": {
+        "items": {
+         "type": "Service.for.namespace.com.sap.test.MyService.anonymous.type9"
+        },
+        "@description": "The value of $expand query option is a comma-separated list of navigation property names, stream property names, or $value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+        "@openapi.in": "query",
+        "@openapi.name": "$expand"
+       }
+      },
+      "@Common.Label": "BaseEntityTheirName",
+      "@Core.Description": "Retrieves a list of base entity their name.",
+      "@openapi.path": "/BaseEntityTheirName",
+      "returns": {
+       "@title": "Collection of BaseEntityTheirName",
+       "elements": {
+        "_count": {
+         "type": "Service.for.namespace.com.sap.test.MyService_types.count",
+         "@openapi.name": "@count"
+        },
+        "value": {
+         "items": {
+          "type": "Service.for.namespace.com.sap.test.MyService_types.com_sap_test_MyService_BaseEntityTheirName"
+         }
+        }
+       }
+      }
+     },
+     "Service.for.namespace.com.sap.test.MyService.BaseEntityTheirName_post": {
+      "kind": "action",
+      "params": {
+       "body": {
+        "type": "Service.for.namespace.com.sap.test.MyService_types.com_sap_test_MyService_BaseEntityTheirName_create",
+        "@openapi.in": "body"
+       }
+      },
+      "@Common.Label": "BaseEntityTheirName",
+      "@Core.Description": "Creates a single base entity their name.",
+      "@openapi.path": "/BaseEntityTheirName",
+      "returns": {
+       "type": "Service.for.namespace.com.sap.test.MyService_types.com_sap_test_MyService_BaseEntityTheirName"
+      }
+     },
+     "Service.for.namespace.com.sap.test.MyService.BaseEntityTheirName___": {
+      "kind": "function",
+      "params": {
+       "id": {
+        "type": "cds.UUID",
+        "@Core.Example.$Type": "Core.PrimitiveExampleValue",
+        "@Core.Example.Value": "01234567-89ab-cdef-0123-456789abcdef",
+        "@description": "key: id",
+        "@openapi.in": "path"
+       },
+       "_select": {
+        "items": {
+         "type": "Service.for.namespace.com.sap.test.MyService.anonymous.type10"
+        },
+        "@description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+        "@openapi.in": "query",
+        "@openapi.name": "$select"
+       },
+       "_expand": {
+        "items": {
+         "type": "Service.for.namespace.com.sap.test.MyService.anonymous.type11"
+        },
+        "@description": "The value of $expand query option is a comma-separated list of navigation property names, stream property names, or $value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+        "@openapi.in": "query",
+        "@openapi.name": "$expand"
+       }
+      },
+      "@Common.Label": "BaseEntityTheirName",
+      "@Core.Description": "Retrieves a single base entity their name.",
+      "@openapi.path": "/BaseEntityTheirName({id})",
+      "returns": {
+       "type": "Service.for.namespace.com.sap.test.MyService_types.com_sap_test_MyService_BaseEntityTheirName"
+      }
+     },
+     "Service.for.namespace.com.sap.test.MyService.BaseEntityTheirName____patch": {
+      "kind": "action",
+      "params": {
+       "id": {
+        "type": "cds.UUID",
+        "@Core.Example.$Type": "Core.PrimitiveExampleValue",
+        "@Core.Example.Value": "01234567-89ab-cdef-0123-456789abcdef",
+        "@description": "key: id",
+        "@openapi.in": "path"
+       },
+       "body": {
+        "type": "Service.for.namespace.com.sap.test.MyService_types.com_sap_test_MyService_BaseEntityTheirName_update",
+        "@openapi.in": "body"
+       }
+      },
+      "@Common.Label": "BaseEntityTheirName",
+      "@Core.Description": "Changes a single base entity their name.",
+      "@openapi.method": "PATCH",
+      "@openapi.path": "/BaseEntityTheirName({id})"
+     },
+     "Service.for.namespace.com.sap.test.MyService.BaseEntityTheirName____delete": {
+      "kind": "action",
+      "params": {
+       "id": {
+        "type": "cds.UUID",
+        "@Core.Example.$Type": "Core.PrimitiveExampleValue",
+        "@Core.Example.Value": "01234567-89ab-cdef-0123-456789abcdef",
+        "@description": "key: id",
+        "@openapi.in": "path"
+       }
+      },
+      "@Common.Label": "BaseEntityTheirName",
+      "@Core.Description": "Deletes a single base entity their name.",
+      "@openapi.method": "DELETE",
+      "@openapi.path": "/BaseEntityTheirName({id})"
+     },
+     "Service.for.namespace.com.sap.test.MyService.BaseEntityTheirName____refComponent1": {
+      "kind": "function",
+      "params": {
+       "id": {
+        "type": "cds.UUID",
+        "@Core.Example.$Type": "Core.PrimitiveExampleValue",
+        "@Core.Example.Value": "01234567-89ab-cdef-0123-456789abcdef",
+        "@description": "key: id",
+        "@openapi.in": "path"
+       },
+       "_select": {
+        "items": {
+         "type": "Service.for.namespace.com.sap.test.MyService.anonymous.type12"
+        },
+        "@description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+        "@openapi.in": "query",
+        "@openapi.name": "$select"
+       },
+       "_expand": {
+        "items": {
+         "type": "Service.for.namespace.com.sap.test.MyService.anonymous.type13"
+        },
+        "@description": "The value of $expand query option is a comma-separated list of navigation property names, stream property names, or $value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+        "@openapi.in": "query",
+        "@openapi.name": "$expand"
+       }
+      },
+      "@Common.Label": "BaseEntityTheirName",
+      "@Core.Description": "Retrieves ref component1 of a base entity their name.",
+      "@openapi.path": "/BaseEntityTheirName({id})/refComponent1",
+      "returns": {
+       "type": "Service.for.namespace.com.sap.test.MyService_types.com_sap_test_MyService_BaseEntityMyName"
+      }
+     },
+     "Service.for.namespace.com.sap.test.MyService.BaseEntityYourName": {
+      "kind": "function",
+      "params": {
+       "_top": {
+        "type": "cds.Integer",
+        "@description": "Show only the first n items, see [Paging - Top](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptiontop)",
+        "@openapi.in": "query",
+        "@openapi.name": "$top"
+       },
+       "_skip": {
+        "type": "cds.Integer",
+        "@description": "Skip the first n items, see [Paging - Skip](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionskip)",
+        "@openapi.in": "query",
+        "@openapi.name": "$skip"
+       },
+       "_search": {
+        "type": "cds.String",
+        "@description": "Search items by search phrases, see [Searching](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionsearch)",
+        "@openapi.in": "query",
+        "@openapi.name": "$search"
+       },
+       "_filter": {
+        "type": "cds.String",
+        "@description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
+        "@openapi.in": "query",
+        "@openapi.name": "$filter"
+       },
+       "_count": {
+        "type": "cds.Boolean",
+        "@description": "Include count of items, see [Count](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptioncount)",
+        "@openapi.in": "query",
+        "@openapi.name": "$count"
+       },
+       "_orderby": {
+        "items": {
+         "type": "Service.for.namespace.com.sap.test.MyService.anonymous.type14"
+        },
+        "@description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
+        "@openapi.in": "query",
+        "@openapi.name": "$orderby"
+       },
+       "_select": {
+        "items": {
+         "type": "Service.for.namespace.com.sap.test.MyService.anonymous.type15"
+        },
+        "@description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+        "@openapi.in": "query",
+        "@openapi.name": "$select"
+       },
+       "_expand": {
+        "items": {
+         "type": "Service.for.namespace.com.sap.test.MyService.anonymous.type16"
+        },
+        "@description": "The value of $expand query option is a comma-separated list of navigation property names, stream property names, or $value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+        "@openapi.in": "query",
+        "@openapi.name": "$expand"
+       }
+      },
+      "@Common.Label": "BaseEntityYourName",
+      "@Core.Description": "Retrieves a list of base entity your name.",
+      "@openapi.path": "/BaseEntityYourName",
+      "returns": {
+       "@title": "Collection of BaseEntityYourName",
+       "elements": {
+        "_count": {
+         "type": "Service.for.namespace.com.sap.test.MyService_types.count",
+         "@openapi.name": "@count"
+        },
+        "value": {
+         "items": {
+          "type": "Service.for.namespace.com.sap.test.MyService_types.com_sap_test_MyService_BaseEntityYourName"
+         }
+        }
+       }
+      }
+     },
+     "Service.for.namespace.com.sap.test.MyService.BaseEntityYourName_post": {
+      "kind": "action",
+      "params": {
+       "body": {
+        "type": "Service.for.namespace.com.sap.test.MyService_types.com_sap_test_MyService_BaseEntityYourName_create",
+        "@openapi.in": "body"
+       }
+      },
+      "@Common.Label": "BaseEntityYourName",
+      "@Core.Description": "Creates a single base entity your name.",
+      "@openapi.path": "/BaseEntityYourName",
+      "returns": {
+       "type": "Service.for.namespace.com.sap.test.MyService_types.com_sap_test_MyService_BaseEntityYourName"
+      }
+     },
+     "Service.for.namespace.com.sap.test.MyService.BaseEntityYourName___": {
+      "kind": "function",
+      "params": {
+       "id": {
+        "type": "cds.UUID",
+        "@Core.Example.$Type": "Core.PrimitiveExampleValue",
+        "@Core.Example.Value": "01234567-89ab-cdef-0123-456789abcdef",
+        "@description": "key: id",
+        "@openapi.in": "path"
+       },
+       "_select": {
+        "items": {
+         "type": "Service.for.namespace.com.sap.test.MyService.anonymous.type17"
+        },
+        "@description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+        "@openapi.in": "query",
+        "@openapi.name": "$select"
+       },
+       "_expand": {
+        "items": {
+         "type": "Service.for.namespace.com.sap.test.MyService.anonymous.type18"
+        },
+        "@description": "The value of $expand query option is a comma-separated list of navigation property names, stream property names, or $value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+        "@openapi.in": "query",
+        "@openapi.name": "$expand"
+       }
+      },
+      "@Common.Label": "BaseEntityYourName",
+      "@Core.Description": "Retrieves a single base entity your name.",
+      "@openapi.path": "/BaseEntityYourName({id})",
+      "returns": {
+       "type": "Service.for.namespace.com.sap.test.MyService_types.com_sap_test_MyService_BaseEntityYourName"
+      }
+     },
+     "Service.for.namespace.com.sap.test.MyService.BaseEntityYourName____patch": {
+      "kind": "action",
+      "params": {
+       "id": {
+        "type": "cds.UUID",
+        "@Core.Example.$Type": "Core.PrimitiveExampleValue",
+        "@Core.Example.Value": "01234567-89ab-cdef-0123-456789abcdef",
+        "@description": "key: id",
+        "@openapi.in": "path"
+       },
+       "body": {
+        "type": "Service.for.namespace.com.sap.test.MyService_types.com_sap_test_MyService_BaseEntityYourName_update",
+        "@openapi.in": "body"
+       }
+      },
+      "@Common.Label": "BaseEntityYourName",
+      "@Core.Description": "Changes a single base entity your name.",
+      "@openapi.method": "PATCH",
+      "@openapi.path": "/BaseEntityYourName({id})"
+     },
+     "Service.for.namespace.com.sap.test.MyService.BaseEntityYourName____delete": {
+      "kind": "action",
+      "params": {
+       "id": {
+        "type": "cds.UUID",
+        "@Core.Example.$Type": "Core.PrimitiveExampleValue",
+        "@Core.Example.Value": "01234567-89ab-cdef-0123-456789abcdef",
+        "@description": "key: id",
+        "@openapi.in": "path"
+       }
+      },
+      "@Common.Label": "BaseEntityYourName",
+      "@Core.Description": "Deletes a single base entity your name.",
+      "@openapi.method": "DELETE",
+      "@openapi.path": "/BaseEntityYourName({id})"
+     },
+     "Service.for.namespace.com.sap.test.MyService.BaseEntityYourName____refComponent1": {
+      "kind": "function",
+      "params": {
+       "id": {
+        "type": "cds.UUID",
+        "@Core.Example.$Type": "Core.PrimitiveExampleValue",
+        "@Core.Example.Value": "01234567-89ab-cdef-0123-456789abcdef",
+        "@description": "key: id",
+        "@openapi.in": "path"
+       },
+       "_select": {
+        "items": {
+         "type": "Service.for.namespace.com.sap.test.MyService.anonymous.type19"
+        },
+        "@description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+        "@openapi.in": "query",
+        "@openapi.name": "$select"
+       },
+       "_expand": {
+        "items": {
+         "type": "Service.for.namespace.com.sap.test.MyService.anonymous.type20"
+        },
+        "@description": "The value of $expand query option is a comma-separated list of navigation property names, stream property names, or $value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+        "@openapi.in": "query",
+        "@openapi.name": "$expand"
+       }
+      },
+      "@Common.Label": "BaseEntityYourName",
+      "@Core.Description": "Retrieves ref component1 of a base entity your name.",
+      "@openapi.path": "/BaseEntityYourName({id})/refComponent1",
+      "returns": {
+       "type": "Service.for.namespace.com.sap.test.MyService_types.com_sap_test_MyService_BaseEntityTheirName"
+      }
+     },
+     "Service.for.namespace.com.sap.test.MyService.BaseEntityYourName____refComponent2": {
+      "kind": "function",
+      "params": {
+       "id": {
+        "type": "cds.UUID",
+        "@Core.Example.$Type": "Core.PrimitiveExampleValue",
+        "@Core.Example.Value": "01234567-89ab-cdef-0123-456789abcdef",
+        "@description": "key: id",
+        "@openapi.in": "path"
+       },
+       "_select": {
+        "items": {
+         "type": "Service.for.namespace.com.sap.test.MyService.anonymous.type21"
+        },
+        "@description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+        "@openapi.in": "query",
+        "@openapi.name": "$select"
+       },
+       "_expand": {
+        "items": {
+         "type": "Service.for.namespace.com.sap.test.MyService.anonymous.type22"
+        },
+        "@description": "The value of $expand query option is a comma-separated list of navigation property names, stream property names, or $value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+        "@openapi.in": "query",
+        "@openapi.name": "$expand"
+       }
+      },
+      "@Common.Label": "BaseEntityYourName",
+      "@Core.Description": "Retrieves ref component2 of a base entity your name.",
+      "@openapi.path": "/BaseEntityYourName({id})/refComponent2",
+      "returns": {
+       "type": "Service.for.namespace.com.sap.test.MyService_types.com_sap_test_MyService_BaseEntityTheirName"
+      }
+     },
+     "Service.for.namespace.com.sap.test.MyService_types.com_sap_test_MyService_BaseEntityMyName": {
+      "@title": "BaseEntityMyName",
+      "elements": {
+       "id": {
+        "type": "cds.UUID",
+        "@Core.Example.$Type": "Core.PrimitiveExampleValue",
+        "@Core.Example.Value": "01234567-89ab-cdef-0123-456789abcdef"
+       },
+       "refComponent": {
+        "type": "Service.for.namespace.com.sap.test.MyService_types.com_sap_test_MyService_BaseEntityYourName"
+       },
+       "refComponent_id": {
+        "type": "cds.UUID",
+        "@Core.Example.$Type": "Core.PrimitiveExampleValue",
+        "@Core.Example.Value": "01234567-89ab-cdef-0123-456789abcdef"
+       }
+      },
+      "kind": "type"
+     },
+     "Service.for.namespace.com.sap.test.MyService_types.com_sap_test_MyService_BaseEntityMyName_create": {
+      "@title": "BaseEntityMyName (for create)",
+      "elements": {
+       "id": {
+        "type": "cds.UUID",
+        "@Core.Example.$Type": "Core.PrimitiveExampleValue",
+        "@Core.Example.Value": "01234567-89ab-cdef-0123-456789abcdef"
+       },
+       "refComponent_id": {
+        "type": "cds.UUID",
+        "@Core.Example.$Type": "Core.PrimitiveExampleValue",
+        "@Core.Example.Value": "01234567-89ab-cdef-0123-456789abcdef"
+       }
+      },
+      "kind": "type"
+     },
+     "Service.for.namespace.com.sap.test.MyService_types.com_sap_test_MyService_BaseEntityMyName_update": {
+      "@title": "BaseEntityMyName (for update)",
+      "elements": {
+       "refComponent_id": {
+        "type": "cds.UUID",
+        "@Core.Example.$Type": "Core.PrimitiveExampleValue",
+        "@Core.Example.Value": "01234567-89ab-cdef-0123-456789abcdef"
+       }
+      },
+      "kind": "type"
+     },
+     "Service.for.namespace.com.sap.test.MyService_types.com_sap_test_MyService_BaseEntityTheirName": {
+      "@title": "BaseEntityTheirName",
+      "elements": {
+       "id": {
+        "type": "cds.UUID",
+        "@Core.Example.$Type": "Core.PrimitiveExampleValue",
+        "@Core.Example.Value": "01234567-89ab-cdef-0123-456789abcdef"
+       },
+       "refComponent1": {
+        "type": "Service.for.namespace.com.sap.test.MyService_types.com_sap_test_MyService_BaseEntityMyName"
+       },
+       "refComponent1_id": {
+        "type": "cds.UUID",
+        "@Core.Example.$Type": "Core.PrimitiveExampleValue",
+        "@Core.Example.Value": "01234567-89ab-cdef-0123-456789abcdef"
+       }
+      },
+      "kind": "type"
+     },
+     "Service.for.namespace.com.sap.test.MyService_types.com_sap_test_MyService_BaseEntityTheirName_create": {
+      "@title": "BaseEntityTheirName (for create)",
+      "elements": {
+       "id": {
+        "type": "cds.UUID",
+        "@Core.Example.$Type": "Core.PrimitiveExampleValue",
+        "@Core.Example.Value": "01234567-89ab-cdef-0123-456789abcdef"
+       },
+       "refComponent1_id": {
+        "type": "cds.UUID",
+        "@Core.Example.$Type": "Core.PrimitiveExampleValue",
+        "@Core.Example.Value": "01234567-89ab-cdef-0123-456789abcdef"
+       }
+      },
+      "kind": "type"
+     },
+     "Service.for.namespace.com.sap.test.MyService_types.com_sap_test_MyService_BaseEntityTheirName_update": {
+      "@title": "BaseEntityTheirName (for update)",
+      "elements": {
+       "refComponent1_id": {
+        "type": "cds.UUID",
+        "@Core.Example.$Type": "Core.PrimitiveExampleValue",
+        "@Core.Example.Value": "01234567-89ab-cdef-0123-456789abcdef"
+       }
+      },
+      "kind": "type"
+     },
+     "Service.for.namespace.com.sap.test.MyService_types.com_sap_test_MyService_BaseEntityYourName": {
+      "@title": "BaseEntityYourName",
+      "elements": {
+       "id": {
+        "type": "cds.UUID",
+        "@Core.Example.$Type": "Core.PrimitiveExampleValue",
+        "@Core.Example.Value": "01234567-89ab-cdef-0123-456789abcdef"
+       },
+       "refComponent1": {
+        "type": "Service.for.namespace.com.sap.test.MyService_types.com_sap_test_MyService_BaseEntityTheirName"
+       },
+       "refComponent1_id": {
+        "type": "cds.UUID",
+        "@Core.Example.$Type": "Core.PrimitiveExampleValue",
+        "@Core.Example.Value": "01234567-89ab-cdef-0123-456789abcdef"
+       },
+       "refComponent2": {
+        "type": "Service.for.namespace.com.sap.test.MyService_types.com_sap_test_MyService_BaseEntityTheirName"
+       },
+       "refComponent2_id": {
+        "type": "cds.UUID",
+        "@Core.Example.$Type": "Core.PrimitiveExampleValue",
+        "@Core.Example.Value": "01234567-89ab-cdef-0123-456789abcdef"
+       },
+       "refComponent3": {
+        "type": "Service.for.namespace.com.sap.test.MyService_types.com_sap_test_MyService_BaseEntityYourName"
+       }
+      },
+      "kind": "type"
+     },
+     "Service.for.namespace.com.sap.test.MyService_types.com_sap_test_MyService_BaseEntityYourName_create": {
+      "@title": "BaseEntityYourName (for create)",
+      "elements": {
+       "id": {
+        "type": "cds.UUID",
+        "@Core.Example.$Type": "Core.PrimitiveExampleValue",
+        "@Core.Example.Value": "01234567-89ab-cdef-0123-456789abcdef"
+       },
+       "refComponent1_id": {
+        "type": "cds.UUID",
+        "@Core.Example.$Type": "Core.PrimitiveExampleValue",
+        "@Core.Example.Value": "01234567-89ab-cdef-0123-456789abcdef"
+       },
+       "refComponent2_id": {
+        "type": "cds.UUID",
+        "@Core.Example.$Type": "Core.PrimitiveExampleValue",
+        "@Core.Example.Value": "01234567-89ab-cdef-0123-456789abcdef"
+       }
+      },
+      "kind": "type"
+     },
+     "Service.for.namespace.com.sap.test.MyService_types.com_sap_test_MyService_BaseEntityYourName_update": {
+      "@title": "BaseEntityYourName (for update)",
+      "elements": {
+       "refComponent1_id": {
+        "type": "cds.UUID",
+        "@Core.Example.$Type": "Core.PrimitiveExampleValue",
+        "@Core.Example.Value": "01234567-89ab-cdef-0123-456789abcdef"
+       },
+       "refComponent2_id": {
+        "type": "cds.UUID",
+        "@Core.Example.$Type": "Core.PrimitiveExampleValue",
+        "@Core.Example.Value": "01234567-89ab-cdef-0123-456789abcdef"
+       }
+      },
+      "kind": "type"
+     },
+     "Service.for.namespace.com.sap.test.MyService_types.count": {
+      "@description": "The number of entities in the collection. Available when using the [$count](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptioncount) query option.",
+      "type": "cds.String",
+      "kind": "type"
+     },
+     "Service.for.namespace.com.sap.test.MyService_types.error": {
+      "elements": {
+       "error": {
+        "elements": {
+         "code": {
+          "type": "cds.String",
+          "@mandatory": true
+         },
+         "message": {
+          "type": "cds.String",
+          "@mandatory": true
+         },
+         "target": {
+          "type": "cds.String"
+         },
+         "details": {
+          "items": {
+           "elements": {
+            "code": {
+             "type": "cds.String",
+             "@mandatory": true
+            },
+            "message": {
+             "type": "cds.String",
+             "@mandatory": true
+            },
+            "target": {
+             "type": "cds.String"
+            }
+           }
+          }
+         },
+         "innererror": {
+          "@description": "The structure of this object is service-specific",
+          "elements": {}
+         }
+        },
+        "@mandatory": true
+       }
+      },
+      "kind": "type"
+     },
+     "Service.for.namespace.com.sap.test.MyService.anonymous.type0": {
+      "type": "cds.String",
+      "@assert.range": true,
+      "enum": {
+       "id": {},
+       "id_desc": {
+        "val": "id desc"
+       },
+       "refComponent_id": {},
+       "refComponent_id_desc": {
+        "val": "refComponent_id desc"
+       }
+      },
+      "kind": "type"
+     },
+     "Service.for.namespace.com.sap.test.MyService.anonymous.type1": {
+      "type": "cds.String",
+      "@assert.range": true,
+      "enum": {
+       "id": {},
+       "refComponent_id": {}
+      },
+      "kind": "type"
+     },
+     "Service.for.namespace.com.sap.test.MyService.anonymous.type2": {
+      "type": "cds.String",
+      "@assert.range": true,
+      "enum": {
+       "_": {
+        "val": "*"
+       },
+       "refComponent": {}
+      },
+      "kind": "type"
+     },
+     "Service.for.namespace.com.sap.test.MyService.anonymous.type3": {
+      "type": "cds.String",
+      "@assert.range": true,
+      "enum": {
+       "id": {},
+       "refComponent_id": {}
+      },
+      "kind": "type"
+     },
+     "Service.for.namespace.com.sap.test.MyService.anonymous.type4": {
+      "type": "cds.String",
+      "@assert.range": true,
+      "enum": {
+       "_": {
+        "val": "*"
+       },
+       "refComponent": {}
+      },
+      "kind": "type"
+     },
+     "Service.for.namespace.com.sap.test.MyService.anonymous.type5": {
+      "type": "cds.String",
+      "@assert.range": true,
+      "enum": {
+       "id": {},
+       "refComponent1_id": {},
+       "refComponent2_id": {}
+      },
+      "kind": "type"
+     },
+     "Service.for.namespace.com.sap.test.MyService.anonymous.type6": {
+      "type": "cds.String",
+      "@assert.range": true,
+      "enum": {
+       "_": {
+        "val": "*"
+       },
+       "refComponent1": {},
+       "refComponent2": {}
+      },
+      "kind": "type"
+     },
+     "Service.for.namespace.com.sap.test.MyService.anonymous.type7": {
+      "type": "cds.String",
+      "@assert.range": true,
+      "enum": {
+       "id": {},
+       "id_desc": {
+        "val": "id desc"
+       },
+       "refComponent1_id": {},
+       "refComponent1_id_desc": {
+        "val": "refComponent1_id desc"
+       }
+      },
+      "kind": "type"
+     },
+     "Service.for.namespace.com.sap.test.MyService.anonymous.type8": {
+      "type": "cds.String",
+      "@assert.range": true,
+      "enum": {
+       "id": {},
+       "refComponent1_id": {}
+      },
+      "kind": "type"
+     },
+     "Service.for.namespace.com.sap.test.MyService.anonymous.type9": {
+      "type": "cds.String",
+      "@assert.range": true,
+      "enum": {
+       "_": {
+        "val": "*"
+       },
+       "refComponent1": {}
+      },
+      "kind": "type"
+     },
+     "Service.for.namespace.com.sap.test.MyService.anonymous.type10": {
+      "type": "cds.String",
+      "@assert.range": true,
+      "enum": {
+       "id": {},
+       "refComponent1_id": {}
+      },
+      "kind": "type"
+     },
+     "Service.for.namespace.com.sap.test.MyService.anonymous.type11": {
+      "type": "cds.String",
+      "@assert.range": true,
+      "enum": {
+       "_": {
+        "val": "*"
+       },
+       "refComponent1": {}
+      },
+      "kind": "type"
+     },
+     "Service.for.namespace.com.sap.test.MyService.anonymous.type12": {
+      "type": "cds.String",
+      "@assert.range": true,
+      "enum": {
+       "id": {},
+       "refComponent_id": {}
+      },
+      "kind": "type"
+     },
+     "Service.for.namespace.com.sap.test.MyService.anonymous.type13": {
+      "type": "cds.String",
+      "@assert.range": true,
+      "enum": {
+       "_": {
+        "val": "*"
+       },
+       "refComponent": {}
+      },
+      "kind": "type"
+     },
+     "Service.for.namespace.com.sap.test.MyService.anonymous.type14": {
+      "type": "cds.String",
+      "@assert.range": true,
+      "enum": {
+       "id": {},
+       "id_desc": {
+        "val": "id desc"
+       },
+       "refComponent1_id": {},
+       "refComponent1_id_desc": {
+        "val": "refComponent1_id desc"
+       },
+       "refComponent2_id": {},
+       "refComponent2_id_desc": {
+        "val": "refComponent2_id desc"
+       }
+      },
+      "kind": "type"
+     },
+     "Service.for.namespace.com.sap.test.MyService.anonymous.type15": {
+      "type": "cds.String",
+      "@assert.range": true,
+      "enum": {
+       "id": {},
+       "refComponent1_id": {},
+       "refComponent2_id": {}
+      },
+      "kind": "type"
+     },
+     "Service.for.namespace.com.sap.test.MyService.anonymous.type16": {
+      "type": "cds.String",
+      "@assert.range": true,
+      "enum": {
+       "_": {
+        "val": "*"
+       },
+       "refComponent1": {},
+       "refComponent2": {}
+      },
+      "kind": "type"
+     },
+     "Service.for.namespace.com.sap.test.MyService.anonymous.type17": {
+      "type": "cds.String",
+      "@assert.range": true,
+      "enum": {
+       "id": {},
+       "refComponent1_id": {},
+       "refComponent2_id": {}
+      },
+      "kind": "type"
+     },
+     "Service.for.namespace.com.sap.test.MyService.anonymous.type18": {
+      "type": "cds.String",
+      "@assert.range": true,
+      "enum": {
+       "_": {
+        "val": "*"
+       },
+       "refComponent1": {},
+       "refComponent2": {}
+      },
+      "kind": "type"
+     },
+     "Service.for.namespace.com.sap.test.MyService.anonymous.type19": {
+      "type": "cds.String",
+      "@assert.range": true,
+      "enum": {
+       "id": {},
+       "refComponent1_id": {}
+      },
+      "kind": "type"
+     },
+     "Service.for.namespace.com.sap.test.MyService.anonymous.type20": {
+      "type": "cds.String",
+      "@assert.range": true,
+      "enum": {
+       "_": {
+        "val": "*"
+       },
+       "refComponent1": {}
+      },
+      "kind": "type"
+     },
+     "Service.for.namespace.com.sap.test.MyService.anonymous.type21": {
+      "type": "cds.String",
+      "@assert.range": true,
+      "enum": {
+       "id": {},
+       "refComponent1_id": {}
+      },
+      "kind": "type"
+     },
+     "Service.for.namespace.com.sap.test.MyService.anonymous.type22": {
+      "type": "cds.String",
+      "@assert.range": true,
+      "enum": {
+       "_": {
+        "val": "*"
+       },
+       "refComponent1": {}
+      },
+      "kind": "type"
+     }
+    },
+    "meta": {
+     "creator": "cds-import-openapi"
+    }
+   }

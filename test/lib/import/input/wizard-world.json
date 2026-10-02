@@ -1,0 +1,928 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "WizardWorldApi",
+        "contact": {
+            "name": "Github",
+            "url": "https://github.com/MossPiglets/WizardWorldAPI"
+        },
+        "version": "1.0.1"
+    },
+    "servers": [
+        {
+            "url": "https://wizard-world-api.herokuapp.com"
+        }
+    ],
+    "paths": {
+        "/Elixirs": {
+            "get": {
+                "tags": [
+                    "Elixirs"
+                ],
+                "parameters": [
+                    {
+                        "name": "Name",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "Difficulty",
+                        "in": "query",
+                        "schema": {
+                            "$ref": "#/components/schemas/ElixirDifficulty"
+                        }
+                    },
+                    {
+                        "name": "Ingredient",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "InventorFullName",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "Manufacturer",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/ElixirDto"
+                                    }
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/ElixirDto"
+                                    }
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/ElixirDto"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/Elixirs/{id}": {
+            "get": {
+                "tags": [
+                    "Elixirs"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ElixirDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ElixirDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ElixirDto"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/Feedback": {
+            "post": {
+                "tags": [
+                    "Feedback"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json-patch+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SendFeedbackCommand"
+                            }
+                        },
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SendFeedbackCommand"
+                            }
+                        },
+                        "text/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SendFeedbackCommand"
+                            }
+                        },
+                        "application/*+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SendFeedbackCommand"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Unit"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Unit"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Unit"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/Houses": {
+            "get": {
+                "tags": [
+                    "Houses"
+                ],
+                "parameters": [
+                    {
+                        "name": "query",
+                        "in": "query",
+                        "schema": {
+                            "$ref": "#/components/schemas/GetHousesQuery"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/HouseDto"
+                                    }
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/HouseDto"
+                                    }
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/HouseDto"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/Houses/{id}": {
+            "get": {
+                "tags": [
+                    "Houses"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HouseDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HouseDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HouseDto"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/Ingredients": {
+            "get": {
+                "tags": [
+                    "Ingredients"
+                ],
+                "parameters": [
+                    {
+                        "name": "Name",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/IngredientDto"
+                                    }
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/IngredientDto"
+                                    }
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/IngredientDto"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/Ingredients/{id}": {
+            "get": {
+                "tags": [
+                    "Ingredients"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IngredientDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IngredientDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IngredientDto"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/Spells": {
+            "get": {
+                "tags": [
+                    "Spells"
+                ],
+                "parameters": [
+                    {
+                        "name": "Name",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "Type",
+                        "in": "query",
+                        "schema": {
+                            "$ref": "#/components/schemas/SpellType"
+                        }
+                    },
+                    {
+                        "name": "Incantation",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/SpellDto"
+                                    }
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/SpellDto"
+                                    }
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/SpellDto"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/Spells/{id}": {
+            "get": {
+                "tags": [
+                    "Spells"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SpellDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SpellDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SpellDto"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/Wizards": {
+            "get": {
+                "tags": [
+                    "Wizards"
+                ],
+                "parameters": [
+                    {
+                        "name": "FirstName",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "LastName",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/WizardDto"
+                                    }
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/WizardDto"
+                                    }
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/WizardDto"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/Wizards/{id}": {
+            "get": {
+                "tags": [
+                    "Wizards"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/WizardDto"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/WizardDto"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/WizardDto"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "ElixirDifficulty": {
+                "enum": [
+                    "Unknown",
+                    "Advanced",
+                    "Moderate",
+                    "Beginner",
+                    "OrdinaryWizardingLevel",
+                    "OneOfAKind"
+                ],
+                "type": "string"
+            },
+            "ElixirDto": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "name": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "effect": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "sideEffects": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "characteristics": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "time": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "difficulty": {
+                        "$ref": "#/components/schemas/ElixirDifficulty"
+                    },
+                    "ingredients": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/IngredientDto"
+                        },
+                        "nullable": true
+                    },
+                    "inventors": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ElixirInventorDto"
+                        },
+                        "nullable": true
+                    },
+                    "manufacturer": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "ElixirInventorDto": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "firstName": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "lastName": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "FeedbackType": {
+                "enum": [
+                    "General",
+                    "Bug",
+                    "DataError",
+                    "Suggestion"
+                ],
+                "type": "string"
+            },
+            "GetHousesQuery": {
+                "type": "object",
+                "additionalProperties": false
+            },
+            "HouseDto": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "name": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "houseColours": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "founder": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "animal": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "element": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "ghost": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "commonRoom": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "heads": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/HouseHeadDto"
+                        },
+                        "nullable": true
+                    },
+                    "traits": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/TraitDto"
+                        },
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "HouseHeadDto": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "firstName": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "lastName": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "IngredientDto": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "name": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "SendFeedbackCommand": {
+                "type": "object",
+                "properties": {
+                    "feedbackType": {
+                        "$ref": "#/components/schemas/FeedbackType"
+                    },
+                    "feedback": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "entityId": {
+                        "type": "string",
+                        "format": "uuid",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "SpellDto": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "name": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "incantation": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "effect": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "canBeVerbal": {
+                        "type": "boolean",
+                        "nullable": true
+                    },
+                    "type": {
+                        "$ref": "#/components/schemas/SpellType"
+                    },
+                    "light": {
+                        "$ref": "#/components/schemas/SpellLight"
+                    },
+                    "creator": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "SpellLight": {
+                "enum": [
+                    "None",
+                    "Blue",
+                    "IcyBlue",
+                    "Red",
+                    "Gold",
+                    "Purple",
+                    "Transparent",
+                    "White",
+                    "Green",
+                    "Orange",
+                    "Yellow",
+                    "BrightBlue",
+                    "Pink",
+                    "Violet",
+                    "BlueishWhite",
+                    "Silver",
+                    "Scarlet",
+                    "Fire",
+                    "FieryScarlet",
+                    "Grey",
+                    "DarkRed",
+                    "Turquoise",
+                    "PsychedelicTransparentWave",
+                    "BrightYellow",
+                    "BlackSmoke"
+                ],
+                "type": "string"
+            },
+            "SpellType": {
+                "enum": [
+                    "None",
+                    "Charm",
+                    "Conjuration",
+                    "Spell",
+                    "Transfiguration",
+                    "HealingSpell",
+                    "DarkCharm",
+                    "Jinx",
+                    "Curse",
+                    "MagicalTransportation",
+                    "Hex",
+                    "CounterSpell",
+                    "DarkArts",
+                    "CounterJinx",
+                    "CounterCharm",
+                    "Untransfiguration",
+                    "BindingMagicalContract",
+                    "Vanishment"
+                ],
+                "type": "string"
+            },
+            "TraitDto": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "name": {
+                        "$ref": "#/components/schemas/TraitName"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "TraitName": {
+                "enum": [
+                    "None",
+                    "Courage",
+                    "Bravery",
+                    "Determination",
+                    "Daring",
+                    "Nerve",
+                    "Chivalary",
+                    "Hardworking",
+                    "Patience",
+                    "Fairness",
+                    "Just",
+                    "Loyalty",
+                    "Modesty",
+                    "Wit",
+                    "Learning",
+                    "Wisdom",
+                    "Acceptance",
+                    "Inteligence",
+                    "Creativity",
+                    "Resourcefulness",
+                    "Pride",
+                    "Cunning",
+                    "Ambition",
+                    "Selfpreservation"
+                ],
+                "type": "string"
+            },
+            "Unit": {
+                "type": "object",
+                "additionalProperties": false
+            },
+            "WizardDto": {
+                "type": "object",
+                "properties": {
+                    "elixirs": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/WizardElixirDto"
+                        },
+                        "nullable": true
+                    },
+                    "id": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "firstName": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "lastName": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "WizardElixirDto": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "name": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            }
+        }
+    }
+}

@@ -16,10 +16,80 @@
   "author": "SAP SE (https://www.sap.com)",
   "license": "Apache-2.0",
   "main": "index.js",
+  "exports": {
+    ".": "./index.js",
+    "./cds-plugin": "./cds-plugin.js"
+  },
   "files": [
     "lib/",
+    "index.js",
+    "cds-plugin.js",
     "LICENSE"
   ],
+  "cds": {
+    "schema": {
+      "export": {
+        "openapi": {
+          "type": "object",
+          "description": "OpenAPI settings for cds compile",
+          "additionalProperties": false,
+          "properties": {
+            "url": {
+              "type": "string",
+              "description": "Service root URL"
+            },
+            "servers": {
+              "type": "array",
+              "description": "OpenAPI servers array"
+            },
+            "odataVersion": {
+              "type": "string",
+              "description": "OData version (e.g. '4.01', '4.0')"
+            },
+            "scheme": {
+              "type": "string",
+              "description": "URL scheme when url is not set",
+              "default": "https"
+            },
+            "host": {
+              "type": "string",
+              "description": "Host when url is not set",
+              "default": "localhost"
+            },
+            "basePath": {
+              "type": "string",
+              "description": "Base path when url is not set",
+              "default": "/service-root"
+            },
+            "diagram": {
+              "type": "boolean",
+              "description": "Include ER diagram in description",
+              "default": false
+            },
+            "maxLevels": {
+              "type": "integer",
+              "description": "Maximum navigation expansion depth",
+              "default": 5
+            },
+            "shortActionPaths": {
+              "type": "boolean",
+              "description": "Use simplified action path names",
+              "default": false
+            },
+            "defaultProtocol": {
+              "type": "string",
+              "description": "Default protocol for services without @protocol annotation",
+              "default": "odata"
+            }
+          }
+        }
+      },
+      "importFrom": {
+        "const": "openapi",
+        "description": "OpenAPI specification"
+      }
+    }
+  },
   "scripts": {
     "test": "node --test",
     "lint": "npx eslint .",
