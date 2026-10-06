@@ -7,6 +7,15 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ## [Unreleased]
 
 ### Added
+### Changed
+### Deprecated
+### Removed
+### Fixed
+### Security
+
+## [1.7.0] - 2026-10-06
+
+### Added
 - Added `defaultProtocol` configuration option as fallback if no config is provided.
 - Collection responses now include the optional `@odata.nextLink` / `@nextLink` property in their schema, documenting server-driven paging as per the OData specification.
 ### Changed
