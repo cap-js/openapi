@@ -305,6 +305,19 @@ service CatalogService {
       '@protocol must not be mutated by toOpenApi');
   });
 
+  test('REST service does not include /$batch path', () => {
+    const csn = cds.compile.to.csn(`
+      @path: '/rest/v1/myRestAPI'
+      @protocol: 'rest'
+      service MyRestAPI {
+        entity Items { key ID : UUID; }
+      }`
+    );
+    const openapi = toOpenApi(csn);
+    assert.strictEqual(openapi.paths?.['/$batch'], undefined,
+      '/$batch must not be present in OpenAPI output for a REST service');
+  });
+
   test('options: Multiple servers', () => {
     const csn = cds.compile.to.csn(`
       service A {entity E { key ID : UUID; };};`
