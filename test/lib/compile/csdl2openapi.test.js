@@ -512,6 +512,70 @@ describe("Edge cases", () => {
     );
   });
 
+  test("compositions of @readonly entity inherit insert/update/delete restrictions", () => {
+    const csdl = {
+      $Version: "4.01",
+      $Reference: {
+        dummy: {
+          $Include: [
+            { $Namespace: "Org.OData.Capabilities.V1", $Alias: "Capabilities" },
+          ],
+        },
+      },
+      $EntityContainer: "this.Container",
+      this: {
+        Parent: {
+          $Kind: "EntityType",
+          $Key: ["id"],
+          id: {},
+          childMany: {
+            $Kind: "NavigationProperty",
+            $Type: "this.Child",
+            $ContainsTarget: true,
+            $Collection: true,
+          },
+          childOne: {
+            $Kind: "NavigationProperty",
+            $Type: "this.Child",
+            $ContainsTarget: true,
+            $Nullable: true,
+          },
+        },
+        Child: {
+          $Kind: "EntityType",
+          $Key: ["id"],
+          id: {},
+        },
+        Container: {
+          Parents: {
+            $Type: "this.Parent",
+            $Collection: true,
+            "@Capabilities.InsertRestrictions": { Insertable: false },
+            "@Capabilities.UpdateRestrictions": { Updatable: false },
+            "@Capabilities.DeleteRestrictions": { Deletable: false },
+          },
+        },
+      },
+    };
+    const expected = {
+      paths: {
+        "/Parents": { get: {} },
+        "/Parents('{id}')": { get: {} },
+        "/Parents('{id}')/childMany": { get: {} },
+        "/Parents('{id}')/childMany('{id_1}')": { get: {} },
+        "/Parents('{id}')/childOne": { get: {} },
+        "/$batch": { post: {} },
+      },
+    };
+    const actual = lib.csdl2openapi(csdl, {});
+    assert.deepStrictEqual(paths(actual), paths(expected), "Paths");
+    assert.deepStrictEqual(
+      operations(actual),
+      operations(expected),
+      "Operations"
+    );
+  });
+
   test("circular reference on collect primitive paths", () => {
     const csdl = {
       $EntityContainer: "this.Container",
