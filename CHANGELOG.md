@@ -11,6 +11,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ### Deprecated
 ### Removed
 ### Fixed
+- Collection responses now use `@odata.count` and `@odata.nextLink` instead of the OData 4.01 short forms `@count` and `@nextLink`, matching what CAP actually returns at runtime. Navigation property expansion count is likewise corrected from `nav@count` to `nav@odata.count`.
 ### Security
 
 ## [1.7.0] - 2026-10-06

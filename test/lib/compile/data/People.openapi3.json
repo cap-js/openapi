@@ -152,7 +152,7 @@
                   "type": "object",
                   "title": "Collection of Person",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -161,7 +161,7 @@
                         "$ref": "#/components/schemas/PeopleService.Person"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -505,7 +505,7 @@
                   "type": "object",
                   "title": "Collection of PersonDetail",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -514,7 +514,7 @@
                         "$ref": "#/components/schemas/PeopleService.PersonDetail"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -916,7 +916,7 @@
                   "type": "object",
                   "title": "Collection of Supplier",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -925,7 +925,7 @@
                         "$ref": "#/components/schemas/PeopleService.Supplier"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -1135,7 +1135,7 @@
                   "type": "object",
                   "title": "Collection of Product",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -1144,7 +1144,7 @@
                         "$ref": "./Products.openapi3.json#/components/schemas/ProductService.Product"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -1688,7 +1688,7 @@
               "$ref": "./Products.openapi3.json#/components/schemas/ProductService.Product"
             }
           },
-          "Products@count": {
+          "Products@odata.count": {
             "$ref": "#/components/schemas/count"
           }
         }
