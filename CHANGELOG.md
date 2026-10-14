@@ -11,6 +11,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ### Deprecated
 ### Removed
 ### Fixed
+- Compositions of `@readonly` entities no longer advertise write operations (POST/PATCH/DELETE) on their navigation paths
 ### Security
 
 ## [1.7.0] - 2026-10-06
