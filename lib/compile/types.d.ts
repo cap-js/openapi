@@ -48,7 +48,8 @@ type SingleSchema = (StringSchema | NumberSchema | BooleanSchema | ArraySchema |
 
 type AnyOf = { anyOf: Schema[] } & Meta
 type AllOf = { allOf: Schema[] } & Meta
-type MultiSchema = AnyOf | AllOf
+type OneOf = { oneOf: Schema[] } & Meta
+type MultiSchema = AnyOf | AllOf | OneOf
 
 export type Schema = (SingleSchema | MultiSchema)
 
@@ -100,7 +101,7 @@ type Response = {
     required?: boolean,
     description?: string,
     content?: {[mime in MIMEType]?: {
-        schema?: SingleSchema & { title?: string },
+        schema?: Schema & { title?: string },
         example?: string
     }},
     responses?: Record<string, { $ref: string }>,
