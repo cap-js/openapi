@@ -12,6 +12,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ### Removed
 ### Fixed
 - When a pre-linked (`LinkedCSN`) model is passed to `compile()`, the prototype chain is now preserved after internal cloning, preventing `Element "IsActiveEntity" does not result from the query` errors with `@sap/cds-compiler` v7.x when used via `@cap-js/ord`
+- Compositions of `@readonly` entities no longer advertise write operations (POST/PATCH/DELETE) on their navigation paths
 ### Security
 
 ## [1.7.0] - 2026-10-06
