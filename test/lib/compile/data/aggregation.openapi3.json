@@ -883,7 +883,7 @@
               "$ref": "#/components/schemas/org.example.odata.salesservice.Product"
             }
           },
-          "Products@count": {
+          "Products@odata.count": {
             "$ref": "#/components/schemas/count"
           },
           "Name": {
@@ -943,7 +943,7 @@
               "$ref": "#/components/schemas/org.example.odata.salesservice.Sales"
             }
           },
-          "Sales@count": {
+          "Sales@odata.count": {
             "$ref": "#/components/schemas/count"
           },
           "Name": {
@@ -975,7 +975,7 @@
               "$ref": "#/components/schemas/org.example.odata.salesservice.Sales"
             }
           },
-          "Sales@count": {
+          "Sales@odata.count": {
             "$ref": "#/components/schemas/count"
           },
           "Name": {

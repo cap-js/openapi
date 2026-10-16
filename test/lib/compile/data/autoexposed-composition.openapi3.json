@@ -618,7 +618,7 @@
               "$ref": "#/components/schemas/MyService.OrderItems"
             }
           },
-          "items@count": {
+          "items@odata.count": {
             "$ref": "#/components/schemas/count"
           }
         }

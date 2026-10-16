@@ -2805,7 +2805,7 @@
               "$ref": "#/components/schemas/org.example.Product"
             }
           },
-          "Products@count": {
+          "Products@odata.count": {
             "$ref": "#/components/schemas/count"
           }
         }

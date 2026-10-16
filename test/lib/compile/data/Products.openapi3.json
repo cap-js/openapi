@@ -1944,7 +1944,7 @@
               "$ref": "#/components/schemas/ProductService.Product"
             }
           },
-          "Products@count": {
+          "Products@odata.count": {
             "$ref": "#/components/schemas/count"
           }
         }
@@ -2025,7 +2025,7 @@
               "$ref": "#/components/schemas/ProductService.Category"
             }
           },
-          "Categories@count": {
+          "Categories@odata.count": {
             "$ref": "#/components/schemas/count"
           },
           "Supplier": {
@@ -2192,7 +2192,7 @@
               "$ref": "#/components/schemas/ProductService.Category"
             }
           },
-          "Categories@count": {
+          "Categories@odata.count": {
             "$ref": "#/components/schemas/count"
           },
           "Supplier": {

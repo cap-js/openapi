@@ -760,7 +760,7 @@
               "$ref": "#/components/schemas/UsageService.UsageRecordCustomReferences"
             }
           },
-          "customReferences@count": {
+          "customReferences@odata.count": {
             "$ref": "#/components/schemas/count"
           }
         }

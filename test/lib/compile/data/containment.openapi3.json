@@ -5123,7 +5123,7 @@
               "$ref": "#/components/schemas/Containment.Folder"
             }
           },
-          "Folders@count": {
+          "Folders@odata.count": {
             "$ref": "#/components/schemas/count"
           }
         }
@@ -5188,7 +5188,7 @@
               "$ref": "#/components/schemas/Containment.SubPart"
             }
           },
-          "Many@count": {
+          "Many@odata.count": {
             "$ref": "#/components/schemas/count"
           },
           "ManyReadListOnly": {
@@ -5197,7 +5197,7 @@
               "$ref": "#/components/schemas/Containment.SubPart"
             }
           },
-          "ManyReadListOnly@count": {
+          "ManyReadListOnly@odata.count": {
             "$ref": "#/components/schemas/count"
           },
           "ManyReadByKeyOnly": {
@@ -5206,7 +5206,7 @@
               "$ref": "#/components/schemas/Containment.SubPart"
             }
           },
-          "ManyReadByKeyOnly@count": {
+          "ManyReadByKeyOnly@odata.count": {
             "$ref": "#/components/schemas/count"
           }
         }
@@ -5343,7 +5343,7 @@
               "$ref": "#/components/schemas/Containment.Part"
             }
           },
-          "Many@count": {
+          "Many@odata.count": {
             "$ref": "#/components/schemas/count"
           }
         }

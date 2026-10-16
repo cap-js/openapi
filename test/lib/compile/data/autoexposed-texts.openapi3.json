@@ -584,7 +584,7 @@
               "$ref": "#/components/schemas/AdminService.Books_texts"
             }
           },
-          "texts@count": {
+          "texts@odata.count": {
             "$ref": "#/components/schemas/count"
           }
         }

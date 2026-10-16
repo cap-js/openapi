@@ -10534,7 +10534,7 @@
               "$ref": "#/components/schemas/NorthwindModel.Product"
             }
           },
-          "Products@count": {
+          "Products@odata.count": {
             "$ref": "#/components/schemas/count"
           }
         }
@@ -10760,7 +10760,7 @@
               "$ref": "#/components/schemas/NorthwindModel.Order"
             }
           },
-          "Orders@count": {
+          "Orders@odata.count": {
             "$ref": "#/components/schemas/count"
           },
           "CustomerDemographics": {
@@ -10769,7 +10769,7 @@
               "$ref": "#/components/schemas/NorthwindModel.CustomerDemographic"
             }
           },
-          "CustomerDemographics@count": {
+          "CustomerDemographics@odata.count": {
             "$ref": "#/components/schemas/count"
           }
         }
@@ -10909,7 +10909,7 @@
               "$ref": "#/components/schemas/NorthwindModel.Customer"
             }
           },
-          "Customers@count": {
+          "Customers@odata.count": {
             "$ref": "#/components/schemas/count"
           }
         }
@@ -11107,7 +11107,7 @@
               "$ref": "#/components/schemas/NorthwindModel.Employee"
             }
           },
-          "Employees1@count": {
+          "Employees1@odata.count": {
             "$ref": "#/components/schemas/count"
           },
           "Employee1": {
@@ -11124,7 +11124,7 @@
               "$ref": "#/components/schemas/NorthwindModel.Order"
             }
           },
-          "Orders@count": {
+          "Orders@odata.count": {
             "$ref": "#/components/schemas/count"
           },
           "Territories": {
@@ -11133,7 +11133,7 @@
               "$ref": "#/components/schemas/NorthwindModel.Territory"
             }
           },
-          "Territories@count": {
+          "Territories@odata.count": {
             "$ref": "#/components/schemas/count"
           }
         }
@@ -11903,7 +11903,7 @@
               "$ref": "#/components/schemas/NorthwindModel.Order_Detail"
             }
           },
-          "Order_Details@count": {
+          "Order_Details@odata.count": {
             "$ref": "#/components/schemas/count"
           },
           "Shipper": {
@@ -12892,7 +12892,7 @@
               "$ref": "#/components/schemas/NorthwindModel.Order_Detail"
             }
           },
-          "Order_Details@count": {
+          "Order_Details@odata.count": {
             "$ref": "#/components/schemas/count"
           },
           "Supplier": {
@@ -13286,7 +13286,7 @@
               "$ref": "#/components/schemas/NorthwindModel.Territory"
             }
           },
-          "Territories@count": {
+          "Territories@odata.count": {
             "$ref": "#/components/schemas/count"
           }
         }
@@ -13540,7 +13540,7 @@
               "$ref": "#/components/schemas/NorthwindModel.Order"
             }
           },
-          "Orders@count": {
+          "Orders@odata.count": {
             "$ref": "#/components/schemas/count"
           }
         }
@@ -13839,7 +13839,7 @@
               "$ref": "#/components/schemas/NorthwindModel.Product"
             }
           },
-          "Products@count": {
+          "Products@odata.count": {
             "$ref": "#/components/schemas/count"
           }
         }
@@ -13994,7 +13994,7 @@
               "$ref": "#/components/schemas/NorthwindModel.Employee"
             }
           },
-          "Employees@count": {
+          "Employees@odata.count": {
             "$ref": "#/components/schemas/count"
           }
         }

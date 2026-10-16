@@ -3313,7 +3313,7 @@
               "$ref": "#/components/schemas/ODataDemo.Product"
             }
           },
-          "Products@count": {
+          "Products@odata.count": {
             "$ref": "#/components/schemas/count"
           }
         }
@@ -3621,7 +3621,7 @@
               "$ref": "#/components/schemas/ODataDemo.Category"
             }
           },
-          "Categories@count": {
+          "Categories@odata.count": {
             "$ref": "#/components/schemas/count"
           },
           "Supplier": {
@@ -3970,7 +3970,7 @@
               "$ref": "#/components/schemas/ODataDemo.Category"
             }
           },
-          "Categories@count": {
+          "Categories@odata.count": {
             "$ref": "#/components/schemas/count"
           },
           "Supplier": {
@@ -4185,7 +4185,7 @@
               "$ref": "#/components/schemas/ODataDemo.Product"
             }
           },
-          "Products@count": {
+          "Products@odata.count": {
             "$ref": "#/components/schemas/count"
           }
         }

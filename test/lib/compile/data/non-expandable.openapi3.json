@@ -1067,7 +1067,7 @@
               "$ref": "#/components/schemas/CatalogService.Pages"
             }
           },
-          "pages@count": {
+          "pages@odata.count": {
             "$ref": "#/components/schemas/count"
           }
         }

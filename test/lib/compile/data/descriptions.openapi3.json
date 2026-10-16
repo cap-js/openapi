@@ -3495,7 +3495,7 @@
               "$ref": "#/components/schemas/descriptions.subEntity"
             }
           },
-          "contained@count": {
+          "contained@odata.count": {
             "$ref": "#/components/schemas/count"
           },
           "related": {
@@ -3504,7 +3504,7 @@
               "$ref": "#/components/schemas/descriptions.entity"
             }
           },
-          "related@count": {
+          "related@odata.count": {
             "$ref": "#/components/schemas/count"
           }
         },

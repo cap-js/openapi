@@ -1688,7 +1688,7 @@
               "$ref": "./Products.openapi3.json#/components/schemas/ProductService.Product"
             }
           },
-          "Products@count": {
+          "Products@odata.count": {
             "$ref": "#/components/schemas/count"
           }
         }
