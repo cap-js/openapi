@@ -642,7 +642,7 @@ describe("Edge cases", () => {
 
     const openapi = lib.csdl2openapi(csdl, {});
     assert.deepStrictEqual(
-      openapi.paths["/sources"].get.parameters[5],
+      openapi.paths["/sources"].get.parameters[6],
       expected_sources_get_param
     );
   });
@@ -1400,6 +1400,7 @@ describe("Edge cases", () => {
             parameters: [
               { $ref: "#/components/parameters/top" },
               { $ref: "#/components/parameters/skip" },
+              { $ref: "#/components/parameters/skiptoken" },
               { $ref: "#/components/parameters/search" },
               {
                 in: "query",
@@ -1587,6 +1588,7 @@ describe("Edge cases", () => {
             parameters: [
               { $ref: "#/components/parameters/top" },
               { $ref: "#/components/parameters/skip" },
+              { $ref: "#/components/parameters/skiptoken" },
               { $ref: "#/components/parameters/search" },
               {
                 in: "query",
@@ -1785,6 +1787,7 @@ see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-prot
             parameters: [
               { $ref: "#/components/parameters/top" },
               { $ref: "#/components/parameters/skip" },
+              { $ref: "#/components/parameters/skiptoken" },
               { $ref: "#/components/parameters/search" },
               {
                 in: "query",
@@ -1973,6 +1976,7 @@ see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-prot
             parameters: [
               { $ref: "#/components/parameters/top" },
               { $ref: "#/components/parameters/skip" },
+              { $ref: "#/components/parameters/skiptoken" },
               { $ref: "#/components/parameters/search" },
               {
                 in: "query",
@@ -2168,6 +2172,7 @@ see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-prot
             parameters: [
               { $ref: "#/components/parameters/top" },
               { $ref: "#/components/parameters/skip" },
+              { $ref: "#/components/parameters/skiptoken" },
               {
                 in: "query",
                 name: "$search",
@@ -3501,6 +3506,7 @@ describe("CAP / CS01", () => {
             parameters: [
               { $ref: "#/components/parameters/top" },
               { $ref: "#/components/parameters/skip" },
+              { $ref: "#/components/parameters/skiptoken" },
               { $ref: "#/components/parameters/search" },
               {
                 in: "query",
