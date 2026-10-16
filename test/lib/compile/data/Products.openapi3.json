@@ -158,7 +158,7 @@
                   "type": "object",
                   "title": "Collection of Advertisement",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -167,7 +167,7 @@
                         "$ref": "#/components/schemas/ProductService.Advertisement"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -561,7 +561,7 @@
                   "type": "object",
                   "title": "Collection of Category",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -570,7 +570,7 @@
                         "$ref": "#/components/schemas/ProductService.Category"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -848,7 +848,7 @@
                   "type": "object",
                   "title": "Collection of Product",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -857,7 +857,7 @@
                         "$ref": "#/components/schemas/ProductService.Product"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -996,7 +996,7 @@
                   "type": "object",
                   "title": "Collection of ProductDetail",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -1005,7 +1005,7 @@
                         "$ref": "#/components/schemas/ProductService.ProductDetail"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -1349,7 +1349,7 @@
                   "type": "object",
                   "title": "Collection of Product",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -1358,7 +1358,7 @@
                         "$ref": "#/components/schemas/ProductService.Product"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -1626,7 +1626,7 @@
                   "type": "object",
                   "title": "Collection of Category",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -1635,7 +1635,7 @@
                         "$ref": "#/components/schemas/ProductService.Category"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"

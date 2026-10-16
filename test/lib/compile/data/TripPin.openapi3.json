@@ -141,7 +141,7 @@
                   "type": "object",
                   "title": "Collection of Airline",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -150,7 +150,7 @@
                         "$ref": "#/components/schemas/Microsoft.OData.SampleService.Models.TripPin.Airline"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -377,7 +377,7 @@
                   "type": "object",
                   "title": "Collection of Airport",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -386,7 +386,7 @@
                         "$ref": "#/components/schemas/Microsoft.OData.SampleService.Models.TripPin.Airport"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -746,7 +746,7 @@
                   "type": "object",
                   "title": "Collection of Person",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -755,7 +755,7 @@
                         "$ref": "#/components/schemas/Microsoft.OData.SampleService.Models.TripPin.Person"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -855,7 +855,7 @@
                   "type": "object",
                   "title": "Collection of Trip",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -864,7 +864,7 @@
                         "$ref": "#/components/schemas/Microsoft.OData.SampleService.Models.TripPin.Trip"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -1067,7 +1067,7 @@
                   "type": "object",
                   "title": "Collection of Trip",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -1076,7 +1076,7 @@
                         "$ref": "#/components/schemas/Microsoft.OData.SampleService.Models.TripPin.Trip"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -1268,7 +1268,7 @@
                   "type": "object",
                   "title": "Collection of Person",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -1277,7 +1277,7 @@
                         "$ref": "#/components/schemas/Microsoft.OData.SampleService.Models.TripPin.Person"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -1378,7 +1378,7 @@
                   "type": "object",
                   "title": "Collection of Photo",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -1387,7 +1387,7 @@
                         "$ref": "#/components/schemas/Microsoft.OData.SampleService.Models.TripPin.Photo"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -1497,7 +1497,7 @@
                   "type": "object",
                   "title": "Collection of PlanItem",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -1506,7 +1506,7 @@
                         "$ref": "#/components/schemas/Microsoft.OData.SampleService.Models.TripPin.PlanItem"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -1773,7 +1773,7 @@
                   "type": "object",
                   "title": "Collection of Person",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -1782,7 +1782,7 @@
                         "$ref": "#/components/schemas/Microsoft.OData.SampleService.Models.TripPin.Person"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -2070,7 +2070,7 @@
                   "type": "object",
                   "title": "Collection of Person",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -2079,7 +2079,7 @@
                         "$ref": "#/components/schemas/Microsoft.OData.SampleService.Models.TripPin.Person"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -2197,7 +2197,7 @@
                   "type": "object",
                   "title": "Collection of Trip",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -2206,7 +2206,7 @@
                         "$ref": "#/components/schemas/Microsoft.OData.SampleService.Models.TripPin.Trip"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -2442,7 +2442,7 @@
                   "type": "object",
                   "title": "Collection of Trip",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -2451,7 +2451,7 @@
                         "$ref": "#/components/schemas/Microsoft.OData.SampleService.Models.TripPin.Trip"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -2661,7 +2661,7 @@
                   "type": "object",
                   "title": "Collection of Person",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -2670,7 +2670,7 @@
                         "$ref": "#/components/schemas/Microsoft.OData.SampleService.Models.TripPin.Person"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -2780,7 +2780,7 @@
                   "type": "object",
                   "title": "Collection of Photo",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -2789,7 +2789,7 @@
                         "$ref": "#/components/schemas/Microsoft.OData.SampleService.Models.TripPin.Photo"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -2908,7 +2908,7 @@
                   "type": "object",
                   "title": "Collection of PlanItem",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -2917,7 +2917,7 @@
                         "$ref": "#/components/schemas/Microsoft.OData.SampleService.Models.TripPin.PlanItem"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -3153,7 +3153,7 @@
                   "type": "object",
                   "title": "Collection of Photo",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -3162,7 +3162,7 @@
                         "$ref": "#/components/schemas/Microsoft.OData.SampleService.Models.TripPin.Photo"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"

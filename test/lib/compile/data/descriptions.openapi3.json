@@ -322,7 +322,7 @@
                   "type": "object",
                   "title": "Collection of entity",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -331,7 +331,7 @@
                         "$ref": "#/components/schemas/descriptions.entity"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -623,7 +623,7 @@
                   "type": "object",
                   "title": "Collection of subEntity",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -632,7 +632,7 @@
                         "$ref": "#/components/schemas/descriptions.subEntity"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -989,7 +989,7 @@
                   "type": "object",
                   "title": "Collection of entity",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -998,7 +998,7 @@
                         "$ref": "#/components/schemas/descriptions.entity"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -1268,7 +1268,7 @@
                   "type": "object",
                   "title": "Collection of entity",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -1277,7 +1277,7 @@
                         "$ref": "#/components/schemas/descriptions.entity"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -1524,7 +1524,7 @@
                   "type": "object",
                   "title": "Collection of subEntity",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -1533,7 +1533,7 @@
                         "$ref": "#/components/schemas/descriptions.subEntity"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -1855,7 +1855,7 @@
                   "type": "object",
                   "title": "Collection of entity",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -1864,7 +1864,7 @@
                         "$ref": "#/components/schemas/descriptions.entity"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -2394,7 +2394,7 @@
                   "type": "object",
                   "title": "Collection of subEntity",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -2403,7 +2403,7 @@
                         "$ref": "#/components/schemas/descriptions.subEntity"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -2690,7 +2690,7 @@
                   "type": "object",
                   "title": "Collection of entity",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -2699,7 +2699,7 @@
                         "$ref": "#/components/schemas/descriptions.entity"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -3013,7 +3013,7 @@
                   "type": "object",
                   "title": "Collection of subEntity",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -3022,7 +3022,7 @@
                         "$ref": "#/components/schemas/descriptions.subEntity"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -3309,7 +3309,7 @@
                   "type": "object",
                   "title": "Collection of entity",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -3318,7 +3318,7 @@
                         "$ref": "#/components/schemas/descriptions.entity"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
