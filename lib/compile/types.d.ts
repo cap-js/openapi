@@ -60,6 +60,19 @@ export type TargetRestrictions = {
     $Type?: string
 }
 
+export type InsertRestrictions = { Insertable?: boolean, [key: string]: unknown }
+export type UpdateRestrictions = { Updatable?: boolean, [key: string]: unknown }
+export type DeleteRestrictions = { Deletable?: boolean, [key: string]: unknown }
+
+/** Restrictions on a single navigation property path, from NavigationRestrictions.RestrictedProperties */
+export type NavPropertyRestrictions = {
+    InsertRestrictions?: InsertRestrictions
+    UpdateRestrictions?: UpdateRestrictions
+    DeleteRestrictions?: DeleteRestrictions
+    [key: string]: unknown
+}
+
+
 // despite how CSDL is defined in the standard,
 // we assume to be working with its .properties field
 // throughout our conversion
