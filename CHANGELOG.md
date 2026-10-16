@@ -12,6 +12,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ### Removed
 ### Fixed
 - Collection responses now use `@odata.count` and `@odata.nextLink` instead of the OData 4.01 short forms `@count` and `@nextLink`, matching what CAP actually returns at runtime. Navigation property expansion count is likewise corrected from `nav@count` to `nav@odata.count`.
+- Compositions of `@readonly` entities no longer advertise write operations (POST/PATCH/DELETE) on their navigation paths
 ### Security
 
 ## [1.7.0] - 2026-10-06
