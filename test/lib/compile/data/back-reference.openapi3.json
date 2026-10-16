@@ -146,7 +146,7 @@
                   "type": "object",
                   "title": "Collection of UsageRecords",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -155,7 +155,7 @@
                         "$ref": "#/components/schemas/UsageService.UsageRecords"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -420,7 +420,7 @@
                   "type": "object",
                   "title": "Collection of UsageRecordCustomReferences",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -429,7 +429,7 @@
                         "$ref": "#/components/schemas/UsageService.UsageRecordCustomReferences"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -760,7 +760,7 @@
               "$ref": "#/components/schemas/UsageService.UsageRecordCustomReferences"
             }
           },
-          "customReferences@count": {
+          "customReferences@odata.count": {
             "$ref": "#/components/schemas/count"
           }
         }
