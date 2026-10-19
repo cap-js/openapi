@@ -3032,6 +3032,62 @@ see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-prot
       "label with multiple i18n placeholders must not be split"
     );
   });
+
+  it("preserves i18n placeholder in operation summary for navigation properties", () => {
+    const csdl = {
+      $Version: "4.01",
+      $Reference: {
+        dummy: {
+          $Include: [
+            { $Namespace: "com.sap.vocabularies.Common.v1", $Alias: "Common" },
+          ],
+        },
+      },
+      $EntityContainer: "TestService.Container",
+      TestService: {
+        Container: {
+          $Kind: "EntityContainer",
+          Books: {
+            $Collection: true,
+            $Type: "TestService.Books",
+            $ContainsTarget: true,
+            $NavigationPropertyBinding: { currency: "Currencies" },
+          },
+          Currencies: {
+            $Collection: true,
+            $Type: "TestService.Currencies",
+          },
+        },
+        Books: {
+          $Kind: "EntityType",
+          $Key: ["ID"],
+          ID: { $Type: "Edm.Guid" },
+          currency: {
+            $Kind: "NavigationProperty",
+            $Type: "TestService.Currencies",
+            $Nullable: true,
+            $ContainsTarget: false,
+          },
+        },
+        Currencies: {
+          $Kind: "EntityType",
+          $Key: ["code"],
+          code: { $Type: "Edm.String", $MaxLength: 3 },
+        },
+        $Annotations: {
+          "TestService.Books": { "@Common.Label": "{i18n>entity.BooksPlural}" },
+        },
+      },
+    };
+    const openapi = lib.csdl2openapi(csdl, {});
+    const getOp = openapi.paths["/Books({ID})/currency"]?.get;
+    assert.ok(getOp, "GET /Books({ID})/currency must exist");
+    assert.match(
+      getOp.summary,
+      /{i18n>entity\.BooksPlural}/,
+      "i18n placeholder in source entity label must not be split in operation summary"
+    );
+  });
 });
 
 describe("Bound action path naming", () => {
