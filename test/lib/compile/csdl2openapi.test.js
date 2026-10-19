@@ -3659,6 +3659,66 @@ see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-prot
   });
 });
 
+describe("REST protocol", () => {
+  const csdl = {
+    $EntityContainer: "this.Container",
+    this: {
+      Book: {
+        $Kind: "EntityType",
+        $Key: ["ID"],
+        ID: { $Type: "Edm.Int32" },
+        title: { $Nullable: true },
+        authors: { $Kind: "NavigationProperty", $Type: "this.Author", $Collection: true },
+      },
+      Author: {
+        $Kind: "EntityType",
+        $Key: ["ID"],
+        ID: { $Type: "Edm.Int32" },
+      },
+      Container: {
+        Books: { $Type: "this.Book", $Collection: true },
+      },
+    },
+  };
+
+  test("REST collection response uses oneOf: bare array OR object with count+value", () => {
+    const openapi = lib.csdl2openapi(csdl, { protocol: "rest" });
+    const schema = openapi.paths["/Books"].get.responses[200].content["application/json"].schema;
+    assert.ok(Array.isArray(schema.oneOf), "REST collection response schema must use oneOf");
+    assert.strictEqual(schema.oneOf.length, 2, "oneOf must have exactly 2 variants");
+
+    const [arrayVariant, objectVariant] = schema.oneOf;
+    assert.strictEqual(arrayVariant.type, "array", "first variant must be bare array");
+
+    assert.strictEqual(objectVariant.type, "object", "second variant must be object");
+    assert.ok("value" in objectVariant.properties, "object variant must have value property");
+    assert.ok("count" in objectVariant.properties, "object variant must use 'count' (not '@count') for REST");
+    assert.ok(!("@count" in objectVariant.properties), "object variant must not use '@count'");
+    assert.ok(!("@odata.count" in objectVariant.properties), "object variant must not use '@odata.count'");
+  });
+
+  test("REST collection response has no @odata.nextLink", () => {
+    const openapi = lib.csdl2openapi(csdl, { protocol: "rest" });
+    const schema = openapi.paths["/Books"].get.responses[200].content["application/json"].schema;
+    const schemaStr = JSON.stringify(schema);
+    assert.ok(!schemaStr.includes("nextLink"), "REST collection response must not include nextLink");
+  });
+
+  test("REST nav-property expansion uses @odata.count", () => {
+    const openapi = lib.csdl2openapi(csdl, { protocol: "rest" });
+    const bookSchema = openapi.components.schemas["this.Book"].properties;
+    assert.ok("authors@odata.count" in bookSchema, "nav-property expansion must use authors@odata.count");
+    assert.ok(!("authors@count" in bookSchema), "must not emit bare authors@count");
+  });
+
+  test("OData collection response is unaffected by REST changes", () => {
+    const openapi = lib.csdl2openapi(csdl, {});
+    const schema = openapi.paths["/Books"].get.responses[200].content["application/json"].schema;
+    assert.ok(!schema.oneOf, "OData collection response must not use oneOf");
+    assert.strictEqual(schema.type, "object", "OData collection response must be an object");
+  });
+});
+
 function check(actual, expected) {
   assert.deepStrictEqual(paths(actual), paths(expected), "Paths");
   assert.deepStrictEqual(
