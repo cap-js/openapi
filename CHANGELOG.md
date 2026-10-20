@@ -11,6 +11,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ### Deprecated
 ### Removed
 ### Fixed
+- When a pre-linked (`LinkedCSN`) model is passed to `compile()`, the prototype chain is now preserved after internal cloning, preventing `Element "IsActiveEntity" does not result from the query` errors with `@sap/cds-compiler` v7.x when used via `@cap-js/ord`
 - REST collection responses now accurately document both response shapes using `oneOf`: a bare array (returned without `$count`) and an object with `count` + `value` (returned with `$count=true`). Previously the spec always described an object wrapper that didn't match the bare-array response.
 - REST collection responses now use `count` (not `@count`) as the count property name, matching the actual CAP REST runtime response.
 - Navigation property expansion count is corrected from `nav@count` to `nav@odata.count` for both OData and REST protocols.

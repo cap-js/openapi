@@ -305,6 +305,24 @@ service CatalogService {
       '@protocol must not be mutated by toOpenApi');
   });
 
+  test('succeeds when called with a pre-linked (LinkedCSN) model', () => {
+    const raw = cds.compile.to.csn(`
+      namespace base;
+      entity ApprovalItems { key ID: UUID; name: String; }
+
+      @odata.draft.enabled
+      service ApprovalItemService {
+        entity ApprovalItems as SELECT from base.ApprovalItems { ID, name };
+      }
+    `);
+    const linked = cds.linked(raw);
+    assert.equal(Object.getPrototypeOf(linked)?.constructor?.name, 'LinkedCSN',
+      'precondition: model must be LinkedCSN');
+    // Must not throw "Element IsActiveEntity does not result from the query"
+    const result = toOpenApi(linked);
+    assert.ok(result?.paths, 'must return an OpenAPI document');
+  });
+
   test('REST service does not include /$batch path', () => {
     const csn = cds.compile.to.csn(`
       @path: '/rest/v1/myRestAPI'
