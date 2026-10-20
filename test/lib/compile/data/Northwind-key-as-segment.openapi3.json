@@ -231,7 +231,7 @@
                   "type": "object",
                   "title": "Collection of Alphabetical_list_of_product",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -240,7 +240,7 @@
                         "$ref": "#/components/schemas/NorthwindModel.Alphabetical_list_of_product"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -515,7 +515,7 @@
                   "type": "object",
                   "title": "Collection of Category",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -524,7 +524,7 @@
                         "$ref": "#/components/schemas/NorthwindModel.Category"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -813,7 +813,7 @@
                   "type": "object",
                   "title": "Collection of Product",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -822,7 +822,7 @@
                         "$ref": "#/components/schemas/NorthwindModel.Product"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -944,7 +944,7 @@
                   "type": "object",
                   "title": "Collection of Category_Sales_for_1997",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -953,7 +953,7 @@
                         "$ref": "#/components/schemas/NorthwindModel.Category_Sales_for_1997"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -1167,7 +1167,7 @@
                   "type": "object",
                   "title": "Collection of Current_Product_List",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -1176,7 +1176,7 @@
                         "$ref": "#/components/schemas/NorthwindModel.Current_Product_List"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -1417,7 +1417,7 @@
                   "type": "object",
                   "title": "Collection of CustomerDemographic",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -1426,7 +1426,7 @@
                         "$ref": "#/components/schemas/NorthwindModel.CustomerDemographic"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -1715,7 +1715,7 @@
                   "type": "object",
                   "title": "Collection of Customer",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -1724,7 +1724,7 @@
                         "$ref": "#/components/schemas/NorthwindModel.Customer"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -1852,7 +1852,7 @@
                   "type": "object",
                   "title": "Collection of Customer_and_Suppliers_by_City",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -1861,7 +1861,7 @@
                         "$ref": "#/components/schemas/NorthwindModel.Customer_and_Suppliers_by_City"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -2132,7 +2132,7 @@
                   "type": "object",
                   "title": "Collection of Customer",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -2141,7 +2141,7 @@
                         "$ref": "#/components/schemas/NorthwindModel.Customer"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -2412,7 +2412,7 @@
                   "type": "object",
                   "title": "Collection of CustomerDemographic",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -2421,7 +2421,7 @@
                         "$ref": "#/components/schemas/NorthwindModel.CustomerDemographic"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -2612,7 +2612,7 @@
                   "type": "object",
                   "title": "Collection of Order",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -2621,7 +2621,7 @@
                         "$ref": "#/components/schemas/NorthwindModel.Order"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -2811,7 +2811,7 @@
                   "type": "object",
                   "title": "Collection of Employee",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -2820,7 +2820,7 @@
                         "$ref": "#/components/schemas/NorthwindModel.Employee"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -3240,7 +3240,7 @@
                   "type": "object",
                   "title": "Collection of Employee",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -3249,7 +3249,7 @@
                         "$ref": "#/components/schemas/NorthwindModel.Employee"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -3439,7 +3439,7 @@
                   "type": "object",
                   "title": "Collection of Order",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -3448,7 +3448,7 @@
                         "$ref": "#/components/schemas/NorthwindModel.Order"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -3604,7 +3604,7 @@
                   "type": "object",
                   "title": "Collection of Territory",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -3613,7 +3613,7 @@
                         "$ref": "#/components/schemas/NorthwindModel.Territory"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -3807,7 +3807,7 @@
                   "type": "object",
                   "title": "Collection of Invoice",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -3816,7 +3816,7 @@
                         "$ref": "#/components/schemas/NorthwindModel.Invoice"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -4180,7 +4180,7 @@
                   "type": "object",
                   "title": "Collection of Order_Detail",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -4189,7 +4189,7 @@
                         "$ref": "#/components/schemas/NorthwindModel.Order_Detail"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -4638,7 +4638,7 @@
                   "type": "object",
                   "title": "Collection of Order_Details_Extended",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -4647,7 +4647,7 @@
                         "$ref": "#/components/schemas/NorthwindModel.Order_Details_Extended"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -4935,7 +4935,7 @@
                   "type": "object",
                   "title": "Collection of Order_Subtotal",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -4944,7 +4944,7 @@
                         "$ref": "#/components/schemas/NorthwindModel.Order_Subtotal"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -5214,7 +5214,7 @@
                   "type": "object",
                   "title": "Collection of Order",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -5223,7 +5223,7 @@
                         "$ref": "#/components/schemas/NorthwindModel.Order"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -5682,7 +5682,7 @@
                   "type": "object",
                   "title": "Collection of Order_Detail",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -5691,7 +5691,7 @@
                         "$ref": "#/components/schemas/NorthwindModel.Order_Detail"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -5940,7 +5940,7 @@
                   "type": "object",
                   "title": "Collection of Orders_Qry",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -5949,7 +5949,7 @@
                         "$ref": "#/components/schemas/NorthwindModel.Orders_Qry"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -6194,7 +6194,7 @@
                   "type": "object",
                   "title": "Collection of Product_Sales_for_1997",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -6203,7 +6203,7 @@
                         "$ref": "#/components/schemas/NorthwindModel.Product_Sales_for_1997"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -6471,7 +6471,7 @@
                   "type": "object",
                   "title": "Collection of Product",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -6480,7 +6480,7 @@
                         "$ref": "#/components/schemas/NorthwindModel.Product"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -6835,7 +6835,7 @@
                   "type": "object",
                   "title": "Collection of Order_Detail",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -6844,7 +6844,7 @@
                         "$ref": "#/components/schemas/NorthwindModel.Order_Detail"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -7048,7 +7048,7 @@
                   "type": "object",
                   "title": "Collection of Products_Above_Average_Price",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -7057,7 +7057,7 @@
                         "$ref": "#/components/schemas/NorthwindModel.Products_Above_Average_Price"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -7280,7 +7280,7 @@
                   "type": "object",
                   "title": "Collection of Products_by_Category",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -7289,7 +7289,7 @@
                         "$ref": "#/components/schemas/NorthwindModel.Products_by_Category"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -7542,7 +7542,7 @@
                   "type": "object",
                   "title": "Collection of Region",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -7551,7 +7551,7 @@
                         "$ref": "#/components/schemas/NorthwindModel.Region"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -7816,7 +7816,7 @@
                   "type": "object",
                   "title": "Collection of Territory",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -7825,7 +7825,7 @@
                         "$ref": "#/components/schemas/NorthwindModel.Territory"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -7953,7 +7953,7 @@
                   "type": "object",
                   "title": "Collection of Sales_Totals_by_Amount",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -7962,7 +7962,7 @@
                         "$ref": "#/components/schemas/NorthwindModel.Sales_Totals_by_Amount"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -8194,7 +8194,7 @@
                   "type": "object",
                   "title": "Collection of Sales_by_Category",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -8203,7 +8203,7 @@
                         "$ref": "#/components/schemas/NorthwindModel.Sales_by_Category"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -8459,7 +8459,7 @@
                   "type": "object",
                   "title": "Collection of Shipper",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -8468,7 +8468,7 @@
                         "$ref": "#/components/schemas/NorthwindModel.Shipper"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -8769,7 +8769,7 @@
                   "type": "object",
                   "title": "Collection of Order",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -8778,7 +8778,7 @@
                         "$ref": "#/components/schemas/NorthwindModel.Order"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -8903,7 +8903,7 @@
                   "type": "object",
                   "title": "Collection of Summary_of_Sales_by_Quarter",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -8912,7 +8912,7 @@
                         "$ref": "#/components/schemas/NorthwindModel.Summary_of_Sales_by_Quarter"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -9130,7 +9130,7 @@
                   "type": "object",
                   "title": "Collection of Summary_of_Sales_by_Year",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -9139,7 +9139,7 @@
                         "$ref": "#/components/schemas/NorthwindModel.Summary_of_Sales_by_Year"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -9401,7 +9401,7 @@
                   "type": "object",
                   "title": "Collection of Supplier",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -9410,7 +9410,7 @@
                         "$ref": "#/components/schemas/NorthwindModel.Supplier"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -9707,7 +9707,7 @@
                   "type": "object",
                   "title": "Collection of Product",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -9716,7 +9716,7 @@
                         "$ref": "#/components/schemas/NorthwindModel.Product"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -9859,7 +9859,7 @@
                   "type": "object",
                   "title": "Collection of Territory",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -9868,7 +9868,7 @@
                         "$ref": "#/components/schemas/NorthwindModel.Territory"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -10182,7 +10182,7 @@
                   "type": "object",
                   "title": "Collection of Employee",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -10191,7 +10191,7 @@
                         "$ref": "#/components/schemas/NorthwindModel.Employee"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -10534,7 +10534,7 @@
               "$ref": "#/components/schemas/NorthwindModel.Product"
             }
           },
-          "Products@count": {
+          "Products@odata.count": {
             "$ref": "#/components/schemas/count"
           }
         }
@@ -10760,7 +10760,7 @@
               "$ref": "#/components/schemas/NorthwindModel.Order"
             }
           },
-          "Orders@count": {
+          "Orders@odata.count": {
             "$ref": "#/components/schemas/count"
           },
           "CustomerDemographics": {
@@ -10769,7 +10769,7 @@
               "$ref": "#/components/schemas/NorthwindModel.CustomerDemographic"
             }
           },
-          "CustomerDemographics@count": {
+          "CustomerDemographics@odata.count": {
             "$ref": "#/components/schemas/count"
           }
         }
@@ -10909,7 +10909,7 @@
               "$ref": "#/components/schemas/NorthwindModel.Customer"
             }
           },
-          "Customers@count": {
+          "Customers@odata.count": {
             "$ref": "#/components/schemas/count"
           }
         }
@@ -11107,7 +11107,7 @@
               "$ref": "#/components/schemas/NorthwindModel.Employee"
             }
           },
-          "Employees1@count": {
+          "Employees1@odata.count": {
             "$ref": "#/components/schemas/count"
           },
           "Employee1": {
@@ -11124,7 +11124,7 @@
               "$ref": "#/components/schemas/NorthwindModel.Order"
             }
           },
-          "Orders@count": {
+          "Orders@odata.count": {
             "$ref": "#/components/schemas/count"
           },
           "Territories": {
@@ -11133,7 +11133,7 @@
               "$ref": "#/components/schemas/NorthwindModel.Territory"
             }
           },
-          "Territories@count": {
+          "Territories@odata.count": {
             "$ref": "#/components/schemas/count"
           }
         }
@@ -11903,7 +11903,7 @@
               "$ref": "#/components/schemas/NorthwindModel.Order_Detail"
             }
           },
-          "Order_Details@count": {
+          "Order_Details@odata.count": {
             "$ref": "#/components/schemas/count"
           },
           "Shipper": {
@@ -12892,7 +12892,7 @@
               "$ref": "#/components/schemas/NorthwindModel.Order_Detail"
             }
           },
-          "Order_Details@count": {
+          "Order_Details@odata.count": {
             "$ref": "#/components/schemas/count"
           },
           "Supplier": {
@@ -13286,7 +13286,7 @@
               "$ref": "#/components/schemas/NorthwindModel.Territory"
             }
           },
-          "Territories@count": {
+          "Territories@odata.count": {
             "$ref": "#/components/schemas/count"
           }
         }
@@ -13540,7 +13540,7 @@
               "$ref": "#/components/schemas/NorthwindModel.Order"
             }
           },
-          "Orders@count": {
+          "Orders@odata.count": {
             "$ref": "#/components/schemas/count"
           }
         }
@@ -13839,7 +13839,7 @@
               "$ref": "#/components/schemas/NorthwindModel.Product"
             }
           },
-          "Products@count": {
+          "Products@odata.count": {
             "$ref": "#/components/schemas/count"
           }
         }
@@ -13994,7 +13994,7 @@
               "$ref": "#/components/schemas/NorthwindModel.Employee"
             }
           },
-          "Employees@count": {
+          "Employees@odata.count": {
             "$ref": "#/components/schemas/count"
           }
         }
