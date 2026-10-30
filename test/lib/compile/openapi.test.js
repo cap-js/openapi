@@ -758,4 +758,96 @@ service CatalogService {
     assert.strictEqual(params[1].name, 'paramB');
     assert.strictEqual(params[1].required, true);
   });
+
+  test.describe('@Core.Immutable on composition in service projection', () => {
+    const model = `
+      namespace db;
+      entity Books {
+        key ID : UUID;
+        title  : String;
+        pages  : Composition of many Pages on pages.book = $self;
+      }
+      entity Pages {
+        key ID      : UUID;
+        book        : Association to Books;
+        content     : String;
+      }
+    `;
+
+    test('omits immutable composition from update schema (single service)', () => {
+      const csn = cds.compile.to.csn(`
+        ${model}
+        service ShopService {
+          entity Books as projection on db.Books {
+            *,
+            @Core.Immutable: true
+            pages
+          };
+        }
+      `);
+      const openapi = toOpenApi(csn);
+      const schemas = openapi.components.schemas;
+      const updateKey = Object.keys(schemas).find(k => k.endsWith('ShopService.Books-update'));
+      const readKey   = Object.keys(schemas).find(k => k.endsWith('ShopService.Books') && !k.endsWith('-create') && !k.endsWith('-update'));
+      const createKey = Object.keys(schemas).find(k => k.endsWith('ShopService.Books-create'));
+      assert(updateKey, 'ShopService.Books-update schema must exist');
+      assert(readKey,   'ShopService.Books read schema must exist');
+      assert(createKey, 'ShopService.Books-create schema must exist');
+      assert.strictEqual(schemas[updateKey].properties?.pages, undefined,
+        'pages must not appear in the update schema when annotated @Core.Immutable');
+      assert.notStrictEqual(schemas[readKey].properties?.pages, undefined,
+        'pages must appear in the read schema');
+      assert.notStrictEqual(schemas[createKey].properties?.pages, undefined,
+        'pages must appear in the create schema');
+      const pagesPath = openapi.paths['/Books({ID})/pages'];
+      assert(pagesPath?.get, 'GET must be present on the pages path');
+    });
+
+    test('omits immutable composition from update schema (multi-service)', () => {
+      const csn = cds.compile.to.csn(`
+        ${model}
+        service ShopService {
+          entity Books as projection on db.Books {
+            *,
+            @Core.Immutable: true
+            pages
+          };
+        }
+        service OtherService {
+          entity Books as projection on db.Books {
+            *,
+            @Core.Immutable: true
+            pages
+          };
+        }
+      `);
+      const openapi = toOpenApi(csn, { service: 'all' });
+      for (const [content, metadata] of openapi) {
+        const svcName = metadata.file;
+        const schemas = content.components.schemas;
+        const updateKey = Object.keys(schemas).find(k => k.endsWith(`${svcName}.Books-update`));
+        assert(updateKey, `${svcName}.Books-update schema must exist`);
+        assert.strictEqual(schemas[updateKey].properties?.pages, undefined,
+          `pages must not appear in the update schema of ${svcName} when annotated @Core.Immutable`);
+      }
+    });
+
+    test('suppresses PATCH path for immutable composition (single service)', () => {
+      const csn = cds.compile.to.csn(`
+        ${model}
+        service ShopService {
+          entity Books as projection on db.Books {
+            *,
+            @Core.Immutable: true
+            pages
+          };
+        }
+      `);
+      const openapi = toOpenApi(csn);
+      const pagesPath = openapi.paths['/Books({ID})/pages'];
+      assert(pagesPath, '/Books({ID})/pages path must exist');
+      assert.strictEqual(pagesPath.patch, undefined,
+        'PATCH must not be present on an @Core.Immutable composition path');
+    });
+  });
 });
