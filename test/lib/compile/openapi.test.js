@@ -788,9 +788,19 @@ service CatalogService {
       const openapi = toOpenApi(csn);
       const schemas = openapi.components.schemas;
       const updateKey = Object.keys(schemas).find(k => k.endsWith('ShopService.Books-update'));
+      const readKey   = Object.keys(schemas).find(k => k.endsWith('ShopService.Books') && !k.endsWith('-create') && !k.endsWith('-update'));
+      const createKey = Object.keys(schemas).find(k => k.endsWith('ShopService.Books-create'));
       assert(updateKey, 'ShopService.Books-update schema must exist');
+      assert(readKey,   'ShopService.Books read schema must exist');
+      assert(createKey, 'ShopService.Books-create schema must exist');
       assert.strictEqual(schemas[updateKey].properties?.pages, undefined,
         'pages must not appear in the update schema when annotated @Core.Immutable');
+      assert.notStrictEqual(schemas[readKey].properties?.pages, undefined,
+        'pages must appear in the read schema');
+      assert.notStrictEqual(schemas[createKey].properties?.pages, undefined,
+        'pages must appear in the create schema');
+      const pagesPath = openapi.paths['/Books({ID})/pages'];
+      assert(pagesPath?.get, 'GET must be present on the pages path');
     });
 
     test('omits immutable composition from update schema (multi-service)', () => {
