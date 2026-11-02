@@ -832,6 +832,28 @@ service CatalogService {
       }
     });
 
+    test('omits immutable composition from update schema (dotted entity name)', () => {
+      // Service entity names with dots (e.g. Books.Hardcover) are stored as Books.Hardcover
+      // in the CSN but as Books_Hardcover in the CSDL — _restoreNavImmutable must account for this.
+      const csn = cds.compile.to.csn(`
+        ${model}
+        service ShopService {
+          entity Books.Hardcover as projection on db.Books {
+            *,
+            @Core.Immutable: true
+            pages
+          };
+          entity Pages as projection on db.Pages;
+        }
+      `);
+      const openapi = toOpenApi(csn);
+      const schemas = openapi.components.schemas;
+      const updateKey = Object.keys(schemas).find(k => k.endsWith('ShopService.Books_Hardcover-update'));
+      assert(updateKey, 'ShopService.Books_Hardcover-update schema must exist');
+      assert.strictEqual(schemas[updateKey].properties?.pages, undefined,
+        'pages must not appear in the update schema for a dotted entity name when annotated @Core.Immutable');
+    });
+
     test('suppresses PATCH path for immutable composition (single service)', () => {
       const csn = cds.compile.to.csn(`
         ${model}
