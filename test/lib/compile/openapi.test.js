@@ -1,5 +1,5 @@
 const { path } = require('@sap/cds/lib/utils/cds-utils');
-const { compileToOpenAPI: toOpenApi } = require('../../../lib/compile');
+const { compileToOpenAPI: toOpenApi, cloneCSN } = require('../../../lib/compile');
 const cds = require('@sap/cds')
 const assert = require('assert');
 const test = require('node:test');
@@ -307,10 +307,9 @@ service CatalogService {
 
   test('re-links the cloned CSN when called with a pre-linked (LinkedCSN) model', () => {
     // cds.clone() = structuredClone() strips the prototype chain from a LinkedCSN. Prototype-
-    // provided getters like _service (which returns the parent service of an entity) are lost.
-    // cds-compiler v7+ accesses entity._service when synthesizing draft elements like
-    // IsActiveEntity, so passing a bare-cloned CSN causes "Element IsActiveEntity does not
-    // result from the query". The fix restores the prototype by calling cds.linked() after clone.
+    // provided getters like _service (parent service of an entity) are lost. cds-compiler v7+
+    // accesses entity._service when synthesizing draft elements like IsActiveEntity, causing
+    // "Element IsActiveEntity does not result from the query" on draft entity projections.
     const raw = cds.compile.to.csn(`
       namespace base;
       @odata.draft.enabled
@@ -320,13 +319,13 @@ service CatalogService {
       }
     `);
     const linked = cds.linked(raw);
-    const proj = linked.definitions['base.ApprovalItemService.ApprovalItems'];
-    assert.ok(proj._service, 'precondition: projection._service must be set on a linked CSN');
-    assert.ok(!cds.clone(linked).definitions['base.ApprovalItemService.ApprovalItems']._service,
+    const proj = (csn) => csn.definitions['base.ApprovalItemService.ApprovalItems'];
+    assert.ok(proj(linked)._service,
+      'precondition: projection._service must be set on a linked CSN');
+    assert.ok(!proj(cds.clone(linked))._service,
       'precondition: cds.clone() must strip _service (the root cause)');
-    const relinked = cds.linked(cds.clone(linked));
-    assert.ok(relinked.definitions['base.ApprovalItemService.ApprovalItems']._service,
-      'cds.linked(cds.clone(linked)) must restore _service on projection entities');
+    assert.ok(proj(cloneCSN(linked))._service,
+      'cloneCSN must restore _service on projection entities (the fix)');
   });
 
   test('REST service does not include /$batch path', () => {
