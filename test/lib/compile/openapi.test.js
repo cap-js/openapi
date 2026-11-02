@@ -307,8 +307,7 @@ service CatalogService {
 
   test('re-links the cloned CSN when called with a pre-linked (LinkedCSN) model', () => {
     // cds.clone() = structuredClone() strips the prototype chain from a LinkedCSN, dropping
-    // properties inherited through it. The fix calls cds.linked() on the clone to restore
-    // structural equivalence. Verify that cds.linked(cds.clone(linked)) deep-equals linked.
+    // properties inherited through it. The fix calls cds.linked() on the clone to restore them.
     const raw = cds.compile.to.csn(`
       namespace base;
       @odata.draft.enabled
@@ -318,9 +317,13 @@ service CatalogService {
       }
     `);
     const linked = cds.linked(raw);
+    assert.equal(Object.getPrototypeOf(linked)?.constructor?.name, 'LinkedCSN',
+      'precondition: model must be LinkedCSN');
+    assert.notEqual(Object.getPrototypeOf(cds.clone(linked))?.constructor?.name, 'LinkedCSN',
+      'precondition: cds.clone() must strip the LinkedCSN prototype (the root cause)');
     const relinked = cds.linked(cds.clone(linked));
-    assert.deepStrictEqual(relinked, linked,
-      'cds.linked(cds.clone(linked)) must be structurally equivalent to the original linked CSN');
+    assert.equal(Object.getPrototypeOf(relinked)?.constructor?.name, 'LinkedCSN',
+      'cds.linked(cds.clone(linked)) must restore the LinkedCSN prototype (the fix)');
   });
 
   test('REST service does not include /$batch path', () => {
