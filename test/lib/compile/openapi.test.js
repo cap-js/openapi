@@ -306,8 +306,11 @@ service CatalogService {
   });
 
   test('re-links the cloned CSN when called with a pre-linked (LinkedCSN) model', () => {
-    // cds.clone() = structuredClone() strips the prototype chain from a LinkedCSN, dropping
-    // properties inherited through it. The fix calls cds.linked() on the clone to restore them.
+    // cds.clone() = structuredClone() strips the prototype chain from a LinkedCSN. Prototype-
+    // provided getters like _service (which returns the parent service of an entity) are lost.
+    // cds-compiler v7+ accesses entity._service when synthesizing draft elements like
+    // IsActiveEntity, so passing a bare-cloned CSN causes "Element IsActiveEntity does not
+    // result from the query". The fix restores the prototype by calling cds.linked() after clone.
     const raw = cds.compile.to.csn(`
       namespace base;
       @odata.draft.enabled
@@ -317,13 +320,13 @@ service CatalogService {
       }
     `);
     const linked = cds.linked(raw);
-    assert.equal(Object.getPrototypeOf(linked)?.constructor?.name, 'LinkedCSN',
-      'precondition: model must be LinkedCSN');
-    assert.notEqual(Object.getPrototypeOf(cds.clone(linked))?.constructor?.name, 'LinkedCSN',
-      'precondition: cds.clone() must strip the LinkedCSN prototype (the root cause)');
+    const proj = linked.definitions['base.ApprovalItemService.ApprovalItems'];
+    assert.ok(proj._service, 'precondition: projection._service must be set on a linked CSN');
+    assert.ok(!cds.clone(linked).definitions['base.ApprovalItemService.ApprovalItems']._service,
+      'precondition: cds.clone() must strip _service (the root cause)');
     const relinked = cds.linked(cds.clone(linked));
-    assert.equal(Object.getPrototypeOf(relinked)?.constructor?.name, 'LinkedCSN',
-      'cds.linked(cds.clone(linked)) must restore the LinkedCSN prototype (the fix)');
+    assert.ok(relinked.definitions['base.ApprovalItemService.ApprovalItems']._service,
+      'cds.linked(cds.clone(linked)) must restore _service on projection entities');
   });
 
   test('REST service does not include /$batch path', () => {
