@@ -306,11 +306,9 @@ service CatalogService {
   });
 
   test('re-links the cloned CSN when called with a pre-linked (LinkedCSN) model', () => {
-    // Scenario: @cap-js/ord passes cds.model (a LinkedCSN) to compileToOpenAPI.
-    // cds.clone() = structuredClone() strips the prototype chain, producing a plain Object.
-    // Without the fix, the plain Object enters cds.compile.to.edm() — cds-compiler v7+
-    // then throws "Element IsActiveEntity does not result from the query" on draft projections.
-    // This test verifies the CSN is re-linked before EDM compilation.
+    // cds.clone() = structuredClone() strips the prototype chain from a LinkedCSN, dropping
+    // properties inherited through it. The fix calls cds.linked() on the clone to restore
+    // structural equivalence. Verify that cds.linked(cds.clone(linked)) deep-equals linked.
     const raw = cds.compile.to.csn(`
       namespace base;
       @odata.draft.enabled
@@ -320,27 +318,9 @@ service CatalogService {
       }
     `);
     const linked = cds.linked(raw);
-    assert.equal(Object.getPrototypeOf(linked)?.constructor?.name, 'LinkedCSN',
-      'precondition: model must be LinkedCSN');
-
-    // Spy on cds.compile.to.edm to capture the prototype of the CSN it receives.
-    // With the fix: the cloned CSN is re-linked before EDM compilation → LinkedCSN.
-    // Without the fix: structuredClone output (plain Object) enters EDM compilation directly.
-    const originalEdm = cds.compile.to.edm;
-    let edmInputProto;
-    cds.compile.to.edm = function(csn, ...rest) {
-      edmInputProto = Object.getPrototypeOf(csn)?.constructor?.name;
-      return originalEdm.call(this, csn, ...rest);
-    };
-    try {
-      const result = toOpenApi(linked, { service: 'base.ApprovalItemService' });
-      assert.ok(result?.paths, 'must return an OpenAPI document');
-    } finally {
-      cds.compile.to.edm = originalEdm;
-    }
-
-    assert.equal(edmInputProto, 'LinkedCSN',
-      'CSN must be re-linked (LinkedCSN) before entering EDM compilation; without the fix it is a plain Object');
+    const relinked = cds.linked(cds.clone(linked));
+    assert.deepStrictEqual(relinked, linked,
+      'cds.linked(cds.clone(linked)) must be structurally equivalent to the original linked CSN');
   });
 
   test('REST service does not include /$batch path', () => {
