@@ -305,12 +305,16 @@ service CatalogService {
       '@protocol must not be mutated by toOpenApi');
   });
 
-  test('succeeds when called with a pre-linked (LinkedCSN) model', () => {
+  test('re-links the cloned CSN when called with a pre-linked (LinkedCSN) model', () => {
+    // Scenario: @cap-js/ord passes cds.model (a LinkedCSN) to compileToOpenAPI.
+    // cds.clone() = structuredClone() strips the prototype chain, producing a plain Object.
+    // Without the fix, the plain Object enters cds.compile.to.edm() — cds-compiler v7+
+    // then throws "Element IsActiveEntity does not result from the query" on draft projections.
+    // This test verifies the CSN is re-linked before EDM compilation.
     const raw = cds.compile.to.csn(`
       namespace base;
-      entity ApprovalItems { key ID: UUID; name: String; }
-
       @odata.draft.enabled
+      entity ApprovalItems { key ID: UUID; name: String; }
       service ApprovalItemService {
         entity ApprovalItems as SELECT from base.ApprovalItems { ID, name };
       }
@@ -318,9 +322,25 @@ service CatalogService {
     const linked = cds.linked(raw);
     assert.equal(Object.getPrototypeOf(linked)?.constructor?.name, 'LinkedCSN',
       'precondition: model must be LinkedCSN');
-    // Must not throw "Element IsActiveEntity does not result from the query"
-    const result = toOpenApi(linked);
-    assert.ok(result?.paths, 'must return an OpenAPI document');
+
+    // Spy on cds.compile.to.edm to capture the prototype of the CSN it receives.
+    // With the fix: the cloned CSN is re-linked before EDM compilation → LinkedCSN.
+    // Without the fix: structuredClone output (plain Object) enters EDM compilation directly.
+    const originalEdm = cds.compile.to.edm;
+    let edmInputProto;
+    cds.compile.to.edm = function(csn, ...rest) {
+      edmInputProto = Object.getPrototypeOf(csn)?.constructor?.name;
+      return originalEdm.call(this, csn, ...rest);
+    };
+    try {
+      const result = toOpenApi(linked, { service: 'base.ApprovalItemService' });
+      assert.ok(result?.paths, 'must return an OpenAPI document');
+    } finally {
+      cds.compile.to.edm = originalEdm;
+    }
+
+    assert.equal(edmInputProto, 'LinkedCSN',
+      'CSN must be re-linked (LinkedCSN) before entering EDM compilation; without the fix it is a plain Object');
   });
 
   test('REST service does not include /$batch path', () => {
