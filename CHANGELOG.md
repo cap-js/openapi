@@ -17,6 +17,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 - OData collection responses now use `@odata.count` and `@odata.nextLink` instead of the OData 4.01 short forms `@count` and `@nextLink`, matching what CAP actually returns at runtime.
 - Compositions of `@readonly` entities no longer advertise write operations (POST/PATCH/DELETE) on their navigation paths
 - `@Core.Immutable` on a composition in a service projection is now honoured: the property is omitted from the `*-update` schema and the PATCH path is suppressed
+- `@Common.Label` values containing i18n placeholders (e.g. `{i18n>BooksPlural}`) on a source entity type are no longer mangled by camelCase word-splitting in navigation property operation summaries
 ### Security
 
 ## [1.7.0] - 2026-10-06
