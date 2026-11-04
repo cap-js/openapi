@@ -49,6 +49,40 @@
         "$Type": "CatalogService.Books"
       }
     },
+    "Books2": {
+      "$Kind": "EntityType",
+      "$Key": ["ID"],
+      "ID": {
+        "$Type": "Edm.Int32",
+        "$Nullable": false
+      },
+      "pages": {
+        "$Kind": "NavigationProperty",
+        "$Type": "CatalogService.Pages2",
+        "$Collection": true,
+        "$ContainsTarget": true
+      }
+    },
+    "Pages2": {
+      "$Kind": "EntityType",
+      "$Key": ["parent_ID", "number"],
+      "number": {
+        "$Type": "Edm.Int32",
+        "$Nullable": false
+      },
+      "content": {
+        "$Type": "Edm.String",
+        "$MaxLength": 1111
+      },
+      "parent_ID": {
+        "$Type": "Edm.Int32",
+        "$Nullable": false
+      },
+      "parent": {
+        "$Kind": "NavigationProperty",
+        "$Type": "CatalogService.Books2"
+      }
+    },
     "EntityContainer": {
       "$Kind": "EntityContainer",
       "Books": {
@@ -63,6 +97,27 @@
         "$Type": "CatalogService.Pages",
         "$NavigationPropertyBinding": {
           "parent": "Books"
+        }
+      },
+      "Books2": {
+        "$Collection": true,
+        "$Type": "CatalogService.Books2",
+        "$NavigationPropertyBinding": {
+          "pages": "Pages2"
+        }
+      },
+      "Pages2": {
+        "$Collection": true,
+        "$Type": "CatalogService.Pages2",
+        "$NavigationPropertyBinding": {
+          "parent": "Books2"
+        }
+      }
+    },
+    "$Annotations": {
+      "CatalogService.EntityContainer/Books2": {
+        "@Capabilities.ExpandRestrictions": {
+          "NonExpandableProperties": ["pages"]
         }
       }
     }

@@ -17,6 +17,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 - Navigation property expansion count is corrected from `nav@count` to `nav@odata.count` for both OData and REST protocols.
 - OData collection responses now use `@odata.count` and `@odata.nextLink` instead of the OData 4.01 short forms `@count` and `@nextLink`, matching what CAP actually returns at runtime.
 - Compositions of `@readonly` entities no longer advertise write operations (POST/PATCH/DELETE) on their navigation paths
+- Navigation properties listed in `@Capabilities.ExpandRestrictions.NonExpandableProperties` on an entity set are now correctly excluded from the read schema
 - `@Common.Label` values containing i18n placeholders (e.g. `{i18n>BooksPlural}`) on a source entity type are no longer mangled by camelCase word-splitting in navigation property operation summaries
 ### Security
 

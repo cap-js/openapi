@@ -2439,6 +2439,11 @@ see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-prot
     assert.strictEqual(Object.hasOwn(pagesSchema.properties, 'parent'), false, 'parent navigation property should be excluded from schema');
     assert.strictEqual(Object.hasOwn(pagesSchema.properties, 'parent_ID'), true, 'parent_ID foreign key should be included in schema');
     assert.strictEqual(Object.hasOwn(pagesSchema.properties, 'number'), true, 'number property should be included in schema');
+
+    // entity-set-level annotation (via $Annotations) should also exclude non-expandable nav props
+    const books2Schema = actual.components.schemas['CatalogService.Books2'];
+    assert.strictEqual(Object.hasOwn(books2Schema.properties, 'pages'), false, 'pages nav property should be excluded from schema when annotated on entity set');
+    assert.strictEqual(Object.hasOwn(books2Schema.properties, 'ID'), true, 'ID key property should be included in schema');
   });
 
   test("Default Namespace", () => {
