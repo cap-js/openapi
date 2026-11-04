@@ -1,5 +1,5 @@
 const { path } = require('@sap/cds/lib/utils/cds-utils');
-const { compileToOpenAPI: toOpenApi } = require('../../../lib/compile');
+const { compileToOpenAPI: toOpenApi, cloneCSN } = require('../../../lib/compile');
 const cds = require('@sap/cds')
 const assert = require('assert');
 const test = require('node:test');
@@ -303,6 +303,29 @@ service CatalogService {
     toOpenApi(csn);
     assert(Array.isArray(csn.definitions['com.sap.A']['@protocol']),
       '@protocol must not be mutated by toOpenApi');
+  });
+
+  test('re-links the cloned CSN when called with a pre-linked (LinkedCSN) model', () => {
+    // cds.clone() = structuredClone() strips the prototype chain from a LinkedCSN. Prototype-
+    // provided getters like _service (parent service of an entity) are lost. cds-compiler v7+
+    // accesses entity._service when synthesizing draft elements like IsActiveEntity, causing
+    // "Element IsActiveEntity does not result from the query" on draft entity projections.
+    const raw = cds.compile.to.csn(`
+      namespace base;
+      @odata.draft.enabled
+      entity ApprovalItems { key ID: UUID; name: String; }
+      service ApprovalItemService {
+        entity ApprovalItems as SELECT from base.ApprovalItems { ID, name };
+      }
+    `);
+    const linked = cds.linked(raw);
+    const proj = (csn) => csn.definitions['base.ApprovalItemService.ApprovalItems'];
+    assert.ok(proj(linked)._service,
+      'precondition: projection._service must be set on a linked CSN');
+    assert.ok(!proj(cds.clone(linked))._service,
+      'precondition: cds.clone() must strip _service (the root cause)');
+    assert.ok(proj(cloneCSN(linked))._service,
+      'cloneCSN must restore _service on projection entities (the fix)');
   });
 
   test('REST service does not include /$batch path', () => {
