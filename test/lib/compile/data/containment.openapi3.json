@@ -121,7 +121,7 @@
                   "type": "object",
                   "title": "Collection of Folder",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -130,7 +130,7 @@
                         "$ref": "#/components/schemas/Containment.Folder"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -391,7 +391,7 @@
                   "type": "object",
                   "title": "Collection of Folder",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -400,7 +400,7 @@
                         "$ref": "#/components/schemas/Containment.Folder"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -679,7 +679,7 @@
                   "type": "object",
                   "title": "Collection of Folder",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -688,7 +688,7 @@
                         "$ref": "#/components/schemas/Containment.Folder"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -985,7 +985,7 @@
                   "type": "object",
                   "title": "Collection of Folder",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -994,7 +994,7 @@
                         "$ref": "#/components/schemas/Containment.Folder"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -1309,7 +1309,7 @@
                   "type": "object",
                   "title": "Collection of Folder",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -1318,7 +1318,7 @@
                         "$ref": "#/components/schemas/Containment.Folder"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -1651,7 +1651,7 @@
                   "type": "object",
                   "title": "Collection of Folder",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -1660,7 +1660,7 @@
                         "$ref": "#/components/schemas/Containment.Folder"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -1886,7 +1886,7 @@
                   "type": "object",
                   "title": "Collection of Part",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -1895,7 +1895,7 @@
                         "$ref": "#/components/schemas/Containment.Part"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -2143,7 +2143,7 @@
                   "type": "object",
                   "title": "Collection of SubPart",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -2152,7 +2152,7 @@
                         "$ref": "#/components/schemas/Containment.SubPart"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -2405,7 +2405,7 @@
                   "type": "object",
                   "title": "Collection of SubPart",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -2414,7 +2414,7 @@
                         "$ref": "#/components/schemas/Containment.SubPart"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -2837,7 +2837,7 @@
                   "type": "object",
                   "title": "Collection of SubPart",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -2846,7 +2846,7 @@
                         "$ref": "#/components/schemas/Containment.SubPart"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -3286,7 +3286,7 @@
                   "type": "object",
                   "title": "Collection of Whole",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -3295,7 +3295,7 @@
                         "$ref": "#/components/schemas/Containment.Whole"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -3557,7 +3557,7 @@
                   "type": "object",
                   "title": "Collection of Part",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -3566,7 +3566,7 @@
                         "$ref": "#/components/schemas/Containment.Part"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -3832,7 +3832,7 @@
                   "type": "object",
                   "title": "Collection of SubPart",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -3841,7 +3841,7 @@
                         "$ref": "#/components/schemas/Containment.SubPart"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -4173,7 +4173,7 @@
                   "type": "object",
                   "title": "Collection of SubPart",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -4182,7 +4182,7 @@
                         "$ref": "#/components/schemas/Containment.SubPart"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -4674,7 +4674,7 @@
                   "type": "object",
                   "title": "Collection of SubPart",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -4683,7 +4683,7 @@
                         "$ref": "#/components/schemas/Containment.SubPart"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -5168,7 +5168,7 @@
               "$ref": "#/components/schemas/Containment.Folder"
             }
           },
-          "Folders@count": {
+          "Folders@odata.count": {
             "$ref": "#/components/schemas/count"
           }
         }
@@ -5233,7 +5233,7 @@
               "$ref": "#/components/schemas/Containment.SubPart"
             }
           },
-          "Many@count": {
+          "Many@odata.count": {
             "$ref": "#/components/schemas/count"
           },
           "ManyReadListOnly": {
@@ -5242,7 +5242,7 @@
               "$ref": "#/components/schemas/Containment.SubPart"
             }
           },
-          "ManyReadListOnly@count": {
+          "ManyReadListOnly@odata.count": {
             "$ref": "#/components/schemas/count"
           },
           "ManyReadByKeyOnly": {
@@ -5251,7 +5251,7 @@
               "$ref": "#/components/schemas/Containment.SubPart"
             }
           },
-          "ManyReadByKeyOnly@count": {
+          "ManyReadByKeyOnly@odata.count": {
             "$ref": "#/components/schemas/count"
           }
         }
@@ -5388,7 +5388,7 @@
               "$ref": "#/components/schemas/Containment.Part"
             }
           },
-          "Many@count": {
+          "Many@odata.count": {
             "$ref": "#/components/schemas/count"
           }
         }
@@ -5549,7 +5549,7 @@
       "search": {
         "name": "$search",
         "in": "query",
-        "description": "Search items by search phrases, see [Searching](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionsearch)",
+        "description": "Search items by search phrases, see [Searching](https://url.sap/odata-search)",
         "schema": {
           "type": "string"
         }

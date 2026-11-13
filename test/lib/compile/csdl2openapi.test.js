@@ -1319,7 +1319,7 @@ describe("Edge cases", () => {
       },
     };
     const expectedGetResponseProperties = {
-      "@count": {
+      "@odata.count": {
         $ref: "#/components/schemas/count",
       },
       value: {
@@ -1329,7 +1329,7 @@ describe("Edge cases", () => {
           //TODO:delta
         },
       },
-      "@nextLink": {
+      "@odata.nextLink": {
         type: "string",
         format: "uri",
         description: "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)",
@@ -1363,22 +1363,61 @@ describe("Edge cases", () => {
         Container: { Set: { $Type: "this.ET", $Collection: true } },
       },
     };
-    const v401 = lib.csdl2openapi(csdl, {});
-    const v401Props = v401.paths["/Set"].get.responses[200].content["application/json"].schema.properties;
-    assert.ok("@nextLink" in v401Props, "v4.01 should have @nextLink");
-    assert.deepStrictEqual(v401Props["@nextLink"], {
+    const openapi = lib.csdl2openapi(csdl, {});
+    const listProps = openapi.paths["/Set"].get.responses[200].content["application/json"].schema.properties;
+    assert.ok("@odata.nextLink" in listProps, "collection response should have @odata.nextLink");
+    assert.deepStrictEqual(listProps["@odata.nextLink"], {
       type: "string",
       format: "uri",
       description: "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)",
     });
-    assert.ok(!("@odata.nextLink" in v401Props), "v4.01 must not emit @odata.nextLink");
-    assert.ok(!("@nextLink" in (v401.paths["/Set('{key}')"].get.responses[200].content["application/json"].schema.properties ?? {})),
-      "by-key response must not have @nextLink");
+    assert.ok(!("@nextLink" in listProps), "must not emit bare @nextLink");
+    assert.ok(!("@odata.nextLink" in (openapi.paths["/Set('{key}')"].get.responses[200].content["application/json"].schema.properties ?? {})),
+      "by-key response must not have @odata.nextLink");
 
     const v40 = lib.csdl2openapi(csdl, { odataVersion: "4.0" });
     const v40Props = v40.paths["/Set"].get.responses[200].content["application/json"].schema.properties;
-    assert.ok("@odata.nextLink" in v40Props, "v4.0 should have @odata.nextLink");
-    assert.ok(!("@nextLink" in v40Props), "v4.0 must not emit @nextLink");
+    assert.ok("@odata.nextLink" in v40Props, "v4.0 should also have @odata.nextLink");
+    assert.ok(!("@nextLink" in v40Props), "v4.0 must not emit bare @nextLink");
+  });
+
+  test("@odata.count in collection response regardless of OData version", () => {
+    const csdl = {
+      $EntityContainer: "this.Container",
+      this: {
+        ET: { $Kind: "EntityType", $Key: ["key"], key: {} },
+        Container: { Set: { $Type: "this.ET", $Collection: true } },
+      },
+    };
+    for (const odataVersion of [undefined, "4.0", "4.01"]) {
+      const openapi = lib.csdl2openapi(csdl, odataVersion ? { odataVersion } : {});
+      const props = openapi.paths["/Set"].get.responses[200].content["application/json"].schema.properties;
+      const label = odataVersion ?? "default";
+      assert.ok("@odata.count" in props, `${label}: collection response must use @odata.count`);
+      assert.ok(!("@count" in props), `${label}: must not emit bare @count`);
+    }
+  });
+
+  test("@odata.count on nav-property expansion regardless of OData version", () => {
+    const csdl = {
+      $EntityContainer: "this.Container",
+      this: {
+        ET: {
+          $Kind: "EntityType",
+          $Key: ["key"],
+          key: {},
+          nav: { $Kind: "NavigationProperty", $Type: "this.ET", $Collection: true },
+        },
+        Container: { Set: { $Type: "this.ET", $Collection: true } },
+      },
+    };
+    for (const odataVersion of [undefined, "4.0", "4.01"]) {
+      const openapi = lib.csdl2openapi(csdl, odataVersion ? { odataVersion } : {});
+      const entitySchema = openapi.components.schemas["this.ET"].properties;
+      const label = odataVersion ?? "default";
+      assert.ok("nav@odata.count" in entitySchema, `${label}: nav-property expansion must use nav@odata.count`);
+      assert.ok(!("nav@count" in entitySchema), `${label}: must not emit bare nav@count`);
+    }
   });
 
   test("entity set and singleton with non-existing type", () => {
@@ -1420,7 +1459,7 @@ describe("Edge cases", () => {
                       type: "object",
                       title: "Collection of type_does_not_exist",
                       properties: {
-                        "@count": {
+                        "@odata.count": {
                           $ref: "#/components/schemas/count",
                         },
                         value: {
@@ -1429,7 +1468,7 @@ describe("Edge cases", () => {
                             $ref: "#/components/schemas/undefined.type_does_not_exist",
                           },
                         },
-                        "@nextLink": {
+                        "@odata.nextLink": {
                           type: "string",
                           format: "uri",
                           description: "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)",
@@ -1663,7 +1702,7 @@ see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-prot
                       type: "object",
                       title: "Collection of derived",
                       properties: {
-                        "@count": {
+                        "@odata.count": {
                           $ref: "#/components/schemas/count",
                         },
                         value: {
@@ -1672,7 +1711,7 @@ see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-prot
                             $ref: "#/components/schemas/this.derived",
                           },
                         },
-                        "@nextLink": {
+                        "@odata.nextLink": {
                           type: "string",
                           format: "uri",
                           description: "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)",
@@ -1860,7 +1899,7 @@ see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-prot
                       type: "object",
                       title: "Collection of source",
                       properties: {
-                        "@count": {
+                        "@odata.count": {
                           $ref: "#/components/schemas/count",
                         },
                         value: {
@@ -1869,7 +1908,7 @@ see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-prot
                             $ref: "#/components/schemas/this.source",
                           },
                         },
-                        "@nextLink": {
+                        "@odata.nextLink": {
                           type: "string",
                           format: "uri",
                           description: "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)",
@@ -2033,7 +2072,7 @@ see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-prot
                       type: "object",
                       title: "Collection of Category",
                       properties: {
-                        "@count": {
+                        "@odata.count": {
                           $ref: "#/components/schemas/count",
                         },
                         value: {
@@ -2042,7 +2081,7 @@ see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-prot
                             $ref: "#/components/schemas/this.Category",
                           },
                         },
-                        "@nextLink": {
+                        "@odata.nextLink": {
                           type: "string",
                           format: "uri",
                           description: "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)",
@@ -2244,7 +2283,7 @@ see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-prot
                       type: "object",
                       title: "Collection of thing",
                       properties: {
-                        "@count": {
+                        "@odata.count": {
                           $ref: "#/components/schemas/count",
                         },
                         value: {
@@ -2253,7 +2292,7 @@ see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-prot
                             $ref: "#/components/schemas/this.thing",
                           },
                         },
-                        "@nextLink": {
+                        "@odata.nextLink": {
                           type: "string",
                           format: "uri",
                           description: "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)",
@@ -2998,6 +3037,62 @@ see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-prot
       "label with multiple i18n placeholders must not be split"
     );
   });
+
+  it("preserves i18n placeholder in operation summary for navigation properties", () => {
+    const csdl = {
+      $Version: "4.01",
+      $Reference: {
+        dummy: {
+          $Include: [
+            { $Namespace: "com.sap.vocabularies.Common.v1", $Alias: "Common" },
+          ],
+        },
+      },
+      $EntityContainer: "TestService.Container",
+      TestService: {
+        Container: {
+          $Kind: "EntityContainer",
+          Books: {
+            $Collection: true,
+            $Type: "TestService.Books",
+            $ContainsTarget: true,
+            $NavigationPropertyBinding: { currency: "Currencies" },
+          },
+          Currencies: {
+            $Collection: true,
+            $Type: "TestService.Currencies",
+          },
+        },
+        Books: {
+          $Kind: "EntityType",
+          $Key: ["ID"],
+          ID: { $Type: "Edm.Guid" },
+          currency: {
+            $Kind: "NavigationProperty",
+            $Type: "TestService.Currencies",
+            $Nullable: true,
+            $ContainsTarget: false,
+          },
+        },
+        Currencies: {
+          $Kind: "EntityType",
+          $Key: ["code"],
+          code: { $Type: "Edm.String", $MaxLength: 3 },
+        },
+        $Annotations: {
+          "TestService.Books": { "@Common.Label": "{i18n>entity.BooksPlural}" },
+        },
+      },
+    };
+    const openapi = lib.csdl2openapi(csdl, {});
+    const getOp = openapi.paths["/Books({ID})/currency"]?.get;
+    assert.ok(getOp, "GET /Books({ID})/currency must exist");
+    assert.match(
+      getOp.summary,
+      /{i18n>entity\.BooksPlural}/,
+      "i18n placeholder in source entity label must not be split in operation summary"
+    );
+  });
 });
 
 describe("Bound action path naming", () => {
@@ -3573,7 +3668,7 @@ see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-prot
                       type: "object",
                       title: "Collection of thing",
                       properties: {
-                        "@count": {
+                        "@odata.count": {
                           $ref: "#/components/schemas/count",
                         },
                         value: {
@@ -3582,7 +3677,7 @@ see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-prot
                             $ref: "#/components/schemas/this.thing",
                           },
                         },
-                        "@nextLink": {
+                        "@odata.nextLink": {
                           type: "string",
                           format: "uri",
                           description: "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)",
@@ -3623,6 +3718,66 @@ see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-prot
       expected.paths["/things"].get,
       "GET things"
     );
+  });
+});
+
+describe("REST protocol", () => {
+  const csdl = {
+    $EntityContainer: "this.Container",
+    this: {
+      Book: {
+        $Kind: "EntityType",
+        $Key: ["ID"],
+        ID: { $Type: "Edm.Int32" },
+        title: { $Nullable: true },
+        authors: { $Kind: "NavigationProperty", $Type: "this.Author", $Collection: true },
+      },
+      Author: {
+        $Kind: "EntityType",
+        $Key: ["ID"],
+        ID: { $Type: "Edm.Int32" },
+      },
+      Container: {
+        Books: { $Type: "this.Book", $Collection: true },
+      },
+    },
+  };
+
+  test("REST collection response uses oneOf: bare array OR object with count+value", () => {
+    const openapi = lib.csdl2openapi(csdl, { protocol: "rest" });
+    const schema = openapi.paths["/Books"].get.responses[200].content["application/json"].schema;
+    assert.ok(Array.isArray(schema.oneOf), "REST collection response schema must use oneOf");
+    assert.strictEqual(schema.oneOf.length, 2, "oneOf must have exactly 2 variants");
+
+    const [arrayVariant, objectVariant] = schema.oneOf;
+    assert.strictEqual(arrayVariant.type, "array", "first variant must be bare array");
+
+    assert.strictEqual(objectVariant.type, "object", "second variant must be object");
+    assert.ok("value" in objectVariant.properties, "object variant must have value property");
+    assert.ok("count" in objectVariant.properties, "object variant must use 'count' (not '@count') for REST");
+    assert.ok(!("@count" in objectVariant.properties), "object variant must not use '@count'");
+    assert.ok(!("@odata.count" in objectVariant.properties), "object variant must not use '@odata.count'");
+  });
+
+  test("REST collection response has no @odata.nextLink", () => {
+    const openapi = lib.csdl2openapi(csdl, { protocol: "rest" });
+    const schema = openapi.paths["/Books"].get.responses[200].content["application/json"].schema;
+    const schemaStr = JSON.stringify(schema);
+    assert.ok(!schemaStr.includes("nextLink"), "REST collection response must not include nextLink");
+  });
+
+  test("REST nav-property expansion uses @odata.count", () => {
+    const openapi = lib.csdl2openapi(csdl, { protocol: "rest" });
+    const bookSchema = openapi.components.schemas["this.Book"].properties;
+    assert.ok("authors@odata.count" in bookSchema, "nav-property expansion must use authors@odata.count");
+    assert.ok(!("authors@count" in bookSchema), "must not emit bare authors@count");
+  });
+
+  test("OData collection response is unaffected by REST changes", () => {
+    const openapi = lib.csdl2openapi(csdl, {});
+    const schema = openapi.paths["/Books"].get.responses[200].content["application/json"].schema;
+    assert.ok(!schema.oneOf, "OData collection response must not use oneOf");
+    assert.strictEqual(schema.type, "object", "OData collection response must be an object");
   });
 });
 

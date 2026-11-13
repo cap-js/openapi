@@ -146,7 +146,7 @@
                   "type": "object",
                   "title": "Collection of Books",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -155,7 +155,7 @@
                         "$ref": "#/components/schemas/AdminService.Books"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -401,7 +401,7 @@
                   "type": "object",
                   "title": "Collection of Books_texts",
                   "properties": {
-                    "@count": {
+                    "@odata.count": {
                       "$ref": "#/components/schemas/count"
                     },
                     "value": {
@@ -410,7 +410,7 @@
                         "$ref": "#/components/schemas/AdminService.Books_texts"
                       }
                     },
-                    "@nextLink": {
+                    "@odata.nextLink": {
                       "type": "string",
                       "format": "uri",
                       "description": "URL of the next page in server-driven paging, see [Server-driven Paging](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_ServerDrivenPaging)"
@@ -590,7 +590,7 @@
               "$ref": "#/components/schemas/AdminService.Books_texts"
             }
           },
-          "texts@count": {
+          "texts@odata.count": {
             "$ref": "#/components/schemas/count"
           }
         }
@@ -764,7 +764,7 @@
       "search": {
         "name": "$search",
         "in": "query",
-        "description": "Search items by search phrases, see [Searching](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionsearch)",
+        "description": "Search items by search phrases, see [Searching](https://url.sap/odata-search)",
         "schema": {
           "type": "string"
         }
