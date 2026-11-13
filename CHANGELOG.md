@@ -7,6 +7,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ## [Unreleased]
 
 ### Added
+- OData collection endpoints now include a `$skiptoken` query parameter for server-driven paging, controlled by the `Capabilities.SkipTokenSupported` annotation
 ### Changed
 ### Deprecated
 ### Removed
