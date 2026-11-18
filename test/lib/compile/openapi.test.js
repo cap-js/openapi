@@ -337,10 +337,10 @@ service CatalogService {
         entity Books as projection on my.Books;
       }
     `);
-    const linked = cds.linked(raw);
-    cds.compile.for.lean_drafts(linked);
+    const runtime = cds.compile.for.nodejs(raw);
+    assert.strictEqual(runtime.definitions['my.AdminService.Books'].elements.DraftAdministrativeData.virtual, true);
     assert.doesNotThrow(
-      () => toOpenApi(linked, { service: 'my.AdminService' }),
+      () => toOpenApi(runtime, { service: 'my.AdminService' }),
       'compiling a lean_drafts-processed model must not throw'
     );
   });
