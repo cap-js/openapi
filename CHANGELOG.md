@@ -11,6 +11,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ### Deprecated
 ### Removed
 ### Fixed
+- OpenAPI compilation uses an isolated proxy view instead of cloning the input CSN, preserving linked and runtime draft metadata while keeping compiler-added properties and overrides off the original model.
 ### Security
 
 ## [1.7.1] - 2026-11-13

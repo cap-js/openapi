@@ -1,5 +1,5 @@
 const { path } = require('@sap/cds/lib/utils/cds-utils');
-const { compileToOpenAPI: toOpenApi, cloneCSN } = require('../../../lib/compile');
+const { compileToOpenAPI: toOpenApi } = require('../../../lib/compile');
 const cds = require('@sap/cds')
 const assert = require('assert');
 const test = require('node:test');
@@ -305,11 +305,9 @@ service CatalogService {
       '@protocol must not be mutated by toOpenApi');
   });
 
-  test('re-links the cloned CSN when called with a pre-linked (LinkedCSN) model', () => {
-    // cds.clone() = structuredClone() strips the prototype chain from a LinkedCSN. Prototype-
-    // provided getters like _service (parent service of an entity) are lost. cds-compiler v7+
-    // accesses entity._service when synthesizing draft elements like IsActiveEntity, causing
-    // "Element IsActiveEntity does not result from the query" on draft entity projections.
+  test('compiles a pre-linked (LinkedCSN) model with draft projection', () => {
+    // cds.compile.to.edm internally needs _service on projection entities (set by cds.linked()).
+    // cds-compiler v7+ accesses entity._service when synthesizing draft elements like IsActiveEntity.
     const raw = cds.compile.to.csn(`
       namespace base;
       @odata.draft.enabled
@@ -319,13 +317,32 @@ service CatalogService {
       }
     `);
     const linked = cds.linked(raw);
-    const proj = (csn) => csn.definitions['base.ApprovalItemService.ApprovalItems'];
-    assert.ok(proj(linked)._service,
-      'precondition: projection._service must be set on a linked CSN');
-    assert.ok(!proj(cds.clone(linked))._service,
-      'precondition: cds.clone() must strip _service (the root cause)');
-    assert.ok(proj(cloneCSN(linked))._service,
-      'cloneCSN must restore _service on projection entities (the fix)');
+    assert.doesNotThrow(
+      () => toOpenApi(linked, { service: 'base.ApprovalItemService' }),
+      'compiling a pre-linked CSN with draft projection must not throw'
+    );
+  });
+
+  test('compiles a model already processed by cds.compile.for.lean_drafts (runtime ORD model)', () => {
+    // When @cap-js/ord passes cds.model at runtime, it has already been through
+    // cds.compile.for.lean_drafts, which sets virtual:true on associations like
+    // DraftAdministrativeData. Cloning such a model and re-linking causes cds-compiler v7+
+    // to reject the element ("can't be virtual and an association"). The model must be
+    // passed through without cloning.
+    const raw = cds.compile.to.csn(`
+      namespace my;
+      entity Books { key ID: UUID; title: String; }
+      service AdminService {
+        @odata.draft.enabled
+        entity Books as projection on my.Books;
+      }
+    `);
+    const runtime = cds.compile.for.nodejs(raw);
+    assert.strictEqual(runtime.definitions['my.AdminService.Books'].elements.DraftAdministrativeData.virtual, true);
+    assert.doesNotThrow(
+      () => toOpenApi(runtime, { service: 'my.AdminService' }),
+      'compiling a lean_drafts-processed model must not throw'
+    );
   });
 
   test('REST service does not include /$batch path', () => {
